@@ -1,0 +1,3 @@
+[submodule "include/ex-sheet-utils"]
+	path = include/ex-sheet-utils
+	url = https://github.com/esther-poniatowski/exercise-sheet-tex-toolkit.git
