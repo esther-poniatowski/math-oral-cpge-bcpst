@@ -4,7 +4,7 @@ Exercise sheets for "kholles" in mathematics for BCPST students (1st and 2nd yea
 
 ## Versions
 
-Releases (major versions correspond to academic years.
+Releases correspond to academic years.
 
 They are tagged on `main` with the following format: `v20XX-20XX`.
 
