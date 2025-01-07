@@ -9,7 +9,48 @@
 	],
 
 	// Workspace Settings
-	"settings": {},
+	"settings": {
+		"latex-workshop.view.pdf.viewer": "tab", // preview PDF in tab
+		
+		"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/out", // output directory
+
+		"latex-workshop.latex.tools": [
+		  { // Build using Latexmk and xelatex engine
+			"name": "latexmk",
+			"command": "latexmk",
+			"args": [
+			  "-pdf",
+			  "-xelatex", // use xelatex engine
+			  "-synctex=1", // enable synctex for forward and inverse search
+			  "-interaction=nonstopmode", // do not stop on error
+			  "-file-line-error", // show error at the end of the line
+			  "-outdir=%OUTDIR%", // point to latex-workshop.latex.outDir
+			  "%DOC%"
+			]
+		  },
+		  { // Create "/pdfs" directory to store PDFs from "/out"
+		    // %RELATIVE_DIR%: path of the current file relative to the workspace root,
+			//                 here the broad mathematical topic (e.g. "algebra")
+			"name": "makeFolder",
+			"command": "mkdir",
+			"args": ["-p", "%WORKSPACE_FOLDER%/pdfs/%RELATIVE_DIR%"]
+		  },
+		  { // Copy PDF to "pdfs" directory
+			"name": "copyPDF",
+			"command": "cp",
+			"args": ["%OUTDIR%/%DOCFILE%.pdf", "%WORKSPACE_FOLDER%/pdfs/%RELATIVE_DIR%/"]
+		  }
+		],
+
+		"latex-workshop.latex.recipes": [
+		  { // Build and Extract PDFs
+			"name": "latexmk -> makeFolder -> copyPDF",
+			"tools": ["latexmk", "makeFolder", "copyPDF"]
+		  }
+		],
+	
+		"latex-workshop.latex.recipe.default": "latexmk -> makeFolder -> copyPDF",
+	},
 
 	// Recommended Extensions
 	"extensions": {}
