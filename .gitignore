@@ -5,12 +5,16 @@
 *.aux
 *.log
 *.out
-*.toc
 
 ## Intermediate documents
 *.dvi
 *.xdv
 *.pdf
 
+## Include the PDFs directory
+!pdfs/
+
 ## Build tool auxiliary files
 *.synctex.*
+*.fls
+*.fdb_latexmk
