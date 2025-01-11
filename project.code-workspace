@@ -1,4 +1,4 @@
-// Workspace-Specific Settings
+// Workspace Settings
 {
 	// Folders Included in the Workspace
 	"folders": [
@@ -10,8 +10,45 @@
 
 	// Workspace Settings
 	"settings": {
+		// Editor Guides and Wrapping
+		"editor.lineNumbers": "on",
+		"editor.rulers": [100],
+		"editor.wordWrap": "off", // avoid visual wrapping
+		"rewrap.wrappingColumn": 100,
+		"rewrap.wholeComment": false, // wrap only the selected text
+		"rewrap.autoWrap.enabled": true,
+
+		// File Explorer
+		"files.exclude": {
+			"**/.git": false,
+			"**/.DS_Store": true,
+		},
+
+		// Search
+		"search.exclude": {
+			"**/.git": true,
+			"**/.DS_Store": true,
+		},
+
+		// Copilot
+		"github.copilot.enable": {
+			"*": true,
+			"tex": true,
+			"plaintext": true,
+			"markdown": true,
+			"gitignore": true,
+			"git": true,
+		},
+
+		// Formatting
+		"files.trimTrailingWhitespace": true, // remove trailing white spaces on save
+		"files.insertFinalNewline": true, // at least one line at the end of the file
+		"files.trimFinalNewlines": true, // at most one line at the end of the file
+
+		// LaTeX Workshop Extension
+		// ------------------------
 		"latex-workshop.view.pdf.viewer": "tab", // preview PDF in tab
-		
+
 		"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/out", // output directory
 
 		"latex-workshop.latex.tools": [
@@ -19,14 +56,18 @@
 			"name": "latexmk",
 			"command": "latexmk",
 			"args": [
-			  "-pdf",
+			  "-pdf", // build PDF
 			  "-xelatex", // use xelatex engine
 			  "-synctex=1", // enable synctex for forward and inverse search
 			  "-interaction=nonstopmode", // do not stop on error
 			  "-file-line-error", // show error at the end of the line
 			  "-outdir=%OUTDIR%", // point to latex-workshop.latex.outDir
+			  "-r", "%WORKSPACE_FOLDER%/.latexmkrc", // read configuration file
 			  "%DOC%"
-			]
+			],
+			"env": { // add search paths to TEXINPUTS environment variable
+				//"TEXINPUTS": "%WORKSPACE_FOLDER%/content/shared//"
+			}
 		  },
 		  { // Create "/pdfs" directory to store PDFs from "/out"
 		    // %RELATIVE_DIR%: path of the current file relative to the workspace root,
@@ -48,7 +89,7 @@
 			"tools": ["latexmk", "makeFolder", "copyPDF"]
 		  }
 		],
-	
+
 		"latex-workshop.latex.recipe.default": "latexmk -> makeFolder -> copyPDF",
 	},
 
