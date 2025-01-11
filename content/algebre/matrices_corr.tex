@@ -1,0 +1,220 @@
+\documentclass[10pt,a4paper]{article}
+
+\input{../shared/preamble} % TODO: Include in global search paths
+
+\title{Correction - Matrices}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Question de cours}
+
+\subsection*{Critères d'inversibilité d'une matrice 2x2}
+
+\begin{itemize}
+    \item $\det(A) \neq 0$. \\
+    Justification: Le déterminant non nul garantit l'existence d'une solution unique pour $AX = I$.
+    \item $A$ ne possède pas de ligne (ou colonne) nulle.\\
+    Justification: Une ligne nulle implique un déterminant nul.
+    \item Les lignes (ou colonnes) de $A$ ne sont pas proportionnelles.\\
+    Justification: Des lignes proportionnelles impliquent un déterminant nul.
+\end{itemize}
+
+Le déterminant de $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ est donné par :
+$ \det(A) = ad - bc $
+
+Si $\det(A) = 0$, alors : $ ad = bc $
+
+Cette égalité implique une relation de proportionnalité entre les lignes ou les colonnes de la matrice :
+
+\textbf{Proportionnalité des lignes :}
+
+Si $a \neq 0$, on peut écrire :
+$$ \frac{c}{a} = \frac{d}{b} = k $$
+
+Cela signifie que la deuxième ligne est proportionnelle à la première :
+$$ (c,d) = k(a,b) $$
+
+\textbf{Proportionnalité des colonnes :}
+
+De manière similaire, si $a \neq 0$, on peut écrire :
+$$ \frac{b}{a} = \frac{d}{c} = k $$
+
+Cela signifie que la deuxième colonne est proportionnelle à la première :
+$$ \begin{pmatrix} b \\ d \end{pmatrix} = k\begin{pmatrix} a \\ c \end{pmatrix} $$
+
+\textbf{Interprétation géométrique :}
+
+Géométriquement, cela signifie que les vecteurs colonnes (ou lignes) de la matrice sont colinéaires.
+Ils ne forment donc pas une base de $\mathbb{R}^2$, ce qui explique pourquoi la transformation linéaire associée à cette matrice n'est pas inversible et "écrase" l'espace en une droite ou un point.
+
+
+\subsection*{Expression de l'inverse}
+
+Si $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ est inversible, son inverse est donné par:
+
+\[A^{-1} = \frac{1}{\det(A)} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}\]
+
+où $\det(A) = ad - bc$
+
+\section*{Exercices}
+
+\subsection*{Inversibilité}
+
+\begin{enumerate}
+    \item Pour $A = \begin{pmatrix} 2 & 1 \\ 4 & 2 \end{pmatrix}$:
+
+    $\det(A) = 2 \cdot 2 - 1 \cdot 4 = 0$
+
+    $A$ n'est pas inversible car son déterminant est nul. Les lignes sont proportionnelles: la deuxième est le double de la première.
+
+    \item Calcul de $C^{-1}$ par la méthode du pivot de Gauss:
+
+    Matrice augmentée :
+    $$
+    \begin{pmatrix}
+    6 & 1 & 4 & | & 1 & 0 & 0 \\
+    4 & 8 & 4 & | & 0 & 1 & 0 \\
+    6 & 3 & 5 & | & 0 & 0 & 1
+    \end{pmatrix}
+    $$
+
+    Normaliser la première ligne en divisant par 6 :
+    $$
+    \begin{pmatrix}
+    1 & \frac{1}{6} & \frac{2}{3} & | & \frac{1}{6} & 0 & 0 \\
+    4 & 8 & 4 & | & 0 & 1 & 0 \\
+    6 & 3 & 5 & | & 0 & 0 & 1
+    \end{pmatrix}
+    $$
+
+    Éliminer le premier élément de la deuxième et troisième ligne :
+    $$
+    \begin{pmatrix}
+    1 & \frac{1}{6} & \frac{2}{3} & | & \frac{1}{6} & 0 & 0 \\
+    0 & \frac{23}{3} & \frac{4}{3} & | & -\frac{2}{3} & 1 & 0 \\
+    0 & 2 & 1 & | & -1 & 0 & 1
+    \end{pmatrix}
+    $$
+
+    Normaliser la deuxième ligne en divisant par $\frac{23}{3}$ :
+    $$
+    \begin{pmatrix}
+    1 & \frac{1}{6} & \frac{2}{3} & | & \frac{1}{6} & 0 & 0 \\
+    0 & 1 & \frac{4}{23} & | & -\frac{2}{23} & \frac{3}{23} & 0 \\
+    0 & 2 & 1 & | & -1 & 0 & 1
+    \end{pmatrix}
+    $$
+
+    Éliminer le deuxième élément de la première et troisième ligne :
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{15}{23} & | & \frac{5}{23} & -\frac{1}{23} & 0 \\
+    0 & 1 & \frac{4}{23} & | & -\frac{2}{23} & \frac{3}{23} & 0 \\
+    0 & 0 & \frac{15}{23} & | & -\frac{19}{23} & -\frac{6}{23} & 1
+    \end{pmatrix}
+    $$
+
+    Normaliser la troisième ligne en divisant par $\frac{15}{23}$ :
+    $$
+    \begin{pmatrix}
+    1 & 0 & \frac{15}{23} & | & \frac{5}{23} & -\frac{1}{23} & 0 \\
+    0 & 1 & \frac{4}{23} & | & -\frac{2}{23} & \frac{3}{23} & 0 \\
+    0 & 0 & 1 & | & -\frac{19}{15} & -\frac{2}{5} & \frac{23}{15}
+    \end{pmatrix}
+    $$
+
+    Éliminer le troisième élément de la première et deuxième ligne :
+    $$
+    \begin{pmatrix}
+    1 & 0 & 0 & | & 1 & \frac{1}{4} & -1 \\
+    0 & 1 & 0 & | & \frac{1}{7} & \frac{3}{14} & -\frac{2}{7} \\
+    0 & 0 & 1 & | & -\frac{9}{7} & -\frac{3}{7} & \frac{11}{7}
+    \end{pmatrix}
+    $$
+
+    La partie droite de la matrice finale correspond à $C^{-1}$.
+    En effet, $ C^{-1}\cdot C = I$.
+
+\end{enumerate}
+
+\subsection*{Puissances de matrice}
+
+\begin{enumerate}
+    \item Pour $A = \begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}$:
+
+    $A^n = \begin{pmatrix} 2^n & 0 \\ 0 & 3^n \end{pmatrix}$ pour tout $n \geq 1$
+
+    Justification: $A$ est diagonale, donc ses puissances sont obtenues en élevant chaque élément diagonal à la puissance $n$.
+
+    \item Pour $B = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$:
+
+    $B^2 = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}$
+    $B^3 = \begin{pmatrix} 1 & 3 \\ 0 & 1 \end{pmatrix}$
+
+    Conjecture: $B^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}$ pour $n \geq 1$
+
+    Démonstration par récurrence:
+    \begin{itemize}
+        \item Initialization: Vrai pour $n=1$
+        \item Hypothèse de récurrence: Supposons vrai pour $n$
+        \item Hérédité: $B^{n+1} = B^n \cdot B = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix} \cdot
+        \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ par hypothèse de récurrence\\
+        $B^{n+1} = \begin{pmatrix} 1 & n+1 \\ 0 & 1 \end{pmatrix}$
+        \item Conclusion: La formule est vraie pour tout $n \geq 1$.
+    \end{itemize}
+
+    \item Pour $D = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$:
+
+    $D^2 = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I$\\
+    $D^4 = (D^2)^2 = (-I)^2 = I$, donc les puissances de $D$ suivent un cycle de période 4.\\
+    Conclusion: Pour $n \geq 1$,
+    \begin{itemize}
+        \item Si $n$ est pair: $D^n = (-1)^{n/2} I$
+        \item Si $n$ est impair: $D^n = (-1)^{(n-1)/2} D$
+    \end{itemize}
+
+    \item Pour $
+    A = \begin{pmatrix}
+    2 & 1 & 0 \\
+    0 & 2 & 1 \\
+    0 & 0 & 2
+    \end{pmatrix}
+    $
+    \begin{itemize}
+        \item $N = A - 2I_3 = \begin{pmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        0 & 0 & 0
+        \end{pmatrix}$
+
+        \item $N^2 = \begin{pmatrix}
+        0 & 0 & 1 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+        \end{pmatrix}$, $N^3 = 0$
+
+        \item Pour $k \geq 3$, $N^k = 0$ car $N^3 = 0$ et les puissances supérieures seront nulles.
+
+        \item Les deux matrices commutent : $(2I_3)N = 2N = N(2I_3)$
+
+        \item Par le binôme de Newton:
+        \begin{align*}
+        A^n &= (2I_3 + N)^n = \sum_{k=0}^n \binom{n}{k} (2I_3)^{n-k} N^k \\
+        &= 2^n I_3 + n 2^{n-1} N + \frac{n(n-1)}{2} 2^{n-2} N^2
+        \end{align*}
+
+        Donc,
+        $$
+        A^n = \begin{pmatrix}
+        2^n & n 2^{n-1} & \frac{n(n-1)}{2} 2^{n-2} \\
+        0 & 2^n & n 2^{n-1} \\
+        0 & 0 & 2^n
+        \end{pmatrix}
+        $$
+    \end{itemize}
+\end{enumerate}
+
+\end{document}

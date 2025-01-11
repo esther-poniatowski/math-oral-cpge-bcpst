@@ -1,0 +1,67 @@
+\documentclass[10pt,a4paper]{article}
+
+\input{../shared/preamble} % TODO: Include in global search paths
+
+
+\title{Sujets d'interrogation orale - Matrices}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection*{Question de cours}
+\begin{itemize}
+    \item Énoncer les critères d'inversibilité d'une matrice $2 \times 2$. Justifier chacun des critères.
+    \item Lorsque la matrice est inversible, exprimer son l'inverse.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Exercices}
+
+\textbf{Inversibilité}
+Pour les matrices suivantes, déterminer si elle sont inversibles, jsutifier, et calculer l'inverse
+si possible.
+\begin{enumerate}
+    \item $A = \begin{pmatrix} 2 & 1 \\ 4 & 2 \end{pmatrix}$
+    \item $C = \begin{pmatrix}
+        6 & 1 & 4 \\
+        4 & 8 & 4 \\
+        6 & 3 & 5
+        \end{pmatrix}$
+\end{enumerate}
+
+\bigskip
+
+\textbf{Puissances de matrice}
+\begin{enumerate}
+    \item Soit $A = \begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}$. Déterminer l'expression de $A^n$ pour tout entier $n \geq 1$. Justifier.
+    \item Soit $B = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$.
+    \begin{itemize}
+        \item Calculer les premières puissances $B^2$ et $B^3$.
+        \item Conjecturer la forme de $B^n$.
+        \item Démontrer cette conjecture.
+    \end{itemize}
+    \item Soit $D = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$.
+    \begin{itemize}
+        \item Montrer que $D^2 = -I$, où $I$ est la matrice identité.
+        \item En déduire une expression pour $D^n$ pour tout entier $n \geq 1$.
+    \end{itemize}
+    \item Soit $A$ une matrice carrée d'ordre 3 définie par :
+    $$
+    A = \begin{pmatrix}
+    2 & 1 & 0 \\
+    0 & 2 & 1 \\
+    0 & 0 & 2
+    \end{pmatrix}
+    $$
+    \begin{itemize}
+        \item Montrer que $A$ peut s'écrire sous la forme $A = 2I_3 + N$, où $I_3$ est la matrice identité d'ordre 3 et $N$ est une matrice à déterminer.
+        \item Calculer $N^2$ et $N^3$.
+        \item Montrer que $N^k = 0$ pour tout $k \geq 3$.
+        \item En déduire $A^n$ en fonction de $n$, $I_3$, $N$ et $N^2$ pour tout entier naturel $n$.
+    \end{itemize}
+\end{enumerate}
+
+\end{document}

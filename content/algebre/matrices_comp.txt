@@ -1,0 +1,52 @@
+PROGRAMME DE COLLES
+====================================================================================================
+Sujet : Matrices
+====================================================================================================
+
+QUESTIONS DE COURS
+------------------
+
+- Caractérisations de l'inversibilité d'une matrice carrée 2x2:
+  une telle matrice est non inversible si et seulement ses lignes sont proportionnelles, et si et
+  seulement son déterminant est nul.
+
+- Lorsque la matrice est inversible, expression de l'inverse.
+
+
+COMPETENCES
+-----------
+
+- Déterminer l'expression de A^n pour une matrice carrée A.
+  - Calculer les premières puissances, conjecturer la forme de A^n, et le démontrer par récurrence.
+  - Montrer que les coefficients de A^n vérifient des relations de récurrence simples, et s'en
+    servir pour en déduire leur expression.
+  - Utiliser une relation de la forme P(A) = 0, où P est un polynôme.
+  - Utiliser le binôme de Newton : souvent utilisé quand on peut écrire sous la forme A = D + N avec
+    D une matrice diagonale et N une matrice dont les puissances sont faciles à calculer.
+    Ne pas oublier de vérifier si DN = ND avant d'appliquer la formule.
+  - Utiliser une relation de la forme A = Q D Q^(-1), en montrant par récurrence qu'alors :
+    A^n = Q D^n Q^(-1).
+
+- Déterminer si une matrice est inversible :
+  - Utiliser une relation de la forme P(A) = 0, où P est un polynôme.
+    La relation en question est généralement donnée ou au moins suggérée par l'exercice.
+  - Si A est diagonale / triangulaire supérieure / triangulaire inférieure, alors A est inversible
+    si et seulement si tous ses coefficients diagonaux sont non nuls.
+  - Si l'une des lignes (ou colonnes) de A est entièrement nulle, ou si l'une des lignes (ou
+    colonnes) s'écrit comme combinaison linéaire des autres lignes (ou colonnes), alors A n'est pas
+    inversible.
+  - Si A est une matrice 2x2, elle est inversible si et seulement si det(A) != 0 ;
+  - Dans le cas général : Appliquer le pivot de Gauss sur A afin d'obtenir une matrice réduite.
+    Alors A est inversible si et seulement si tous les coefficients diagonaux de la matrice réduite
+    obtenue sont non nuls.
+
+- Étant donnée une matrice A inversible, déterminer A^(-1) :
+  - Si est une matrice 2 x 2 : formule directe.
+  - Si A vérifie une relation de la forme P(A) = 0, où P est un polynôme : Chercher à factoriser
+    partiellement par A afin de faire apparaître une relation de la forme AB = I (matrice identité).
+    Alors A est inversible, d'inverse B.
+    Lorsque A n'est au contraire pas inversible, résonner par l'absurde.
+  - Dans le cas général : Pivot de Gauss
+    - Ssoit en résolvant un système AX = B avec un second membre générique.
+    - Soit en appliquant la méthode de Gauss-Jordan consistant à appliquer en parallèle des
+      opérations élémentaires à A et à I (matrice identité).

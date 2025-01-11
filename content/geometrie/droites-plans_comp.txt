@@ -1,0 +1,35 @@
+PROGRAMME DE COLLES
+====================================================================================================
+Sujet : Droites et Plans
+====================================================================================================
+
+QUESTIONS DE COURS
+------------------
+
+- Définition du projeté orthogonal d'un point sur une droite.
+
+- Définition de la distance d'un point à une droite comme étant égale à la distance entre ce point
+  et son projeté orthogonal sur la droite.
+
+- Caractérisation de la distance d'un point à une droite comme la plus petite distance séparant ce
+  point d'un point de la droite.
+
+- Bilinéarité du produit scalaire (Énoncé et Démonstration): Démonstration dans R^2, en prouvant
+  l'une des deux égalités (l'autre se prouvant de la même manière, ou se déduisant de la première
+  par symétrie du produit scalaire).
+
+- Formule de polarisation (Énoncé et Démonstration)
+
+
+COMPETENCES
+-----------
+
+- Manipuler les droites et les plans dans R^2 et R^3 : Savoir jongler entre les trois points de vue
+    - cartésien
+    - paramétrique
+    - donnée d'un point et d'un vecteur directeur (dans le cas d'une droite)
+    - donnée d'un point et d'une base (dans le cas d'un plan)
+
+- Connaître et exploiter les différentes positions relatives possibles entre droites et plans.
+
+- Caractériser le parallélisme à l'aide des équations cartésiennes.

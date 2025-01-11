@@ -1,0 +1,30 @@
+% Command: \customPageLayout{#1}{#2}{#3}
+% --------------------------------------
+% Description: Custom page layout with header and footer content.
+% Arguments:
+% #1: Header and footer content
+% #2: Left header content
+% #3: Right header content
+% Example:
+% \customPageLayout{Title}{Lycée Henri IV}{2024}
+% Required Packages: fancyhdr
+\newcommand{\customPageLayout}[3]{
+    \pagestyle{fancy} % set page style to fancy, i.e. header and footer
+    \fancyhf{#1} % set header and footer content
+    \lhead{#2} % set left header content
+    \rhead{#3} % set right header content
+    \fancyfoot{} % clear footer content
+    \rfoot{\thepage} % set page number in footer
+}
+
+% Counter: \q
+% -----------
+% Description: Display a question number in a circle.
+\newcounter{q}
+\setcounter{q}{0} % set initial value of counter
+\newcommand{\q}{
+    \bigskip
+    \addtocounter{q}{1}
+    \par
+    \Circled{\textbf{\theq}} \space
+}
