@@ -1,0 +1,86 @@
+PROGRAMME DE COLLES
+====================================================================================================
+Sujet : Suites
+====================================================================================================
+
+QUESTIONS DE COURS
+------------------
+
+- Injectivité, surjectivité : Définitions + caractérisations alternatives.
+
+
+COMPETENCES
+-----------
+
+- Généralités sur les suites
+    - Définition (fonction de N dans R)
+    - Vocabulaire : Suites croissantes, décroissantes, strictement croissantes, strictement
+    décroissantes, monotones, strictement monotones, constantes, stationnaires
+    - Vocabulaire : Suites majorées, minorée, bornées ; minorant, majorant d’une suite.
+
+- Suites classiques
+    - Suites arithmétiques (forme explicite, relation de récurrence, somme des termes, limite)
+    - Suites géométriques (forme explicite, relation de récurrence, somme des termes, limite)
+    - Suites arithmético-géométriques (méthode d’étude)
+    - Suites définies par une relation de récurrence linéaire d’ordre 2 à coefficients constantes
+      (forme du terme général selon les racines du polynôme caractéristique)
+
+- Limite d’une suite
+    - Définition par epsilon. Unicité de la limite.
+    - Opérations sur les limites
+    - Propriété : Une suite de limite strictement positive est strictement positive à partir d’un
+      certain rang (de même avec une limite strictement négative).
+    - Propriété : Passage à la limite dans une inégalité.
+    - Propriété : Toute suite convergente est bornée.
+    - Critères de convergence
+        - Cas des suites monotones : une suite croissante CV si et seulement si elle est majorée ;
+          dans ce cas, la suite reste toujours inférieure à sa limite.
+        - Théorème d’encadrement, théorème de comparaison
+        - Suites adjacentes : définition et théorème
+        - Suites extraites (limité aux cas u_{2n} et u_{2n+1}) : la suite (u_n) tend vers une limite
+          réelle si et seulement si u_{2n} et u_{2n+1} tendent toutes les deux vers cette limite.
+
+
+- Cas des suites définies par une relation de récurrence de la forme u_{n+1} = f(u_n) :
+    - Définition d’un intervalle stable par une fonction.
+    - Définition d’un point fixe d’une fonction.
+    - Méthodes d’études : voir fiche méthode correspondante. Aucun résultat n’est officiellement à
+      savoir ; en pratique, tout est redémontré à chaque exercice.
+
+- Équivalence de suites
+    - Définition (le quotient tend vers 1). On se limite aux suites non nulles à partir d’un certain
+      rang.
+    - Lien avec la limite : (u_n) tend vers l != 0 si et seulement si u_n \sim l. Deux suites
+      équivalentes sont soit toutes deux divergentes, soit toutes deux convergentes vers une même
+      limite.
+    - Propriétés générales : transitivité, symétrie. Deux suites équivalentes ont même signe à
+      partir d’un certain rang.
+    - Propriétés calculatoires :
+        - L'équivalent est compatible avec le produit, le quotient, le passage à la puissance (et en
+          particulier, donc, avec l’inverse et la racine carrée).
+        - L'équivalent n’est pas compatible avec l’addition ou la composition.
+        - A la place, une somme de termes est équivalente à son terme « dominant » (celui qui
+          grandit le plus vite – ou le moins lentement – en valeur absolue).
+    - Équivalents classiques, dérivés des limites usuelles pour les fonctions.
+
+- Autres suites classiques (pour lesquelles il n’y a pas de théorie à connaître)
+    - Suites définies implicitement (cf. fiche méthode pour la méthode d’étude)
+    - Suites définies par une somme. Pour déterminer la limite d’une suite définie par une somme :
+      procéder par encadrement ou par comparaison (typiquement, pour une somme dont l’indice k varie
+      de a à b, partir de l’encadrement, en déduire un encadrement du terme principal de la somme,
+      puis sommer cet encadrement pour k variant de a à b).
+
+- Étude d’une suite définie par une intégrale
+Voir la fiche méthode du chapitre sur les intégrales pour les méthodes :
+    - Variations :
+        - Cas particulier : Calculer I_{n+1} - I_n et en étudier son signe.
+        - Cas général : face à une intégrale dont l'intégrande dépend de n, comparer les intégrandes
+          de I_{n+1} et I_n, puis conclure en passant à l’intégrale et en exploitant la croissance
+          de l’intégrale.
+    - Limite : Procéder par comparaison ou par encadrement.
+    - Relation de récurrence : Pour établir un lien entre I_{n+1} et I_n, procéder à l'aide d'une
+      intégration par parties.
+
+- Étude d’une suite définie par une somme
+Voir l’exercice 23 sur les suites pour une compilation de cas classiques.
+Raisonner par comparaison série/intégrale.
