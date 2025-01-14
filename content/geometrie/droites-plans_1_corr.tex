@@ -1,0 +1,149 @@
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+
+\title{Correction - Géométrie : Droites et Plans}
+\author{}
+\date{2024}
+
+\begin{document}
+\maketitle
+
+\section*{Question de cours}
+
+\subsection*{Distance d'un point à une droite dans $\mathbb{R}^2$}
+
+Soit une droite $D$ d'équation $ax + by + c = 0$ et un point $M(x_0, y_0)$.
+
+La distance $d$ du point $M$ à la droite $D$ est la distance entre le point $M$ et son projeté
+orthogonal $H$ sur $D$ :
+
+\[ d = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}} \]
+
+\textbf{Démonstration :}
+
+Soit $H$ le projeté orthogonal de $M$ sur $D$. La distance cherchée est $d = \|\vec{MH}\|$.
+
+Le vecteur $\vec{MH}$ est orthogonal à $D$, donc parallèle au vecteur normal $\vec{n}(a,b)$.
+
+Il existe donc un facteur $k \in \mathbb{R}$ tel que $\vec{MH} = k\vec{n}$,
+ainsi, $d = \|\vec{MH}\| = |k|\sqrt{a^2 + b^2}$.
+
+Le facteur $k$ peut être déterminé à partir des coordonnées de $H$.
+
+Ses coordonnées sont $(x_0 - ka, y_0 - kb)$ et vérifient l'équation de $D$ :
+
+\[ a(x_0 - ka) + b(y_0 - kb) + c = 0 \]
+
+En résolvant cette équation, on trouve :
+
+\[ k = \frac{ax_0 + by_0 + c}{a^2 + b^2} \]
+
+Ainsi, $d = \|\vec{MH}\| = |k|\sqrt{a^2 + b^2} = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}$
+
+\subsection*{Caractérisation de la distance minimale}
+
+La distance d'un point $M$ à une droite $D$ est la plus petite distance séparant $M$ d'un point quelconque de $D$.
+
+\textbf{Démonstration :}
+Soit $P$ un point quelconque de $D$. Le triangle $MHP$ est rectangle en $H$, donc :
+
+\[ MP^2 = MH^2 + HP^2 \geq MH^2 \]
+
+L'égalité n'est atteinte que lorsque $P = H$. Donc $MH$ est la plus petite distance entre $M$ et un point de $D$.
+
+
+
+\section*{Exercices}
+
+\subsection*{Représentations et équations}
+
+1. Dans $\mathbb{R}^2$, droite passant par $A(1, 2)$ et de vecteur directeur $\vec{u} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$.
+
+   a) Équation Paramétrique :
+   $\begin{cases} x = 1 + 3t \\ y = 2 - t \end{cases}, t \in \mathbb{R}$
+
+   Équation Cartésienne :\\
+   Éliminons la variable $t$ :\\
+   $t = 2 - y$ donc $x = 1 + 3(2 - y) = 7 - 3y$\\
+   Donc : $x + 3y - 7 = 0$
+
+   b) Pour le point $B(4, 1)$ :
+   $4 + 3(1) - 7 = 0$
+   Donc $B$ appartient à la droite.
+
+2. Dans $\mathbb{R}^3$, droite définie par $\begin{cases} x - 1 = 2t \\ y = 3t \\ z + 1 = t \end{cases}$.
+
+   a) Équation cartésienne :\\
+   Par la troisième équation : $t = z + 1$.\\
+   Substituons dans les autres équations :
+   $\begin{cases} x = 2z + 3 \\ y = 3z + 3 \end{cases}$
+
+   b) Pour le point $(3, 0, -2)$ :
+   $3 \neq 2(-2) + 3$ et $0 \neq 3(-2) + 3$
+   Donc le point n'appartient pas à la droite.
+
+\subsection*{Distances}
+
+1. Distance de $M(3, 4)$ à $\Delta : 2x - y + 1 = 0$
+
+   Utilisons la formule : $d = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}$
+
+   Ici, $a=2$, $b=-1$, $c=1$, $x_0=3$, $y_0=4$
+
+   $d = \frac{|2(3) - 4 + 1|}{\sqrt{2^2 + (-1)^2}} = \frac{3}{\sqrt{5}}$
+
+2. Projeté orthogonal de $M$ sur $\Delta$
+
+   Les coordonnées du projeté $H(x,y)$ vérifient :
+
+   $\begin{cases} 2x - y + 1 = 0 \\ 2(x-3) + (-1)(y-4) = 0 \end{cases}$
+
+   La seconde équation exprime la perpendicularité entre le vecteur $\vec{MH}$ et un vecteur normal
+   à la droite : $\vec{n}(2,-1)$, obtenu directement des coefficients de l'équation de la droite.\\
+   Le vecteur $\vec{MH}$ est représenté par $(x-3, y-4)$, car $M(3,4)$ et $H(x,y)$. \\
+   La condition de perpendicularité s'exprime par le produit scalaire nul :
+   $\vec{n} \cdot \vec{MH} = 0$
+
+   En résolvant ce système, on trouve :
+   $H(\frac{11}{5}, \frac{17}{5})$
+
+\subsection*{Positions relatives}
+
+Positions relatives possibles entre deux droites dans $\mathbb{R}^3$ :
+\begin{itemize}
+    \item Sécantes (se coupent en un point)
+    \item Parallèles (même direction, non confondues)
+    \item Confondues (même direction, même support)
+    \item Non coplanaires (gauches)\\
+\end{itemize}
+
+1. Pour $D_1$ et $D_2$ telles que
+   $D_1 : \begin{cases} x = t \\ y = 2t \\ z = t+1 \end{cases}$ et
+   $D_2 : \begin{cases} x = 2s \\ y = s+1 \\ z = s \end{cases}$
+
+   Pour qu'elles soient sécantes, il faut qu'il existe un point $(x,y,z)$ vérifiant les deux équations:
+   $\begin{cases} t = 2s \\ 2t = s+1 \\ t+1 = s \end{cases}$
+
+   De la première et la troisième équation : $2s = s+1$, donc $s=1$ et $t=2$
+
+   Vérifions la deuxième équation : $2(2) = 1+1$, c'est vrai.
+
+   Les droites sont sécantes au point $(2, 4, 3)$.
+
+2. Pour $\Delta_1$ et $\Delta_2$ telles que $\Delta_1 : x + y - 2 = 0$ et $\Delta_2 : 2x - y + 3 = 0$
+
+   Ces droites ne sont pas parallèles car leurs vecteurs normaux $(1,1)$ et $(2,-1)$ ne sont pas colinéaires.
+
+   Pour trouver leur intersection, résolvons :
+   $\begin{cases} x + y = 2 \\ 2x - y = -3 \end{cases}$
+
+   En additionnant ces équations : $3x = -1$, donc $x = -\frac{1}{3}$
+
+   Substituons dans la première équation : $y = \frac{7}{3}$
+
+   Les droites sont sécantes au point $(-\frac{1}{3}, \frac{7}{3})$.
+
+\end{document}
