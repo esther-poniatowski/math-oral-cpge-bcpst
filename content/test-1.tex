@@ -1,0 +1,30 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[abspath]{currfile} % to retrieve absolute paths
+\usepackage{xstring}  % for string manipulation
+\usepackage{import}  % for relative imports
+
+% Ensure \currfileabspath is fully expanded before using \StrBefore
+\edef\expandedcurrfileabspath{\currfileabspath}
+
+\StrBefore{\expandedcurrfileabspath}{/content/}[\rootpath]
+
+% Manually checking that StrBefore works
+\StrBefore{/Users/eresther/Documents/teaching/mathematics-h4/math-oral-cpge-bcpst/content/algebre/matrices/test.tex}{/content/}[\rootpathbis]
+
+\StrBefore{\expandedcurrfileabspath/.../content/file.tex}{/content/}[\rootpathter]
+
+\begin{document}
+
+Current variable: \meaning\currfileabspath %  macro:->/Users/eresther/Documents/teaching/mathematics-h4/math-oral-cpge-bcpst/content/algebre/matrices/test.tex
+
+Test for expanded path: \expandedcurrfileabspath %  /Users/eresther/Documents/teaching/mathematics-h4/math-oral-cpge-bcpst/content/algebre/matrices/test.tex
+
+Test for groung truth root directory: \rootpathbis % /Users/eresther/Documents/teaching/mathematics-h4/math-oral-cpge-bcpst (correct)
+
+Test for expansion in StrBefore: \rootpathter %  /Users/eresther/Documents/teaching/mathematics-h4/math-oral-cpge-bcpst/content/algebre/matrices/test.tex/...
+
+Current root directory: \rootpath % empty
+
+
+\end{document}
