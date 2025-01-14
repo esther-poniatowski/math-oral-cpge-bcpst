@@ -45,11 +45,15 @@
 		"files.insertFinalNewline": true, // at least one line at the end of the file
 		"files.trimFinalNewlines": true, // at most one line at the end of the file
 
+		// -----------------------------------------------------------------------------------------
 		// LaTeX Workshop Extension
-		// ------------------------
+
 		"latex-workshop.view.pdf.viewer": "tab", // preview PDF in tab
 
 		"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/out", // output directory
+		"latex-workshop.latex.autoBuild.run": "onSave", // event which triggers build
+		"latex-workshop.latex.clean.subfolder.enabled": true, // clean subfolders of outDir from aux files
+		"latex-workshop.latex.autoClean.run": "onBuilt", // event which triggers clean
 
 		"latex-workshop.latex.tools": [
 		  { // Build using Latexmk and xelatex engine
@@ -62,7 +66,7 @@
 			  "-interaction=nonstopmode", // do not stop on error
 			  "-file-line-error", // show error at the end of the line
 			  "-outdir=%OUTDIR%", // point to latex-workshop.latex.outDir
-			  "-r", "%WORKSPACE_FOLDER%/.latexmkrc", // read configuration file
+			  // "-r", "%WORKSPACE_FOLDER%/.latexmkrc", // read configuration file if present
 			  "%DOC%"
 			],
 			"env": { // add search paths to TEXINPUTS environment variable
@@ -91,6 +95,7 @@
 		],
 
 		"latex-workshop.latex.recipe.default": "latexmk -> makeFolder -> copyPDF",
+		"latex-workshop.latex.build.forceRecipeUsage": false, // enable magic commands to set the root file
 	},
 
 	// Recommended Extensions
