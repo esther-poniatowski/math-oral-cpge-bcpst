@@ -56,7 +56,8 @@
 		"latex-workshop.latex.autoClean.run": "onBuilt", // event which triggers clean
 
 		"latex-workshop.latex.tools": [
-		  { // Build using Latexmk and xelatex engine
+		  // Tool latexmk: Build using Latexmk and xelatex engine
+		  {
 			"name": "latexmk",
 			"command": "latexmk",
 			"args": [
@@ -71,16 +72,18 @@
 			],
 			"env": { // add search paths to TEXINPUTS environment variable
 				//"TEXINPUTS": "%WORKSPACE_FOLDER%/content/shared//"
-			}
+				}
 		  },
-		  { // Create "/pdfs" directory to store PDFs from "/out"
-		    // %RELATIVE_DIR%: path of the current file relative to the workspace root,
-			//                 here the broad mathematical topic (e.g. "algebra")
+		  // Tool makeFolder: Create "/pdfs" directory to store PDFs from "/out"
+		  {
 			"name": "makeFolder",
 			"command": "mkdir",
 			"args": ["-p", "%WORKSPACE_FOLDER%/pdfs/%RELATIVE_DIR%"]
+			// %RELATIVE_DIR%: path of the current file relative to the workspace root,
+			// here the broad mathematical topic (e.g. "algebra")
 		  },
-		  { // Copy PDF to "pdfs" directory
+		  // Tool copyPDF: Copy PDF to "pdfs" directory
+		  {
 			"name": "copyPDF",
 			"command": "cp",
 			"args": ["%OUTDIR%/%DOCFILE%.pdf", "%WORKSPACE_FOLDER%/pdfs/%RELATIVE_DIR%/"]
@@ -88,16 +91,32 @@
 		],
 
 		"latex-workshop.latex.recipes": [
-		  { // Build and Extract PDFs
+		  // Recipe: Build and Extract PDFs
+		  {
 			"name": "latexmk -> makeFolder -> copyPDF",
 			"tools": ["latexmk", "makeFolder", "copyPDF"]
 		  }
 		],
-
+		// Default Recipe
 		"latex-workshop.latex.recipe.default": "latexmk -> makeFolder -> copyPDF",
-		"latex-workshop.latex.build.forceRecipeUsage": false, // enable magic commands to set the root file
+
+		// -----------------------------------------------------------------------------------------
+		// Cspell Extension
+		"cSpell.language": "en,fr",
 	},
 
+	// ---------------------------------------------------------------------------------------------
 	// Recommended Extensions
-	"extensions": {}
+	"extensions": {
+		"recommendations": [
+			"streetsidesoftware.code-spell-checker",
+			"streetsidesoftware.code-spell-checker-french",
+			"mathematic.vscode-latex",
+			"tecosaur.latex-utilities",
+			"james-yu.latex-workshop",
+			"iamhyc.overleaf-workshop",
+			"stkb.rewrap",
+			"wayou.vscode-todo-highlight",
+		]
+	}
 }
