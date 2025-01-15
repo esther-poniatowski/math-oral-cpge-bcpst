@@ -2,5 +2,11 @@
 
 # To Do
 
-- [ ] Define the "root" paths in each file to be used as the base for the relative paths
-- [ ] Move the macros into the submodule since it might be used in all exercise sheet projects
+- [ ] Move preamble and macros into the submodule since it might be used in all exercise sheet
+      projects.
+- [ ] Implement the recommended practices for dependencies in the submodule macros.
+- [ ] Improve the style of the sheet header (title).
+- [ ] Improve the page footer: add author, add total number of pages, add separating line.
+- [ ] Reformulate the corrections.
+- [ ] Add indentation for questions to align after the question number.
+- [ ] Try a method to extract the location from the compiled file (see`test_2.tex`).
