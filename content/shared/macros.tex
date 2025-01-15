@@ -9,22 +9,42 @@
 % \customPageLayout{Title}{Lycée Henri IV}{2024}
 % Required Packages: fancyhdr
 \newcommand{\customPageLayout}[3]{
-    \pagestyle{fancy} % set page style to fancy, i.e. header and footer
-    \fancyhf{#1} % set header and footer content
-    \lhead{#2} % set left header content
-    \rhead{#3} % set right header content
-    \fancyfoot{} % clear footer content
-    \rfoot{\thepage} % set page number in footer
+    \pagestyle{fancy} % set page style to fancy (add header and footer)
+    \fancyhf{} % clear all header and footer content
+    \lhead{#2} % left header content
+    \rhead{#3} % right header content
+    \chead{\textbf{#1}} % center header content in bold (if needed)
+    \rfoot{\thepage} % page number in the footer
 }
+
 
 % Counter: \q
 % -----------
 % Description: Display a question number in a circle.
+% Usage:
+% - Create a new question: add \q followed by the question content.
+% - Reset the question counter: add \setcounter{q}{0} before the first question.
 \newcounter{q}
-\setcounter{q}{0} % set initial value of counter
+\setcounter{q}{0} % set initial value of the counter
 \newcommand{\q}{
     \bigskip
     \addtocounter{q}{1}
     \par
     \Circled{\textbf{\theq}} \space
+}
+
+
+% Counter: \ql
+% ------------
+% Description: Display a question letter in a round box with indentation (lowercase and not bold).
+% Usage:
+% - Create a new question: add \ql followed by the question content.
+% - Reset the question counter: add \setcounter{ql}{0} before the first question.
+\newcounter{ql}
+\setcounter{ql}{0} % set initial value of the counter
+\newcommand{\ql}{
+    \addtocounter{ql}{1}
+    \par
+    \hspace{1.5em} % indentation before the circled letter
+    \textcolor{gray}{\Circled{\alph{ql}}} \space % gray color
 }
