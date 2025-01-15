@@ -1,0 +1,71 @@
+% PROBLÈME : Optimization sous contrainte affine
+% ==================================================================================================
+%
+% But
+% ---
+% Distance minimale entre un point mobile et une famille de droites parallèles (Optimisation sous
+% contrainte affine)
+% Objectif final : Démontrer analytiquement que la distance entre un point donné et une droite
+% contrainte est minimisée par un projeté spécifique et justifier ce résultat dans un cadre plus
+% général d'optimisation sous contrainte.
+%
+% Objectifs spécifiques
+% ---------------------
+% -
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+
+
+\title{Sujets d'interrogation orale - Géométrie : Droites et Plans - Optimisation sous contrainte affine}
+\author{}
+\date{2024}
+
+\begin{document}
+\maketitle
+
+On considère un point $M(x_0, y_0)$ dans $\mathbb{R}^2$ et une famille de droites définie par :
+$$
+D_k : ax + by + k = 0, \quad k \in \mathbb{R}.
+$$
+Cette famille représente une translation continue de la droite $D_0 : ax + by = 0$.
+
+On cherche à déterminer analytiquement le réel $k$ minimisant la distance entre $M$ et $D_k$.
+
+
+% QUESTION 1
+% ----------
+% Compétences:
+1. Projeté orthogonal sur une droite
+  \ql Justifier pourquoi le projeté orthogonal $P$ de $M$ sur une droite donnée est le point minimisant la distance entre $M$ et la droite.
+  \ql Exprimer analytiquement les coordonnées de $P$ sur $D_k$ en fonction de $a, b, x_0, y_0, k$.
+
+% QUESTION 2
+% ----------
+% Compétences:
+2. Optimisation sous contrainte affine
+  \ql Montrer que la distance entre $M$ et $D_k$ s'écrit sous la forme :
+   $$
+   d(k) = \frac{|ax_0 + by_0 + k|}{\sqrt{a^2 + b^2}}.
+   $$
+  \ql Étudier analytiquement le minimum de $d(k)$ en fonction de $k$ et en déduire la valeur optimale.
+
+% QUESTION 3
+% ----------
+% Compétences:
+3. Application numérique et interprétation
+  \ql Soit $M(3,2)$ et la famille de droites $2x - 3y + k = 0$. Déterminer la droite réalisant la distance minimale et la distance elle-même.
+  \ql Interpréter ce résultat dans un cadre plus général de géométrie affine et d'optimisation sous contrainte linéaire.
+
+% QUESTION 4
+% ----------
+% Compétences:
+4. Extension au cas $\mathbb{R}^3$
+  \ql Adapter les résultats précédents pour minimiser la distance entre un point $M(x_0, y_0, z_0)$ et un plan parallèle dans $\mathbb{R}^3$.
+  \ql Expliquer l'intérêt de cette méthode en physique (exemple : minimisation d'énergie potentielle).
+
+\end{document}

@@ -1,0 +1,225 @@
+% CORRECTION : Étude d'un tétraèdre régulier
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+
+\title{Correction - Géométrie : Droites et Plans - Étude d'un tétraèdre régulier}
+\author{}
+\date{2024}
+
+%\customPageLayout{Géométrie }{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\section{Coordonnées et distances dans le tétraèdre}
+
+\q \textbf{Coordonnées des sommets du tétraèdre}
+
+\[
+A(1,0,0), \quad B(0,1,0), \quad C(0,0,1),  \quad D(1,1,1)
+\]
+
+
+\q \textbf{Calcul de la longueur d'une arête}
+
+$$
+AB = \sqrt{(1-0)^2 + (0-1)^2 + (0-0)^2} = \sqrt{1^2 + (-1)^2 + 0^2} = \sqrt{2}
+$$
+
+Cette longueur est la même pour toutes les arêtes du tétraèdre.
+
+
+\q \textbf{Équation cartésienne des plans des faces}
+
+Voici le raisonnement formatté en LaTeX :
+
+\textbf{Méthode générale :}
+Pour chaque face, nous utilisons l'équation générale d'un plan $ax + by + cz + d = 0$, et déterminons les coefficients $a$, $b$, $c$, et $d$ en utilisant les coordonnées des trois points de chaque face.
+
+\textbf{Face ABC :}
+Points : $A(1,0,0)$, $B(0,1,0)$, $C(0,0,1)$
+
+Substituons ces points dans l'équation générale :
+\begin{align*}
+A &: a(1) + b(0) + c(0) + d = 0 \implies a + d = 0 \\
+B &: a(0) + b(1) + c(0) + d = 0 \implies b + d = 0 \\
+C &: a(0) + b(0) + c(1) + d = 0 \implies c + d = 0
+\end{align*}
+
+On en déduit que $a = b = c = -d$
+En choisissant $a = b = c = 1$, on obtient $d = -1$
+
+Équation : $x + y + z - 1 = 0$, soit $x + y + z = 1$
+
+\textbf{Face ABD :}
+Points : $A(1,0,0)$, $B(0,1,0)$, $D(1,1,1)$
+
+\begin{align*}
+A &: a(1) + b(0) + c(0) + d = 0 \implies a + d = 0 \\
+B &: a(0) + b(1) + c(0) + d = 0 \implies b + d = 0 \\
+D &: a(1) + b(1) + c(1) + d = 0 \implies a + b + c + d = 0
+\end{align*}
+
+En soustrayant les deux premières équations de la troisième :
+$c = 0 - (a + d) - (b + d) = -2d$
+
+Choisissons $a = b = 1$, $c = -1$, $d = -1$
+
+Équation : $x + y - z - 1 = 0$, soit $x + y - z = 1$
+
+\textbf{Face ACD :}
+Points : $A(1,0,0)$, $C(0,0,1)$, $D(1,1,1)$
+
+\begin{align*}
+A &: a(1) + b(0) + c(0) + d = 0 \implies a + d = 0 \\
+C &: a(0) + b(0) + c(1) + d = 0 \implies c + d = 0 \\
+D &: a(1) + b(1) + c(1) + d = 0 \implies a + b + c + d = 0
+\end{align*}
+
+En soustrayant la première et la deuxième équation de la troisième :
+$b = 0$
+
+Choisissons $a = -1$, $b = 1$, $c = -1$, $d = 1$
+
+Équation : $-x + y - z + 1 = 0$, soit $-x + y - z = -1$
+
+\subsection*{4. Face BCD :}
+Points : $B(0,1,0)$, $C(0,0,1)$, $D(1,1,1)$
+
+\begin{align*}
+B &: a(0) + b(1) + c(0) + d = 0 \implies b + d = 0 \\
+C &: a(0) + b(0) + c(1) + d = 0 \implies c + d = 0 \\
+D &: a(1) + b(1) + c(1) + d = 0 \implies a + b + c + d = 0
+\end{align*}
+
+En soustrayant les deux premières équations de la troisième :
+$a = 0 - (b + d) - (c + d) = -2d$
+
+Choisissons $a = -1$, $b = 1$, $c = 1$, $d = -1$
+
+Équation : $-x + y + z - 1 = 0$, soit $-x + y + z = 1$
+
+Ainsi, nous obtenons les équations cartésiennes de toutes les faces du tétraèdre ABCD.
+
+
+\q \textbf{Distance du point \(D\) au plan \((ABC)\)}
+
+Cette distance est définie comme la longueur entre \( D \) et le point du plan \( (ABC) \) le plus
+proche de \( D \). Il s'agit de sont son projeté orthogonal \( H \) sur le plan. Autrement dit, la
+distance recherchée est la longueur du vecteur \( \overrightarrow{DH} \).
+
+Déterminons les coordonnées du point $H$, projection orthogonale de $D$ sur le plan $(ABC)$.
+Le point $H$ est sur la droite perpendiculaire au plan $(ABC)$ passant par $D$.
+
+Comme le plan $(ABC)$ a pour équation $x + y + z = 1$, un vecteur normal à ce plan est
+$\vec{n}(1,1,1)$.
+
+L'équation paramétrique de la droite $(DH)$ est donc :
+   $$ \begin{cases}
+   x = 1 - t \\
+   y = 1 - t \\
+   z = 1 - t
+   \end{cases} $$
+où $t$ est un paramètre réel.
+
+Le point $H$ est l'intersection de cette droite avec le plan $(ABC)$.
+Ses coordonnées vérifient donc :
+$$ (1-t) + (1-t) + (1-t) = 1 $$
+
+Résolvons cette équation :
+$$ 3 - 3t = 1 $$
+$$ -3t = -2 $$
+$$ t = \frac{2}{3} $$
+
+Les coordonnées de H sont donc :
+$$ H(\frac{1}{3}, \frac{1}{3}, \frac{1}{3}) $$
+
+La distance $DH$ est la norme du vecteur :
+$$ \overrightarrow{DH} = (\frac{1}{3} - 1, \frac{1}{3} - 1, \frac{1}{3} - 1) = (-\frac{2}{3}, -\frac{2}{3}, -\frac{2}{3}) $$
+$$ DH = \sqrt{(\frac{2}{3})^2 + (\frac{2}{3})^2 + (\frac{2}{3})^2} = \frac{2}{3}\sqrt{3} = \frac{2}{\sqrt{3}} $$
+
+La distance du point $D$ au plan $(ABC)$ est $\frac{2}{\sqrt{3}}$.
+
+
+\q \textbf{Hauteur du tétraèdre}
+
+La hauteur du tétraèdre est la distance de \(D\) au plan \((ABC)\).
+
+
+\q \textbf{Démonstration que \(H\) est le centre de gravité de \(ABC\)}
+
+Nous avons déjà trouvé que H a pour coordonnées $(\frac{1}{3}, \frac{1}{3}, \frac{1}{3})$.
+
+Pour montrer que H est situé à $\frac{2}{3}$ de la distance de chaque sommet au milieu du côté
+opposé, prenons l'exemple du sommet A :
+
+- Le milieu M de BC a pour coordonnées $(0, \frac{1}{2}, \frac{1}{2})$
+
+- $\overrightarrow{AM} = (-1, \frac{1}{2}, \frac{1}{2})$
+
+- $\overrightarrow{AH} = (-\frac{2}{3}, \frac{1}{3}, \frac{1}{3}) = \frac{2}{3}\overrightarrow{AM}$
+
+Ceci confirme que H est situé aux $\frac{2}{3}$ de AM, et on peut faire le même raisonnement pour
+les autres sommets.
+
+
+\section{Orthogonalité dans le tétraèdre}
+
+\q \textbf{Orthogonalité des arêtes [AB] et [CD]}
+
+Déterminons les vecteurs directeurs de ces arêtes :
+
+$\overrightarrow{AB} = (0-1, 1-0, 0-0) = (-1, 1, 0)$
+
+$\overrightarrow{CD} = (1-0, 1-0, 1-1) = (1, 1, 0)$
+
+Le produit scalaire de ces vecteurs est :
+$\overrightarrow{AB} \cdot \overrightarrow{CD} = (-1)(1) + (1)(1) + (0)(0) = 0$
+
+Comme le produit scalaire est nul, les vecteurs sont orthogonaux, donc les arêtes [AB] et [CD] sont
+orthogonales.
+
+
+\q \textbf{Equation paramétrique de la droite passant par le milieu de [AB] et le milieu de [CD]}
+
+Milieu de [AB] : $M_{AB} = (\frac{1+0}{2}, \frac{0+1}{2}, \frac{0+0}{2}) = (\frac{1}{2}, \frac{1}{2}, 0)$
+
+Milieu de [CD] : $M_{CD} = (\frac{0+1}{2}, \frac{0+1}{2}, \frac{1+1}{2}) = (\frac{1}{2}, \frac{1}{2}, 1)$
+
+Vecteur directeur de la droite : $\overrightarrow{M_{AB}M_{CD}} = (0, 0, 1)$
+
+Équation paramétrique de la droite :
+$$ \begin{cases}
+x = \frac{1}{2} \\
+y = \frac{1}{2} \\
+z = t
+\end{cases} \quad t \in  \mathbb{R}$$
+
+
+\q \textbf{Vérification de la perpendicularité de cette droite avec \([AB]\) et \([CD]\)}
+
+Vecteur directeur de la droite : $\vec{u} = (0, 0, 1)$
+
+$\overrightarrow{AB} = (-1, 1, 0)$
+
+$\overrightarrow{CD} = (1, 1, 0)$
+
+Produits scalaires :
+$\vec{u} \cdot \overrightarrow{AB} = (0)(-1) + (0)(1) + (1)(0) = 0$ et
+$\vec{u} \cdot \overrightarrow{CD} = (0)(1) + (0)(1) + (1)(0) = 0$
+
+Comme les deux produits scalaires sont nuls, la droite est bien perpendiculaire aux deux arêtes [AB] et [CD].
+
+
+
+On calcule les produits scalaires entre le vecteur directeur de la droite et ceux des arêtes
+\([AB]\) et \([CD]\).
+On trouve qu'ils sont tous nuls, ce qui prouve la perpendicularité.
+
+\end{document}

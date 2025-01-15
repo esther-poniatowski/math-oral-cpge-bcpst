@@ -1,0 +1,163 @@
+% PROBLÈME : Barycentre
+% ==================================================================================================
+%
+% But
+% ---
+% Étudier le barycentre d'un système de points pondérés, en exploitant ses propriétés analytiques et
+% géométriques:
+% - Relations avec les projections orthogonales
+% - Relations avec le produit scalaire et l'orthogonalité des droites et plans.
+% Etude dans R^2 puis extension dans R^3.
+%
+% Objectifs spécifiques
+% ---------------------
+% -
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Sujets d'interrogation orale - Géométrie : Droites et Plans - Barycentre}
+\author{}
+\date{2024}
+
+\customPageLayout{Géométrie }{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Objectifs}
+
+Étudier les propriétés analytiques et géométriques du \textbf{barycentre} d'un système.
+
+Soient trois points distincts $A(x_1, y_1)$, $B(x_2, y_2)$, $C(x_3, y_3)$ dans le plan
+$\mathbb{R}^2$ et trois réels positifs $m_1, m_2, m_3$ représentant des coefficients de pondération
+(ou masses).
+
+Le barycentre $G$ de ce système est défini par :
+$$
+G \left( \frac{m_1 x_1 + m_2 x_2 + m_3 x_3}{m_1 + m_2 + m_3},
+         \frac{m_1 y_1 + m_2 y_2 + m_3 y_3}{m_1 + m_2 + m_3} \right)
+$$
+
+
+\section{Barycentre et Centre de Gravité d'un Triangle}
+
+
+Le \textbf{centre de gravité} d'un triangle est défini comme l'unique point d'intersection des trois
+médianes du triangle.
+Une \textbf{médiane} d'un triangle est une droite passant par un sommet et le milieu du côté
+opposé. On note $M_A, M_B, M_C$ les milieux respectifs des côtés $[BC], [AC], [AB]$.
+
+% QUESTION 1
+% ----------
+% Compétences mobilisées :
+% - Manipuler les droites et les plans dans R^2 (point de vue cartésien).
+\q Établir que les trois médianes sont concourantes en un unique point, et déterminer ses
+coordonnées en fonction des coordonnées des points $A, B, C$.
+
+% QUESTION
+% ----------
+% Compétences mobilisées :
+% - Manipuler les droites et les plans dans R^2 (point de vue cartésien).
+\q En déduire le lien entre le centre de gravité d'un triangle et le barycentre de ses sommets.
+
+% QUESTION
+% ----------
+% Compétences mobilisées :
+% - Manipuler les droites dans R^2 sous plusieurs points de vue.
+\q Démontrer que dans ce cas, $G$ est situé aux deux tiers de chaque médiane en partant du sommet.
+
+
+\section{Barycentre et Projeté sur une droite}
+
+On considère une droite $D$ d'équation cartésienne :
+$$ax + by + c = 0$$
+
+% QUESTION 4
+% ----------
+% Compétences mobilisées :
+% - Définition du projeté orthogonal d'un point sur une droite.
+% - Définition de la distance d'un point à une droite comme étant égale à la distance entre ce point
+%   et son projeté orthogonal.
+\q Déterminer analytiquement les coordonnées du projeté orthogonal $G'$ de $G$ sur $D$ en fonction
+de $a, b, c, x_G, y_G$.
+
+% QUESTION 5
+% ----------
+% Compétences mobilisées :
+% - Caractérisation de la distance d'un point à une droite comme la plus petite distance séparant ce
+%   point d'un point de la droite.
+\q Notons $A', B', C'$ les projetés orthogonaux respectifs de $A, B, C$ sur $D$. Montrer que le
+projeté orthogonal $G'$ du barycentre $G$ sur $D$ est aussi le barycentre des projections
+orthogonales $A', B', C'$ des trois points pondérés avec les mêmes coefficients.
+
+
+\end{document}
+% ==================================================================================================
+\section{Barycentre et Produit Scalaire}
+
+% QUESTION 6
+% ----------
+% Compétences mobilisées :
+% - Bilinéarité du produit scalaire.
+\q Lien entre le barycentre et les relations vectorielles
+\setcounter{ql}{0}
+
+\ql Montrer que le barycentre vérifie la relation :
+   $$
+   m_1 \overrightarrow{GA} + m_2 \overrightarrow{GB} + m_3 \overrightarrow{GC} = \overrightarrow{0}
+   $$
+
+\ql Interpréter cette relation en termes de combinaison linéaire des vecteurs position.
+
+% QUESTION 7
+% ----------
+% Compétences mobilisées :
+% - Connaître les différentes expressions du produit scalaire.
+% - Utilisation de la bilinéarité du produit scalaire.
+\q Utilisation du produit scalaire pour démontrer une propriété fondamentale
+\setcounter{ql}{0}
+
+\ql Montrer que pour tout point $M(x, y)$ du plan, la somme pondérée des carrés des distances est
+   minimisée au point $G$, c'est-à-dire que :
+   $$
+   f(M) = m_1 ||\overrightarrow{MA}||^2 + m_2 ||\overrightarrow{MB}||^2 + m_3 ||\overrightarrow{MC}||^2
+   $$
+   est minimale lorsque $M = G$.
+
+\ql Déduire une interprétation en mécanique (centre de masse d'un système de points pondérés).
+
+% QUESTION 8
+% ----------
+% Compétences mobilisées :
+% - Définition du projeté orthogonal d'un point sur une droite.
+\q Lien entre barycentre et projections orthogonales
+\setcounter{ql}{0}
+
+\ql Démontrer que $G'$, projeté orthogonal de $G$ sur une droite $D$, est le barycentre des
+   projections orthogonales de $A, B, C $ sur $D$, avec les mêmes coefficients de pondération.
+
+\ql Interpréter ce résultat géométriquement et analytiquement.
+
+
+\section{Extension dans $\mathbb{R}^3$}
+
+On considère trois points $A(x_1, y_1, z_1)$, $B(x_2, y_2, z_2)$, $C(x_3, y_3, z_3)$
+dans l'espace, ainsi qu'un plan $P$ d'équation :
+$$Ax + By + Cz + D = 0$$
+
+% QUESTION 9
+% ----------
+% Compétences mobilisées :
+% - Caractériser l'orthogonalité entre droites et plans.
+\q Barycentre et distance à un plan
+\setcounter{ql}{0}
+
+\ql Montrer que le projeté orthogonal $G'$ du barycentre $G $ sur $P$ est le barycentre des
+  projections orthogonales des points $A, B, C$ sur $P $.
+
+\ql Déterminer analytiquement les coordonnées du projeté orthogonal $G'$ de $G$ sur $P$.

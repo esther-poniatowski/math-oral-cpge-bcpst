@@ -1,0 +1,70 @@
+% PROBLÈME : Angles et intersections entre droites et plans dans R^3
+% ==================================================================================================
+%
+% But
+% ---
+% Démontrer une condition analytique reliant l'angle entre une droite et un plan dans R^3 à leurs
+% équations et explorer les conséquences géométriques et analytiques de ce résultat.
+%
+% Objectifs spécifiques
+% ---------------------
+% -
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+
+
+\title{Sujets d'interrogation orale - Géométrie : Droites et Plans - Angles et intersections dans $\mathbb{R}^3$}
+\author{}
+\date{2024}
+
+\begin{document}
+\maketitle
+
+Dans l'espace $\mathbb{R}^3$, considérons une droite $D$ définie par :
+$$
+x = x_0 + \lambda u_x, \quad y = y_0 + \lambda u_y, \quad z = z_0 + \lambda u_z
+$$
+et un plan $P$ d'équation :
+$$
+Ax + By + Cz + D = 0.
+$$
+On cherche à exprimer l'angle $\theta$ entre la droite et le plan en fonction de leurs paramètres.
+
+% QUESTION 1
+% ----------
+% Compétences:
+1. Intersection entre une droite et un plan
+  \ql Expliquer la méthode permettant de déterminer si $D$ et $P$ se coupent.
+  \ql Trouver analytiquement l'éventuel point d'intersection en résolvant un système d'équations.
+
+% QUESTION 2
+% ----------
+% Compétences:
+2. Expression de l'angle entre une droite et un plan
+  \ql Justifier que le vecteur $\mathbf{n} = (A,B,C)$ est un vecteur normal au plan.
+  \ql Définir l'angle $\theta$ entre la droite et le plan en utilisant le produit scalaire entre $\mathbf{n}$ et le vecteur directeur $\mathbf{u} = (u_x, u_y, u_z)$.
+   c) Démontrer la formule :
+   $$
+   \cos \theta = \frac{|A u_x + B u_y + C u_z|}{\sqrt{A^2 + B^2 + C^2} \cdot \sqrt{u_x^2 + u_y^2 + u_z^2}}.
+   $$
+
+% QUESTION 3
+% ----------
+% Compétences:
+3. Cas particuliers et conséquences
+  \ql Vérifier l'orthogonalité pour $P : x - 2y + 3z = 5$ et $D : (1+2\lambda, -2+\lambda, 3-\lambda)$.
+  \ql Interpréter le cas où $\cos \theta = 0$ en termes d'angles et de positions relatives.
+
+% QUESTION 4
+% ----------
+% Compétences:
+4. Généralisation et applications
+  \ql Adapter cette étude au cas de deux plans en $\mathbb{R}^3$ et établir la condition d'orthogonalité entre eux.
+  \ql Discuter des applications en physique et ingénierie (réflexion des ondes sur un plan, trajectoire des particules, etc.).
+
+\end{document}

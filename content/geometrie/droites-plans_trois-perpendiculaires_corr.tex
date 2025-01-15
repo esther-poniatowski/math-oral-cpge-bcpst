@@ -1,0 +1,294 @@
+% CORRECTION : Théorème des trois perpendiculaires
+% ==================================================================================================
+%
+% But
+% ---
+% Fournir une correction détaillée des questions posées dans l'exercice sur le théorème des trois
+% perpendiculaires.
+%
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Correction - Géométrie : Droites et Plans - Théorème des trois perpendiculaires}
+\author{}
+\date{2024}
+
+\customPageLayout{Géométrie }{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\section{Étude préliminaire du plan et de la droite}
+
+On considère un repère orthonormé $(O, \mathbf{i}, \mathbf{j}, \mathbf{k})$ de l'espace. Soit le
+plan $P$ d'équation :
+   \[
+   x + y + z = 1.
+   \]
+Soit la droite $D$ passant par le point $A(1, 0, 0)$ et de vecteur directeur $\mathbf{u} =
+(1,1,-1)$.
+
+\q Caractérisation de l'orthogonalité entre droites et plans
+\setcounter{ql}{0}
+
+\ql \textbf{Détermination d'un vecteur normal au plan $P$}
+
+Un vecteur normal à un plan d'équation $ax + by + cz + d = 0$ est donné par $\mathbf{n} = (a, b,
+c)$. Dans notre cas, on identifie :
+\[
+\mathbf{n} = (1,1,1).
+\]
+
+\ql \textbf{Deux vecteurs directeurs du plan $P$}
+
+Un plan est défini par un vecteur normal, et tout vecteur orthogonal à ce vecteur normal est
+directeur du plan. On cherche deux vecteurs $\mathbf{v_1}$ et $\mathbf{v_2}$ tels que :
+\[
+\mathbf{n} \cdot \mathbf{v_1} = 0, \quad \mathbf{n} \cdot \mathbf{v_2} = 0.
+\]
+On peut prendre, par exemple :
+\[
+\mathbf{v_1} = (1,-1,0), \quad \mathbf{v_2} = (1,0,-1).
+\]
+
+\q Représentation paramétrique et cartésienne de la droite $D$
+\setcounter{ql}{0}
+
+\ql \textbf{Représentation paramétrique de $D$}
+
+La droite $D$ passe par $A(1,0,0)$ et est dirigée par $\mathbf{u} = (1,1,-1)$. Son équation
+paramétrique est :
+\[
+\begin{cases}
+x = 1 + t \\
+y = t \\
+z = -t
+\end{cases}, \quad t \in \mathbb{R}.
+\]
+
+\ql \textbf{Équation cartésienne de $D$}
+
+Éliminons $t$ :
+\[
+y = x - 1, \quad z = - (x - 1).
+\]
+On obtient une équation cartésienne sous la forme :
+\[
+y + z = 0, \quad x - y - 1 = 0.
+\]
+
+\q Position relative de $D$ et $P$
+\setcounter{ql}{0}
+
+\ql \textbf{Montrer que $D$ et $P$ ne sont pas parallèles}
+
+La droite $D$ est parallèle à $P$ si et seulement si son vecteur directeur $\mathbf{u}$ est
+orthogonal au vecteur normal $\mathbf{n}$ du plan :
+\[
+\mathbf{n} \cdot \mathbf{u} = 1 \cdot 1 + 1 \cdot 1 + 1 \cdot (-1) = 1 \neq 0.
+\]
+Donc, $D$ et $P$ ne sont pas parallèles.
+
+\ql \textbf{Calcul des coordonnées du point d'intersection $I$ de $D$ et $P$}
+
+On résout :
+\[
+(1+t) + t + (-t) = 1.
+\]
+Ce qui donne $t = 0$, donc $I = (1, 0, 0)$.
+
+\q Projeté orthogonal d'un point sur un plan
+\setcounter{ql}{0}
+
+\ql \textbf{Calcul des coordonnées du projeté orthogonal $H$ de $M$ sur $P$}
+
+Le projeté orthogonal d'un point $M(x_M, y_M, z_M)$ sur un plan est donné par :
+\[
+H = M - \lambda \mathbf{n},
+\]
+où $\lambda$ est déterminé en imposant que $H$ appartient à $P$.
+
+On trouve :
+\[
+H(1, 0, 0)
+\]
+
+\q Droite perpendiculaire à un plan
+\setcounter{ql}{0}
+
+\ql \textbf{Équation paramétrique de $D'$}
+
+La droite $D'$ passant par $M$ et orthogonale à $P$ a pour vecteur directeur $\mathbf{n}$. Son
+équation paramétrique est donc :
+\[
+\begin{cases}
+x = 2 + t \\
+y = -1 + t \\
+z = 3 + t
+\end{cases}, \quad t \in \mathbb{R}.
+\]
+
+\ql \textbf{Vérification que $H$ appartient à $D'$}
+
+En remplaçant $H(1,0,0)$ dans l'équation paramétrique de $D'$, on trouve $t = -1$, donc $H \in D'$.
+
+
+
+\section{Vérification du théorème}
+
+\q \textbf{Définition du plan perpendiculaire à $D$ passant par $H$}
+
+Le plan perpendiculaire à $D$ passant par $H$ est défini par un vecteur normal parallèle au vecteur directeur de $D$, soit $\mathbf{u} = (1,1,-1)$.
+
+L'équation cartésienne de ce plan s'écrit sous la forme :
+\[
+(x - x_H) + (y - y_H) - (z - z_H) = 0.
+\]
+
+En remplaçant les coordonnées de $H$, on obtient :
+\[
+(x - 1) + (y - 0) - (z - 0) = 0.
+\]
+
+Soit l'équation du plan perpendiculaire à $D$ :
+\[
+x + y - z = 1.
+\]
+
+\q \textbf{Détermination d'un vecteur directeur de $\Delta$}
+
+Nous disposons déjà du point $H$ qui appartient à $\Delta$. Pour déterminer un vecteur directeur de
+$\Delta$, il suffit de trouver un second point $B(x, y, z)$ appartenant à $\Delta$.
+
+Puisque la droite $\Delta$ est l'intersection de deux plans, le point recherché appartient à la fois
+au plan $P : x + y + z = 1$ et au plan perpendiculaire à $D$ passant par $H$ est défini par
+l'équation  $x + y - z = 1$ :
+\[
+x + y + z = 1, \quad x + y - z = 1.
+\]
+
+En fixant $y = 1$, nous résolvons :
+\[
+x + 1 + z = 1, \quad x + 1 - z = 1.
+\]
+
+\[
+x + z = 0, \quad x - z = 0.
+\]
+
+En additionnant, on obtient :
+\[
+2x = 0 \quad \Rightarrow \quad x = 0.
+\]
+
+Puis, en remplaçant dans $x + z = 0$, on trouve $z = 0$.
+
+Ainsi, un deuxième point appartenant à $\Delta$ est :
+\[
+B(0,1,0)
+\]
+
+Le vecteur $\overrightarrow{HB}$ est donné par :
+\[
+\overrightarrow{HB} = (x_B - x_H, y_B - y_H, z_B - z_H)
+\]
+
+\[
+\overrightarrow{HB} = (0 - 1, 1 - 0, 0 - 0) = (-1,1,0)
+\]
+
+Ainsi, un \textbf{vecteur directeur} de $\Delta$ est :
+\[
+\mathbf{v_{\Delta}} = (-1,1,0).
+\]
+
+
+\q \textbf{Perpendicularité entre $\Delta$ et $D$}
+
+Deux droites sont perpendiculaires si le produit scalaire de leurs vecteurs directeurs est nul.
+
+Les vecteurs directeurs sont :
+\[
+\mathbf{v_\Delta} = (-1,1,0), \quad \mathbf{u_D} = (1,1,-1).
+\]
+
+Calcul du produit scalaire :
+\[
+\mathbf{v_\Delta} \cdot \mathbf{u_D} = (-1 \times 1) + (1 \times 1) + (0 \times -1).
+\]
+
+\[
+\mathbf{v_\Delta} \cdot \mathbf{u_D} = -1 + 1 + 0 = 0.
+\]
+
+Le produit scalaire est nul, donc $\Delta$ est perpendiculaire à $D$.
+
+
+
+
+\section{Démonstration du théorème des trois perpendiculaires}
+
+
+\q Nous devons prouver que $d$ est aussi perpendiculaire à $D$.
+
+\q En termes de produits scalaires :
+\[
+\mathbf{v_d} \cdot \mathbf{v_D} = 0
+\]
+
+\q Le vecteur directeur $\mathbf{v_D}$ de la droite $D$ peut être décomposé en une composante
+parallèle au plan $P$ et une composante normale :
+\[
+\mathbf{v_D} = \mathbf{v_{\pi(D)}} + \mathbf{v_n},
+\]
+où $\mathbf{v_{\pi(D)}}$ est la projection orthogonale de $\mathbf{v_D}$ sur $P$ et $\mathbf{v_n}$
+est la composante normale à $P$, parallèle au vecteur normal $\mathbf{n}$ du plan $P$.
+
+Par construction, $\mathbf{v_n}$ est colinéaire à $\mathbf{n}$, donc :
+\[
+\mathbf{v_n} = \lambda \mathbf{n}, \quad \text{avec } \lambda \in \mathbb{R}
+\]
+
+\q Calculons le produit scalaire entre $\mathbf{v_d}$ et $\mathbf{v_D}$ :
+\[
+\mathbf{v_d} \cdot \mathbf{v_D} = \mathbf{v_d} \cdot (\mathbf{v_{\pi(D)}} + \mathbf{v_n})
+\]
+
+En utilisant la linéarité du produit scalaire :
+\[
+\mathbf{v_d} \cdot \mathbf{v_D} = \mathbf{v_d} \cdot \mathbf{v_{\pi(D)}} + \mathbf{v_d} \cdot \mathbf{v_n}
+\]
+
+Or, par hypothèse, $d$ est perpendiculaire à $\pi(D)$ dans $P$, donc :
+\[
+\mathbf{v_d} \cdot \mathbf{v_{\pi(D)}} = 0
+\]
+
+De plus, $\mathbf{v_n}$ est normal au plan $P$, et comme $\mathbf{v_d}$ est un vecteur contenu dans $P$, il est nécessairement orthogonal à $\mathbf{v_n}$ :
+\[
+\mathbf{v_d} \cdot \mathbf{v_n} = 0
+\]
+
+Ainsi, nous obtenons :
+\[
+\mathbf{v_d} \cdot \mathbf{v_D} = 0 + 0 = 0
+\]
+
+\textbf{Conclusion}
+
+Nous avons montré que si une droite contenue dans $P$ est perpendiculaire à la projection de $D$ sur
+$P$, alors elle est aussi perpendiculaire à $D$.
+
+\textbf{Interprétation géométrique}
+
+Intuitivement, si une droite est perpendiculaire à la projection d'une droite oblique sur un plan,
+elle est également perpendiculaire à cette droite oblique dans l'espace, car l'inclinaison ne
+modifie pas l'angle entre les directions perpendiculaires.
+
+
+\end{document}

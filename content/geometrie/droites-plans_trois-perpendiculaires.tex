@@ -1,0 +1,117 @@
+% PROBLÈME : Théorème des trois perpendiculaires
+% ==================================================================================================
+%
+% But
+% ---
+% Analyser une configuration spécifique impliquant un plan et des droites dans l'espace, culminant
+% avec la démonstration du théorème des trois perpendiculaires.
+%
+% Objectifs spécifiques
+% ---------------------
+% - Manipuler les représentations paramétriques et cartésiennes des droites et des plans.
+% - Étudier les positions relatives des droites et des plans dans l'espace.
+% - Démontrer la caractérisation de la distance d'un point à un plan comme la plus petite distance
+%   entre ce point et tout point du plan.
+%   ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Sujets d'interrogation orale - Géométrie : Droites et Plans - Théorème des trois perpendiculaires}
+\author{}
+\date{2024}
+
+\customPageLayout{Géométrie }{Lycée Henri IV}{2024}
+
+\begin{document}
+
+Ce problème explore une configuration géométrique particulière dans l'espace, mettant en jeu des
+droites et des plans. Il aboutit à la démonstration du théorème des trois perpendiculaires, une
+propriété géométrique intéressante :
+
+\begin{center}
+\textbf{Théorème des trois perpendiculaires}
+
+Soit $P$ un plan de l'espace et $D$ une droite non parallèle au plan $P$. Si une droite du plan $P$ est
+perpendiculaire à la projection de $D$ sur $P$, alors elle est perpendiculaire à $D$.
+\end{center}
+
+\section{Étude préliminaire d'un plan et d'une droite}
+
+On considère un repère orthonormé $(O, \mathbf{i}, \mathbf{j}, \mathbf{k})$ de l'espace. Soit le
+plan $P$ d'équation :
+   \[
+   x + y + z = 1.
+   \]
+Soit la droite $D$ passant par le point $A(1, 0, 0)$ et de vecteur directeur
+$\mathbf{u} = (1,1,-1)$.
+
+\q Caractérisation de l'orthogonalité entre droites et plans
+\setcounter{ql}{0}
+
+\ql Déterminer un vecteur normal au plan $P$.
+
+\ql En déduire deux vecteurs directeurs du plan $P$.
+
+\q Représentation paramétrique et cartésienne de la droite $D$
+\setcounter{ql}{0}
+
+\ql Donner une représentation paramétrique de $D$.
+
+\ql Déterminer une équation cartésienne de $D$.
+
+\q Position relative de $D$ et $P$
+\setcounter{ql}{0}
+
+\ql Montrer que $D$ et $P$ ne sont pas parallèles.
+
+\ql Calculer les coordonnées du point d'intersection $I$ de $D$ et $P$.
+
+\q Soit le point $M(2, -1, 3)$. Déterminer les coordonnées du projeté orthogonal $H$ de $M$ sur le
+plan $P$.
+
+\q Soit $D'$ la droite passant par $M$ et orthogonale au plan $P$.
+\setcounter{ql}{0}
+
+\ql Donner une équation paramétrique de $D'$.
+
+\ql Montrer que $H$ appartient à $D'$.
+
+
+\section{Vérification du théorème}
+
+Soit $\Delta$ la droite d'intersection du plan $P$ et du plan perpendiculaire à $D$ passant par
+$H$.
+
+\q Déterminer l'équation cartésienne du plan perpendiculaire à $D$ passant par $H$.
+
+\q Déterminer un vecteur directeur de $\Delta$.
+
+\q Montrer que $\Delta$ est perpendiculaire à $D$.
+
+
+\section{Démonstration du théorème des trois perpendiculaires}
+
+Soit $D$ une droite de l'espace non parallèle au plan $P$, et soit $\pi(D)$ la projection
+orthogonale de $D$ sur $P$.
+
+Soit $d$ une droite contenue dans $P$, perpendiculaire à $\pi(D)$ dans $P$.
+
+On note $\mathbf{v_D}$ et $\mathbf{v_d}$ les vecteurs directeurs des droites.
+
+\q Pour démontrer le théorème des trois perendiculaires, quelle propriété faut-il prouver concernant
+la relation $d$ et $D$ ?
+
+\q Traduire cette condition en termes de produits scalaires faisant intervenir les vecteurs
+directeurs des droites.
+
+\q Décomposer le vecteur directeur $\mathbf{v_D}$ de la droite $D$ en faisant intervenir le vecteur
+normal au plan $\mathbf{n}$.
+
+\q Calculer le produit scalaire établi précédemment et conclure.
+
+\end{document}

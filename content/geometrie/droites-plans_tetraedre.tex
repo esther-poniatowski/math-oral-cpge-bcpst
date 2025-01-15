@@ -1,0 +1,162 @@
+% PROBLÈME : Étude d'un tétraèdre régulier
+% ==================================================================================================
+%
+% But
+% ---
+% Explorer les propriétés géométriques d'un tétraèdre régulier inscrit dans un cube unitaire.
+%
+% Objectifs spécifiques
+% ---------------------
+% - Utiliser la géométrie analytique dans l'espace pour étudier une figure tridimensionnelle
+%   complexe.
+% - Démontrer des propriétés géométriques du tétraèdre régulier, notamment concernant sa hauteur et
+%   son centre de gravité.
+% - Établir des relations d'orthogonalité entre les éléments du tétraèdre.
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+
+\title{Sujets d'interrogation orale - Géométrie : Droites et Plans - Étude d'un tétraèdre régulier}
+\author{}
+\date{2024}
+
+\customPageLayout{Géométrie }{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Objectif}
+
+Étudier les propriétés géométriques d'un tétraèdre régulier, en utilisant les outils de la géométrie
+analytique dans l'espace.
+
+Un tétraèdre régulier est un polyèdre à quatre faces triangulaires équilatérales.
+
+On considère un tétraèdre régulier \(ABCD\) inscrit dans un cube d'arête \( a = 1 \).
+Les côtés du tétraèdre sont des diagonales du cube.
+
+On se place dans un repère orthonormé \((O, \mathbf{i}, \mathbf{j}, \mathbf{k})\) où l'origine \(O\)
+est un sommet du cube.
+
+% Angle de vue
+\tdplotsetmaincoords{70}{110}
+
+\begin{tikzpicture}[tdplot_main_coords, scale=4]
+    % Cube
+    \draw[gray, thin] (0,0,0) -- (1,0,0) -- (1,1,0) -- (0,1,0) -- cycle;
+    \draw[gray, thin] (0,0,1) -- (1,0,1) -- (1,1,1) -- (0,1,1) -- cycle;
+    \draw[gray, thin] (0,0,0) -- (0,0,1);
+    \draw[gray, thin] (1,0,0) -- (1,0,1);
+    \draw[gray, thin] (1,1,0) -- (1,1,1);
+    \draw[gray, thin] (0,1,0) -- (0,1,1);
+
+    % Tétraèdre
+    \draw[red, thick] (1,0,0) -- (0,1,0) -- (0,0,1) -- (1,1,1) -- cycle;
+    \draw[red, thick] (1,0,0) -- (0,0,1);
+    \draw[red, thick] (0,1,0) -- (1,1,1);
+
+    % Points du tétraèdre
+    \fill[blue] (1,0,0) circle (0.05) node[anchor=south west] {A};
+    \fill[blue] (0,1,0) circle (0.05) node[anchor=south east] {B};
+    \fill[blue] (0,0,1) circle (0.05) node[anchor=south] {C};
+    \fill[blue] (1,1,1) circle (0.05) node[anchor=south west] {D};
+
+    % Axes
+    \draw[-stealth] (0,0,0) -- (1.5,0,0) node[anchor=north east]{$x$};
+    \draw[-stealth] (0,0,0) -- (0,1.5,0) node[anchor=north west]{$y$};
+    \draw[-stealth] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z$};
+
+    % Origine
+    \fill[black] (0,0,0) circle (0.05) node[anchor=north east] {O};
+\end{tikzpicture}
+
+
+
+\section{Coordonnées et distances dans le tétraèdre}
+
+\q Déterminer les coordonnées des sommets du tétraèdre \( A, B, C, D \).
+
+\q Calculer la longueur des arêtes du tétraèdre à partir des coordonnées déterminées.
+
+\q Déterminer des équations cartésiennes pour les plans associés aux faces du tétraèdre.
+
+\q Calculer la distance du point \(D\) au plan \((ABC)\).
+
+\q En déduire la hauteur du tétraèdre, définie comme la distance entre un sommet et le plan
+formé par la face opposée à ce sommet.
+
+\q Soit \(H\) le projeté orthogonal de \(D\) sur le plan \((ABC)\). Démontrer que \(H\) est le
+centre de gravité du triangle \(ABC\), qui est situé à une distance égale à \(\frac{2}{3}\) de la
+distance de chaque sommet au milieu du côté opposé.
+
+
+\section{Orthogonalité dans le tétraèdre}
+
+\q Montrer que les arêtes \([AB]\) et \([CD]\) sont orthogonales.
+
+\q Déterminer l'équation paramétrique de la droite passant par le milieu de \([AB]\) et le milieu de \([CD]\).
+
+\q Vérifier que cette droite est perpendiculaire aux deux arêtes \([AB]\) et \([CD]\).
+
+\end{document}
+% ==================================================================================================
+
+
+Ce problème vise à étudier les propriétés géométriques d'un tétraèdre régulier, en utilisant les
+outils de la géométrie analytique dans l'espace.
+
+1. Soit un tétraèdre régulier ABCD inscrit dans un cube d'arête
+
+% QUESTION 1
+% ----------
+% Compétence: Manipuler les droites et les plans dans R^3
+1. Déterminer les coordonnées des sommets du tétraèdre dans un repère orthonormé dont l'origine est
+un sommet du cube.
+
+% QUESTION 2
+% ----------
+% Compétence: Manipuler les droites et les plans dans R^3
+2. Calculer la longueur d'une arête du tétraèdre.
+
+% QUESTION 3
+% ----------
+% Compétences:
+% - Déterminer une équation cartésienne du plan (ABC)
+% - Manipuler les droites et les plans dans R^3; Caractériser l'orthogonalité entre droites et plans
+3. Déterminer une équation cartésienne du plan (ABC).
+
+% QUESTION 4
+% ----------
+% Compétences:
+% - Définition de la distance d'un point à une droite
+% - Manipuler les droites et les plans dans R^3
+4. Calculer la distance du point D au plan (ABC). En déduire la hauteur du tétraèdre.
+
+% QUESTION 5
+% ----------
+% Compétences: Définition du projeté orthogonal d'un point sur une droite (à généraliser pour un plan)
+5. Soit H le projeté orthogonal de D sur le plan (ABC). Démontrer que H est le centre de gravité du
+triangle ABC.
+
+% QUESTION 6
+% ----------
+% Compétences: Caractériser l'orthogonalité entre droites et plans
+6. Montrer que les arêtes [AB] et [CD] sont orthogonales.
+
+% QUESTION 7
+% ----------
+% Compétences: Manipuler les droites et les plans dans R^3
+7. Déterminer l'équation paramétrique de la droite passant par le milieu de [AB] et le milieu de
+[CD].
+
+% QUESTION 8
+% ----------
+% Compétences: Caractériser l'orthogonalité entre droites et plans
+8. Démontrer que cette droite est perpendiculaire aux deux arêtes [AB] et [CD].

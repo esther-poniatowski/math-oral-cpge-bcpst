@@ -1,0 +1,465 @@
+% CORRECTION : Barycentre
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\providecommand{\rootpath}{../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Correction - Barycentre}
+\author{}
+\date{2024}
+
+\customPageLayout{Géométrie }{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\section{Barycentre et Centre de Gravité d'un Triangle}
+
+\q \textbf{Concourrence des médianes}
+\setcounter{ql}{0}
+
+\ql Considérons les équations des deux médianes $(AM_A)$ et $(BM_B)$, et montrons qu'elles se
+coupent en un unique point. En effet, les trois médianes ne définissent pas trois équations
+indépendantes : l'une des trois est automatiquement vérifiée si les deux autres sont
+satisfaites. Il est donc suffisant de résoudre le système avec deux équations, puis de vérifier que
+le point obtenu appartient bien à la troisième médiane.
+
+\begin{itemize}
+    \item Le milieu $M_A$ du segment $[BC]$ a pour coordonnées :
+    $$
+    M_A \left( \frac{x_2 + x_3}{2}, \frac{y_2 + y_3}{2} \right)
+    $$
+    \item La droite $(AM_A)$ passe par $A(x_1, y_1)$ et $M_A$, donc son équation est :
+    $$
+    y - y_1 = \frac{y_2 + y_3 - 2y_1}{x_2 + x_3 - 2x_1} (x - x_1)
+    $$
+\end{itemize}
+En effet, pour obtenir l'équation cartésienne de la droite $(AM_A)$ s'obtient en considérant la
+proportionnalité des coordonnées.
+
+Soit un point générique $M(x,y)$ sur la droite $(AM_A)$.
+
+Les vecteurs $\overrightarrow{AM}$ et $\overrightarrow{AM_A}$ sont colinéaires.
+La colinéarité implique que les rapports des coordonnées de ces vecteurs sont égaux.
+
+En posant $k$ comme le rapport commun :
+$$
+x - x_1 = k(\frac{x_2 + x_3}{2} - x_1)
+$$
+$$
+y - y_1 = k(\frac{y_2 + y_3}{2} - y_1)
+$$
+
+En divisant la seconde équation par la première :
+$$
+\frac{y - y_1}{x - x_1} = \frac{\frac{y_2 + y_3}{2} - y_1}{\frac{x_2 + x_3}{2} - x_1}
+$$
+$$
+y - y_1 = \frac{\frac{y_2 + y_3}{2} - y_1}{\frac{x_2 + x_3}{2} - x_1}(x - x_1)
+$$
+$$
+y - y_1 = \frac{y_2 + y_3 - 2y_1}{x_2 + x_3 - 2x_1}(x - x_1)
+$$
+
+
+
+De même, on peut établir l'équation de la médiane $(BM_B)$.
+
+Résolvons le système comprenant les équations des médianes \((AM_A)\) et \((BM_B)\) :
+\begin{align*}
+y - y_1 &= \frac{y_2 + y_3 - 2y_1}{x_2 + x_3 - 2x_1} (x - x_1), \\
+y - y_2 &= \frac{y_1 + y_3 - 2y_2}{x_1 + x_3 - 2x_2} (x - x_2).
+\end{align*}
+
+En résolvant ce système, l'intersection des deux médianes est donnée par :
+\[
+G \left( \frac{x_1 + x_2 + x_3}{3}, \frac{y_1 + y_2 + y_3}{3} \right).
+\]
+
+Vérification avec la troisième médiane \((CM_C)\), qui a pour équation :
+\[
+y - y_3 = \frac{y_1 + y_2 - 2y_3}{x_1 + x_2 - 2x_3} (x - x_3).
+\]
+
+En remplaçant \((x_G, y_G)\) dans cette équation, on vérifie que :
+\[
+y_G - y_3 = \frac{y_1 + y_2 - 2y_3}{x_1 + x_2 - 2x_3} (x_G - x_3).
+\]
+
+Ce qui est bien satisfait. On conclut donc que les trois médianes sont concourantes et que leur
+intersection est le point \( G \), centre de gravité du triangle.
+
+\q \textbf{Lien entre barycentre et centre de gravité} : Le centre de gravité correspond au
+barycentre des trois sommets du triangle, pondérés avec des masses égales.
+
+\q \textbf{Position du barycentre sur les médianes}
+
+Paramétrisation de la médiane
+
+Le point \( G \) étant situé sur la médiane, il peut être exprimé sous forme paramétrique comme :
+\[
+G = (1 - k) A + k M_A,
+\]
+où \( k \) est un paramètre réel.
+
+Le but est de montrer que \( k = \frac{2}{3} \).
+
+Décomposons cette relation :
+\[
+\begin{cases}
+x_G = (1 - k) x_1 + k \frac{x_2 + x_3}{2}, \\
+y_G = (1 - k) y_1 + k \frac{y_2 + y_3}{2}
+\end{cases}
+\]
+
+En utilisant l'expression des coordonnées du centre de gravité :
+\[
+x_G = \frac{x_1 + x_2 + x_3}{3}, \quad
+y_G = \frac{y_1 + y_2 + y_3}{3},
+\]
+nous obtenons deux équations en \( k \) :
+\[
+\frac{x_1 + x_2 + x_3}{3} = (1 - k) x_1 + k \frac{x_2 + x_3}{2}
+\]
+
+Résolvons cette équation pour \( k \) :
+\[
+\frac{x_1 + x_2 + x_3}{3} = x_1 - k x_1 + k \frac{x_2 + x_3}{2}
+\]
+
+En isolant \( k \) :
+\[
+\frac{x_1 + x_2 + x_3}{3} - x_1 = -k x_1 + k \frac{x_2 + x_3}{2}
+\]
+
+Factorisons \( k \) :
+\[
+\frac{x_1 + x_2 + x_3}{3} - x_1 = k \left( \frac{x_2 + x_3}{2} - x_1 \right)
+\]
+
+En simplifiant, on obtient :
+\[
+k = \frac{2}{3}
+\]
+
+
+\section{Barycentre et Projeté sur une droite}
+
+\q Projeté orthogonal du barycentre sur $D$
+
+$$
+x_{G'} = x_G - \frac{a(ax_G + by_G + c)}{a^2 + b^2}, \quad
+y_{G'} = y_G - \frac{b(ax_G + by_G + c)}{a^2 + b^2}
+$$
+
+\q Expression de la distance du barycentre à $D$
+
+$$
+d(G, D) = \frac{|ax_G + by_G + c|}{\sqrt{a^2 + b^2}}
+$$
+
+\q G appartient à D si et seulement si $ax_G + by_G + c = 0$.
+\q Projeté orthogonal du barycentre sur $D$
+\setcounter{ql}{0}
+
+\q \textbf{Projeté orthogonal $G'$ de $G$ sur $D$}
+
+On considère la droite $D$ d'équation cartésienne :
+\[
+ax + by + c = 0.
+\]
+Le projeté orthogonal $G'$ de $G(x_G, y_G)$ sur $D$ est le point de $D$ qui réalise la distance
+minimale à $G$.
+
+Le projeté orthogonal vérifie la relation vectorielle suivante :
+\[
+\overrightarrow{GG'} = \lambda \mathbf{n},
+\]
+où $\mathbf{n} = (a, b)$ est un vecteur normal à la droite $D$, et $\lambda$ est un réel à
+déterminer.
+
+Les coordonnées de $G'$ s'écrivent donc :
+\[
+x_{G'} = x_G + \lambda a, \quad y_{G'} = y_G + \lambda b.
+\]
+Puisque $G'$ appartient à $D$, ses coordonnées doivent satisfaire l'équation de la droite :
+\[
+a x_{G'} + b y_{G'} + c = 0.
+\]
+
+En remplaçant $x_{G'}$ et $y_{G'}$ :
+\[
+a (x_G + \lambda a) + b (y_G + \lambda b) + c = 0.
+\]
+
+Développons :
+\[
+ax_G + \lambda a^2 + by_G + \lambda b^2 + c = 0.
+\]
+
+Factorisons $\lambda$ :
+\[
+\lambda (a^2 + b^2) = - (ax_G + by_G + c).
+\]
+
+On en déduit :
+\[
+\lambda = -\frac{ax_G + by_G + c}{a^2 + b^2}.
+\]
+
+En substituant dans les expressions de $x_{G'}$ et $y_{G'}$, on obtient :
+\[
+x_{G'} = x_G - \frac{a(ax_G + by_G + c)}{a^2 + b^2}, \quad
+y_{G'} = y_G - \frac{b(ax_G + by_G + c)}{a^2 + b^2}.
+\]
+
+
+\q \textbf{Interprétation du projeté orthogonal du barycentre en termes de barycentre des projetés}
+
+Nous avons :
+\[
+x_G = \frac{m_1 x_1 + m_2 x_2 + m_3 x_3}{m_1 + m_2 + m_3}, \quad
+y_G = \frac{m_1 y_1 + m_2 y_2 + m_3 y_3}{m_1 + m_2 + m_3}.
+\]
+
+On sait que le projeté orthogonal d'un point \( M(x,y) \) sur la droite \( D \) d'équation \( ax + by + c = 0 \) est donné par :
+\[
+x_{M'} = x - \frac{a(ax + by + c)}{a^2 + b^2}, \quad
+y_{M'} = y - \frac{b(ax + by + c)}{a^2 + b^2}.
+\]
+
+Appliquons cette formule aux points \( A, B, C \) :
+\[
+x_{A'} = x_1 - \frac{a(ax_1 + by_1 + c)}{a^2 + b^2}, \quad
+y_{A'} = y_1 - \frac{b(ax_1 + by_1 + c)}{a^2 + b^2}.
+\]
+
+De même pour \( B' \) et \( C' \).
+
+Prenons maintenant le barycentre des projections :
+\[
+x_{G'} = \frac{m_1 x_{A'} + m_2 x_{B'} + m_3 x_{C'}}{m_1 + m_2 + m_3},
+\]
+\[
+y_{G'} = \frac{m_1 y_{A'} + m_2 y_{B'} + m_3 y_{C'}}{m_1 + m_2 + m_3}.
+\]
+
+En remplaçant \( x_{A'}, x_{B'}, x_{C'} \) par leurs expressions :
+\[
+x_{G'} = \frac{m_1 \left( x_1 - \frac{a(ax_1 + by_1 + c)}{a^2 + b^2} \right)
++ m_2 \left( x_2 - \frac{a(ax_2 + by_2 + c)}{a^2 + b^2} \right)
++ m_3 \left( x_3 - \frac{a(ax_3 + by_3 + c)}{a^2 + b^2} \right) }
+{m_1 + m_2 + m_3}.
+\]
+
+En séparant les termes :
+\[
+x_{G'} = \frac{m_1 x_1 + m_2 x_2 + m_3 x_3}{m_1 + m_2 + m_3}
+- \frac{a}{a^2 + b^2} \cdot \frac{m_1 (ax_1 + by_1 + c) + m_2 (ax_2 + by_2 + c) + m_3 (ax_3 + by_3 + c)}{m_1 + m_2 + m_3}.
+\]
+
+Mais on sait que :
+\[
+ax_G + by_G + c = \frac{m_1 (ax_1 + by_1 + c) + m_2 (ax_2 + by_2 + c) + m_3 (ax_3 + by_3 + c)}{m_1 + m_2 + m_3}.
+\]
+
+Donc,
+\[
+x_{G'} = x_G - \frac{a(ax_G + by_G + c)}{a^2 + b^2}.
+\]
+
+Un raisonnement identique donne :
+\[
+y_{G'} = y_G - \frac{b(ax_G + by_G + c)}{a^2 + b^2}.
+\]
+
+Ainsi, nous avons bien :
+\[
+G' = \operatorname{bar}(A', B', C'; m_1, m_2, m_3).
+\]
+
+\end{document}
+% ==================================================================================================
+
+\section{Barycentre et Produit Scalaire}
+
+\q Lien entre le barycentre et les relations vectorielles
+\setcounter{ql}{0}
+
+\ql On a :
+\begin{align*}
+m_1 \overrightarrow{GA} + m_2 \overrightarrow{GB} + m_3 \overrightarrow{GC} &=
+m_1 (\overrightarrow{OA} - \overrightarrow{OG}) + m_2 (\overrightarrow{OB} - \overrightarrow{OG}) + m_3 (\overrightarrow{OC} - \overrightarrow{OG}) \\
+&= m_1 \overrightarrow{OA} + m_2 \overrightarrow{OB} + m_3 \overrightarrow{OC} - (m_1 + m_2 + m_3)\overrightarrow{OG} \\
+&= (m_1 + m_2 + m_3)\overrightarrow{OG} - (m_1 + m_2 + m_3)\overrightarrow{OG} \\
+&= \overrightarrow{0}
+\end{align*}
+
+\ql Cette relation signifie que G est le point d'équilibre du système de points pondérés.
+
+\q Utilisation du produit scalaire pour démontrer une propriété fondamentale
+\setcounter{ql}{0}
+
+\ql Pour tout point M, on a :
+\begin{align*}
+f(M) &= m_1 ||\overrightarrow{MA}||^2 + m_2 ||\overrightarrow{MB}||^2 + m_3 ||\overrightarrow{MC}||^2 \\
+&= m_1 (\overrightarrow{MA} \cdot \overrightarrow{MA}) + m_2 (\overrightarrow{MB} \cdot \overrightarrow{MB}) + m_3 (\overrightarrow{MC} \cdot \overrightarrow{MC}) \\
+&= (m_1 + m_2 + m_3)(\overrightarrow{MG} \cdot \overrightarrow{MG}) + 2\overrightarrow{MG} \cdot (m_1 \overrightarrow{GA} + m_2 \overrightarrow{GB} + m_3 \overrightarrow{GC}) + C
+\end{align*}
+où C est une constante indépendante de M. Le deuxième terme est nul d'après la question précédente.
+Donc f(M) est minimale lorsque $\overrightarrow{MG} = \overrightarrow{0}$, c'est-à-dire lorsque M =
+G.
+
+\ql En mécanique, cela signifie que G est le centre de masse du système de points pondérés.
+
+\q Lien entre barycentre et projections orthogonales
+\setcounter{ql}{0}
+
+\ql Soit $\overrightarrow{n}$ un vecteur normal à D. Pour tout point P, on a $\overrightarrow{PP'} =
+k\overrightarrow{n}$ où P' est la projection de P sur D et k un réel. Donc :
+\begin{align*}
+m_1 \overrightarrow{G'A'} + m_2 \overrightarrow{G'B'} + m_3 \overrightarrow{G'C'} &=
+m_1 (\overrightarrow{GA} - k_1\overrightarrow{n}) + m_2 (\overrightarrow{GB} - k_2\overrightarrow{n}) + m_3 (\overrightarrow{GC} - k_3\overrightarrow{n}) \\
+&= (m_1 \overrightarrow{GA} + m_2 \overrightarrow{GB} + m_3 \overrightarrow{GC}) - (m_1k_1 + m_2k_2 + m_3k_3)\overrightarrow{n} \\
+&= -(m_1k_1 + m_2k_2 + m_3k_3)\overrightarrow{n} \\
+&= k(m_1 + m_2 + m_3)\overrightarrow{n} \\
+&= \overrightarrow{0}
+\end{align*}
+où $k = \frac{m_1k_1 + m_2k_2 + m_3k_3}{m_1 + m_2 + m_3}$. Donc G' est le barycentre de A', B', C'
+avec les mêmes coefficients.
+
+\ql Géométriquement, cela signifie que la projection du barycentre est le barycentre des
+projections. Analytiquement, cela implique que les coordonnées de G' peuvent être calculées
+directement à partir des coordonnées de A', B', C'.
+
+\section{Extension dans $\mathbb{R}^3$}
+
+\q Barycentre et distance à un plan
+\setcounter{ql}{0}
+
+\ql La démonstration est similaire à celle de la question 8, en remplaçant la droite D par le plan
+P.
+
+\ql Les coordonnées du projeté orthogonal G' de G sur P sont données par :
+$$
+x_{G'} = x_G - \frac{A(Ax_G + By_G + Cz_G + D)}{A^2 + B^2 + C^2}, \quad
+y_{G'} = y_G - \frac{B(Ax_G + By_G + Cz_G + D)}{A^2 + B^2 + C^2}, \quad
+z_{G'} = z_G - \frac{C(Ax_G + By_G + Cz_G + D)}{A^2 + B^2 + C^2}
+$$
+
+\q Cas où le barycentre appartient au plan
+\setcounter{ql}{0}
+
+\ql G appartient à P si et seulement si ses coordonnées satisfont l'équation du plan :
+$$
+A\left(\frac{m_1 x_1 + m_2 x_2 + m_3 x_3}{m_1 + m_2 + m_3}\right) +
+B\left(\frac{m_1 y_1 + m_2 y_2 + m_3 y_3}{m_1 + m_2 + m_3}\right) +
+C\left(\frac{m_1 z_1 + m_2 z_2 + m_3 z_3}{m_1 + m_2 + m_3}\right) + D = 0
+$$
+
+\ql En mécanique, cela signifie que le centre de masse du système se trouve dans le plan P. En
+géométrie, cela implique que le barycentre est coplanaire avec les points A, B, C.
+
+% ==================================================================================================
+\setcounter{q}{0}
+\section{Calcul du barycentre et interprétation géométrique}
+
+
+\q Correction du lien entre barycentre et alignement
+\setcounter{ql}{0}
+
+
+
+
+\q Correction de la position du barycentre sur les médianes
+\setcounter{ql}{0}
+
+\ql Si $m_1 = m_2 = m_3$, on montre que $G$ appartient aux médianes du triangle en écrivant :
+   $$
+   \overrightarrow{GA} + \overrightarrow{GB} + \overrightarrow{GC} = \overrightarrow{0}.
+   $$
+
+\ql On démontre que $G$ est situé aux deux tiers de chaque médiane en paramétrant le segment reliant un sommet à son milieu.
+
+\section{Étude de la distance du barycentre à une droite}
+
+\q Correction du projeté orthogonal du barycentre sur $D$
+\setcounter{ql}{0}
+
+\ql Le projeté orthogonal $G'$ de $G$ sur $D$ est défini comme le point de $D$ minimisant :
+   $$
+   d(G, D) = \frac{|ax_G + by_G + c|}{\sqrt{a^2 + b^2}}.
+   $$
+
+\ql En résolvant le système des équations de $D$ et de la droite passant par $G$ de vecteur directeur $\overrightarrow{n} = (a, b)$, on obtient :
+   $$
+   G' \left( x_G - \lambda a, y_G - \lambda b \right),
+   $$
+   avec $\lambda$ tel que $G' \in D$.
+
+\q Correction de la distance du barycentre à $D$
+\setcounter{ql}{0}
+
+\ql On utilise la formule classique de la distance d'un point à une droite :
+   $$
+   d(G, D) = \frac{|ax_G + by_G + c|}{\sqrt{a^2 + b^2}}.
+   $$
+
+\ql Lorsque $G$ appartient à $D$, on a $ax_G + by_G + c = 0$, donc $d(G, D) = 0$.
+
+\section{Lien entre barycentre et produit scalaire}
+
+\q Correction du lien entre barycentre et relations vectorielles
+\setcounter{ql}{0}
+
+\ql On part de la relation :
+   $$
+   m_1 \overrightarrow{GA} + m_2 \overrightarrow{GB} + m_3 \overrightarrow{GC} = \overrightarrow{0}.
+   $$
+
+\ql Cela traduit que $G$ est un équilibre des positions pondérées.
+
+\q Correction de la propriété fondamentale du produit scalaire
+\setcounter{ql}{0}
+
+\ql On développe la somme pondérée des carrés des distances :
+   $$
+   f(M) = m_1 ||\overrightarrow{MA}||^2 + m_2 ||\overrightarrow{MB}||^2 + m_3 ||\overrightarrow{MC}||^2.
+   $$
+
+\ql En utilisant la bilinéarité du produit scalaire, on montre que $f(M)$ est minimal lorsque $M = G$.
+
+\q Correction du lien entre barycentre et projections orthogonales
+\setcounter{ql}{0}
+
+\ql On montre que $G'$ est le barycentre des projections orthogonales des points $A, B, C$ sur $D$ en projetant chaque terme de l'équation vectorielle du barycentre.
+
+\ql Géométriquement, cela montre que la projection orthogonale préserve la relation barycentrique.
+
+\section{Extension en $\mathbb{R}^3$}
+
+\q Correction du barycentre et distance à un plan
+\setcounter{ql}{0}
+
+\ql On applique le même raisonnement que dans $\mathbb{R}^2$ en utilisant le vecteur normal du plan :
+   $$
+   \overrightarrow{n} = (A, B, C).
+   $$
+
+\ql Le projeté orthogonal $G'$ de $G$ sur $P$ est donné par :
+   $$
+   G' \left( x_G - \lambda A, y_G - \lambda B, z_G - \lambda C \right),
+   $$
+   avec $\lambda$ déterminé par l'équation du plan.
+
+\q Correction du cas où le barycentre appartient au plan
+\setcounter{ql}{0}
+
+\ql $G$ appartient à $P$ si :
+   $$
+   A x_G + B y_G + C z_G + D = 0.
+   $$
+
+\ql Cela signifie que la somme des moments pondérés des coordonnées satisfait l'équation du plan.
