@@ -1,6 +1,17 @@
 # math-oral-cpge-bcpst
 
-Exercise sheets for "kholles" in mathematics for BCPST students (1st and 2nd year).
+Exercise sheets in mathematics in various topics:
+- Algebra
+- Analysis
+- Probabilities
+- Geometry
+
+## Usage
+
+Those resources are designed for oral interrogations ("kholles") in "classes préparatoires aux grandes écoles" (CPGE).
+
+They are adapted to the programm for the  BCPST track (1st and 2nd year).
+
 
 ## Versions
 
