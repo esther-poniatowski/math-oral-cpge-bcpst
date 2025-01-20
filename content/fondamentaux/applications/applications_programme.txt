@@ -1,0 +1,20 @@
+PROGRAMME DE COLLES
+====================================================================================================
+Sujet : Applications et Ensembles
+====================================================================================================
+
+QUESTIONS DE COURS
+------------------
+
+- Démonstration : si est injective, alors est injective.
+- Démonstration : si est surjective, alors est surjective.
+
+
+COMPETENCES
+-----------
+
+- Étudier le caractère injectif ou surjectif d’une application donnée en utilisant une des caractérisations données dans le cours.
+- Une composée de deux applications injectives / surjectives est également injective / surjective.
+- Connaître la réciproque partielle à ce résultat :
+  - Si (g o f) est injective, alors f est injective.
+  - Si (g o f) est surjective, alors g est surjective.
