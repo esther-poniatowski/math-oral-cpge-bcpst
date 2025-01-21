@@ -46,6 +46,28 @@
 		"files.trimFinalNewlines": true, // at most one line at the end of the file
 
 		// -----------------------------------------------------------------------------------------
+		// Replace Rules Extension
+		"replacerules.rules": {
+			"replace-smart-quote-with-straight-quote": {
+				"find": "’",
+				"replace": "'",
+				"literal": true
+			},
+			"remove-double-asterisks": {
+				"find": "\\*\\*",
+				"replace": ""
+			},
+		},
+		"replacerules.rulesets": {
+			"standard-cleanup-replacement": {
+				"rules": [
+					"replace-smart-quote-with-straight-quote",
+					"remove-double-asterisks"
+				]
+			}
+		},
+
+		// -----------------------------------------------------------------------------------------
 		// LaTeX Workshop Extension
 
 		"latex-workshop.view.pdf.viewer": "tab", // preview PDF in tab
@@ -117,6 +139,7 @@
 			"iamhyc.overleaf-workshop",
 			"stkb.rewrap",
 			"wayou.vscode-todo-highlight",
+			"bhughes339.replacerules",
 		]
 	}
 }
