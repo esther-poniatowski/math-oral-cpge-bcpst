@@ -57,12 +57,24 @@
 				"find": "\\*\\*",
 				"replace": ""
 			},
+			"replace-inequality-inf": {
+				"find": "≤",
+				"replace": "\\leq",
+				"literal": true
+			},
+			"replace-inequality-sup": {
+				"find": "≥",
+				"replace": "\\geq",
+				"literal": true
+			},
 		},
 		"replacerules.rulesets": {
 			"standard-cleanup-replacement": {
 				"rules": [
 					"replace-smart-quote-with-straight-quote",
-					"remove-double-asterisks"
+					"remove-double-asterisks",
+					"replace-inequality-inf",
+					"replace-inequality-sup"
 				]
 			}
 		},
