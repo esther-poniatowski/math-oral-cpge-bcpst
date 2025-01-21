@@ -16,25 +16,25 @@ COMPETENCES
 - Faire un dénombrement "à la main" :
     - En utilisant les propriétés du cardinal.
     - En rédigeant en français un descriptif des choix à effectuer (en faisant clairement ressortir
-    si l’on fait une disjonction de cas "SOIT ... SOIT ..." ou une succession de choix "... PUIS ...
+    si l'on fait une disjonction de cas "SOIT ... SOIT ..." ou une succession de choix "... PUIS ...
     PUIS ...").
 
 - Reconnaître une des trois situations type vu en classe, et utiliser la formule appropriée.
 
 - Utiliser le lemme des tiroirs ou la formule du crible.
 
-- Passer d’un dénombrement où l’on tient compte de l’ordre à un dénombrement similaire, mais où
-l’ordre n’importe pas (on divise par le nombre de permutations possibles).
+- Passer d'un dénombrement où l'on tient compte de l'ordre à un dénombrement similaire, mais où
+l'ordre n'importe pas (on divise par le nombre de permutations possibles).
 
-- Cardinal d’un ensemble fini : Le cardinal d’un ensemble est son « nombre d’éléments » au sens
-  intuitif du terme (la définition formelle en terme de bijection n’est pas au programme).
+- Cardinal d'un ensemble fini : Le cardinal d'un ensemble est son « nombre d'éléments » au sens
+  intuitif du terme (la définition formelle en terme de bijection n'est pas au programme).
 
 - Opérations sur les ensembles :
-    - Cardinal d’une union disjointe, d’un produit cartésien, de E\A dans le cas où A est inclus
+    - Cardinal d'une union disjointe, d'un produit cartésien, de E\A dans le cas où A est inclus
       dans E.
-    - Cardinal d’une union quelconque : formule du crible (donnée dans le cas de 2, 3 ou 4
+    - Cardinal d'une union quelconque : formule du crible (donnée dans le cas de 2, 3 ou 4
       ensembles)
-    - Cardinal de de l’ensemble des parties d’un ensemble.
+    - Cardinal de de l'ensemble des parties d'un ensemble.
 
 - Lien avec les fonctions :
     - Lemme des bergers
@@ -43,27 +43,27 @@ l’ordre n’importe pas (on divise par le nombre de permutations possibles).
 
 - Trois modèles élémentaires de dénombrement pour compter le nombre de façons de sélectionner p
   éléments dans un ensemble E à n éléments.
-    - Tirages successifs de p éléments avec remise (l’ordre compte, les répétitions sont possibles) :
-        - Modéliser un tirage par un p-uplet d’éléments de E ("p-liste" de E).
+    - Tirages successifs de p éléments avec remise (l'ordre compte, les répétitions sont possibles) :
+        - Modéliser un tirage par un p-uplet d'éléments de E ("p-liste" de E).
         - Si E est de cardinal n, il existe n^p tels tirages.
         - Dénombrement des fonctions de E dans F : une fonction f est déterminée par la donnée des
           images f(x) pour x dans E. Choisir ces images revient à faire un tirage successif avec
-          remise de valeurs dans l’espace d’arrivée.
-    - Tirages successifs de p éléments sans remise (l’ordre compte, pas de répétitions possibles) :
-        - Modéliser un tirage par un p-uplet d’éléments de deux à deux distincts ("p-liste sans
+          remise de valeurs dans l'espace d'arrivée.
+    - Tirages successifs de p éléments sans remise (l'ordre compte, pas de répétitions possibles) :
+        - Modéliser un tirage par un p-uplet d'éléments de deux à deux distincts ("p-liste sans
         répétition" de E).
         - Si E est de cardinal n, il existe n!/(n-p)! tels tirages.
         - Si E est de cardinal n, une permutation de E est une n-liste sans répétition de E,
-          c’est-à-dire le choix d’une façon d’ordonner les éléments de E. Il en existe n!.
+          c'est-à-dire le choix d'une façon d'ordonner les éléments de E. Il en existe n!.
         - Dénombrement des fonctions injectives de E dans F : une fonction f est déterminée par la
           donnée des f(x) pour x dans E. Choisir ces images, cela revient à faire un tirage successif
           sans remise dans F (car comme f est injective, elle ne prend pas deux fois la même valeur).
-    - Tirage simultané de p éléments (l’ordre ne compte, pas de répétitions possibles) :
+    - Tirage simultané de p éléments (l'ordre ne compte, pas de répétitions possibles) :
         - Modéliser un tirage par une partie à p éléments de E ("p-combinaison" de E).
         - Si E est de cardinal n, il existe 'p parmi n' tels tirages.
 
 - Preuves de formules classiques par dénombrement :
-    - Utilisation de l’interprétation combinatoire de 'p parmi n' pour démontrer quelques formules
+    - Utilisation de l'interprétation combinatoire de 'p parmi n' pour démontrer quelques formules
       classiques :
       - Binôme de Newton : (a+b)^n = Somme_{k=0}^n ​(k parmi n​) a^k b^{n-k}
       - Formule de Vandermonde : Somme_{k=0}^n (k parmi a) ({n-k} parmi b) = (n parmi a+b)
