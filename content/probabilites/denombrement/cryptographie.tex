@@ -1,0 +1,86 @@
+% PROBLÈME : Cryptographie
+% ==================================================================================================
+%
+% But
+% ---
+%
+%
+% Objectifs spécifiques
+% ---------------------
+% -
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+
+\title{Dénombrement - }
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Objectif}
+
+\end{document}
+
+
+Ce problème explore le dénombrement dans le contexte d'un système de cryptographie, aboutissant à la
+modélisation d'un protocole de partage de secret.
+
+1. Un message secret est composé de n caractères, chacun pouvant être une lettre majuscule (26
+possibilités) ou un chiffre (10 possibilités). Calculer le nombre de messages possibles.
+
+2. Pour renforcer la sécurité, on décide que deux caractères consécutifs doivent être différents.
+Combien de messages valides peut-on former?
+
+3. On souhaite partager le secret entre m personnes de telle sorte que k personnes soient
+nécessaires pour le reconstituer. Chaque personne reçoit un fragment de n/m caractères. Calculer le
+nombre de façons de distribuer ces fragments.
+
+4. Démontrer que le nombre de sous-ensembles de k personnes parmi m est égal à $\binom{m}{k}$.
+
+5. On utilise un polynôme de degré k-1 pour encoder le secret. Combien de tels polynômes existent
+dans un corps fini à q éléments?
+
+6. Calculer le nombre de points distincts qu'on peut générer à partir de ce polynôme pour distribuer
+aux m participants.
+
+7. Démontrer que n'importe quel sous-ensemble de k points permet de reconstituer le polynôme de
+manière unique.
+
+8. Calculer la probabilité qu'un groupe de k-1 personnes puisse deviner le secret par hasard.
+
+9. On souhaite ajouter de la redondance en distribuant r fragments supplémentaires. Combien de
+distributions différentes peut-on réaliser?
+
+10. Utiliser le lemme des tiroirs pour démontrer qu'il existe nécessairement deux participants ayant
+au moins un caractère en commun dans leurs fragments si m > 36^(n/m).
+
+
+### Problème 3 : Cryptographie et génération sécurisée de codes
+#### Objectif final : Déterminer le nombre de façons de générer des codes sécurisés respectant des règles de sécurité avancées.
+
+#### Contexte :
+Un système de sécurité utilise des codes à usage unique composés de \( n \) caractères pris parmi 36 symboles (26 lettres et 10 chiffres). Pour des raisons de sécurité, les codes doivent respecter plusieurs contraintes :
+- Contenir au moins une lettre et un chiffre.
+- Ne pas contenir deux fois le même caractère consécutivement.
+- Éviter certaines combinaisons interdites (par exemple, des motifs connus "1234", "AAAA", etc.).
+
+#### Questions :
+1. Déterminer le nombre total de codes possibles sans contrainte.
+2. Introduire la contrainte "au moins une lettre et un chiffre" et montrer que l'on peut utiliser la formule du crible.
+3. Calculer combien de codes contiennent uniquement des chiffres ou uniquement des lettres.
+4. Montrer que le nombre de codes valides est donné par une inclusion-exclusion.
+5. Introduire la contrainte "pas de répétition consécutive". Montrer que le dénombrement devient un problème de comptage de chemins dans un graphe d'états.
+6. Décrire ce graphe et démontrer que le nombre de codes valides suit une relation de récurrence.
+7. Ajouter la contrainte des motifs interdits et discuter de son effet sur la combinatoire.
+8. Pour un ensemble \( M \) de motifs interdits, formuler une estimation du nombre de codes valides en fonction de la taille de \( M \).
+9. Discuter une application concrète en cryptographie.
+10. Étendre le raisonnement à la génération de mots de passe robustes en tenant compte de critères modernes de cybersécurité.

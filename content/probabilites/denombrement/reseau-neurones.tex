@@ -1,0 +1,65 @@
+% PROBLÈME : Réseau de neurones
+% ==================================================================================================
+%
+% But
+% ---
+%
+%
+% Objectifs spécifiques
+% ---------------------
+% -
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Dénombrement - Réseau de Neurones Artificiel}
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Objectif}
+
+\end{document}
+
+
+Ce problème explore le dénombrement dans le contexte d'un réseau de neurones artificiels,
+aboutissant à la modélisation de sa capacité d'apprentissage.
+
+1. Un réseau de neurones est composé de n neurones d'entrée, m neurones cachés et p neurones de
+sortie. Combien de connexions possibles y a-t-il entre les couches?
+
+2. Chaque connexion peut avoir un poids entier entre -k et k. Calculer le nombre de configurations
+possibles pour les poids du réseau.
+
+3. On souhaite que la somme des poids entrants pour chaque neurone soit comprise entre -s et s.
+Combien de configurations valides existe-t-il?
+
+4. Démontrer que le nombre de façons de répartir s unités de poids entre n connexions est égal à
+$\binom{s+n-1}{n-1}$.
+
+5. On considère maintenant que les poids sont des nombres réels avec une précision de d décimales.
+Combien de configurations distinctes peut-on avoir?
+
+6. Le réseau doit apprendre à partir d'un ensemble de t exemples d'entraînement. Calculer le nombre
+de façons de choisir ces exemples parmi un ensemble de N données.
+
+7. On souhaite que le réseau puisse classifier correctement au moins r exemples parmi les t.
+Utiliser la formule du crible pour calculer le nombre de configurations satisfaisantes.
+
+8. Démontrer que si le nombre de configurations possibles est supérieur à 2^t, alors il existe
+toujours une configuration qui classe correctement les t exemples.
+
+9. Calculer la probabilité qu'une configuration choisie au hasard classe correctement tous les
+exemples.
+
+10. Utiliser le lemme des tiroirs pour démontrer qu'il existe nécessairement deux configurations
+donnant les mêmes sorties sur l'ensemble d'entraînement si le nombre de configurations est supérieur
+à p^t.

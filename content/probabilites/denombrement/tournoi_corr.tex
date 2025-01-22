@@ -1,0 +1,201 @@
+% CORRECTION : Tournoi
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\usepackage{tikz}
+\usepackage{subcaption} % for subfigures
+\usetikzlibrary{trees} % for tree layout
+\usetikzlibrary{positioning} % for relative positioning
+
+
+\title{Dénombrement - Tournoi avec contraintes}
+\author{}
+\date{2024}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Nombre de parties}
+Un tournoi à élimination directe avec $n$ joueurs nécessite exactement $n-1$ parties.
+
+Démonstration par récurrence :
+\begin{itemize}
+     \item Initialisation : Pour $n = 2$, il faut 1 partie. La propriété est vraie.
+     \item Hérédité : Supposons la propriété vraie pour $n$ joueurs et considérons un tournoi à
+     $n+1$ joueurs.
+     \begin{itemize}
+          \item Le premier tour élimine 1 joueur, laissant $n$ joueurs.
+          \item Par hypothèse de récurrence, il faut $n-1$ parties pour ces $n$ joueurs.
+          \item Donc au total : $1 + (n-1) = n$ parties pour $n+1$ joueurs.
+     \end{itemize}
+     \item Conclusion : La propriété est vraie pour tout $n \geq 2$.
+\end{itemize}
+
+Raisonnement combinatoire :
+
+Chaque partie élimine un joueur. Pour passer de $n$ joueurs à 1 vainqueur, il faut éliminer $n-1$
+joueurs, donc $n-1$ parties.
+
+% --------------------------------------------------------------------------------------------------
+
+\q \textbf{Modélisation par un arbre binaire}
+\begin{enumerate}
+
+    \item Construction d'un arbre binaire :
+
+
+    \item Bijection par le lemme des bergers :
+    \begin{itemize}
+        \item Un ordre de parties peut être décrit comme une séquence d'élimination de \( n-1 \)
+        joueurs.
+        \item Réciproquement, un arbre binaire définit un unique ordre de parties en le parcourant
+        en profondeur.
+    \end{itemize}
+\end{enumerate}
+
+Pour construire méthodiquement tous les arbres binaires complets à \( n \) feuilles :
+
+\begin{itemize}
+     \item A partir de la racine, partitionner l'arbre en deux sous-arbres : \( k \) feuilles pour
+     le sous-arbre gauche, \( n - k \) feuilles pour celui de droite, où \( k \) varie de 1 à
+     \( n - 1 \).
+     \item Pour chaque partition \( (k, n - k) \), créer un nouveau noeud racine et générer
+     récursivement tous les couples possibles de sous-arbres gauches et droits.
+\end{itemize}
+
+Pour \( n = 4 \) feuilles, les partitions possibles sont  \( (1, 3) \), \( (2, 2) \), \( (3, 1) \).
+\begin{itemize}
+     \item Pour \( k = 1 \) et \( n - k = 3 \) : Le sous-arbre gauche est une feuille unique. Le
+  sous-arbre droit est un arbre binaire complet avec 3 feuilles, qui peut être construit en
+  appliquant récursivement la même méthode.
+  \item  Pour \( k = 2 \) et \( n - k = 2 \) : Les deux
+  sous-arbres sont des arbres binaires complets avec 2 feuilles chacun, qui sont des arbres simples
+  avec une racine et deux feuilles.
+  \item Pour \( k = 3 \) et \( n - k = 1 \) : Le sous-arbre gauche
+  est un arbre binaire complet avec 3 feuilles. Le sous-arbre droit est une feuille unique.
+\end{itemize}
+
+\input{figures/tournois_4.tex}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Organisation des parties sans contrainte}
+
+\begin{enumerate}
+    \item Dans un arbre de tournoi pré-rempli, le nombre de façons d'affecter les $n$ joueurs est
+    $n!$. Il s'agit simplement de permuter $n$ éléments dans $n$ positions fixes.
+    Dans un arbre pré-rempli, les structures des matchs sont fixées.
+    Il ne reste qu'à assigner les \( n \) joueurs aux \( n \) feuilles de l'arbre.
+    Il y a \( n! \) façons de les placer (permutation des \( n \) joueurs).
+
+    \item Décompte des structures possibles, sans tenir compte de l'identité des joueurs :
+    $$C_{n-1} = \frac{1}{n} \binom{2(n-1)}{n-1}$$
+    Justification combinatoire :
+
+    \item Placement des joueurs dans un arbre donné : Une fois que la structure d'arbre est fixée,
+    il reste \( n! \) façons d'affecter les joueurs aux feuilles.
+
+    Nombre total de configurations dans un arbre donné :
+    \[
+    C_{n-1} \times n!
+    \]
+
+    \item Comparaison
+     \begin{itemize}
+          \item En tenant compte uniquement de la structure : $C_{n-1}$ configurations.
+          \item En tenant compte du placement des joueurs : $n! \times C_{n-1}$ configurations.
+     \end{itemize}
+     Le facteur $n!$ représente toutes les façons possibles d'étiqueter un arbre donné avec $n$ joueurs
+     distincts. Cette comparaison illustre que pour chaque structure de tournoi possible, il y a n!
+     façons différentes de placer les joueurs dans cette structure.
+
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Séparation des fédérations}
+
+\begin{enumerate}
+
+        \item Explication : Cette contrainte impose une structure particulière à l'arbre binaire car
+        les joueurs d'une même fédération doivent être dans des sous-arbres distincts jusqu'à une
+        certaine profondeur.
+
+        \item Nombre de façons de répartir les joueurs de manière équilibrée :
+        $$\prod_{i=1}^k \binom{n/k}{p_i}$$
+        où $n/k$ est le nombre de positions disponibles pour chaque fédération.
+        % TODO: Expliquer le raisonnement
+
+        \item Nombre d'arbres de tournoi valides :
+        $$\left(\prod_{i=1}^k p_i!\right) \cdot \left(\prod_{i=1}^k \binom{n/k}{p_i}\right)$$ Le
+        premier produit représente les permutations au sein de chaque fédération, le second la
+        répartition entre les fédérations.
+
+        \item Comparaison avec la formule du crible :
+          \begin{itemize}
+               \item Sans contrainte : $n!$
+               \item Avec contrainte :
+               $\left(\prod_{i=1}^k p_i!\right) \cdot \left(\prod_{i=1}^k \binom{n/k}{p_i}\right)$
+          \end{itemize}
+        La différence représente le nombre de configurations interdites.
+
+        \item Comparaison : L'espace des possibilités est plus réduit avec la contrainte car :
+        $$\left(\prod_{i=1}^k p_i!\right) \cdot \left(\prod_{i=1}^k \binom{n/k}{p_i}\right) < n!$$
+        Cette inégalité est due aux restrictions imposées sur le placement des joueurs.
+
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Qualification automatique}
+\begin{enumerate}
+
+        \item Nombre de façons d'organiser le premier tour : $$(n-r-1)!$$
+        Car il reste $n-r$ joueurs à organiser en un tournoi à élimination directe.
+
+        \item Généralisation : Avec $r_i$ joueurs qualifiés pour le i-ème tour, le nombre total de parties est :
+        $$n - 1 - \sum_{i=1}^{\log_2 n} r_i$$
+        Car chaque joueur qualifié réduit d'un le nombre de parties nécessaires.
+
+
+        \item Nombre de façons d'organiser un tel tournoi :
+        $$\prod_{i=1}^{\log_2 n} (n_i-1)!$$
+          où $n_i$ est le nombre de joueurs au i-ème tour.
+          Preuve : À chaque tour, on a un mini-tournoi à organiser, dont le nombre de façons est
+          $(n_i-1)!$.
+
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Têtes de séries}
+\begin{enumerate}
+
+        \item Nombre d'arbres valides avec $s$ têtes de série fixées est :
+        $$(n-s)!$$
+        Car il reste $n-s$ joueurs à placer librement.
+
+        \item Comparaison avec le principe d'inclusion-exclusion :
+          \begin{itemize}
+               \item Sans têtes de série fixées : $n!$
+               \item Avec têtes de série fixées : $(n-s)!$
+          \end{itemize}
+        La différence représente le nombre de configurations où au moins une tête de série n'est pas
+        à sa place prédéterminée.
+
+
+        \item Limite du rapport :
+        $$\lim_{n \to \infty} \frac{(n-s)!}{n!} =
+        \lim_{n \to \infty} \frac{1}{n(n-1)...(n-s+1)} =
+        e^{-s}$$
+
+        Cette limite s'obtient en utilisant la définition de $e$ comme limite de $(1+1/n)^n$ quand
+        $n$ tend vers l'infini.
+
+\end{enumerate}
+
+\end{document}

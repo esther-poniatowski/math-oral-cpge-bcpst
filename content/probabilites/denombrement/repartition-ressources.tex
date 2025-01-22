@@ -1,0 +1,164 @@
+% PROBLÈME : Répartition des ressources
+% ==================================================================================================
+%
+% But
+% ---
+%
+%
+% Objectifs spécifiques
+% ---------------------
+% -
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+
+\title{Dénombrement - Répartition optimale des ressources}
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Contexte}
+
+Une organisation dispose de \textbf{\( n \)} unités de ressources (budget, matériel, temps,
+personnel) et doit les répartir entre \textbf{\( k \)} projets stratégiques. Chaque projet nécessite
+un minimum d'investissement pour être viable, et certaines priorités imposent des allocations
+minimales spécifiques.
+
+\textbf{Objectifs}
+
+Modéliser et analyser un problème d'allocation de ressources limitées en utilisant les outils du
+dénombrement. Étudier les effets des contraintes minimales et de plafonnements sur les possibilités
+de répartition.
+
+\q \textbf{Modélisation du problème sans contrainte spécifique}
+
+   Justifier que, sans contrainte, la répartition des \( n \) ressources entre \( k \) projets est
+   équivalente au dénombrement des solutions de l'équation :
+   \[
+   x_1 + x_2 + \dots + x_k = n
+   \]
+   avec \( x_i \geq 1 \) pour tout \( i \).
+
+\q \textbf{Dénombrement des répartitions possibles}
+
+   Démontrer que le nombre total de répartitions possibles dans ce cas est donné par :
+   \[
+   \binom{n-1}{k-1}
+   \]
+
+\q \textbf{Allocation avec priorités}
+
+   Désormais, certains projets nécessitent une allocation minimale. Par exemple, le projet \( P_1 \)
+   doit recevoir au moins $m$ unités.
+
+   \begin{enumerate}
+       \item Modifier l'équation précédente pour prendre en compte cette contrainte.
+       \item Montrer que ce nouveau problème peut se réduire au cas général via un changement de
+       variables.
+       \item En déduire le nombre de répartitions valides.
+       \item Généraliser au cas où plusieurs projets ont des allocations minimales différentes.
+   \end{enumerate}
+
+\q \textbf{Contraintes de plafonnement}
+
+   Désormais, chaque projet $P_i$ ne peut pas recevoir plus de $M_i$ ressources.
+
+   \begin{enumerate}
+      \item Soit $A_i$ l'ensemble des répartitions où le projet $P_i$ reçoit plus de $M_i$
+      ressources. Exprimer le nombre de répartitions valides en utilisant ces ensembles et la
+      formule d'inclusion-exclusion.
+      \item Calculer $|A_i|$ et $|A_i \cap A_j|$ en fonction de $n$, $k$, $M_i$ et $M_j$.
+      \item En déduire une formule explicite pour le nombre de répartitions valides dans le cas où
+      $k=3$.
+   \end{enumerate}
+
+
+\q \textbf{Ressources discernables}
+
+Dans cette partie, on suppose que les $n$ ressources allouées à chaque projet sont distinguables.
+Chaque unité de ressource est numérotée (ou identifiable).
+
+Ici, l'état final de l'allocation est caractérisé par la partition des $n$ ressources dans les $k$
+projets. Toutefois, la différence d'ordre des ressources à l'intérieur d'un même projet ne compte
+pas. Autrement dit, si un projet $P_i$ contient les ressources $R2,R5,R10$, toute permutation de
+$R2,R5,R10$ au sein de ce projet est considérée comme la même affectation.
+
+\begin{enumerate}
+   \item Expliquer pourquoi leur affectation peut être vue comme une permutation des \( n \)
+   ressources avec répétitions, où chaque projet \( P_i \) reçoit \( x_i \) ressources.
+   \item Exprimer le nombre de telles permutations en fonction de \( x_1, x_2, \dots, x_k \) et $n$.
+   \item Démontrer que la somme de toutes les répartitions valides en faisant varier \( x_1, x_2,
+   \dots, x_k \) sous la contrainte \( x_1 + x_2 + \dots + x_k = n \) donne exactement :
+   \[
+   \sum_{x_1 + x_2 + \dots + x_k = n} \frac{n!}{x_1! x_2! \dots x_k!} = k^n.
+   \]
+   \item Résumer le raisonnement et établir le coefficient multinomial classique :
+   \[
+   \binom{n}{x_1, x_2, \dots, x_k} = \frac{n!}{x_1! x_2! \dots x_k!}.
+   \]
+   \item Expliquer en quoi ce résultat généralise le coefficient binomial et pourquoi il est utilisé
+   pour compter les répartitions de \( n \) objets entre \( k \) groupes distincts.
+   \item Expliquer pourquoi cette somme correspond au fait qu'il existe \( k^n \) façons d'attribuer
+   indépendamment chaque ressource à l'un des \( k \) projets.
+\end{enumerate}
+
+\end{document}
+
+% ==================================================================================================
+\q \textbf{Dénombrement des répartitions avec contraintes de plafonnement par bijection combinatoire}
+
+Précédemment, contrainte $1 \leq x_i \leq M_i, \quad \forall i \in \{1, \dots, k\}$ a été traitée
+par inclusion-exclusion, qui repose sur une soustraction exhaustive des répartitions invalides où
+une ou plusieurs variables dépassent \( M_i \). Cependant, cette méthode devient lourde pour un
+grand nombre de projets.
+
+Une approche alternative consiste à établir une bijection combinatoire directe avec une autre
+structure, de sorte à compter uniquement les répartitions admissibles dès le départ. En effet, le
+problème peut être reformulé comme la construction d'un mot de longueur \( n \) composé de \( k \)
+blocs distincts, chaque bloc représentant une affectation de ressources à un projet et contenant
+entre \( 1 \) et \( M_i \) ressources.
+
+Le comptage peut alors être vu comme le nombre de mots de longueur \( n \) formés par \( k \)
+sous-séquences, dont chacune est bornée en taille.
+
+Dans cette partie, on suppose que les $n$ ressources allouées à chaque projet doivent être
+distinguables.
+
+On note cette quantité par :
+\[
+T(n, k, M_1, M_2, \dots, M_k)
+\]
+
+qui peut être calculée récursivement en comptant les affectations valides :
+\[
+T(n, k, M_1, M_2, \dots, M_k) = \sum_{x_1=1}^{M_1} \sum_{x_2=1}^{M_2} \dots \sum_{x_k=1}^{M_k} \mathbb{1}(x_1 + x_2 + \dots + x_k = n).
+\]
+
+Ce qui donne une formule directe sous forme de coefficient multinomial tronqué :
+\[
+T(n, k, M_1, \dots, M_k) = \sum_{\substack{x_1 + x_2 + \dots + x_k = n \\ 1 \leq x_i \leq M_i}} \frac{n!}{x_1! x_2! \dots x_k!}.
+\]
+
+\begin{enumerate}
+   \item Justifier la bijection entre une répartition valide des ressources et un mot construit
+   selon les règles énoncées.
+   \item Exprimer le nombre de manières de répartir $n$ objets distincts en $k$ groupes de tailles
+   respectives \( x_1, x_2, \dots, x_k \) fixées, sans contraintes supérieures.
+   \item Justifier pourquoi la quantité $T(n, k, M_1, M_2, \dots, M_k)$ peut être définie
+   récursivement en sous-problèmes de taille inférieure. Indication : Considérer les différentes
+   possibilités d'allocation pour le premier projet.
+   \item Justifier les conditions initiales : $T(0,0)=1$ et $T(n, k, M_1, M_2, \dots, M_k) = 0$.
+
+   \item Pourquoi doit-on sommer sur toutes les combinaisons possibles de $$ x_1, x_2, \dots, x_k $$
+   satisfaisant certaines conditions ? Quelles sont ces conditions et comment les exprimer
+   mathématiquement ?
+\end{enumerate}

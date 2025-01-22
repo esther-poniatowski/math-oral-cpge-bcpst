@@ -32,14 +32,13 @@ l'ordre n'importe pas (on divise par le nombre de permutations possibles).
 - Opérations sur les ensembles :
     - Cardinal d'une union disjointe, d'un produit cartésien, de E\A dans le cas où A est inclus
       dans E.
-    - Cardinal d'une union quelconque : formule du crible (donnée dans le cas de 2, 3 ou 4
-      ensembles)
+    - Cardinal d'une union quelconque : formule du crible (dans le cas de 2, 3 ou 4 ensembles)
     - Cardinal de de l'ensemble des parties d'un ensemble.
 
 - Lien avec les fonctions :
     - Lemme des bergers
     - Liens entre cardinal et injectivité/surjectivité/bijectivité
-    - Corollaire : Lemme des tiroirs
+    - Lemme des tiroirs (corollaire)
 
 - Trois modèles élémentaires de dénombrement pour compter le nombre de façons de sélectionner p
   éléments dans un ensemble E à n éléments.

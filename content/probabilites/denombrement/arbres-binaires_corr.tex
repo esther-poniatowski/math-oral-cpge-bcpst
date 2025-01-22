@@ -1,0 +1,282 @@
+% CORRECTION : Arbres Binaires
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\usepackage{tikz}
+\usepackage{subcaption} % for subfigures
+\usetikzlibrary{trees} % for tree layout
+\usetikzlibrary{positioning} % for relative positioning
+\usetikzlibrary{patterns,calc} % for patterns
+\usetikzlibrary{trees,arrows} % for tree layout
+
+\title{Dénombrement - Tournoi avec contraintes}
+\author{}
+\date{2024}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Nombre de noeuds}
+
+\begin{enumerate}
+    \item En toute généralité : \( N = I + F \).
+
+    \item Pour un arbre binaire plein :
+
+    Initialisation (cas de \( N = 1 \)) :
+
+    Si l'arbre ne contient qu'un seul noeud, alors ce noeud
+    est une feuille.
+    \begin{itemize}
+        \item Il n'y a aucun noeud interne, donc \( I = 0 \).
+        \item Il y a exactement une feuille, donc \( F = 1 \).
+    \end{itemize}
+    On vérifie que \( F = I + 1 \), ce qui est vrai puisque \( 1 = 0 + 1 \).
+
+    Hypothèse de récurrence :
+
+    Supposons que pour un arbre binaire plein ayant \( N \) noeuds, la relation \( F = I + 1 \) est
+    vérifiée.
+
+    Considérons un arbre binaire plein avec \( N+2 \) noeuds.
+    \begin{itemize}
+        \item Ajouter un nouveau niveau à l'arbre signifie que l'on convertit une feuille existante
+        en un noeud interne ayant deux nouveaux enfants.
+        \item Ainsi, le nombre de noeuds internes augmente de 1 : \( I' = I + 1 \).
+        \item Le nombre de feuilles augmente de 1 (car une feuille disparaît et deux nouvelles
+        apparaissent) : \( F' = F + 1 \).
+    \end{itemize}
+    La relation est toujours vérifiée après cette transformation :
+    \[
+    F' = F + 1 = (I + 1) + 1 = I' + 1
+    \]
+
+    Conclusion : Par récurrence, la relation \( F = I + 1 \) est vraie pour tout arbre binaire
+    plein.
+
+    \item Nombre de noeuds internes et de feuilles dans un arbre binaire plein :
+
+    $ N = I + F = I + (I + 1) = 2I + 1 $ donc $ I = \frac{N - 1}{2} $
+
+    $ F = N - I = N - \frac{N - 1}{2} = \frac{N + 1}{2} $
+
+    \item Pour un arbre binaire parfait de hauteur \(h\) :
+
+    Soit \(N_k\) le nombre de noeuds au niveau \(k\).
+
+    Puisque l'arbre est complet, tous les niveaux sont remplis, donc :
+    \[ N_k = 2^k \text{ pour } 0 \leq k \leq h \]
+
+    Le nombre total de noeuds \(N\) est la somme des noeuds à tous les niveaux :
+    \[ N = \sum_{k=0}^h N_k = \sum_{k=0}^h 2^k = 2^{h+1} - 1 \]
+
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Dénombrement des structures d'arbres binaires}
+
+\begin{enumerate}
+    \item Méthode récursive pour construire tous les arbres binaires complets à \( n \) feuilles :
+    \begin{itemize}
+         \item A partir de la racine, partitionner l'arbre en deux sous-arbres : \( k \) feuilles
+         pour le sous-arbre gauche, \( n - k \) feuilles pour celui de droite, où \( k \) varie de 1
+         à \( n - 1 \).
+         \item Pour chaque partition \( (k, n - k) \), créer un nouveau noeud racine et générer
+         récursivement tous les couples possibles de sous-arbres gauches et droits.
+    \end{itemize}
+
+    \item Illustration pour \( n = 4 \) feuilles :
+
+    Les partitions possibles sont  \( (1, 3) \), \( (2, 2) \), \( (3, 1) \).
+    \begin{itemize}
+         \item Pour \( k = 1 \) et \( n - k = 3 \) : Le sous-arbre gauche est une feuille unique. Le
+      sous-arbre droit est un arbre binaire complet avec 3 feuilles, qui peut être construit en
+      appliquant récursivement la même méthode.
+      \item  Pour \( k = 2 \) et \( n - k = 2 \) : Les deux
+      sous-arbres sont des arbres binaires complets avec 2 feuilles chacun, qui sont des arbres simples
+      avec une racine et deux feuilles.
+      \item Pour \( k = 3 \) et \( n - k = 1 \) : Le sous-arbre gauche
+      est un arbre binaire complet avec 3 feuilles. Le sous-arbre droit est une feuille unique.
+    \end{itemize}
+
+    \input{figures/arbres_4.tex}
+
+    \item Relation de récurrence :
+
+    Soit \(T_n\) le nombre d'arbres binaires avec \(n\) feuilles. On a :
+    \[ T_n = \sum_{k=1}^{n-1} T_k T_{n-k} \]
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Chemins de Dyck}
+
+\begin{enumerate}
+    \item Nombre total de chemins de $(0,0)$ à $(2n,0)$ :
+
+    Un chemin allant de \( (0,0) \) à \( (2n,0) \) consiste en \( n \) montées \( (+1, +1) \) et \(
+    n \) descentes \( (+1, -1) \). Le nombre total de tels chemins (sans contrainte) est donné par :
+    \[ \binom{2n}{n} \]
+    car il faut choisir $n$ pas parmi $2n$ pour les pas montants.
+
+    \item Bijection entre les chemins passant sous l'axe et les chemins de $(0,0)$ à $(2n,-2)$ :
+
+    Soit un chemin qui passe sous l'axe \( y=0 \), soit \( P(2k, -1) \) le premier point où il
+    atteint l'axe \( y=-1 \), où \( k \) est le plus petit entier tel que le chemin atteint \( -1
+    \).
+
+    Réflexion du chemin par rapport à l'axe \( y=-1 \) : Après ce premier passage sous l'axe en
+    \( P \), chaque montée \( (+1,+1) \) est échangée avec une descente \( (+1,-1) \) et
+    inversement.
+
+    Dans le chemin initial, la portion restante après $ P $ réalise un déplacement vertical net de 1
+    unité vers le haut, pour remonter de l'ordonnée -1 au point finale \( (2n,0) \). Dans le chemin
+    réfléchi, ce déplacement vertical est inversé à partir de l'ordonnée -1, de sorte qu'il aboutit
+    en \( (2n,-2) \). Cette réflexion transforme donc un chemin qui allait de \( (0,0) \) à \(
+    (2n,0) \) en un chemin allant de \( (0,0) \) à \( (2n-2) \).
+
+    Réciprocité : Soit un chemin de \( (0,0) \) à \( (2n,-2) \), la réflexion inverse fournit un
+    chemin passant sous l'axe.
+
+    Conclusion : Chaque chemin passant sous l'axe est donc mis en correspondance bijective avec un
+    chemin de \( (0,0) \) à \( (2n-2,2) \).
+
+    \input{figures/chemins-reflexion.tex}
+
+    \item Le nombre de chemins passant sous l'axe  est égal au nombre de chemins allant de \( (0,0)
+    \) à \( (2n,-2) \). Pour aboutir à ce point en $2n$ étapes, il faut effectuer \( 1 \) descente
+    de plus que de montées. Il faut donc choisir \( n-1 \) pas parmi \( 2n \) pour les pas montants.
+    Ainsi, le nombre de chemins passant sous l'axe est donné par :
+    \[
+    \binom{2n}{n-1}
+    \]
+
+    \item Nombre de chemins de Dyck :
+
+    \begin{itemize}
+        \item Le nombre total de chemins de \( (0,0) \) à \( (2n,0) \) est donné par :
+        \[
+        \binom{2n}{n}
+        \]
+        \item  Le nombre de chemins passant sous l'axe est égal à :
+        \[
+        \binom{2n}{n-1}
+        \]
+        \item Le nombre chemins chemins de Dyck (qui ne passent jamais sous l'axe) est obtenu par
+        soustraction :
+        \[
+        C_n = \binom{2n}{n} - \binom{2n}{n-1}
+        \]
+    \end{itemize}
+
+    \item Identité de Darboux :
+
+    Pour former une équipe de \( n + 1 \) membres parmi \( 2n \) ainsi que le capitaine de l'équipe,
+    deux méthodes équivalentes sont possibles :
+    \begin{itemize}
+        \item Choisir les \( n + 1 \) membres parmi les \( 2n \) puis choisir le capitaine parmi les
+        \( n + 1 \) membres : \(\binom{2n}{n+1} \times (n+1)\).
+        \item Choisir les \( n \) membres "non-capitaines"  parmi les \( 2n \) puis ajouter le
+        capitaine parmi les \( n \) personnes restantes : \(\binom{2n}{n} \times n\).
+    \end{itemize}
+    Conclusion : $$ (n+1)\binom{2n}{n+1} = n\binom{2n}{n} $$
+
+    \item Exprimons $\binom{2n}{n-1}$ en fonction de $\binom{2n}{n}$ en utilisant la formule
+    précédente :
+    $$\binom{2n}{n-1} = \binom{2n}{n+1} = \frac{n}{n+1}\binom{2n}{n}$$
+
+    Substituons cette expression dans l'équation originale :
+    $$\binom{2n}{n} - \binom{2n}{n-1} = \binom{2n}{n} - \frac{n}{n+1}\binom{2n}{n}$$
+
+    Factorisons et simplifions :
+    $$\binom{2n}{n}\left(1 - \frac{n}{n+1}\right) = \frac{1}{n+1}\binom{2n}{n}$$
+
+    Ainsi, le nombre de chemins de Dyck est donné par le $n$-ième nombre de Catalan :
+    \[ C_n = \frac{1}{n+1} \binom{2n}{n} \]
+
+    \item Bijection entre chemins de Dyck et arbres binaires pleins :
+
+    Construction d'un chemin de Dyck à partir d'un arbre binaire plein :
+    \begin{itemize}
+        \item Partir de la racine de l'arbre.
+        \item À chaque visite d'un noeud interne pour la première fois, ajouter un pas montant \(
+        (+1,+1) \).
+        \item À chaque fois que l'on termine l'exploration d'un sous-arbre et que l'on remonte à son
+        parent, ajouter un pas descendant \( (+1,-1) \).
+        \item Continuer jusqu'à ce que l'arbre soit entièrement exploré.
+    \end{itemize}
+
+    L'arbre ayant \( n \) noeuds internes, il possède exactement \( n \) montées et \( n \)
+    descentes, donnant ainsi un chemin de \( 2n \) étapes qui ne passe jamais sous l'axe.
+
+    Reconstruction réciproque d'un arbre binaire à partir d'un chemin de Dyck :
+    \begin{itemize}
+        \item Commencer avec une racine.
+        \item Chaque montée \( (+1,+1) \) ajoute un nouveau noeud interne qui devient temporairement
+        le noeud courant.
+        \item Chaque descente \( (+1,-1) \) signifie que l'on remonte vers le parent du noeud
+        courant.
+    \end{itemize}
+    Une fois l'arbre entièrement reconstruit, chaque noeud interne a exactement deux
+    enfants.
+
+    Exemple d'un arbre binaire et de son chemin de Dyck associé :
+    \begin{center}
+        \input{figures/arbre-chemin-bijection.tex}
+    \end{center}
+
+    Parcours en profondeur :
+    \begin{itemize}
+        \item Commencer à la racine (montée) : \( \uparrow \).
+        \item Descendre dans le sous-arbre gauche (montée) : \( \uparrow \).
+        \item Visiter un noeud feuille (descente) : \( \downarrow \).
+        \item Remonter au parent et visiter l'enfant droit (montée) : \( \uparrow \).
+        \item Terminer ce sous-arbre (descente) : \( \downarrow \).
+        \item Remonter à la racine et visiter l'enfant droit (montée) : \( \uparrow \).
+        \item Ce dernier noeud est une feuille (descente) : \( \downarrow \).
+        \item Enfin, terminer (descente) : \( \downarrow \).
+    \end{itemize}
+
+    Chemin de Dyck correspondant :
+    \(
+    \uparrow \uparrow \downarrow \uparrow \downarrow \downarrow \uparrow \downarrow
+    \)
+
+    \item Nombre d'arbres binaires à \( n \) noeuds internes :
+
+    Par la bijection précédente, le nombre d'arbres binaires à \( n \) noeuds internes est donné par
+    le \( n \)-ième nombre de Catalan : \( C_n \).
+
+\end{enumerate}
+
+\end{document}
+
+% ==================================================================================================
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Parenthésage des expressions mathématiques}
+
+\begin{enumerate}
+    \item Représentation d'une expression parenthésée par un arbre binaire :
+
+    \begin{itemize}
+        \item Les feuilles représentent les termes.
+        \item Les noeuds internes représentent les opérations.
+        \item Le sous-arbre gauche représente la partie gauche de l'opération.
+        \item Le sous-arbre droit représente la partie droite de l'opération.
+    \end{itemize}
+
+    \item Démonstration que le nombre de parenthésages est le $n$-ième nombre de Catalan :
+
+    Soit $P_n$ le nombre de parenthésages pour $n+1$ termes. Pour parenthéser $n+1$ termes, on
+    choisit un opérateur principal qui divise l'expression en deux parties. On a donc :
+    \[ P_n = \sum_{k=1}^n P_{k-1} P_{n-k} \] Cette relation est identique à celle des nombres de
+    Catalan. Donc $P_n = C_n$.
+\end{enumerate}

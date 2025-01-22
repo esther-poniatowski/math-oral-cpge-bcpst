@@ -1,0 +1,172 @@
+% CORRECTION : Système de recommandations
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+
+\title{Dénombrement - Système de recommandations d'articles}
+\author{}
+\date{2024}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------------
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Sélection personnalisée d'articles}
+
+    \textbf{Nombre total de recommandations possibles}
+
+    Pour chaque utilisateur, il y a $n$ choix possibles d'articles. Comme il y a $m$ utilisateurs, le
+    nombre total de configurations différentes de recommandations est :
+    $$ n^m $$
+
+    Ce résultat correspond au nombre de fonctions possibles de l'ensemble des utilisateurs vers
+    l'ensemble des articles.
+
+   \begin{enumerate}
+
+      \item  Si l'ordre des recommandations compte, il s'agit d'un arrangement de $p$ articles parmi
+      $n$. Nombre de recommandations distinctes pour un utilisateur :
+      $$ A_n^p = \frac{n!}{(n-p)!} $$
+
+      \item Si l'ordre ne compte pas, il s'agit d'une combinaison de $p$ articles parmi $n$.
+      Nombre de recommandations distinctes pour un utilisateur :
+      $$ C_n^p = \binom{n}{p} = \frac{n!}{p!(n-p)!} $$
+    \end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Notes et Profils d'utilisateurs}
+    \begin{enumerate}
+
+        \item Nombre de configurations de notes pour un utilisateur :
+
+        Chaque utilisateur note exactement \( n \) articles, et chaque note peut prendre \( 5 \)
+        valeurs, donc le nombre de configurations possibles est :
+        $$ 5^n $$
+
+        Nombre total de configurations de notes pour \( m \) utilisateurs :
+        $$ (5^n)^m = 5^{n \cdot m} $$
+
+        \item Nombre de configurations possibles de notes pour deux utilisateurs similaires :
+
+        Choix des notes attribuées par les utilisateurs \(i\) et \(j\) pour coincider sur exactement
+        \(r\) articles (avec \(0 \le r \le n\)) :
+
+        \begin{itemize}
+            \item Choisir d'abord le vecteur de notes de l'utilisateur \(i\) : il y a \(5^n\) façons
+            de procéder.
+            \item Choisir les \(r\) articles où les deux utilisateurs auront la même note : il y a
+            \(\displaystyle \binom{n}{r}\) façons de choisir ces articles.
+            \item Sur chacun de ces \(r\) articles, la note de \(j\) est déjà imposée par la note de
+            \(i\). Il n'y a donc pas de choix supplémentaire.
+            \item Sur les \(n - r\) autres articles, il faut que \(j\) diffère de \(i\), ce qui
+            laisse 4 autres valeurs possibles : il y a donc \(4^{\,n-r}\) possibilités pour ces
+            \(n-r\) articles.
+            \item Le nombre de façons de rendre les notes de \(i\) et \(j\) exactement concordantes
+            sur \(r\) articles (et différentes sur les autres) est donc :
+            \[
+            5^n \;\times\; \binom{n}{r}\,4^{n-r}
+            \]
+        \end{itemize}
+
+        Coicidence sur au moins \(h\) articles : il suffit de sommer le résultat précédent pour \(r
+        = h, h+1, \ldots, n\). Le nombre de manières de choisir les vecteurs de \(i\) et \(j\)
+        satisfaisant cette condition est
+        \[
+        5^n \;\sum_{r=h}^{n} \binom{n}{r}\,4^{\,n-r}
+        \]
+
+        \item Si $m > 5^n$, alors par le principe des tiroirs, il existe nécessairement deux
+        utilisateurs ayant exactement les mêmes notes sur les $n$ articles. En effet, il y a $m$
+        utilisateurs (objects) et $5^n$ configurations de notes possibles (tiroirs), donc il y a
+        plus d'utilisateurs que de combinaisons de notes possibles.
+        \end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Catégories d'articles thématiques}
+    \begin{enumerate}
+
+        \item Ce problème revient à compter le nombre de façons de partitionner un ensemble de $n$
+        éléments en $m$ sous-ensembles non vides car :
+        \begin{itemize}
+            \item Chaque article doit être assigné à exactement une catégorie (partition).
+            \item Chaque catégorie doit contenir au moins un article (sous-ensembles non vides).
+            \item L'ordre des articles dans chaque catégorie n'importe pas.
+        \end{itemize}
+
+        \item Pour former une partition de $n$ éléments en $m$ sous-ensembles, considérons les deux
+        cas possibles lors de l'ajout du n-ème élément :
+        \begin{itemize}
+            \item Le n-ème élément est placé dans l'un des $m$ sous-ensembles existants : $ m \times S(n-1,m)$ possibilités.
+            \begin{itemize}
+                \item Il y a $m$ façons de choisir le sous-ensemble.
+                \item Pour chacun de ces choix, les $n-1$ éléments précédents doivent être répartis
+                en $m$ sous-ensembles.
+            \end{itemize}
+
+            \item Le n-ème élément forme un nouveau sous-ensemble à lui seul : $ S(n-1,m-1)$
+            possibilités.
+            \begin{itemize}
+                \item Dans ce cas, les $n-1$ éléments précédents doivent être répartis en $m-1$
+                sous-ensembles.
+            \end{itemize}
+        \end{itemize}
+
+        La somme de ces deux cas donne la relation de récurrence :
+        $$ S(n, m) = m \cdot S(n-1, m) + S(n-1, m-1) $$
+
+        \item Si chaque élément est librement attribué à l'un des \( m \) sous-ensembles, alors chaque élément a
+        \( m \) choix, donc il y a :
+        \[
+        m^n
+        \]
+        façons d'affecter les \( n \) éléments.
+
+        \item Le principe d'inclusion-exclusion permet de corriger cette quantité pour ne conserver
+        que les répartitions où chaque sous-ensemble est non vide :
+        \begin{itemize}
+            \item On commence par compter toutes les répartitions (\( m^n \)).
+            \item On exclut les répartitions où au moins un sous-ensemble est vide.
+            \item On réintroduit les répartitions où au moins deux sous-ensembles sont vides.
+            \item Et ainsi de suite, jusqu'à inclure les répartitions où tous les sous-ensembles
+            sont non vides.
+        \end{itemize}
+
+        \item Si on force au moins un sous-ensemble à être vide, il reste \( m-k \) sous-ensembles
+        disponibles pour placer les \( n \) éléments. Chaque élément peut être placé librement
+        dans l'un de ces \( m-k \) sous-ensembles, donc il y a \( (m-k)^n \) façons de placer les
+        éléments.
+
+        On doit compter toutes les façons de choisir \( k \) sous-ensembles à rendre vides : il y a
+        \( \binom{m}{k} \) façons de choisir les \( k \) sous-ensembles à supprimer.
+
+        \item En appliquant le principe d'inclusion-exclusion, nous obtenons :
+        \[
+        \sum_{k=1}^{m} (-1)^k \binom{m}{k} (m-k)^n
+        \]
+        La somme est sur tous les \( k \) sous-ensembles à rendre vides.
+
+        \item Le raisonnement précédent compte les répartitions où les sous-ensembles sont
+        identifiables (c'est-à-dire qu'on distingue quel sous-ensemble est quel groupe).
+
+        Cependant, on cherche à ne compter que le nombre de partitions, sans prendre en compte l'ordre des
+        sous-ensembles.
+
+        Comme il y a \( m! \) façons d'ordonnancer \( m \) sous-ensembles, il faut donc diviser par \( m! \)
+        pour obtenir le nombre réel de partitions :
+        \[
+        S(n, m) = \frac{1}{m!} \sum_{k=0}^{m} (-1)^k \binom{m}{k} (m-k)^n
+        \]
+
+    \end{enumerate}
+
+
+\end{document}

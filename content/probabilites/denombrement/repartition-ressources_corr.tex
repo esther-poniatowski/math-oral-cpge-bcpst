@@ -1,0 +1,263 @@
+% CORRECTION : Répartition des ressources
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+
+\title{Dénombrement - Répartition optimale des ressources}
+\author{}
+\date{2024}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Modélisation du problème sans contrainte spécifique}
+
+La répartition des $ n $ ressources entre $ k $ projets est équivalente au dénombrement des
+solutions de l'équation :
+$$
+x_1 + x_2 + \dots + x_k = n
+$$
+avec $ x_i \geq 1 $ pour tout $ i $.
+
+En effet, chaque solution de cette équation correspond à une répartition possible des ressources, où
+$ x_i $ représente le nombre de ressources allouées au projet $ i $.
+
+La condition $ x_i \geq 1$ assure que chaque projet reçoit au moins une unité de ressource.
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Dénombrement des répartitions possibles}
+
+Le nombre total de répartitions possibles est donné par :
+$$
+\binom{n-1}{k-1}
+$$
+
+Considérons $ n $ unités alignées. Former $ k $ groupes revient à placer $ k-1 $ séparateurs
+entre ces unités. Il y a $ n-1 $ espaces entre les unités où placer ces séparateurs.
+
+Choisir $ k-1 $ positions parmi ces $ n-1 $ espaces revient à choisir $ k-1$ éléments parmi
+$n-1 $, d'où la formule $ \binom{n-1}{k-1} $.
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Allocation avec priorités}
+
+   \begin{enumerate}
+
+      \item Pour prendre en compte la contrainte que le projet $ P_1 $ doit recevoir au moins $m$
+      unités, on modifie l'équation :
+      $$
+      (x_1 + m) + x_2 + \dots + x_k = n
+      $$
+      qui devient :
+      $$
+      x_1 + x_2 + \dots + x_k = n - m
+      $$
+      avec $ x_1 \geq 0 $ et $ x_i \geq 1 $ pour $ i \geq 2 $.
+
+      En effet, on attribute automatiquement $ m $ unités pour le projet $ P_1 $.
+
+      \item Réduction au cas général :
+
+      Pour garantir que toutes les nouvelles variables sont bien supérieures ou égales à 1, posons :
+      \begin{align*}
+      y_1 &= x_1 + 1 \\
+      y_i &= x_i \quad \forall i \geq 2
+      \end{align*}
+
+      L'équation devient :
+      $$
+      (y_1 - 1) + y_2 + ... + y_k = n - m
+      $$
+      soit :
+      $$
+      y_1 + y_2 + \dots + y_k = n - m + 1
+      $$
+
+      Ce problème se ramène au cas général avec $ n - m + 1 $ ressources à répartir.
+
+      \item En utilisant la formule précédente, le nombre de répartitions possibles est :
+      $$
+      \binom{(n-m+1)-1}{k-1} = \binom{n-m}{k-1}
+      $$
+
+      \item Extension aux priorités multiples :
+
+      Pour des allocations minimales $ m_1, m_2, \dots, m_k $ pour chaque projet, l'équation
+      devient :
+      $$
+      (x_1 - m_1) + (x_2 - m_2) + \dots + (x_k - m_k) = n - (m_1 + m_2 + \dots + m_k)
+      $$
+      avec $ x_i - m_i \geq 0 $ pour tout $ i $.
+
+      En posant $ y_i = x_i - m_i + 1 $, on se ramène au cas général avec $ n - \sum_{i=1}^k m_i + k $
+      ressources à répartir.
+
+   \end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Contraintes de plafonnement}
+   \begin{enumerate}
+
+      \item Soit $S$ l'ensemble de toutes les répartitions possibles et $A_i$ l'ensemble des
+      répartitions où $P_i$ reçoit plus de $m_i$ ressources. Le nombre de répartitions valides est
+      donné par :
+      $$
+      |S \setminus (A_1 \cup A_2 \cup \dots \cup A_k)|
+      $$
+      D'après la formule d'inclusion-exclusion :
+      $$
+      |S \setminus (A_1 \cup A_2 \cup \dots \cup A_k)| = |S| - \sum_i |A_i| + \sum_{i<j} |A_i \cap A_j| - \sum_{i<j<l} |A_i \cap A_j \cap A_l| + \dots
+      $$
+
+      \item Calcul de $|A_i|$ et $|A_i \cap A_j|$ :
+
+      Reformulons le problème en tenant compte des contraintes et du changement de variable associé.
+
+      Cardinal de \( |A_i | \) :
+
+      L'ensemble \( A_i \) représente les répartitions où \( x_i > m_i \), ou encore
+      \( x_i \geq m_i+1 \).
+      Effectuons un changement de variable pour garantir que toutes les nouvelles variables sont
+      supérieures ou égales à 1 :
+      \[
+      y_i = x_i - m_i \quad \Rightarrow \quad y_i \geq 1
+      \]
+
+      Ce changement entraîne une réécriture de l'équation de répartition :
+      \[
+      x_1 + \dots + x_{i-1} + y_i + x_{i+1} + \dots + x_k = n - m_i
+      \]
+
+      Le nombre de solutions en entiers naturels de cette équation est donné par la formule
+      classique du nombre de solutions de :
+      \[
+      |A_i| = \binom{n - m_i - 1}{k-1}
+      \]
+
+      Cardinal de \( |A_i \cap A_j| \) :
+
+      L'intersection \( A_i \cap A_j \) représente les répartitions où deux projets \( P_i \) et \(
+      P_j \) reçoivent plus que leur plafond respectif, c'est-à-dire :
+      \[
+      x_i > m_i \quad \text{et} \quad x_j > m_j
+      \]
+      En introduisant les nouvelles variables, l'équation devient :
+      \[
+      x_1 + \dots + x_{i-1} + y_i + x_{i+1} + \dots + x_{j-1} + y_j + x_{j+1} + \dots + x_k = n - (m_i + m_j)
+      \]
+      Le nombre de solutions en entiers naturels de cette nouvelle équation est :
+      \[
+      |A_i \cap A_j| = \binom{n - (m_i + m_j) - 1}{k-1}.
+      \]
+
+      \item Pour $k=3$, la formule explicite est :
+      \begin{align*}
+      &\binom{n-1}{2} - \binom{n-m_1-1}{2} - \binom{n-m_2-1}{2} - \binom{n-m_3-1}{2} \\
+      &+ \binom{n-m_1-m_2-1}{2} + \binom{n-m_1-m_3-1}{2} + \binom{n-m_2-m_3-1}{2}
+      \end{align*}
+      Cette formule compte le nombre total de répartitions, puis soustrait les répartitions violant
+      chaque contrainte individuellement, et ajoute les répartitions violant deux contraintes
+      simultanément pour éviter de les compter deux fois.
+
+   \end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q \textbf{Ressources discernables}
+
+   \begin{enumerate}
+
+      \item Modélisation du problème comme une permutation avec répétitions :
+
+      Une "permutation avec répétitions" décrit une suite de longueur $n$ dans laquelle certains
+      "symboles" apparaissent plusieurs fois. Dans l'allocation de $n$ ressources à
+      $k$ projets, ces symboles correspondent aux projets $P_i$.
+
+      Au lieu d'énumérer directement toutes les fonctions qui attribuent chaque ressource au projet
+      de son choix (ce qui donne $k^n$ affectations), il est possible d'envisager chaque
+      distribution comme une permutation de $n$ positions, mais où le symbole "i" apparaît
+      exactement $x_i$ fois, ce qui motive l'expression "permutation avec répétitions".
+
+      \item Expression du nombre de permutations avec répétitions :
+
+      Le nombre total de permutations des \( n \) ressources est $ n! $.
+
+      Cependant, au sein de chaque projet \( P_i \), les \( x_i \) ressources sont interchangeables
+      (elles ne sont pas distinguables à l'intérieur du groupe). Il faut donc diviser par le nombre
+      de permutations internes à chaque groupe, soit \( x_1! \), \( x_2! \), …, \( x_k! \). Ainsi,
+      le nombre total d'affectations possibles est donné par :
+      \[
+      \frac{n!}{x_1! x_2! \dots x_k!}
+      \]
+
+      Ce résultat est un coefficient multinomial, qui compte le nombre de façons de répartir des
+      objets discernables en groupes indiscernables.
+
+
+      \item Somme des répartitions valides sous la contrainte \( x_1 + x_2 + \dots + x_k = n \) :
+
+      Interprétation combinatoire :
+      \begin{itemize}
+         \item Chaque ressource peut être affectée à l'un des \( k \) projets de manière indépendante.
+         \item Puisqu'il y a \( n \) ressources, le nombre total de façons d'attribuer ces ressources est simplement \( k^n \).
+      \end{itemize}
+      Ainsi :
+      \[
+      \sum_{x_1 + x_2 + \dots + x_k = n} \frac{n!}{x_1! x_2! \dots x_k!} = k^n
+      \]
+
+   \end{enumerate}
+
+\end{document}
+% ==================================================================================================
+
+% ==================================================================================================
+\q \textbf{Dénombrement des répartitions avec contraintes de plafonnement par bijection combinatoire}
+
+   \begin{enumerate}
+      \item Établissement de la bijection : Cette relation est bijective car à chaque répartition
+      valide correspond un unique mot construit selon les règles, et réciproquement, chaque mot
+      construit selon les règles définit une unique répartition valide des ressources.
+
+      \item Décomposition récursive en sous-problèmes :
+
+      On peut construire une répartition valide en affectant un certain nombre \( x_1 \) de
+      lettres au premier bloc, puis en répartissant les \( n - x_1 \) lettres restantes
+      entre les \( k-1 \) autres projets. Puisque \( x_1 \) doit être compris entre \( 1 \) et \(
+      M_1 \) :
+      \[
+      T(n, k, M_1, M_2, \dots, M_k) = \sum_{x_1=1}^{M_1} T(n - x_1, k-1, M_2, \dots, M_k)
+      \]
+
+      \item Nombre de répartitions de $n$ objects distincts en $k$ groupes de tailles données par
+      $x_1, x_2, \dots, x_k$ :
+
+      \item Somme générale :
+      Il faut sommer sur toutes les valeurs possibles de $x_1$ entre 1 et $M_1$, puis répéter le
+      même processus pour les autres blocs. La somme sur toutes les combinaisons possibles est
+      nécessaire car chaque combinaison valide des $x_1i$ représente une répartition possible.
+
+      Conditions à respecter :
+      \begin{align*}
+      x_1 + x_2 + \dots + x_k &= n \\
+      1 \leq x_i &\leq M_i
+      \end{align*}
+
+      La solution finale  correspond au comptage des affectations valides en utilisant le
+      coefficient multinomial, qui compte le nombre de façons d'organiser \( n \) ressources en \( k
+      \) groupes de tailles données. La somme assure que seules les répartitions respectant \( 1
+      \leq x_i \leq M_i \) sont prises en compte :
+      \[
+      T(n, k, M_1, \dots, M_k) = \sum_{\substack{x_1 + x_2 + \dots + x_k = n \\ 1 \leq x_i \leq M_i}} \frac{n!}{x_1! x_2! \dots x_k!}
+      \]
+
+   \end{enumerate}

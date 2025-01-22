@@ -1,0 +1,71 @@
+
+
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 1 : Partition (1, 3)
+  \node {F}
+    child { node {J 1} }
+    child { node {1/2}
+      child { node {J 2} }
+      child { node {1/4}
+        child { node {J 3} }
+        child { node {J 4} }
+      }
+    };
+  \node[below=1cm of current bounding box.south] {(1, 3)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 2 : Partition (1, 3)
+  \node {F}
+    child { node {J 1} }
+    child { node {1/2}
+      child { node {1/4}
+        child { node {J 2} }
+        child { node {J 3} }
+      }
+      child { node {J 4} }
+    };
+  \node[below=1cm of current bounding box.south] {(1, 3)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 3 : Partition (2, 2)
+  \node {F}
+    child { node {1/2}
+      child { node {J 1} }
+      child { node {J 2} }
+    }
+    child { node {1/2}
+      child { node {J 3} }
+      child { node {J 4} }
+    };
+  \node[below=1cm of current bounding box.south] {(2, 2)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 4 : Partition (3, 1)
+  \node {F}
+    child { node {1/2}
+      child { node {J 1} }
+      child { node {1/4}
+        child { node {J 2} }
+        child { node {J 3} }
+      }
+    }
+    child { node {J 4} };
+  \node[below=1cm of current bounding box.south] {(3, 1)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 5 : Partition (3, 1)
+  \node {F}
+    child { node {1/2}
+      child { node {1/4}
+        child { node {J 1} }
+        child { node {J 2} }
+      }
+      child { node {J 3} }
+    }
+    child { node {J 4} };
+  \node[below=1cm of current bounding box.south] {(3, 1)};
+\end{tikzpicture}

@@ -1,0 +1,112 @@
+% PROBLÈME : Système de recommandations
+% ==================================================================================================
+%
+% But
+% ---
+% Utiliser le dénombrement dans le contexte d'un système de recommandation, aboutissant à la
+% modélisation de sa diversité et de sa personnalisation.
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+
+\title{Dénombrement - Système de recommandations d'articles}
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Contexte}
+
+Un système de recommandation est un outil informatique qui vise à recommander des éléments
+(produits, services, informations, etc.) à des utilisateurs en fonction de leurs préférences.
+
+Pour garantir des recommandations de qualité, un système de recommandation cherche à remplir
+plusieurs objectifs :
+\begin{itemize}
+    \item Personnalisation : Adapter les recommandations aux préférences de chaque utilisateur.
+    \item Diversité : Eviter de recommander des éléments trop similaires à un même utilisateur.
+\end{itemize}
+\bigskip
+
+\textbf{Objectifs}
+
+Employer les outils du dénombrement pour quantifier les possibilités de diversité et de
+personnalisation des recommandations.
+
+\bigskip
+Ce problème considère un système de recommandation comprenant un ensemble de \( n \) articles et de
+\( m \) utilisateurs.
+
+
+\q \textbf{Sélection personnalisée d'articles}
+
+    Le système recommande un unique article à chaque utilisateur. Combien de configurations
+    différentes de recommandations peut-il générer dans ce cas le plus général ? Interpréter le
+    résultat en termes d'applications entre deux ensembles.
+
+    Le système recommande exactement \( p \) articles à chaque utilisateur.
+
+   \begin{enumerate}
+      \item Si l'ordre des recommandations compte, combien de recommandations distinctes peuvent
+      être générées pour un utilisateur donné ?
+      \item Si seul l'ensemble des articles recommandés compte (et non leur ordre), donner la formule
+      correspondante.
+    \end{enumerate}
+
+
+\q \textbf{Notes et Profils d'utilisateurs}
+
+   Chaque utilisateur note les \( n \) articles sur une échelle de \( 1 \) à \( 5 \).
+
+   Deux utilisateurs sont considérés comme "similaires" s'ils ont attribué exactement la même note à
+   au moins \( h \) articles.
+
+    \begin{enumerate}
+        \item Calculer le nombre total de configurations de notes possibles pour l'ensemble des \( m \)
+        utilisateurs.
+        \item Soient deux utilisateurs quelconques. Déterminer le nombre de configurations possibles
+        de leurs notes respectives pour qu'ils soient considérés comme similaires.
+        \item  Justifier que si \( m > 5^n \), alors il existe nécessairement deux utilisateurs
+        ayant exactement les mêmes notes sur les \( k \) articles qu'ils ont notés.
+    \end{enumerate}
+
+
+\q \textbf{Catégories d'articles thématiques}
+
+    Le système organise les \( n \) articles en \( m \) catégories thématiques, de sorte que chaque
+    article appartienne à exactement un groupe.
+
+    \begin{enumerate}
+        \item Justifier que ce problème revient à compter le nombre de façons de partitionner un
+        ensemble de \( n \) éléments en \( m \) sous-ensembles non vides.
+        \item On note \( S(n, m) \) ce nombre. Établir sa relation de récurrence :
+        \[
+        S(n, m) = m S(n-1, m) + S(n-1, m-1)
+        \]
+        \item Si chaque élément peut être placé librement dans l'un des \( m \) sous-ensembles (y
+        compris des sous-ensembles vides), combien y a-t-il de telles répartitions ?
+        \item Quel principe permettrait de corriger cette quantité pour ne conserver que les
+        répartitions où chaque sous-ensemble est non vide ?
+        \item Montrer que le nombre de répartitions où au moins $k$ des \( m \) sous-ensembles est
+        vide est donné par :
+        \item En déduire que le nombre total de répartitions possibles est :
+        \[
+        \sum_{k=1}^{m} (-1)^k \binom{m}{k} (m-k)^n
+        \]
+        \item Expliquer la division par \( m! \) pour obtenir la formule finale :
+        \[
+        S(n, m) = \frac{1}{m!} \sum_{k=0}^{m} (-1)^k \binom{m}{k} (m-k)^n
+        \]
+
+
+    \end{enumerate}
+
+\end{document}

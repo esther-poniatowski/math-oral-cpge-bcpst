@@ -1,0 +1,69 @@
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 1 : Partition (1, 3)
+  \node {R}
+    child { node {G} }
+    child { node {D}
+      child { node {G} }
+      child { node {D}
+        child { node {G} }
+        child { node {D} }
+      }
+    };
+  \node[below=1cm of current bounding box.south] {(1, 3)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 2 : Partition (1, 3)
+  \node {R}
+    child { node {G} }
+    child { node {D}
+      child { node {G}
+        child { node {G} }
+        child { node {D} }
+      }
+      child { node {D} }
+    };
+  \node[below=1cm of current bounding box.south] {(1, 3)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 3 : Partition (2, 2)
+  \node {R}
+    child { node {G}
+      child { node {G} }
+      child { node {D} }
+    }
+    child { node {D}
+      child { node {G} }
+      child { node {D} }
+    };
+  \node[below=1cm of current bounding box.south] {(2, 2)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 4 : Partition (3, 1)
+  \node {R}
+    child { node {G}
+      child { node {G} }
+      child { node {D}
+        child { node {G} }
+        child { node {D} }
+      }
+    }
+    child { node {D} };
+  \node[below=1cm of current bounding box.south] {(3, 1)};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+  % Arbre 5 : Partition (3, 1)
+  \node {R}
+    child { node {G}
+      child { node {G}
+        child { node {G} }
+        child { node {D} }
+      }
+      child { node {D} }
+    }
+    child { node {D} };
+  \node[below=1cm of current bounding box.south] {(3, 1)};
+\end{tikzpicture}

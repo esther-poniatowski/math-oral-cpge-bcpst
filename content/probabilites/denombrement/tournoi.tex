@@ -1,0 +1,154 @@
+% PROBLÈME : Tournoi
+% ==================================================================================================
+%
+% But
+% ---
+%
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\usepackage{tikz}
+\usepackage{subcaption} % for subfigures
+\usetikzlibrary{trees} % for tree layout
+
+\title{Dénombrement - Tournoi avec contraintes}
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Contexte}
+
+Un tournoi de \( n \) joueurs est organisé selon un format \textbf{à élimination directe} : chaque
+partie oppose deux joueurs, et le perdant est éliminé. Le tournoi continue ainsi jusqu'à ce qu'il ne
+reste qu'un seul vainqueur.
+
+Lors de l'organisation d'un tournoi, différentes contraintes peuvent être imposées pour garantir une
+certaine équité de niveau dans les affrontements ou augmenter le suspense. Ainsi, la répartition des
+joueurs dans les parties des premiers tours ne sont pas complètement aléatoires.
+
+\textbf{Objectifs}
+
+Modéliser et analyser la structure d'un tournoi à élimination directe en utilisant les outils du
+dénombrement et des arbres binaires. Évaluer l'impact de contraintes organisationnelles sur le
+nombre de configurations possibles du tournoi.
+
+
+\q \textbf{Nombre de parties}
+
+Justifier qu'un tournoi à élimination directe avec \( n \) joueurs nécessite exactement \( n-1 \)
+parties. Procéder par un raisonnement combinatoire ou une démonstration par récurrence.
+
+\q \textbf{Modélisation par un arbre binaire}
+
+Un tournoi par élimination directe peut être modélisé par un arbre binaire :
+\begin{itemize}
+    \item Les feuilles correspondent aux joueurs participant au tournoi.
+    \item Les noeuds internes représentent les parties entre deux joueurs.
+    \item Les niveaux de l'arbre correspondent aux tours du tournoi.
+    \item La racine de l'arbre correspond à la finale du tournoi.
+\end{itemize}
+
+\input{figures/arbres_tournois.tex}
+
+\begin{enumerate}
+    \item Utiliser le lemme des bergers pour établir une bijection entre les ordres de parties
+    possibles et les arbres binaires à $ n $ feuilles.
+    \item Une structure d'arbre binaire se définit par la disposition des noeuds et leurs
+    connections, sans tenir compte des valeurs spécifiques contenues dans ces noeuds. Elle
+    représente la "forme" de l'arbre. Proposer une méthode pour générer systématiquement toutes les
+    structures d'arbres binaires de manière récursive en partant de la racine.
+    \item Illustrer cette méthode en construisant tous les arbres binaires complets à 4 feuilles.
+    \item Par analogie avec cette méthode, exprimer le nombre de structures d'arbres binaires
+    complets à $n$ feuilles en fonction des nombres de structures d'arbres binaires complets à $k$
+    feuilles, pour $k < n$.
+\end{enumerate}
+
+\q \textbf{Organisation des parties sans contrainte}
+
+\begin{enumerate}
+    \item Déterminer le nombre de façons d'affecter les \( n \) joueurs à cet arbre (en supposant
+    que leur placement est aléatoire).
+    \item Décompte des structures possibles :
+    Montrer que le nombre de façons possibles d'organiser la structure du tournoi, en ne tenant pas
+    compte de l'identité des joueurs, est donné par le \( (n-1) \)-ième nombre de Catalan :
+    \[
+    C_{n-1} = \frac{1}{n} \binom{2(n-1)}{n-1}
+    \]
+    \item Placement des joueurs dans un arbre donné : Déterminer le nombre de façons d'affecter les
+    \( n \) joueurs à cet arbre.
+    \item Comparer le nombre total de configurations obtenues dans deux cas :
+    \begin{itemize}
+        \item En tenant compte uniquement de la structure de l'arbre.
+        \item En tenant compte du placement des joueurs.
+    \end{itemize}
+    Expliquer pourquoi cette comparaison met en évidence la distinction entre les arbres étiquetés
+    et non étiquetés.
+\end{enumerate}
+
+
+\q \textbf{Séparation des fédérations}
+
+Le tournoi accueille \( k \) fédérations ayant respectivement \( p_1, p_2, \dots, p_k \) joueurs.
+
+L'organisateur du tournoi impose la contrainte que les joueurs appartenant à la même fédération ne
+peuvent pas s'affronter avant une certaine phase du tournoi (par exemple, les quarts de finale).
+
+\begin{enumerate}
+    \item  Expliquer pourquoi cette contrainte impose une structure particulière à l'arbre binaire.
+    \item En supposant que les joueurs appartenant à la même fédération doivent être répartis de
+    manière équilibrée dans l'arbre, déterminer le nombre de façons possibles de les disposer
+    tout en respectant la contrainte de séparation.
+    \item  Déterminer une formule générale pour le nombre d'arbres de tournoi valides
+    respectant la contrainte de séparation des fédérations.
+    \item Utiliser la formule du crible pour comparer le nombre de configurations avec et sans
+    contrainte.
+    \item Dans quel cas l'espace des possibilités est-il le plus réduit ? Justifier mathématiquement
+    cette différence.
+\end{enumerate}
+
+
+\q \textbf{Têtes de séries}
+
+Les "têtes de série" sont des joueurs considérés comme favoris dans un tournoi en raison de leur
+classement élevé lors des rencontres précédentes. Elles sont placées stratégiquement dans l'arbre
+pour éviter de s'affronter trop tôt dans la compétition.
+
+Désormais, \( s \) joueurs sont désignés comme \textbf{têtes de série}, c'est-à-dire que leur
+position dans l'arbre est fixe avant le début du tournoi.
+\begin{enumerate}
+    \item Combien d'arbres valides peuvent être construits si les \( s \) joueurs sont placés à des
+    positions prédéterminées et les \( n-s \) autres joueurs sont placés librement ?
+    \item Comparer ce nombre avec le cas où les \( s \) joueurs ne sont pas préassignés en utilisant
+    le principe d'inclusion-exclusion.
+    \item Démontrer que le rapport entre ces deux nombres tend vers $ e^{-s} $ lorsque $ n $
+    tend vers l'infini, pour $s$ fixé.
+\end{enumerate}
+
+\q \textbf{Exempts}
+
+Les "exempts" sont des joueurs bénéficiant d'une qualification directe pour un tour avancé (par
+exemple, en huitièmes de finale). Cette faveur est parfois accordée aux têtes de série les mieux
+classées, qui sont alors dispensées de disputer le premier tour.
+
+\begin{enumerate}
+    \item Dans une première organisation, $r$ joueurs sont directement qualifiés pour le deuxième
+    tour. Calculer le nombre de façons d'organiser le premier tour.
+    \item Généraliser ce raisonnement à un tournoi où des qualifications automatiques existent à
+    plusieurs niveaux. Soit $ r_i $ le nombre de joueurs qualifiés pour le i-ème tour. Exprimer le
+    nombre total de parties en fonction de $ n $ et des $ r_i $.
+    \item Démontrer que le nombre de façons d'organiser un tel tournoi est donné par
+    $$\prod_{i=1}^{\log_2 n} (n_i-1)! $$, où $$ n_i $$ est le nombre de joueurs au i-ème tour.
+\end{enumerate}
+
+
+
+\end{document}

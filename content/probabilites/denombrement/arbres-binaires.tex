@@ -1,0 +1,155 @@
+% PROBLÈME : Arbres binaires
+% ==================================================================================================
+%
+% But
+% ---
+%
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\usepackage{tikz}
+\usepackage{subcaption} % for subfigures
+\usetikzlibrary{trees} % for tree layout
+\usetikzlibrary{decorations.pathreplacing} % for curly braces
+
+
+\title{Dénombrement - Arbres Binaires}
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Contexte}
+
+Un \textbf{arbre binaire} est une structure récursive utilisée en informatique et en combinatoire
+pour représenter des problèmes variés.
+
+\textbf{Propriétés fondamentales :}
+\begin{itemize}
+    \item Chaque noeud a  \textit{au plus deux} enfants (enfant gauche et enfant droit).
+    \item Un noeud sans enfant est appelé une \textbf{feuille}.
+    \item Un noeud avec au moins un enfant est appelé un \textbf{noeud interne}.
+    \item Le noeud au sommet de l'arbre est appelé la \textbf{racine}.
+    \item La \textbf{hauteur} d'un arbre est la longueur du plus long chemin de la racine à une
+    feuille.
+\end{itemize}
+
+%\input{figures/arbres_exemples.tex}
+
+\bigskip
+\textbf{Objectifs}
+
+Employer les  outils de dénombrement pour compter les structures d'arbres binaires en utilisant
+des relations de récurrence et des bijections combinatoires.
+
+\q \textbf{Nombre de noeuds}
+
+Le nombre de noeuds internes et de feuilles dans un arbre binaire suit des relations simples dans
+certains types d'arbres particuliers :
+\begin{itemize}
+     \item Un \textbf{arbre binaire plein} est un arbre où chaque noeud interne a
+    \textit{exactement} deux enfants.
+    \item Un \textbf{arbre binaire parfait} est un arbre où tous les niveaux sont complètement
+    remplis.
+\end{itemize}
+On note \( N \) le nombre total de noeuds, \( I \) le nombre de noeuds internes et \( F \) le nombre
+de feuilles.
+
+\begin{enumerate}
+    \item En toute généralité, donner une relation entre le nombre total de noeuds, le nombre de
+    noeuds internes et le nombre de feuilles dans un arbre binaire.
+    \item Dans un arbre binaire \textit{plein}, montrer que le nombre de feuilles est lié au nombre
+    de noeuds internes par la relation \( F = I + 1 \). Justifier par récurrence sur le nombre total
+    de noeuds.
+    \item En déduire le nombre de feuilles et le nombre de noeuds internes en fonction du nombre de
+    noeuds total.
+    \item Dans un arbre binaire \textit{parfait}, déterminer le nombre total de noeuds \( N \) en
+    fonction de la hauteur \( h \) de l'arbre.
+\end{enumerate}
+
+\q \textbf{Dénombrement des structures d'arbres binaires}
+
+La \textbf{structure} d'un arbre binaire est définie par la manière dont les noeuds sont disposés et
+connectés entre eux, sans tenir compte des valeurs spécifiques contenues dans ces noeuds. Elle
+représente la "forme" de l'arbre.
+
+\begin{enumerate}
+    \item Proposer une méthode récursive pour générer systématiquement toutes les structures
+    d'arbres binaires ayant \( n \) feuilles, en partant de la racine.
+    Pour cela, considérer une partition de l'arbre en deux sous-arbres gauche et droit.
+    \item Illustrer cette méthode en construisant tous les arbres binaires ayant 4 feuilles.
+    \item Par analogie avec cette méthode, établir une relation de récurrence reliant le
+    nombre d'arbres binaires ayant \( n \) feuilles à ceux ayant \( k \) feuilles, pour \( k < n \).
+\end{enumerate}
+
+\q \textbf{Chemins de Dyck}
+
+Les arbres binaires peuvent être mis en correspondance avec d'autres objets combinatoires, tels que
+les \textbf{chemins de Dyck}.
+
+On considère une grille cartésienne de points de taille $2n \times 2n$. Un chemin de Dyck est une
+suite de pas vers le Nord-Est $(1,1)$ et de pas vers le Sud-Est $(1,-1)$ qui relie le point $(0,0)$
+au point $(2n,0)$ sans jamais en dessous de l'axe horizontal.
+
+\input{figures/chemins-dyck.tex}
+
+\begin{enumerate}
+    \item Déterminer le nombre total de chemins reliant \( (0,0) \) à \( (2n,0) \).
+    \item Montrer qu'un chemin qui passe sous l'axe peut être mis en correspondance bijective avec
+    un chemin allant de \( (0,0) \) à \( (2n,-2) \). Pour cela, considérer le premier point auquel
+    le chemin passe sous l'axe horizontal, et considérer la réflexion de la portion restante par
+    rapport à l'axe $y = -1$.
+    \item Déterminer le nombre de ces chemins qui passent sous l'axe horizontal.
+    \item En déduire une expression pour le nombre de chemins de Dyck de longueur \( 2n \).
+    \item Par un raisonnement combinatoire, prouver l'identité :
+    $$ \forall n \in \mathbb{N}, (n+1)\binom{2n}{n-1} = n\binom{2n}{n} $$
+    Indication : Considérer deux méthodes équivalentes pour former une équipe de \( n + 1 \)
+    membres parmi \( 2n \) ainsi que le capitaine de l'équipe.
+    \item En déduire que le nombre de chemins de Dyck se réécrit :
+    $$C_n = \frac{1}{n+1}\binom{2n}{n}$$
+    \item Établir une correspondance bijective entre les chemins de Dyck de longueur \( 2n \) et les
+    arbres binaires pleins ayant \( n \) noeuds internes.
+    Pour cela, considérer le parcours en profondeur d'un arbre binaire avec deux types d'événements :
+    \begin{itemize}
+        \item Descente dans l'arbre (ajout d'un noeud interne) : représentée par un pas montant \(
+        (+1,+1) \).
+        \item Remontée après avoir traité un sous-arbre : représentée par un pas descendant \(
+        (+1,-1) \).
+    \end{itemize}
+    \item En déduire une formule explicite pour le nombre d'arbres binaires à \( n \) noeuds
+    internes.
+\end{enumerate}
+
+
+\end{document}
+
+% ==================================================================================================
+\q \textbf{Parenthésage des expressions mathématiques}
+
+Les arbres binaires peuvent être utilisés pour représenter des expressions mathématiques impliquant
+des parenthésages.
+
+Un parenthésage est une syntaxe qui permet de regrouper les opérations dans une expression
+mathématique. Par exemple, l'expression $a + b \times c$ peut être parenthésée de deux manières
+différentes : $(a + b) \times c$ ou $a + (b \times c)$.
+
+\begin{enumerate}
+    \item
+    \item Démontrer que le nombre de façons de parenthéser une expression de $n+1$ termes est égal au
+    $n$-ième nombre de Catalan.
+\end{enumerate}
+
+\begin{enumerate}
+    \item Montrer comment un arbre binaire peut être utilisé pour représenter une expression
+    parenthésée.
+    \item Démontrer que le nombre de façons de parenthéser une expression de \( n+1 \) termes est
+    donné par le \( n \)-ième nombre de Catalan.
+\end{enumerate}
