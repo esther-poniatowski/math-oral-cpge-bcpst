@@ -67,6 +67,11 @@
 				"replace": "\\geq",
 				"literal": true
 			},
+			"replace-oe-ligature": {
+				"find": "œ",
+				"replace": "oe",
+				"literal": true
+			},
 		},
 		"replacerules.rulesets": {
 			"standard-cleanup-replacement": {
@@ -74,7 +79,8 @@
 					"replace-smart-quote-with-straight-quote",
 					"remove-double-asterisks",
 					"replace-inequality-inf",
-					"replace-inequality-sup"
+					"replace-inequality-sup",
+					"replace-oe-ligature"
 				]
 			}
 		},
