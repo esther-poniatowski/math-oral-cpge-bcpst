@@ -1,6 +1,7 @@
 # math-oral-cpge-bcpst
 
 Exercise sheets in mathematics in various topics:
+
 - Foundations
 - Algebra
 - Analysis
@@ -8,7 +9,7 @@ Exercise sheets in mathematics in various topics:
 - Geometry
 
 > [!NOTE]
-> Exercises are written in French.
+> Problems are expressed in French.
 
 ## Usage
 
@@ -26,3 +27,9 @@ Exercises consist of guided problems.
 Releases correspond to academic years.
 
 They are tagged on `main` with the following format: `v20XX-20XX`.
+
+## Characteristics of the Problems
+
+Each problem aims to mobilize a set of skills and knowledge in the curriculum of the BCPST track.
+
+The
