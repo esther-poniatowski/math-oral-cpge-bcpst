@@ -159,6 +159,9 @@
 			"wayou.vscode-todo-highlight",
 			"bhughes339.replacerules",
 			"yfzhao.ultra-math-preview",
+			"yfzhao.hscopes-booster",
+			"yzhang.markdown-all-in-one",
+			"davidanson.vscode-markdownlint",
 		]
 	}
 }
