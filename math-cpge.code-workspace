@@ -72,6 +72,21 @@
 				"replace": "oe",
 				"literal": true
 			},
+			"replace-dash": {
+				"find": "–",
+				"replace": "-",
+				"literal": true
+			},
+			"remove-asterisks": {
+				"find": "**",
+				"replace": "",
+				"literal": true
+			},
+			"remove-title-balises": {
+				"find": "#",
+				"replace": "",
+				"literal": true
+			},
 		},
 		"replacerules.rulesets": {
 			"standard-cleanup-replacement": {
@@ -80,7 +95,10 @@
 					"remove-double-asterisks",
 					"replace-inequality-inf",
 					"replace-inequality-sup",
-					"replace-oe-ligature"
+					"replace-oe-ligature",
+					"replace-dash",
+					"remove-asterisks",
+					"remove-title-balises"
 				]
 			}
 		},
