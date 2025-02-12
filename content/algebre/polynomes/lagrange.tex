@@ -1,0 +1,214 @@
+% PROBLÈME : Polynômes Orthogonaux
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Polynômes - Polynômes de Lagrange}
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+% ========
+
+\bigskip
+\textbf{Contexte}
+
+Les polynômes de Lagrange sont une famille de polynômes qui interviennent dans d'autres domaines
+mathématiques, notamment en analyse, pour aborder des problèmes d'interpolation :
+
+Étant donnée une fonction $f$ passant par un ensemble de $n+1$ points $ (x_i, y_i) $ avec des $x_i$
+distincts, existe-t-il un polynôme qui passe par chacun de ces points, c'est-à-dire tel que $P(x_i)
+= y_i$ pour tout $i$ ?
+
+
+\bigskip
+\textbf{Objectifs}
+
+Étudier la construction et les propriétés des polynômes de Lagrange.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Existence et Unicité}
+
+%\q Quel est le degré minimal d'un polynôme passant par tous les points $ (x_i, y_i) $ ?
+% But : Comprendre la relation entre le nombre de points et le degré du polynôme interpolateur.
+% Méthode : Raisonner sur le nombre de coefficients à déterminer dans un polynôme de degré n.
+
+\q Soit $P$ un polynôme de degré $n$. Montrer que si $P$ admet $n+1$ racines, alors il est
+identiquement nul.
+% Objectif : Introduire une propriété fondamentale des polynômes qui sera utilisée pour justifier
+% l'unicité du polynôme interpolateur de Lagrange.
+% Démarche : Raisonner par récurrence ou par division euclidienne pour montrer que si un polynôme de
+% degré n a plus de n racines, alors il est identiquement nul.
+
+\q En déduire que s'il existe un polynôme $P_n$ de degré au plus $n$ qui satisfait $P_n(x_i) = y_i$
+pour tout $i$, alors il est unique.
+% Objectif : Formaliser la construction du polynôme d'interpolation. Préparer l'introduction de la
+% forme de Lagrange.
+% Démarche : Appliquer la propriété précédente à un polynôme P−Q  qui annule n+1 valeurs.
+
+\bigskip
+
+Pour construire un tel polynôme explicitement, la méthode de Lagrange consiste à :
+\begin{itemize}
+   \item Construire $n + 1$ polynômes de "base" \( L_k(X) \) tels que pour $k \in \{0, ..., n\}$ :
+   $$L_k(X) = \prod_{i=0, i\neq k}^n \frac{X-x_k}{x_k-x_i}$$
+   \item Écrire le polynôme interpolant \( P_n(X) \) comme une somme pondérée des polynômes \(
+   L_k(X) \) :
+   $$P_n(X) = \sum_{k=0}^n \alpha_k L_k(X)$$
+   où les coefficients \( \alpha_k \) sont déterminés par les conditions d'interpolation.
+\end{itemize}
+
+\q Propriétés des polynômes de base de Lagrange
+
+\begin{enumerate}
+   \item Montrer que le polynôme \( L_j \) est de degré \( n \).
+   \item Évaluer \( L_j(x_k) \) pour \( k \in \{0, ..., n\} \).
+\end{enumerate}
+% But : Introduire les polynômes de base de Lagrange et étudier leurs propriétés fondamentales.
+% Méthode : a) Développement du produit et analyse du degré. b) Évaluation directe en distinguant
+% les cas k=j et k≠j.
+
+\q Polynôme interpolateur de Lagrange
+
+\begin{enumerate}
+   \item Déterminer les coefficients de \( P_n(X) \) en utilisant les conditions d'interpolation.
+   \item En déduire une expression explicite de \( P_n(X) \).
+\end{enumerate}
+% Objectif : Appliquer concrètement la formule des polynômes de Lagrange et comprendre la
+% construction effective du polynôme interpolant.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Applications à l'Interpolation}
+
+\q Soit la fonction $f : \mathbb{R} \rightarrow \mathbb{R}$ définie par $f(x) = \frac{1}{1 + x^2}$.
+\begin{enumerate}
+   \item Construire explicitement le polynôme de Lagrange $P_2$ interpolant $f$ aux points $x_0 = -1$,
+   $x_1 = 0$ et $x_2 = 1$.
+   \item Calculer $|f(0.5) - P_2(0.5)|$. Commenter la qualité de l'approximation.
+   \item Effectuer une illustration graphique pour illustrer ce phénomène.
+\end{enumerate}
+% But : Appliquer la méthode de Lagrange à un exemple concret et évaluer la qualité de
+% l'approximation.
+% Méthode : Calcul numérique et interprétation.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Forme de Newton vs Lagrange}
+
+Les polynômes d'interpolation de Lagrange et de Newton sont deux représentations différentes d'un
+même polynôme interpolateur, mais ils sont construits selon des approches distinctes.
+
+Le polynôme interpolateur de Lagrange est exprimé via les polynômes de base \( L_k(X) \) définis de
+sorte à valoir 1 en \( x_k \) et 0 en tous les autres points :
+\[
+P_n(X) = \sum_{i=0}^{n} y_i L_i(X), \quad \text{où} \quad L_i(X) = \prod_{j \neq i} \frac{X - x_j}{x_i - x_j}
+\]
+Cette forme met explicitement en évidence que \( P_n(X) \) prend les valeurs imposées aux \( n+1 \)
+points d'interpolation. Toutefois, elle nécessite de recalculer complètement le polynôme si un point
+d'interpolation est ajouté ou modifié.
+
+Le polynôme interpolateur de Newton est exprimé sous forme d'une somme pondérée de produits
+successifs :
+\[
+P_n(X) = a_0 + a_1 (X - x_0) + a_2 (X - x_0)(X - x_1) + \dots + a_n (X - x_0)(X - x_1) \cdots (X - x_{n-1})
+\]
+%où les coefficients \( a_k \) sont déterminés à l'aide des différences divisées :
+%\[
+%a_k = f[x_0, x_1, ..., x_k] = \frac{f[x_1, ..., x_k] - f[x_0, ..., x_{k-1}]}{x_k - x_0}
+%\]
+Cette forme est plus efficace pour ajouter progressivement des points (méthode récursive), utile en
+calcul numérique.
+
+Soit $P_n$ le polynôme de Lagrange interpolant $n+1$ points $(x_i, y_i)$, $i = 0, \ldots, n$.
+
+\q Exprimer le coefficient $a_n$ en fonction des $y_i$ et des $x_i$.
+
+\q Pour trois points d'interpolation $(x_0, y_0)$, $(x_1, y_1)$ et $(x_2, y_2)$, construire le
+polynôme de Newton itérativement en ajoutant progressivement des termes correspondant à des points
+d'interpolation successifs. Conjecturer la forme générale des coefficients du polynôme de Newton.
+
+
+\end{document}
+
+
+% ==================================================================================================
+
+
+\q \textbf{Extensions aux fractions rationnelles}
+
+Si $y_i = f(x_i)$ où $f$ est rationnelle, comment $P_n(X)$ se relie-t-il à $f$ ? \\
+% Lien : Prépare le terrain pour les décompositions en éléments simples et l'approximation
+% rationnelle
+
+\q \textbf{Généralizations}
+
+\q Montrer que pour tout polynôme $Q$ de degré au plus $n$, on a :
+
+$Q(X) = \sum_{j=0}^n Q(x_j) L_j(X)$
+
+% But : Établir une propriété fondamentale des polynômes de Lagrange, qui généralise la construction
+% du polynôme interpolateur. Méthode : Considérer la différence entre Q et la somme donnée, montrer
+% qu'elle s'annule en tous les x_i, puis utiliser l'unicité.
+
+
+\bigskip
+\textbf{Extensions aux Complexes}
+
+\q Interpoler des points $z_k \in \mathbb{C}$. Comment les propriétés d'unicité sont-elles
+préservées ?
+% Objectif : Généralisation naturelle mettant en jeu la factorialité dans C[X].
+
+\q Déterminer $P_2(X)$ pour $z_k = e^{ik\pi/2}$. Analyser les symétries.
+% Lien : Utilise les racines de l'unité pour illustrer des structures polynomiales remarquables
+
+
+Soit $n \in \mathbb{N}^*$ et $(z_k, w_k) \in \mathbb{C}^2$, $k = 0, \ldots, n$, avec les $z_k$
+distincts.
+
+\q Montrer que le polynôme interpolateur de Lagrange $P \in \mathbb{C}[X]$ vérifiant $P(z_k) = w_k$
+pour tout $k$ existe et est unique.
+
+\q Donner l'expression de ce polynôme. En quoi diffère-t-elle du cas réel ?
+% But : Généraliser l'interpolation de Lagrange aux nombres complexes et mettre en évidence les
+% similitudes et différences avec le cas réel.
+% Méthode : Adapter la preuve d'unicité du cas réel au cas complexe, puis construire explicitement
+% le polynôme interpolateur.
+
+\bigskip
+On considère maintenant les racines n-ièmes de l'unité : $z_k = e^{2ik\pi/n}$, $k = 0, \ldots, n-1$.
+
+\q Déterminer le polynôme interpolateur $P_n$ vérifiant $P_n(z_k) = z_k^m$ pour un $m \in
+\mathbb{N}$ fixé.
+
+\q Que se passe-t-il si $m \equiv 0 \pmod{n}$ ? Si $m \equiv 1 \pmod{n}$ ?
+
+\q Montrer que si $m \not\equiv 0 \pmod{n}$, alors $P_n(X) = X^m$.
+% But : Utiliser les propriétés des racines de l'unité pour mettre en évidence des structures
+% polynomiales remarquables.
+% Méthode : Exploiter les symétries des racines de l'unité et les propriétés de l'interpolation de
+% Lagrange.
+
+\bigskip
+Soit $f(z) = \frac{1}{1-z}$ définie sur $\mathbb{C} \setminus \{1\}$.
+
+\q Déterminer le polynôme interpolateur $P_n$ de $f$ aux points $z_k = e^{2ik\pi/n}$, $k = 0,
+\ldots, n-1$.
+
+\q Montrer que $P_n(z) = 1 + z + z^2 + \cdots + z^{n-1}$ pour tout $z \in \mathbb{C}$.
+
+\q En déduire une preuve de la formule de la somme géométrique : $1 + z + z^2 + \cdots + z^{n-1} =
+\frac{1-z^n}{1-z}$ pour $z \neq 1$.
+% But : Utiliser l'interpolation complexe pour démontrer un résultat classique d'une manière
+% originale.
+% Méthode : Construire le polynôme interpolateur, l'identifier à la somme des puissances, puis
+% utiliser les propriétés de l'interpolation pour conclure.

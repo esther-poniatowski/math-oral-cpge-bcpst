@@ -1,0 +1,336 @@
+% CORRECTION : Polynômes de Lagrange
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+%\usepgfplotslibrary{math}
+
+\title{Polynômes - Polynômes de Lagrange}
+\author{}
+\date{2024}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+\begin{document}
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Existence et Unicité}
+
+
+% --------------------------------------------------------------------------------------------------
+\q Démonstration : \( n+1 \) racines et polynôme nul
+
+Soit \( P \) un polynôme de degré \( n \) ayant \( n+1 \) racines distinctes \( x_0, x_1, \dots, x_n
+\), c'est-à-dire $ P(x_i) = 0 $ pour tout \( i \in \{0, \dots, n\} \).
+
+Par le théorème fondamental de l'algèbre, tout polynôme \( P \) ayant \( n+1 \) racines distinctes
+est divisible par le polynôme produit des facteurs linéaires associés, donc il existe un polynôme \(
+Q(X) \) tel que :
+\[
+P(X) = (X - x_0)(X - x_1) \dots (X - x_n) Q(X)
+\]
+
+Par l'absurde, supposons que $P$ ne soit pas nul. Cette condition impose que \( Q(X) \) soit au
+moins un polynôme constant non nul. Alors, le degré de \( P \) serait \( n+1 \), ce qui contredirait
+l'hypothèse sur le degré de \( P \).
+
+Il en résulte que \( Q(X) \) est nécessairement nul, ce qui entraîne $ P(X) = 0 $ pour tout \( X \).
+
+Conclusion : Le polynôme \( P \) est identiquement nul.
+
+% --------------------------------------------------------------------------------------------------
+\q Unicité
+
+Supposons qu'il existe deux polynômes \( P \) et \( Q \) de degré au plus \( n \) vérifiant les
+conditions d'interpolation :
+\[
+P(x_i) = y_i, \quad Q(x_i) = y_i, \quad \forall i \in \{0, \dots, n\}
+\]
+Considérons alors le polynôme \( R \) défini par :
+\[
+R(X) = P(X) - Q(X)
+\]
+Ce polynôme est également de degré au plus \( n \), et possède \( n+1 \) racines distinctes :
+\[
+R(x_i) = P(x_i) - Q(x_i) = y_i - y_i = 0, \quad \forall i \in \{0, \dots, n\}
+\]
+D'après la question précédente, un polynôme de degré au plus \( n \) ayant \( n+1 \) racines est
+nécessairement le polynôme nul, donc $ R(X) \equiv 0 $.
+
+Donc \( P(X) = Q(X) \) pour tout \( X \), ce qui prouve l'unicité du polynôme interpolateur.
+
+% --------------------------------------------------------------------------------------------------
+\q Propriétés des polynômes de base de Lagrange
+\begin{enumerate}
+    \item Degré : Le polynôme \( L_j \) est de degré \( n \) car il est le produit de \( n \)
+    facteurs de degré 1.
+
+    \item Evaluation en chaque point d'interpolation :
+
+    Pour \( i \neq j \) :
+    \(
+    L_j(x_i) = \prod_{\substack{k=0 \\ k\neq j}}^{n} \frac{x_i - x_k}{x_j - x_k} = 0
+    \)
+    car le numérateur contient le facteur \( x_i - x_i = 0 \).
+
+    Pour \( i = j \) :
+    \(
+    L_j(x_j) = \prod_{\substack{k=0 \\ k\neq j}}^{n} \frac{x_j - x_k}{x_j - x_k} = 1
+    \)
+    car le numérateur et le dénominateur sont égaux.
+
+    Conclusion : Les polynômes de base de Lagrange satisfont
+    \(
+    L_k(x_i) =
+    \begin{cases}
+        1 & \text{si } i = k \\
+        0 & \text{sinon}
+    \end{cases}
+    \)
+\end{enumerate}
+
+\q Polynôme interpolateur de Lagrange
+\begin{enumerate}
+    \item Détermination des coefficients du polynôme interpolateur
+
+    Les conditions d'interpolation imposent que $P(x_i) = y_i$ pour tout $i \in \{0, ..., n\}$.
+    Or en $x_i$, le polynôme interpolateur s'évalue :
+    $$y_i = P(x_i) = \sum_{k=0}^n \alpha_k L_k(x_i) = \sum_{k=0}^n \alpha_k \delta_{ik} = \alpha_i$$
+
+    Conclusion : Les coefficients du polynôme interpolateur valent $\alpha_k = y_k$, et le polynôme
+    interpolateur s'écrit sous la forme :
+    \[
+    P(X) = \sum_{k=0}^{n} y_k L_k(X)
+    \]
+
+    \item Expression explicite du polynôme interpolateur :
+    \[
+    P_n(X) = \sum_{i=0}^n y_i \prod_{j \neq i} \frac{X - x_j}{x_i - x_j}
+    \]
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Applications à l'Interpolation}
+
+\q Soit la fonction \( f : \mathbb{R} \to \mathbb{R} \) définie par \( f(x) = \frac{1}{1 + x^2} \).
+
+\begin{enumerate}
+   \item Construction du polynôme de Lagrange \( P_2(X) \)
+   Selon la formule du polynôme interpolant de Lagrange :
+   \[
+    P_2(X) = \sum_{k=0}^{2} f(x_k) L_k(X)
+    \]
+    où les polynômes de base \( L_k(X) \) sont donnés par :
+    \[
+    L_k(X) = \prod_{\substack{j=0 \\ j\neq k}}^{2} \frac{X - x_j}{x_k - x_j}
+    \]
+
+    Calcul des valeurs de \( f(x_k) \) :
+    \[
+    f(-1) = \frac{1}{1 + (-1)^2} = \frac{1}{2}, \quad
+    f(0) = \frac{1}{1 + 0^2} = 1, \quad
+    f(1) = \frac{1}{1 + 1^2} = \frac{1}{2}
+    \]
+
+    Polynômes de base :
+
+    \[
+    L_0(X) = \frac{(X - 0)(X - 1)}{(-1 - 0)(-1 - 1)} = \frac{(X)(X - 1)}{2}
+    \]
+    \[
+    L_1(X) = \frac{(X + 1)(X - 1)}{(0 + 1)(0 - 1)} = -(X+1)(X-1)
+    \]
+    \[
+    L_2(X) = \frac{(X + 1)(X - 0)}{(1 + 1)(1 - 0)} = \frac{(X + 1)(X)}{2}
+    \]
+
+    Ainsi :
+    \[
+    P_2(X) = \frac{1}{2} \cdot \frac{X(X-1)}{2} + 1 \cdot (-(X+1)(X-1)) + \frac{1}{2} \cdot \frac{(X+1)X}{2}
+    \]
+    \[
+    P_2(X) = \frac{1}{4} (X^2 - X) - (X^2 - 1) + \frac{1}{4} (X^2 + X)
+    \]
+    \[
+    P_2(X) = \frac{1}{4}X^2 - \frac{1}{4}X - X^2 + 1 + \frac{1}{4}X^2 + \frac{1}{4}X
+    \]
+    \[
+    P_2(X) = \left(\frac{1}{4}X^2 - X^2 + \frac{1}{4}X^2 \right) + \left(-\frac{1}{4}X + \frac{1}{4}X \right) + 1
+    \]
+    \[
+    P_2(X) = -\frac{1}{2}X^2 + 1
+    \]
+
+    Forme finale du polynôme interpolant  :
+    \[
+    P_2(X) = 1 - \frac{1}{2}X^2
+    \]
+
+    \item Calcul de l'erreur en \( x = 0.5 \) :
+    \[
+    f(0.5) = \frac{1}{1 + (0.5)^2} = \frac{1}{1.25} = 0.8
+    \]
+    \[
+    P_2(0.5) = 1 - \frac{1}{2} (0.5)^2 = 1 - \frac{1}{2} \times 0.25 = 1 - 0.125 = 0.875
+    \]
+    Erreur absolue :
+    \[
+    |f(0.5) - P_2(0.5)| = |0.8 - 0.875| = 0.075
+    \]
+
+    \item Commentaire sur la qualité de l'approximation
+
+    L'erreur \( 0.075 \) reste relativement faible, indiquant que l'approximation quadratique capture
+    assez bien la variation de \( f(x) \) autour des points d'interpolation. Toutefois, l'erreur est
+    significative, ce qui montre que l'interpolation polynomiale d'ordre 2 ne permet pas de représenter
+    exactement \( f(x) \), qui est une fonction rationnelle.
+
+    Améliorations possibles :
+    \begin{itemize}
+        \item Augmenter le degré du polynôme interpolant en ajoutant plus de points.
+        \item Utiliser des bases d'interpolation mieux adaptées, comme les polynômes de Chebyshev, pour
+        minimiser l'erreur d'approximation sur un intervalle donné.
+    \end{itemize}
+\end{enumerate}
+
+\bigskip
+% --- Illustration graphique ---
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        samples = 100,
+        domain = -2:2,
+        xlabel = $x$,
+        ylabel = $y$,
+        legend pos = south east,
+        enlargelimits = true,
+        grid = major
+    ]
+        % Fonction f(x)
+        \addplot[blue, thick] {1/(1 + x^2)};
+        \addlegendentry{$f(x) = \frac{1}{1+x^2}$}
+
+        % Polynôme interpolateur P_2(x)
+        \addplot[red, dashed, thick] {1 - 0.5*x^2};
+        \addlegendentry{$P_2(x) = 1 - \frac{1}{2}x^2$}
+
+        % Points d'interpolation
+        \addplot[only marks, mark=*, black] coordinates {(-1,1/2) (0,1) (1,1/2)};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+% ------------------------------
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Forme de Newton vs Lagrange}
+
+\q Détermination du coefficient dominant
+
+Soit \( P(x) \) le polynôme interpolateur de Lagrange des points \( (x_0, y_0), \dots, (x_n, y_n)
+\), donné par :
+\[
+P(x) = \sum_{i=0}^{n} y_i L_i(x), \quad \text{avec} \quad
+L_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^{n} \frac{x - x_j}{x_i - x_j}
+\]
+
+Chaque \(L_i(x)\) est un polynôme de degré \( n \) et son terme dominant provient du produit :
+\[
+\prod_{\substack{j=0 \\ j \neq i}}^{n} (x - x_j)
+\]
+Ainsi, le terme dominant de \( L_i(x) \) est :
+\[
+\frac{x^n}{\prod_{\substack{j=0 \\ j \neq i}}^{n} (x_i - x_j)}
+\]
+
+Donc, le terme dominant du polynôme de Lagrange s'écrit :
+\[
+a_n x^n = \sum_{i=0}^{n} y_i \frac{x^n}{\prod_{\substack{j=0 \\ j \neq i}}^{n} (x_i - x_j)}.
+\]
+
+Conclusion : Le coefficient de \( x^n \) dans \( P(x) \) est donné par :
+
+\[
+a_n = \sum_{i=0}^{n} \frac{y_i}{\prod_{\substack{j=0 \\ j \neq i}}^{n} (x_i - x_j)}.
+\]
+
+Ce coefficient est aussi le coefficient dominant de la forme de Newton, par unicité du polynôme
+interpolateur.
+
+% --------------------------------------------------------------------------------------------------
+\q Construction itérative de la forme de Newton
+
+Soient trois points d'interpolation \( (x_0, y_0), (x_1, y_1), (x_2, y_2) \)
+
+Étape 1 : Construction de \( P_0(x) \)
+
+Le premier polynôme est simplement la valeur en \( x_0 \) :
+\[
+P_0(x) = y_0 = a_0
+\]
+
+Étape 2 : Construction de \( P_1(x) \)
+
+Ajout du terme linéaire :
+\[
+P_1(x) = P_0(x) + a_1 (x - x_0) = y_0 + a_1 (x - x_0)
+\]
+Le coefficient \( a_1 \) est alors imposé par la condition d'interpolation en \( x_1 \) :
+\[
+P_1(x_1) = y_1 \quad \Rightarrow \quad y_0 + a_1 (x_1 - x_0) = y_1
+\quad \Rightarrow \quad
+a_1 = \frac{y_1 - y_0}{x_1 - x_0}
+\]
+Ainsi :
+\[
+P_1(x) = y_0 + \frac{y_1 - y_0}{x_1 - x_0} (x - x_0)
+\]
+
+Étape 3 : Construction de \( P_2(x) \)
+
+Ajoute du terme quadratique :
+\[
+P_2(x) = P_1(x) + a_2 (x - x_0)(x - x_1) = y_0 + \frac{y_1 - y_0}{x_1 - x_0} (x - x_0) + a_2 (x - x_0)(x - x_1)
+\]
+Le coefficient \( a_2 \) est alors imposé par la condition d'interpolation en \( x_2 \) :
+\[
+P_2(x_2) = y_2 \quad \Rightarrow \quad y_0 + \frac{y_1 - y_0}{x_1 - x_0} (x_2 - x_0) + a_2 (x_2 - x_0)(x_2 - x_1) = y_2
+\]
+En explicitant :
+\[
+a_2 = \frac{\frac{y_2 - y_1}{x_2 - x_1} - \frac{y_1 - y_0}{x_1 - x_0}}{x_2 - x_0}
+\]
+Ainsi :
+\[
+P_2(x) = y_0 + \frac{y_1 - y_0}{x_1 - x_0} (x - x_0) + \left( \frac{\frac{y_2 - y_1}{x_2 - x_1} - \frac{y_1 - y_0}{x_1 - x_0}}{x_2 - x_0} \right) (x - x_0)(x - x_1)
+\]
+
+Conjecture : Les coefficients \( a_i \) sont donnés par les différences divisées,
+définies récursivement par :
+\[
+a_0 = y_0
+\]
+\[
+a_1 = \frac{y_1 - y_0}{x_1 - x_0} = \frac{y_1 - a_0}{x_1 - x_0}
+\]
+\[
+a_2 = \frac{\frac{y_2 - y_1}{x_2 - x_1} - \frac{y_1 - y_0}{x_1 - x_0}}{x_2 - x_0} =
+\frac{\frac{y_2 - y_1}{x_2 - x_1} - a_1}{x_2 - x_0}
+\]
+et plus généralement,
+\[
+a_n = \frac{\frac{y_{n} - y_{n-1}}{x_{n} - x_{n-1}} - a_{n-1}}{x_{n} - x_{0}}
+\]
+
+% --------------------------------------------------------------------------------------------------
+
+\end{document}
