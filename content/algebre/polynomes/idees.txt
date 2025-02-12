@@ -1,0 +1,352 @@
+REGROUPEMENTS THEMATIQUES
+=========================
+
+# Polynômes, transformations et symétries
+-----------------------------------------
+
+## Thème central
+
+Transformations polynomiales et leurs symétries
+
+Ce problème explorera les relations entre polynômes et diverses transformations mathématiques
+(symétries, rotations, transformations Möbius). Il mettra en lumière les liens entre la structure
+algébrique des polynômes et certaines applications géométriques et analytiques.
+
+## Concepts abordés
+
+- Polynômes réciproques et symétries
+- Polynômes cyclotomiques et leurs liens avec les racines de l’unité
+- Polynômes et rotations dans le plan complexe
+- Polynômes et transformations Möbius
+- Applications aux équations polynomiales et factorisation
+- Extensions aux fractions rationnelles
+
+## Objectifs
+
+- Démontrer des propriétés de symétrie et de réciprocité des polynômes.
+- Étudier des polynômes associés aux transformations classiques du plan complexe.
+- Explorer la factorisation des polynômes en lien avec des transformations géométriques.
+- Montrer comment certains polynômes sont invariants sous certaines actions de groupes.
+
+====================================================================================================
+# Polynômes, matrices et structures algébriques
+------------------------------------------------
+
+## Thème central
+
+Polynômes et structures algébriques associées (matrices, suites récurrentes, résolubilité par
+radicaux)
+
+Ce problème analysera les liens entre polynômes et matrices, en exploitant la représentation
+matricielle des transformations polynomiales et ses applications aux suites récurrentes et aux
+structures algébriques sous-jacentes.
+
+## Concepts abordés
+
+- Polynômes et matrices companion appliquées aux suites récurrentes
+- Matrices de Vandermonde et applications à la résolution de systèmes
+- Résolubilité des équations polynomiales par radicaux (introduction intuitive)
+- Polynômes et transformations en dimension finie
+
+## Objectifs
+- Étudier la relation entre polynômes et suites récurrentes linéaires via les matrices companion.
+- Analyser les liens entre polynômes et systèmes linéaires à l’aide de matrices de Vandermonde.
+- Explorer l’impact des transformations polynomiales sur des espaces vectoriels de dimension finie.
+- Comprendre pourquoi certaines équations polynomiales sont résolubles par radicaux et d’autres non.
+
+
+====================================================================================================
+# PROBLÈME : Polynômes et théorie des nombres
+---------------------------------------------
+
+
+## Partie A : Polynômes cyclotomiques et nombres premiers
+---------------------------------------------------------
+
+1. Rappeler la définition du n-ième polynôme cyclotomique \phi_n(X).
+
+2. Démontrer que pour tout nombre premier p et tout entier k \geq 1 :
+   $$\phi_{p^k}(X) = \phi_p(X^{p^{k-1}})$$
+
+3. En déduire que pour tout nombre premier p :
+   $$\phi_{p^k}(X) = 1 + X^{p^{k-1}} + X^{2p^{k-1}} + ... + X^{(p-1)p^{k-1}}$$
+
+
+## Partie B : Critère d'irréductibilité
+----------------------------------------
+
+4. Soit f(X) un polynôme unitaire à coefficients entiers. Montrer que si f(X) est réductible dans
+Z[X], alors il existe des polynômes g(X) et h(X) à coefficients entiers tels que f(X) = g(X)h(X) et
+deg(g), deg(h) < deg(f).
+
+5. En déduire que si f(X) est réductible dans Z[X], alors il existe un diviseur d de f(0) tel que
+f(X) ait un facteur de degré compris entre 1 et deg(f)/2 dont le terme constant est ±d.
+
+6. Utiliser ce résultat pour prouver que X^4 + 1 est irréductible dans Z[X].
+
+
+## Partie C : Polynômes et congruences
+--------------------------------------
+
+7. Soit p un nombre premier. Montrer que si f(X) est un polynôme à coefficients entiers, alors :
+   $$f(X)^p \equiv f(X^p) \pmod{p}$$
+
+8. En déduire que si α est une racine de f(X) dans une extension de Z/pZ, alors α^p est aussi une
+racine de f(X).
+
+9. Utiliser ce résultat pour prouver que X^5 - X - 1 est irréductible dans Z[X].
+
+
+## Partie D : Application aux corps finis
+-----------------------------------------
+
+10. Soit p un nombre premier et f(X) un polynôme irréductible de degré n sur Z/pZ. Montrer que le
+corps F = (Z/pZ)[X]/(f(X)) a p^n éléments.
+
+11. Prouver que tout élément non nul de F est racine du polynôme X^{p^n-1} - 1.
+
+12. En déduire que le groupe multiplicatif F* est cyclique.
+
+
+====================================================================================================
+# PROBLÈME : Polynômes, racines complexes et symétries
+======================================================
+
+## Partie A : Polynômes et racines complexes
+--------------------------------------------
+
+1. Soit P(X) = X^n + a_{n-1}X^{n-1} + ... + a_1X + a_0 un polynôme à coefficients complexes.
+Exprimer les coefficients a_{n-1} et a_0 en fonction des racines de P.
+
+2. Démontrer que si les coefficients de P sont réels et si z est une racine complexe de P, alors son
+conjugué z̄ est aussi une racine de P.
+
+3. En déduire que si P est à coefficients réels, alors le nombre de racines complexes non réelles de
+P est pair.
+
+
+## Partie B : Polynômes réciproques
+-----------------------------------
+
+4. On dit qu'un polynôme P de degré n est réciproque si pour tout X ≠ 0, P(X) = X^n P(1/X). Montrer
+que P est réciproque si et seulement si a_k = a_{n-k} pour tout k = 0, 1, ..., n.
+
+5. Soit P un polynôme réciproque de degré n. Démontrer que si z ≠ 0 est une racine de P, alors 1/z
+est aussi une racine de P.
+
+6. Soit P(X) = X^4 + aX^3 + bX^2 + aX + 1 un polynôme réciproque. Exprimer a et b en fonction des
+racines de P.
+
+
+## Partie C : Polynômes et rotations dans le plan complexe
+----------------------------------------------------------
+
+7. Soit \omega = e^(2i\pi/n) une racine n-ième primitive de l'unité. Montrer que les racines n-ièmes
+de l'unité sont les \omega^k pour k = 0, 1, ..., n-1.
+
+8. Soit P(X) = X^n - 1. Factoriser P en produit de polynômes irréductibles dans R[X] pour n = 3, 4,
+et 5.
+
+9. Soit Q(X) = X^n + 1. Factoriser Q en produit de polynômes irréductibles dans R[X] pour n = 2, 3,
+4, et 5.
+
+
+## Partie D : Polynômes et groupe symétrique
+--------------------------------------------
+
+10. Soit P(X) = (X - r_1)(X - r_2)...(X - r_n) un polynôme de degré n à coefficients complexes. Pour
+toute permutation \sigma du groupe symétrique S_n, on définit :
+
+    P_\sigma(X) = (X - r_\sigma(1))(X - r_\sigma(2))...(X - r_\sigma(n))
+
+    Montrer que P_\sigma = P pour toute permutation \sigma.
+
+11. En déduire que les coefficients de P peuvent s'exprimer comme des polynômes symétriques des
+racines r_1, r_2, ..., r_n.
+
+12. Soit P(X) = X^3 + pX + q. Exprimer p et q en fonction des racines de P en utilisant les
+polynômes symétriques élémentaires.
+
+
+## Partie E : Application aux équations cubiques
+------------------------------------------------
+
+13. Considérons l'équation cubique X^3 + pX + q = 0. Posons X = Y - p/(3Y). Montrer que cette
+équation se ramène à une équation de la forme Y^3 + rY + s = 0.
+
+14. En déduire la formule de Cardan pour la résolution de l'équation cubique.
+
+15. Discuter les différents cas possibles selon le signe du discriminant \Delta = -(4p^3 + 27q^2).
+
+
+====================================================================================================
+# PROBLÈME : Polynômes et racines sur le cercle unité
+=====================================================
+
+## Partie A : Propriétés fondamentales
+--------------------------------------
+
+1. Soit $$ P(X) = X^n + a_{n-1}X^{n-1} + \dots + a_0 $$ un polynôme à coefficients complexes.
+   Démontrer que si toutes les racines de $$ P $$ sont de module 1, alors $$ P(X) = X^n
+   \overline{P(1/\overline{X})} $$.
+
+2. En déduire que pour un tel polynôme, les coefficients vérifient $$ a_k = \overline{a_{n-k}} $$
+pour tout $$ 0 \leq k \leq n $$.
+
+
+## Partie B : Transformation de polynômes
+-----------------------------------------
+
+3. Soit $$ Q(X) = (X+i)^n P\left(\frac{X-i}{X+i}\right) $$.
+   Montrer que si toutes les racines de $$ P $$ sont sur le cercle unité, alors $$ Q $$ est un
+   polynôme à coefficients réels.
+
+4. Expliciter cette transformation pour $$ P(X) = X^2 - 2\cos\theta X + 1 $$ où $$ \theta \in
+\mathbb{R} $$.
+
+
+## Partie C : Factorisation et symétries
+----------------------------------------
+
+5. Soit $$ P \in \mathbb{R}[X] $$ de degré 4, scindé sur $$ \mathbb{C} $$, avec deux racines réelles
+$$ \alpha $$ et $$ 1/\alpha $$, et deux racines complexes $$ e^{i\theta} $$ et $$ e^{-i\theta} $$.
+   Exprimer $$ P(X) $$ sous forme factorisée.
+
+6. En déduire que $$ P(X) = X^4 + aX^3 + bX^2 + aX + 1 $$ et exprimer $$ a, b $$ en fonction de $$
+\alpha $$ et $$ \theta $$.
+
+
+## Partie D : Applications aux équations polynomiales
+-----------------------------------------------------
+
+7. Résoudre dans $$ \mathbb{C} $$ l'équation $$ X^4 - 2\sqrt{2}X^3 + 4X^2 - 2\sqrt{2}X + 1 = 0 $$,
+en exploitant les symétries du polynôme.
+
+8. Généraliser : Donner une méthode pour résoudre $$ X^4 + aX^3 + bX^2 + aX + 1 = 0 $$ par
+substitution $$ Y = X + 1/X $$.
+
+
+## Partie E : Étude asymptotique
+--------------------------------
+
+9. Soit $$ P_n(X) = \prod_{k=0}^{n-1} (X - e^{2ik\pi/n}) $$.
+   Calculer $$ \lim_{n \to \infty} \frac{1}{n} \ln |P_n(e^{i\alpha})| $$ pour $$ \alpha \in
+   \mathbb{R} \setminus 2\pi\mathbb{Z} $$.
+
+10. Interpréter géométriquement ce résultat en termes de répartition des racines sur le cercle
+unité.
+
+
+====================================================================================================
+# PROBLÈME : Résolubilité des équations polynomiales par radicaux
+=================================================================
+
+
+## Partie A : Rappels sur les relations entre racines et coefficients
+---------------------------------------------------------------------
+
+1. Énoncer les relations de Viète pour un polynôme \( X^3 + aX^2 + bX + c \) et vérifier ces
+relations pour le polynôme \( X^3 - 3X + 2 \).
+
+2. Montrer que si un polynôme quadratique a ses coefficients réels et un discriminant positif, alors
+ses racines sont réelles.
+
+
+## Partie B : Conditions de résolution par radicaux
+---------------------------------------------------
+
+3. Justifier pourquoi une équation quadratique est toujours résoluble par radicaux.
+
+4. Dans le cas cubique, introduire la substitution \( X = Y - \frac{a}{3} \) pour transformer \( X^3
++ aX^2 + bX + c \) en une équation sans terme en \( X^2 \).
+
+5. Appliquer cette substitution au polynôme \( X^3 - 6X + 5 \) et écrire l'équation obtenue.
+
+
+## Partie C : Limites des méthodes classiques
+---------------------------------------------
+
+6. Montrer que l'équation \( X^5 - X - 1 = 0 \) ne peut pas être résolue en utilisant uniquement les
+relations de Viète et les radicaux.
+
+7. Discuter pourquoi certains polynômes de degré 5 ne sont pas résolubles par radicaux.
+
+
+====================================================================================================
+# PROBLEME : Polynômes et matrices companion appliquées aux suites récurrentes
+==============================================================================
+
+
+## Partie A : Polynômes caractéristiques des suites récurrentes
+---------------------------------------------------------------
+
+1. Considérons la suite définie par la relation de récurrence \( u_{n+2} = 2u_{n+1} - u_n \) avec \(
+u_0 = 1 \) et \( u_1 = 2 \). Montrer que cette suite est définie par le polynôme \( P(X) = X^2 - 2X + 1 \).
+
+2. Factoriser \( P(X) \) et en déduire une expression explicite de \( u_n \).
+
+
+## Partie B : Matrice companion
+-------------------------------
+
+3. Définir la matrice companion associée au polynôme \( X^2 - 2X + 1 \).
+
+4. Montrer que la suite \( u_n \) peut s’exprimer à l’aide de la puissance de cette matrice.
+
+5. Appliquer cette méthode à la suite définie par \( u_{n+2} = 3u_{n+1} - 2u_n \) avec \( u_0 = 1\), \( u_1 = 1 \).
+
+
+## Partie C : Applications aux transformations en dimension finie
+-----------------------------------------------------------------
+
+6. Montrer que toute transformation linéaire possédant une matrice companion est associée à une
+suite récurrente.
+
+7. Donner une interprétation géométrique des transformations définies par les matrices companion des
+polynômes \( X^2 - X - 1 \) et \( X^2 + X + 1 \).
+
+
+====================================================================================================
+
+# PROBLEME : Polynomes et transformations Möbius
+================================================
+
+
+## Partie A : Introduction aux transformations Möbius
+-----------------------------------------------------
+
+1. Soit la transformation \( f(X) = \frac{aX + b}{cX + d} \), avec \( ad - bc \neq 0 \). Montrer que
+cette transformation envoie toute droite affine sur une autre droite affine ou sur un cercle.
+
+2. Appliquer cette transformation au polynôme \( X^2 + 1 \) et étudier l’image de ses racines.
+
+
+## Partie B : Lien avec les fractions rationnelles
+--------------------------------------------------
+
+3. Justifier que si un polynôme de degré 2 est invariant sous une transformation Möbius donnée,
+alors ses racines vérifient une certaine symétrie.
+
+4. Considérer \( P(X) = X^2 + aX + b \) et la transformation \( f(X) = \frac{X - 1}{X + 1} \).
+Montrer que si les racines de \( P \) sont transformées en elles-mêmes, alors une relation lie \( a
+\) et \( b \).
+
+
+## Partie C : Applications géométriques
+---------------------------------------
+
+5. Montrer que toute transformation Möbius préserve l’alignement dans le plan projectif complexe.
+
+6. Étudier l’image du cercle unité sous la transformation \( f(X) = \frac{X - i}{X + i} \).
+
+
+## Partie D : Groupes d’automorphismes du disque unité
+------------------------------------------------------
+
+7. Montrer que l’ensemble des transformations Möbius qui préservent le disque unité forme un groupe.
+
+8. En déduire que toute transformation de la forme \( f(X) = e^{i\theta} \frac{X - a}{1 -
+\bar{a}X}\) avec \( |a| < 1 \) est un automorphisme du disque unité.
+
+9. Appliquer cela au polynôme \( X^2 - 2X + 1 \) pour interpréter ses racines comme points fixes
+d’une transformation Möbius.

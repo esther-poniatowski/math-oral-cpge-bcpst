@@ -1,0 +1,46 @@
+PROGRAMME DE COLLES
+====================================================================================================
+Sujet : Polynômes
+====================================================================================================
+
+QUESTIONS DE COURS
+------------------
+
+- Démonstration : alpha est racine multiple de P ssi P(alpha) = P'(alpha) = 0.
+- Démonstration : alpha est racine de P avec multiplicité m ssi il existe un polynôme Q tel que
+  P = (X - alpha)^m Q et Q(alpha) != 0.
+
+
+COMPETENCES
+-----------
+
+- Déterminer les coefficients d’une décomposition en éléments simples dont la forme est donnée.
+- Déterminer tous les polynômes solutions d’une équation fonctionnelle donnée.
+  - Méthode : commencer par « passer au degré » pour voir les contraintes que l’équation impose sur
+    le degré d’un polynôme solution. Parfois, cela permet de réduire drastiquement la forme des
+    solutions possibles.
+- Faire le lien entre racines et divisibilité.
+- Utiliser le fait qu’un polynôme de degré n admet au plus n racines comptées avec multiplicité.
+  - Corollaire : Si un polynôme admet une infinité de racines, alors il est nul.
+  - Corollaire : Si deux polynômes coïncident en une infinité de points, alors ils sont égaux.
+- Établir et exploiter des relations coefficients-racines.
+- Factoriser un polynôme dans R ou dans C.
+- Exploiter le fait que si est un polynôme de degré n dont on a trouvé n racines (distinctes)
+  alpha_1, ..., alpha_n, alors se factorise sous la forme P = a(X - alpha_1) ... (X - alpha_n).
+
+
+REMARQUES
+---------
+Pas au programme
+- Arithmétique des polynômes. Concepts non abordés (entre autres) :
+  - Polynôme irréductible
+  - Division euclidienne de polynômes
+  - Polynômes premiers entre eux
+  Seule notion abordée : Divisibilité entre polynômes.
+- Caractérisation de la multiplicité d’une racine par l’annulation des polynômes dérivés successifs.
+  Seul résultat à savoir : alpha est racine multiple de P ssi P(alpha) = P'(alpha) = 0.
+- Résultats sur les racines n-ièmes d’un nombre complexe. Les élèves doivent être en mesure de les
+  redémontrer si demandé.
+
+- Les exercices pourront faire intervenir des techniques vues dans le chapitre sur les nombres
+  complexes, notamment pour chercher les racines d’un polynôme donné.
