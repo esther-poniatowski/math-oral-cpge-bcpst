@@ -1,0 +1,180 @@
+% PROBLÈME : Titre
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Polynômes - Résolubilité des équations polynomiales par radicaux}
+
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\textbf{Contexte}
+
+L'étude des solutions des équations polynomiales a occupé une place centrale dans l'histoire des
+mathématiques.
+
+Dès l'Antiquité, les Babyloniens savaient résoudre certaines équations quadratiques (de degré 2),
+mais ce n'est qu'à la Renaissance que des formules générales ont été établies pour les équations
+cubiques (de degré 3, formules de Cardan) et quartiques (de degré 4, méthode de Ferrari). Bien que
+ces méthodes s'avèrent en général complexes, elles garantissent qu'il est toujours possible
+\textit{en principe} d'aboutir à une expression \textit{explicite} des solutions de n'importe quelle
+équation de degré au plus 4.
+
+Cs formules illustrent un phénomène fondamental : les équations quadratiques, cubiques et quartiques
+sont résolubles par \textit{radicaux}. Un radical, dans ce contexte, désigne une expression
+construite uniquement à partir d'opérations "élémentaires": des nombres rationnels, des additions,
+soustractions, multiplications, divisions, et des racines (carrées, cubiques, ou d'ordre supérieur).
+Par exemple : \( x = \sqrt[3]{2 + \sqrt{5}} \), \( y = \frac{1}{4}\sqrt{3} \), etc.
+
+Toutefois, ces méthodes se heurtent à leurs limites pour les équations de degré supérieur à 4. À
+partir du XIXe siècle, les travaux d'Abel et de Galois ont démontré que certaines équations
+polynomiales de degré 5 ne sont pas résolubles par radicaux. En d'autres termes, il n'existe pas de
+formule générale exprimant leurs solutions à l'aide d'opérations élémentaires.
+
+\bigskip
+\textbf{Objectifs}
+
+Comprendre les principes fondamentaux permettant la résolution explicite des équations quadratiques,
+cubiques et quartiques par radicaux. \\
+Mettre en évidence les limites des méthodes classiques pour les équations de degré supérieur à 4. \\
+Explorer des exemples concrets illustrant l'existence de polynômes dont les solutions ne peuvent pas
+être obtenues par radicaux.
+
+\bigskip
+\textbf{Résolubilité par radicaux}
+
+\bigskip
+\textit{Equations Quadratiques (Degré 2)}
+
+\q Soit une équation quadratique générale de forme \( X^2 + pX + q = 0 \) avec \( p, q \in \mathbb{C} \).
+Justifier brièvement pourquoi une équation quadratique est toujours résoluble par radicaux.
+% Objectif : Introduire la notion de résolution par radicaux dans un cas simple.
+% Méthode : Utiliser la formule du discriminant pour exhiber explicitement les racines sous forme de
+% radicaux.
+
+\bigskip
+\textit{Equations Cubiques (Degré 3)}
+
+\q Soit \( P(X) = X^3 - 3X + 2 \).
+\begin{itemize}
+    \item Vérifier que \( P \) est factorisable sur \( \mathbb{C} \).
+    \item En déduire une méthode élémentaire de résolution par radicaux valable pour les équations
+    cubiques.
+\end{itemize}
+% Objectif : Appliquer concrètement la résolution par radicaux à un cas simple de degré 3.
+% Méthode : Déterminer les racines réelles en factorisant à la main et exprimer la résolution sous
+% forme de radicaux.
+
+\q Soit \( Q(X) = X^3 + 2 \).
+\begin{itemize}
+    \item Déterminer ses racines.
+    \item Discuter la nature des radicaux impliqués dans l'expression des solutions.
+\end{itemize}
+% Objectif : Introduire le lien entre résolution par radicaux et nombres complexes.
+% Méthode : Utiliser la forme exponentielle et les racines de l'unité pour exprimer les solutions
+% sous une forme exploitable.
+
+\q (Passer cette question) \textit{Méthode de Cadran} Soit une équation cubique générale de la forme \( X^3 + aX^2 + bX + c = 0 \).
+\begin{itemize}
+    \item Introduire la substitution \( X = Y - \frac{a}{3} \) et montrer qu'elle permet de l'étude
+    aux termes de degré 3 et inférieur.
+    \item En posant \( Y = z + \frac{m}{z} \) pour un certain paramètre \( m \), montrer que
+    cette substitution conduit à une équation du second degré en \( z^3 \).
+    \item Résoudre cette équation en \( z^3 \), en exprimant \( z \) à l'aide de radicaux.
+    \item En déduire la forme explicite des solutions de l'équation cubique initiale.
+\end{itemize}
+% Objectif : Guider la démonstration de la résolubilité des équations cubiques par radicaux.
+% Méthode :
+% 1. Utiliser la substitution X = Y - a/3 pour obtenir une équation de la forme Y^3 + pY + q = 0.
+% 2. Introduire une substitution de la forme Y = z + m/z, qui permet d'obtenir une équation en z^3.
+% 3. Résoudre cette équation par la méthode classique et exprimer Y à l'aide de radicaux.
+% 4. Revenir à la variable initiale X.
+
+\q (Passer cette question) Soit l'équation quartique $ X^4 - 10X^2 + 9 = 0 $.
+\begin{itemize}
+    \item Résoudre cette équation en effectuant un changement de variable.
+    \item En déduire une méthode de résolution par radicaux.
+\end{itemize}
+% Objectif : Montrer que certaines équations quartiques peuvent être réduites à des quadratiques.
+% Méthode : Introduire une substitution qui transforme l'équation en un cas élémentaire, puis
+% exhiber les solutions sous forme de radicaux.
+
+\bigskip
+\textbf{Limites des méthodes classiques}
+
+\q Soit l'équation quartique \( P(X) = X^4 + X^3 + X^2 + X + 1 \).
+\begin{itemize}
+    \item Vérifier si \( P(X) \) est décomposable sur \( \mathbb{R} \) en deux équations
+    quadratiques par les méthodes classiques.
+    \item En observant une relation avec le polynôme $X^5 - 1$, en déduire une factorisation de
+    $P(X)$.
+    \item Comparer avec l'équation quartique résolue à la question précédente, et expliquer
+    pourquoi les méthodes élémentaires de résolution ne s'appliquent pas directement (cette
+    équation est résoluble par radicaux par des méthodes plus avancées).
+\end{itemize}
+% Objectif : Introduire une équation quartique qui ne se factorise pas simplement et qui ne se prête
+% pas immédiatement à une résolution par radicaux.
+% Méthode : Utiliser le critère d'irréductibilité et poser la question de l'existence d'une
+% factorisation en produits de polynômes de degré inférieur.
+
+\q Soit l'équation quintique $ P(X) = X^5 - 3X^4 + 3X^3 - X^2 + X - 1 $.
+\begin{itemize}
+    \item Donner l'expression factorisée complète de $ P(X) $, si possible.
+    \item Discuter si toutes les racines peuvent être trouvées par des méthodes élémentaires.
+\end{itemize}
+% Objectifs : Mettre en évidence qu'un polynôme de degré 5 peut ne pas être complètement
+% factorisable avec des outils élémentaires.
+% Méthodes : Utiliser la divisibilité par une racine entière évidente (1), factoriser
+% successivement.
+
+\q Soit l'équation quintique \( P(X) = X^5 - X - 1 \). Pour ce polynôme, il a été démontré qu'il
+n'existe pas de solution sous forme de radicaux.\\
+Justifier par un argument de degré que \( P(X) \) admet néanmoins au moins une racine réelle.
+% Objectif : Aborder une équation polynomiale de degré 5 qui n'est pas résoluble par radicaux.
+% Méthode : Utiliser le critère d'Eisenstein modulo 2 ou 3, ou une analyse sur ses racines
+% rationnelles potentielles.
+
+\q À partir des exemples précédents, proposer une conjecture sur les conditions nécessaires pour
+qu'une équation soit résoluble par radicaux.
+% Objectif : Formuler une intuition sur la résolubilité par radicaux avant d'introduire
+% rigoureusement les critères issus de la théorie de Galois.
+% Méthode : Comprendre qu'une équation polynomiale est résoluble par radicaux si sa structure permet
+% une factorisation successive en sous-polynômes plus simples.
+
+\bigskip
+\textbf{Relations Symétriques}
+
+La résolubilité des équations polynomiales par radicaux est intimement liée à la structure des
+racines du polynôme, et plus précisément aux symétries qui existent entre ces racines.
+
+Les racines d'un polynôme sont liées entre elles par des relations impliquant les coefficients du
+polynôme, connues sous le nom de \textit{relations de Viète}. Ces relations sont
+\textit{symétriques}, c'est-à-dire qu'elles ne dépendent pas de l'ordre des racines. Par exemple,
+pour l'équation $x^2 - 1 = 0$, la somme des racines ($1 + (-1)$) est égale à $0$, et leur produit
+($1 \times (-1)$) est égal à $-1$, indépendamment de l'ordre des racines dans ces expressions.
+
+\q Démontrer que le nombre de relations symétriques entre les racines est égal au degré du polynôme
+et exprimer ces relations en fonction des coefficients du polynôme.
+
+\bigskip
+La méthode de résolution par radicaux repose sur deux principes fondamentaux :
+\begin{itemize}
+    \item Réduire progressive des relations entre les racines à des expressions plus simples.
+    \item Exploiter des symétries de ces relations pour construire explicitement les racines.
+\end{itemize}
+
+Or, la complexité de ces contraintes de symétrie augmente avec le degré du polynôme. À partir du
+degré 5, il peut exister des relations entre les racines qui ne peuvent pas être "réduites" à des
+opérations élémentaires.
+
+
+\end{document}

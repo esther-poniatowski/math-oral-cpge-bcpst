@@ -1,0 +1,167 @@
+% PROBLÈME : Polynômes Orthogonaux
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Polynômes - Polynômes de Legendre}
+\author{}
+\date{2024}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+
+% ========
+
+\bigskip
+\textbf{Contexte}
+
+Les polynômes de Legendre sont une famille de polynômes utilisés pour l'approximation numérique.
+
+Étant donné une fonction $f(x)$ définie sur un intervalle $[-1,1]$ (sans perte de généralité), une
+question mathématique consiste à approximer $f$ par un polynôme de degré $n$, car les polynômes sont
+faciles à manipuler analytiquement et numériquement.
+
+L'idée de Legendre est de construire une approximation polynomiale en combinant des polynômes de
+référence. Ce cadre est naturellement analogue à celui des espaces vectoriels, où chaque élément
+peut être décomposé sur une à l'aide de combinaisons linéaires. Cette approche permet
+d'utiliser des outils d'algèbre linéaire pour garantir l'existence et l'unicité du polynôme optimal
+d'approximation.
+
+
+\bigskip
+\textbf{Objectifs}
+
+Étudier les propriétés des polynômes de Legendre, en particulier leur orthogonalité, leur degré et
+la structure de leurs racines.
+
+\bigskip
+\textbf{Décomposition des Polynômes}
+
+\q Justifier que tout polynôme de degré inférieur ou égal à $n$ s'écrit de manière \textit{unique}
+comme combinaison linéaire des polynômes de la famille $\{1, X, X^2, \dots, X^n\}$.
+\textit{Indication : Démontrer d'une par l'existence et d'autre par l'unicité de la décomposition.}
+% Objectif : Introduire la notion de base d'un espace vectoriel.
+
+\bigskip
+\textbf{Orthogonalité}
+
+Dans un problème d'approximation, il est nécessaire de quantifier la "similarité" entre deux
+fonctions. Une mesure usuelle consiste à agréger leurs valeurs pour un ensemble de points de
+l'intervalle considéré. Ainsi, la valeur maximale est obtenue lorsque les fonctions sont égales.
+
+Par exemple, en considérant trois points de l'intervalle $[-1,1]$ :
+\[
+\langle P, Q \rangle = P(-1)Q(-1) + P(0)Q(0) + P(1)Q(1)
+\]
+Cette expression est appelée "produit scalaire (discret)" car elle vérifie les propriétés
+essentielles d'un produit scalaire : bilinéarité, symétrie et positivité définie.
+
+Pour un produit scalaire donné, deux polynômes $P$ et $Q$ sont dits orthogonaux si :
+$$\langle P, Q \rangle = 0$$.
+
+\q Vérifier que les polynômes \( 1, X, X^2 \) ne sont pas orthogonaux pour ce produit scalaire.
+% Objectif : Fixer les idées et illustrer la notion d'orthogonalité dans un cas concret.
+
+\bigskip
+Lorsque l'on a défini un produit scalaire, il est souvent avantageux travailler à partir de
+polynômes de référence orthogonaux, ce qui facilite les calculs et l'interprétation des résultats.
+
+La méthode de Gram-Schmidt permet de construire une famille de polynômes orthonormaux à partir de la
+famille ${1, X, X^2}$. Cette méthode procède itérativement :
+\begin{itemize}
+   \item Initialisation : Inclure le premier polynôme $P_0(X) = 1$.
+   \item Pour chaque $k \in \{0, 1, 2, \dots, n\}$ :
+   \begin{itemize}
+      \item Construire un polynôme orthogonal à $P_0, P_1, \dots, P_{k-1}$ à partir du polynôme
+      $X^K$ et d'une combinaison linéaire des polynômes $P_0, P_1, \dots, P_{k-1}$ déjà présents.
+      \item Ajuster le polynôme obtenu de sorte à satisfaire $P_k(1) = 1$.
+   \end{itemize}
+\end{itemize}
+
+\q Déterminer le degré des polynômes de Legendre $P_n(X)$.
+% Objectif : Comprendre la structure des polynômes de Legendre.
+
+\q Déterminer le polynôme $P_1(X)$ à partir de la méthode exposée précédemment.
+
+\q Déterminer le polynôme $P_2(X)$ à partir de la méthode exposée précédemment.
+
+\bigskip \q Proposer une généralisation de la méthode obtenue à une famille ${1, X, X^2, \dots,
+X^n}$.
+
+
+\bigskip
+\textbf{Interlacement des racines des Polynômes de Legendre}
+% Objectif : Étudier une propriété fondamentale de l'orthogonalité des polynômes. Cette propriété
+% renforce l'idée que les polynômes orthogonaux sont “bien séparés” dans l'espace des fonctions.
+
+Pour définir les polynômes de Legendre, le produit scalaire usuel généralise le produit scalaire
+discret en sommant sur tous les points de l'intervalle, ce qui revient à calculer une intégrale sur
+$[-1,1]$ :
+\[
+\langle P, Q \rangle = \int_{-1}^{1} P(X) Q(X) \, dX
+\]
+\footnotesize NB : Cette formule n'intervient pas pour la suite de l'exercice. \normalsize
+
+Avec ce produit scalaire, les polynômes de Legendre vérifient alors la relation de récurrence :
+\[
+(n+1) P_{n+1}(X) = (2n+1) X P_n(X) - n P_{n-1}(X)
+\]
+
+Cette relation donne une méthode pour construire les polynômes de Legendre de manière récursive, en
+partant des polynômes de degré 0 et 1.
+
+\q Polynômes consécutifs\\
+Démontrer que si deux polynômes consécutifs $ P_n $ et $ P_{n+1} $ partagent une racine
+commune, alors tous les polynômes $ P_k , \quad k \leq n-1 $ partagent cette racine.
+En déduire une contradiction.
+
+\q Polynômes non consécutifs\\
+Démontrer que si deux polynômes non consécutifs $ P_m $ et $ P_n $ (avec $m < n$) partagent une
+racine commune, alors on aboutit aussi à une contradiction.
+
+\q Conclure en expliquant pourquoi l'hypothèse initiale (existence d'une racine commune) est fausse.
+
+
+\end{document}
+
+
+% ==================================================================================================
+
+\bigskip
+\textit{Factorisation des polynômes de Legendre}
+
+\q Démontrer que les racines des polynômes de Legendre $P_n(X)$ sont toutes réelles, distinctes et
+situées dans $[-1,1]$.
+% Objectif : Exploiter la répartition des racines en vue de factoriser intégralement sur R.
+% Démarche : Comment l'élève doit-il procéder pour répondre ?
+
+\q Justifier qu'un polynôme de Legendre admet une factorisation sur $\mathbb{R}$.
+% Objectif : Utiliser la répartition des racines pour factoriser un polynôme de Legendre.
+
+\bigskip
+\textit{Divisabilité des polynômes de Legendre}
+
+\q Soient $P_n(X)$ et $P_m(X)$ deux polynômes de Legendre distincts ($n\neq m$).
+Montrer que si un polynôme de degré $d$ est divisible par deux polynômes de degrés $n$ et $m$, alors
+son degré est au moins $n+m$.
+En déduire qu'un polynôme de Legendre ne peut pas être divisible par un autre polynôme de Legendre
+distinct.
+% Objectifs : Mobiliser le lien entre racines et divisibilité. Utiliser le fait qu'un polynôme de
+% degré n admet au plus n racines. Mettre en pratique les méthodes de factorisation d'un polynôme.
+% Démarche : Comment l'élève doit-il procéder pour répondre ?
+
+Une approche classique consiste à interpréter la relation de récurrence comme une équation
+fonctionnelle sur les polynômes, et à en déduire toutes les solutions possibles.
+
+\q Soit $P(X)$ un polynôme satisfaisant l'équation fonctionnelle issue de la relation de récurrence.
+Montrer qu'il est nécessairement un multiple d'un polynôme de Legendre.
+% Objectif : Faire intervenir la technique du “passage au degré” pour contraindre la forme de P(X).
+% Utiliser la récurrence pour structurer l'espace des solutions.
+% Démarche : Comment l'élève doit-il procéder pour répondre ?

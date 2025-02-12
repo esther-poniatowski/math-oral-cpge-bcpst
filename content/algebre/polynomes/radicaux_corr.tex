@@ -1,0 +1,604 @@
+% CORRECTION :
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Polynômes - Résolubilité des équations polynomiales par radicaux}
+\author{}
+\date{2024}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+\begin{document}
+
+\bigskip
+\textbf{Résolubilité par radicaux}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textit{Equations Quadratiques (Degré 2)}
+
+\q Résolution d'une équation quadratique par radicaux de forme \( X^2 + pX + q = 0 \)
+
+La formule du discriminant permet d'exprimer les solutions sous forme de radicaux.
+\[
+\Delta = p^2 - 4q
+\]
+
+Si \( \Delta \neq 0 \), l'équation admet deux solutions distinctes données par :
+\[
+X = \frac{-p \pm \sqrt{\Delta}}{2}
+\]
+Si \( \Delta = 0 \), il y a une unique solution :
+\[
+X = \frac{-p}{2}
+\]
+Si \( \Delta < 0 \), c'est-à-dire si \( p^2 - 4q \) est un nombre négatif, alors l'extraction de \(
+\sqrt{\Delta} \) se fait dans l'ensemble des nombres complexes, en posant :
+\[
+\sqrt{\Delta} = i \sqrt{|\Delta|}
+\]
+
+L'expression des solutions montre qu'elles peuvent toujours être obtenues par additions,
+multiplications et extraction de racines carrées, ce qui correspond à la définition de la
+résolubilité par radicaux.
+L'opération principale est l'extraction de racine carrée de \( \Delta \), ce qui reste dans le
+cadre des radicaux.
+
+Conclusion : L'équation quadratique est donc toujours résoluble par radicaux, quels que soient \( p
+\) et \( q \).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textit{Equations Cubiques (Degré 3)}
+
+\q Soit \( P(X) = X^3 - 3X + 2 \).
+
+Vérification de la factorisation de \( P(X) \) sur \( \mathbb{C} \)
+
+Cherchons des racines rationnelles en utilisant le théorème des racines rationnelles. Les diviseurs
+du terme constant \( 2 \) sont \( \pm 1 \) et \( \pm 2 \).
+\[
+P(1) = 1^3 - 3(1) + 2 = 1 - 3 + 2 = 0
+\]
+Ainsi, \( X = 1 \) est une racine de \( P(X) \). On peut donc factoriser \( P(X) \) par \( (X - 1)
+\) en effectuant une division euclidienne :
+\[
+P(X) = (X - 1)(X^2 + X - 2)
+\]
+Factorisons maintenant \( X^2 + X - 2 \), qui est un polynôme quadratique, en recherchant ses
+racines :
+\[
+\Delta = 1^2 - 4(-2) = 1 + 8 = 9
+\]
+Solutions :
+\[
+X = \frac{-1 \pm \sqrt{9}}{2} = \frac{-1 \pm 3}{2}.
+\]
+On obtient donc \( X = 1 \) et \( X = -2 \), d'où la factorisation complète :
+\[
+P(X) = (X - 1)(X + 2)(X - 1) = (X - 1)^2 (X + 2)
+\]
+
+Résolution de l'équation \( P(X) = 0 \) par radicaux
+
+L'équation \( P(X) = 0 \) possède trois racines réelles : \( 1 \) (de multiplicité 2) et \( -2 \).
+Ces racines ont été obtenues par décomposition en facteurs linéaires, ce qui prouve que l'équation
+est résoluble par radicaux.
+
+% --------------------------------------------------------------------------------------------------
+
+\q Soit \( Q(X) = X^3 + 2 \).
+
+L'équation \( Q(X) = 0 \) revient à résoudre $X^3 = 2$.
+
+Les solutions de cette équation sont les racines cubiques de \( -2 \). Tout nombre complexe non nul
+admet exactement $n$ racines $n$-ièmes distinctes dans $\mathbb{C}$ (théorème fondamental de
+l'algèbre), donc on cherche donc trois solutions.
+
+Réécriture exponentielle de $-2$ :
+$$
+-2 = 2 \cdot e^{i\pi} \quad (\text{module } 2,\ \text{argument } \pi)
+$$
+
+On cherche le module et les arguments tels que
+$$X_k^3 = 2e^{i(\pi + 2k\pi)} \quad \text{pour } k = 0, 1, 2$$
+Conclusion :
+$$X_k = \sqrt[3]{2} e^{i(\pi + 2k\pi)/3}$$
+
+\[
+X_k = \sqrt[3]{2} e^{i \frac{2k\pi}{3}}, \quad k \in \{0,1,2\}
+\]
+
+Calcul explicite de ces trois racines :
+
+Pour \( k = 0 \) : \( X_0 = \sqrt[3]{2} e^{i\pi/3} = \sqrt[3]{2} \left(\frac{1}{2} +
+i\frac{\sqrt{3}}{2}\right) \)\\
+Pour \( k = 1 \) : \( X_1 = \sqrt[3]{2} e^{i\pi} = -\sqrt[3]{2} \)\\
+Pour \( k = 2 \) : \( X_2 = \sqrt[3]{2} e^{i5\pi/3} = \sqrt[3]{2} \left(\frac{1}{2} - i\frac{\sqrt{3}}{2}\right) \)
+
+Nature des radicaux impliqués
+
+Les racines trouvées contiennent une racine cubique réelle \( \sqrt[3]{2} \) et des facteurs
+complexes impliquant des racines de l'unité. Ces solutions sont donc obtenues en combinant des
+extractions de racines cubiques et l'utilisation de nombres complexes.
+
+% --------------------------------------------------------------------------------------------------
+
+\q Soit l'équation cubique générale \( X^3 + aX^2 + bX + c = 0 \).
+
+\begin{enumerate}
+    \item Substitution pour éliminer le terme quadratique :
+    \[
+    X = Y - \frac{a}{3}
+    \]
+
+    Cette transformation repose sur l'idée de centrer les racines de l'équation autour de l'origine
+    pour simplifier l'expression du polynôme. En substituant \( X \) dans l'équation initiale, on
+    calcule les nouveaux coefficients en développant :
+    \[
+    \left(X + \frac{a}{3}\right)^3 + a\left(X + \frac{a}{3}\right)^2 + b\left(X + \frac{a}{3}\right) + c = 0
+    \]
+
+    Développement de chaque terme :
+    \[
+    \left(X + \frac{a}{3}\right)^3 = X^3 + 3 \frac{a}{3} X^2 + 3 \left(\frac{a}{3}\right)^2 X + \left(\frac{a}{3}\right)^3
+    \]
+    \[
+    a \left(X + \frac{a}{3}\right)^2 = a \left(X^2 + 2 \frac{a}{3} X + \left(\frac{a}{3}\right)^2 \right)
+    \]
+    \[
+    b \left(X + \frac{a}{3}\right) = bX + b \frac{a}{3}
+    \]
+
+    En réarrangeant les termes et en développant complètement, on obtient une nouvelle équation de
+    la forme :
+    \[
+    Y^3 + pY + q = 0
+    \]
+    où les nouveaux coefficients sont donnés par :
+    \[
+    p = b - \frac{a^2}{3}, \quad q = c - \frac{ab}{3} + \frac{2a^3}{27}
+    \]
+
+    L'équation obtenue ne comporte plus de terme en \( Y^2 \), ce qui simplifie la résolution de
+    l'équation cubique.
+
+    \item Substitution \( Y = z + \frac{m}{z} \) où \( m \) est un paramètre à déterminer.
+    L'objectif est de transformer l'équation en une équation quadratique en \( z^3 \).
+
+    En remplaçant \( Y \) dans l'équation réduite, on obtient :
+    \[
+    \left(z + \frac{m}{z}\right)^3 + p\left(z + \frac{m}{z}\right) + q = 0
+    \]
+
+    En développant le cube : $\left(z + \frac{m}{z}\right)^3 = z^3 + \frac{m^3}{z^3} + 3m\left(z +
+    \frac{m}{z}\right)$, donc :
+    \[
+      z^3 + \frac{m^3}{z^3} + 3m\left(z + \frac{m}{z}\right) + p\left(z + \frac{m}{z}\right) + q = 0
+    \]
+
+    Pour éliminer les termes linéaires ($z$ et $\frac{1}{z}$), on impose :
+    $$
+    3m + p = 0 \quad \Rightarrow \quad m = -\frac{p}{3}
+    $$
+    Ainsi :
+    \[
+    z^3 + \frac{m^3}{z^3} + q = 0.
+    \]
+
+    En posant \( u = z^3 \), on obtient une équation quadratique en \( u \) :
+    \[
+    u^2 + qu - m^3 = 0
+    \]
+
+    \item Résolution en \( z^3 \)
+
+    Discriminant :
+    \[
+    \Delta = q^2 + 4m^3
+    \]
+
+    Solutions :
+    \[
+    z^3 = \frac{-q \pm \sqrt{q^2 + 4m^3}}{2}.
+    \]
+
+    On en déduit \( z \) en prenant les racines cubiques des deux solutions possibles.
+
+    \item Expression des solutions finales
+
+    Les valeurs de \( z \) étant obtenues par extraction de racines cubiques, on en déduit les valeurs
+    de \( Y \), puis celles de \( X \) en réintroduisant la transformation initiale :
+    \(
+    X = Y - \frac{a}{3}
+    \)
+
+    \item Conclusion : Les solutions de l'équation cubique s'expriment sous forme de radicaux, en
+    combinant une extraction de racines carrées et une extraction de racines cubiques.
+
+    Cette méthode permet d'obtenir les racines d'une équation cubique en utilisant uniquement des
+    opérations algébriques et des radicaux.
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Limites des méthodes classiques}
+
+\q Soit l'équation quartique \( X^4 - 10X^2 + 9 = 0 \).
+
+\begin{enumerate}
+    \item Changement de variable :
+    \[
+    Y = X^2
+    \]
+    En remplaçant dans l'équation initiale, on obtient une équation quadratique en \( Y \) :
+    \[
+    Y^2 - 10Y + 9 = 0
+    \]
+
+    Discriminant :
+    \[
+    \Delta = (-10)^2 - 4 \times 9 = 100 - 36 = 64
+    \]
+
+    Solutions :
+    \[
+    Y = \frac{10 \pm \sqrt{64}}{2} = \frac{10 \pm 8}{2}
+    \]
+    \[
+    Y = \frac{10 + 8}{2} = \frac{18}{2} = 9, \quad Y = \frac{10 - 8}{2} = \frac{2}{2} = 1
+    \]
+
+    En revenant à la variable \( X \), on obtient deux équations :
+    \[
+    X^2 = 9 \quad \text{et} \quad X^2 = 1
+    \]
+
+    \item Résolution par radicaux
+
+    Les solutions de ces équations sont directement obtenues en extrayant la racine carrée :
+    \[
+    X = \pm \sqrt{9} = \pm 3, \quad X = \pm \sqrt{1} = \pm 1
+    \]
+
+    Ainsi, les solutions de l'équation initiale sont :
+    \[
+    X \in \{-3, -1, 1, 3\}.
+    \]
+
+    \item Conclusion : L'équation quartique a été réduite à une équation quadratique par la substitution \( Y = X^2 \),
+    puis résolue en extrayant successivement des racines carrées. Cette méthode montre que l'équation
+    est résoluble par radicaux.
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+
+\q Soit \( P(X) = X^4 + X + 1 \).
+
+\begin{enumerate}
+    \item Vérification de la décomposabilité sur \( \mathbb{R} \) en deux équations quadratiques.
+
+   On cherche à factoriser $ P(X) = X^4 + X^3 + X^2 + X + 1 $ en un produit de deux polynômes
+   quadratiques réels :
+   $$
+   P(X) = (X^2 + aX + b)(X^2 + cX + d) \quad \text{avec } a, b, c, d \in \mathbb{R}
+   $$
+
+   Développement :
+   $$
+   X^4 + (a + c)X^3 + (ac + b + d)X^2 + (ad + bc)X + bd = X^4 + X^3 + X^2 + X + 1
+   $$
+
+   Par identification, on obtient un système d'équations :
+   $$\begin{cases}
+      a + c = 1 & \text{(coefficient de \( X^3 \))} \\
+      ac + b + d = 1 & \text{(coefficient de \( X^2 \))} \\
+      ad + bc = 1 & \text{(coefficient de \( X \))} \\
+      bd = 1 & \text{(terme constant)}
+   \end{cases}$$
+
+   Résolution :\\
+   - De (1) : $ c = 1 - a $\\
+   - De (4) : $ d = \frac{1}{b} $
+
+   Substitution dans (2) :
+   $$
+   a(1 - a) + b + \frac{1}{b} = 1 \quad \Rightarrow \quad -a^2 + a + b + \frac{1}{b} = 1
+   $$
+
+   Substitution dans (3) :
+   $$
+   a \cdot \frac{1}{b} + b \cdot (1 - a) = 1 \quad \Rightarrow \quad \frac{a}{b} + b - ab = 1
+   $$
+
+   De l'équation (3), isolons $a$ :
+   $$a = \frac{1-b}{b-b^2}$$
+
+   Substituons cette expression de $a$ dans l'équation (2) :
+   $$-\left(\frac{1-b}{b-b^2}\right)^2 + \frac{1-b}{b-b^2} + b + \frac{1}{b} = 1$$
+
+   Multiplions tous les termes par $(b-b^2)^2b$ :
+   $$-b(1-b)^2 + (1-b)(b-b^2)b + b^2(b-b^2)^2 + (b-b^2)^2 = (b-b^2)^2b$$
+
+   Développons et simplifions:
+      $$-b(1-2b+b^2) + (b-b^2-b^2+b^3)b + b^2(b^2-2b^3+b^4) + (b^2-2b^3+b^4) = b^3-2b^4+b^5$$
+      $$-b+2b^2-b^3 + b^2-b^3-b^3+b^4 + b^4-2b^5+b^6 + b^2-2b^3+b^4 = b^3-2b^4+b^5$$
+      $$b^6 - 2b^5 + 2b^4 + 3b^2 - 4b^3 - b = b^3 - 2b^4 + b^5$$
+      $$b^6 - 3b^5 + 4b^4 - 5b^3 + 3b^2 - b = 0$$
+      $$b(b^5 - 3b^4 + 4b^3 - 5b^2 + 3b - 1) = 0$$
+
+   Les solutions de cette équation sont $b = 0$ (qui n'est pas valide car $b \neq 0$ d'après
+   l'équation (4) $bd = 1$) et les racines du polynôme de degré 5 :
+      $$b^5 - 3b^4 + 4b^3 - 5b^2 + 3b - 1 = 0$$
+
+   Ce polynôme de degré 5 n'a pas de solution simple.
+
+   Conclusion : La résolution algébrique directe du système d'équations mène à une équation de degré
+   5 qui n'a pas de solution simple. Cela montre que l'approche directe par résolution du système
+   d'équations est impraticable, justifiant ainsi l'utilisation de la méthode des racines de l'unité
+   pour factoriser le polynôme.
+
+    \item Décomposition par les complexes
+
+    Le polynôme $X^4 + X + 1$ est le quotient du polynôme $X^5 - 1$ par $X - 1$ :
+    $$X^5 - 1 = (X - 1)(X^4 + X^3 + X^2 + X + 1)$$
+
+    Les racines de $X^5 - 1 = 0$ sont les racines 5-ièmes de l'unité :
+    $$e^{2i\pi k/5}, \quad k \in \{0,1,2,3,4\}$$ L'une d'entre elles est la racine triviale $X = 1$,
+    qui annule $X - 1$, ce qui signifie que les racines de $X^4 + X^3 + X^2 + X + 1$ sont les quatre
+    racines non triviales de l'unité :
+    $$\alpha = e^{2i\pi/5}, \quad \alpha^2 = e^{4i\pi/5}, \quad \alpha^3 = e^{6i\pi/5}, \quad
+    \alpha^4 = e^{8i\pi/5}$$
+
+    Pour factoriser $P(X)$ sur $\mathbb{R}$, il faut associer les racines en paires conjuguées :
+    $\alpha = e^{2i\pi/5}$ et $\alpha^4 = e^{-2i\pi/5}$, $\alpha^2 = e^{4i\pi/5}$ et $\alpha^3 =
+    e^{-4i\pi/5}$
+
+    Ces paires conjuguées permettent de construire deux polynômes quadratiques réels en utilisant
+    les relations trigonométriques :
+    $$e^{i\theta} + e^{-i\theta} = 2\cos\theta, \quad e^{i\theta} e^{-i\theta} = 1$$ En appliquant
+    ces relations aux racines :
+    $$e^{2i\pi/5} + e^{-2i\pi/5} = 2\cos(2\pi/5)$$
+    $$e^{4i\pi/5} + e^{-4i\pi/5} = 2\cos(4\pi/5)$$
+
+    Ainsi, les polynômes quadratiques sont :
+    $$(X^2 - 2\cos(2\pi/5) X + 1) \quad \text{et} \quad (X^2 - 2\cos(4\pi/5) X + 1)$$
+
+    En exprimant en termes de radicaux :
+    $$\cos(2\pi/5) = \frac{\sqrt{5} - 1}{4}, \quad \cos(4\pi/5) = -\frac{\sqrt{5} + 1}{4}$$
+
+    On obtient alors la factorisation exacte :
+    $$P(X) = \left(X^2 - \frac{\sqrt{5} - 1}{2} X + 1\right) \left(X^2 + \frac{\sqrt{5} + 1}{2} X +
+    1\right)$$
+
+    Les coefficients $a,b,c,d$ recherchés dans le système initial sont donc :
+    $$a = -\frac{\sqrt{5} - 1}{2}, \quad b = 1, \quad c = \frac{\sqrt{5} + 1}{2}, \quad d = 1$$
+
+    Vérification des valeurs avec le système d'équations initial :\\
+      - Condition (1) : $$ a + c = -\frac{\sqrt{5} - 1}{2} + \frac{\sqrt{5} + 1}{2} = 1 $$ \\
+      - Condition (4) : $$ b \cdot d = 1 \cdot 1 = 1 $$ \\
+      - Condition (2) :
+      $$
+      ac + b + d = \left(-\frac{\sqrt{5} - 1}{2}\right)\left(\frac{\sqrt{5} + 1}{2}\right) + 1 + 1 = -\frac{4}{4} + 2 = 1 \\
+      $$
+      - Condition (3) :
+      $$
+      ad + bc = \left(-\frac{\sqrt{5} - 1}{2}\right)(1) + (1)\left(\frac{\sqrt{5} + 1}{2}\right) = \frac{-\sqrt{5} + 1 + \sqrt{5} + 1}{2} = 1
+      $$
+
+    \item Comparaison avec l'équation quadratique précédente
+
+    L'équation quartique a pu être résolue en effectuant un changement de variable qui la ramenait à
+    une équation quadratique, puis en extrayant des racines carrées.
+
+    Ici, \( P(X) \) ne peut pas être transformé de manière similaire car ils ne se décompose pas
+    simplement  en polynômes de degré inférieur.
+
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+
+\q Soit le polynôme \( P(X) = X^5 - 3X^4 + 3X^3 - X^2 + X - 1 \).
+\begin{enumerate}
+    \item Étude de la divisibilité
+
+    Tentons de factoriser \( P(X) \) en utilisant le théorème du reste pour vérifier si \( X - 1 \)
+    est un facteur de \( P(X) \).
+    \[
+    P(1) = 1 - 3 + 3 - 1 + 1 - 1 = 0
+    \]
+    Donc, \( X - 1 \) divise \( P(X) \).
+
+    \item Division euclidienne de $ P(x) $ par $ x - 1 $ :
+
+    Divisons le terme dominant :
+    $$ \frac{x^5}{x} = x^4 $$
+
+    Multiplions :
+    $$ (x - 1)(x^4) = x^5 - x^4 $$
+
+    Soustrayons :
+    $$ (x^5 - 3x^4 + \dots) - (x^5 - x^4) = -2x^4 + 3x^3 $$
+
+    Recommençons avec le nouveau terme dominant :
+    $$ \frac{-2x^4}{x} = -2x^3 $$
+
+    Multiplions :
+    $$ (x - 1)(-2x^3) = -2x^4 + 2x^3 $$
+
+    Soustrayons :
+    $$ (-2x^4 + 3x^3) - (-2x^4 + 2x^3) = x^3 $$
+
+    Continuer ainsi jusqu'à obtenir un reste nul.
+
+    Le quotient obtenu est :
+    $$
+    Q(x) = x^4 - 2x^3 + x^2 - x + 1
+    $$
+
+    Factorisation partielle :
+    $$
+    P(x) = (x - 1)(Q(x)),
+    \quad \text{où } Q(x) = x^4 - 2x^3 + x^2 - x + 1
+    $$
+
+    \item Étude des racines de $ Q(x) $
+
+    Recherchons des racines évidentes parmi les entiers ($$ \pm 1, \pm 2, \dots $$), par exemple :
+    $$
+    Q(1) = (1)^4 - 2(1)^3 + (1)^2 - (1) + 1 = 1 - 2 + 1 - 1 + 1 = 0
+    $$
+    Aindi $ Q(x) $ est également divisible par $ x - 1 $.
+
+    \item Division de $ Q(x) $ par $ x - 1 $ :
+
+    En répétant la méthode précédente, on obtient le quotient suivant :
+    $$
+    Q(x) = (x-1)(x^3-x^2+x-1)
+    $$
+
+    Factorisation partielle :
+    $$
+    P(x) = (x-1)^2(x^3-x^2+x-1)
+    $$
+
+    \item Étude du polynôme restant : $ R(x) = x^3-x^2+x-1 $
+
+    On recherche à nouveau les racines évidentes, par exemple :
+    $$
+    R(1) = (1)^3-(1)^2+(1)-1 = 0
+    $$
+    Ainsi, $ R(x) $ est également divisible par $ x-1 $.
+
+    Division finale : :
+    $$
+    R(x) = (x-1)(x^2+0\cdot x+1)
+    $$
+
+    \item Factorisation complète de $ P(x) $ :
+    $$
+    P(x) = (x - 1)^3(x^2 + 1)
+    $$
+
+    \item Conclusion : Le polynôme est factorisé en deux parties distinctes.
+    \begin{itemize}
+        \item $ (x-1)^3 $, qui correspond à trois racines réelles égales à $ x=1 $.
+        \item $ x^2+1 $, qui n'a pas de racines réelles mais deux racines complexes données par
+        $ x = i $ et $ x = -i $.
+    \end{itemize}
+\end{enumerate}
+
+% --------------------------------------------------------------------------------------------------
+\q Soit le polynôme \( P(X) = X^5 - X - 1 \).
+
+Existence d'au moins une racine réelle :
+
+Tout polynôme réel peut se décomposer en un produit de facteurs irréductibles réels. Ces
+facteurs sont soit :
+\begin{itemize}
+    \item Des polynômes de degré 1 (ayant une racine réelle),
+    \item Des polynômes quadratiques irréductibles (ayant des racines complexes conjuguées).
+\end{itemize}
+Si un polynôme est de degré impair, alors le nombre total de ses racines (réelles ou complexes)
+est impair. Cela implique qu'il doit y avoir au moins un facteur de degré 1 dans la
+décomposition, donc au moins une racine réelle.
+
+% --------------------------------------------------------------------------------------------------
+\q Conjecture
+
+À partir de ces observations, on remarque que les équations de degré 2, 3 et 4 peuvent être résolues
+par radicaux, mais qu'à partir du degré 5, certaines équations ne le sont plus. Cela suggère que la
+résolubilité par radicaux ne dépend pas uniquement du degré de l'équation, mais aussi de la manière
+dont ses racines sont liées entre elles.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Relations Symétriques}
+
+\q Relations de Viete
+
+Soit $P(x)$ un polynôme de degré $n$ :
+$$P(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0$$
+où $a_n \neq 0$, et soient $r_1, r_2, \ldots, r_n$ ses racines (pas nécessairement distinctes).
+
+D'après le théorème fondamental de l'algèbre, ce polynôme peut s'écrire :
+$$P(x) = a_n(x-r_1)(x-r_2)\cdots(x-r_n)$$
+
+Développement du produit :
+
+Terme de degré $n$ : $$a_nx^n$$
+Terme de degré $n-1$ : $$-a_n(r_1 + r_2 + \cdots + r_n)x^{n-1}$$
+Terme de degré $n-2$ : $$a_n(r_1r_2 + r_1r_3 + \cdots + r_{n-1}r_n)x^{n-2}$$
+\dots
+Terme constant : $$(-1)^na_n(r_1r_2\cdots r_n)$$
+
+Comparaison des termes avec la forme initiale du polynôme :
+$$a_{n-1} = -a_n(r_1 + r_2 + \cdots + r_n)$$
+$$a_{n-2} = a_n(r_1r_2 + r_1r_3 + \cdots + r_{n-1}r_n)$$
+$$a_{n-k} = (-1)^ka_ne_k \quad \text{pour } k = 1, 2, \ldots, n \quad \text{avec } e_k = \sum_{1\leq
+i_1<i_2<\cdots<i_k\leq n} r_{i_1}r_{i_2}\cdots r_{i_k}$$
+$$a_0 = (-1)^na_n(r_1r_2\cdots r_n)$$
+
+Ces $n$ relations correspondent aux $n$ coefficients du polynôme (excluant $a_n$), et elles relient
+les coefficients aux sommes symétriques élémentaires des racines.
+
+\end{document}
+
+% ==================================================================================================
+Pour déterminer la valeur exacte de $$ \cos\left(\frac{2\pi}{5}\right) $$ en termes de radicaux, analysons les étapes clés à partir de différentes approches mathématiques :
+
+---
+
+### 1. **Équation polynomiale et identités trigonométriques**
+Posons $$ \theta = \frac{2\pi}{5} $$. En exploitant l'égalité $$ \cos(2\theta) = \cos(3\theta) $$ (car $$ 2\theta + 3\theta = 2\pi $$), on développe :
+$$
+\cos(2\theta) = 2\cos^2\theta - 1, \quad \cos(3\theta) = 4\cos^3\theta - 3\cos\theta.
+$$
+En égalant les deux expressions :
+$$
+4\cos^3\theta - 2\cos^2\theta - 3\cos\theta + 1 = 0.
+$$
+En factorisant par $$ \cos\theta - 1 $$ (solution évidente $$ \theta = 0 $$), on obtient :
+$$
+(4\cos^2\theta + 2\cos\theta - 1)(\cos\theta - 1) = 0.
+$$
+Éliminant la solution triviale $$ \cos\theta = 1 $$, il reste :
+$$
+4\cos^2\theta + 2\cos\theta - 1 = 0.
+$$
+**Résolution quadratique** :
+$$
+\cos\theta = \frac{-1 \pm \sqrt{5}}{4}.
+$$
+Comme $$ \cos\left(\frac{2\pi}{5}\right) > 0 $$, on retient :
+$$
+\cos\left(\frac{2\pi}{5}\right) = \frac{\sqrt{5} - 1}{4}.
+$$
+
+---
+
+### 2. **Racines cinquièmes de l'unité**
+Les solutions de $$ z^5 = 1 $$ sont $$ z_k = e^{i\frac{2k\pi}{5}} $$, pour $$ k \in \{0,1,2,3,4\} $$. La somme des racines donne :
+$$
+1 + z_1 + z_2 + z_3 + z_4 = 0.
+$$
+En séparant parties réelles et imaginaires :
+$$
+1 + 2\cos\left(\frac{2\pi}{5}\right) + 2\cos\left(\frac{4\pi}{5}\right) = 0.
+$$
+Sachant que $$ \cos\left(\frac{4\pi}{5}\right) = -\cos\left(\frac{\pi}{5}\right) $$, on substitue :
+$$
+1 + 2\cos\left(\frac{2\pi}{5}\right) - 2\cos\left(\frac{\pi}{5}\right) = 0.
+$$
+En utilisant $$ \cos\left(\frac{\pi}{5}\right) = \frac{\sqrt{5} + 1}{4} $$, on retrouve :
+$$
+\cos\left(\frac{2\pi}{5}\right) = \frac{\sqrt{5} - 1}{4}.
+$$
+
+---
