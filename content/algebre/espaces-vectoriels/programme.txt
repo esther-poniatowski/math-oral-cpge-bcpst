@@ -1,0 +1,52 @@
+PROGRAMME DE COLLES
+====================================================================================================
+Sujet : Espaces vectoriels
+====================================================================================================
+
+QUESTIONS DE COURS
+------------------
+
+- Définition : Famille génératrice d'un espace vectoriel (définition par le Vect, et par l'existence
+  d'une CL). Exemple de famille génératrice mais pas libre d'un des espaces vectoriels usuels.
+- Définition : Famille libre, famille liée.
+- Définition : Base d'un espace vectoriel, coordonnées dans une base. Base canonique d'un des
+  espaces vectoriels de référence.
+- Démonstration : Des vecteurs de R^2 ou R^3 non nuls et deux à deux orthogonaux forment une famille
+  libre.
+- Démonstration : L'intersection de deux sous-espaces vectoriels est encore un sous-espace
+  vectoriel.
+- Démonstration : Si F ⊂ E et dim F = dim E alors F = E.
+
+
+COMPETENCES
+-----------
+
+- Déterminer si une partie F d'un espace vectoriel E est, ou non, un sous-espace vectoriel.
+- Montrer qu'un ensemble E est un espace vectoriel : on montre qu'il s'agit d'un sous-espace vectoriel d'un des espaces vectoriels de référence.
+  - Montrer que E est non vide (en général en justifiant que le vecteur nul 0_E appartient à E ) et
+  stable par combinaison linéaire.
+  - Écrire E comme un sous-espace vectoriel engendré (E = Vect(e_1, ..., e_p)) [plus rapide mais pas
+    toujours possible].
+- Trouver une famille génératrice: Écrire E comme un sous-espace vectoriel engendré (E = Vect(e_1,
+..., e_p)).
+- Manipuler et comparer des sous-espaces vectoriels engendrés.
+- Déterminer si une famille de vecteurs est, ou non, génératrice de E.
+- Déterminer si une famille de vecteurs est libre ou liée.
+- Déterminer une base d'un espace vectoriel.
+- Déterminer les coordonnées d'un vecteur dans une base donnée.
+- Connaître les bases canoniques des espaces vectoriels de référence.
+- Exploiter la dimension d'un espace vectoriel E :
+  - Pour prouver qu'une famille donnée est une base de E:
+    - Si la famille est de cardinal égal à dim E, il suffit de prouver qu'elle est libre ou
+      génératrice, au choix.
+    - Montrer la liberté de la famille.
+  - Pour prouver facilement une égalité entre espaces vectoriels (si F ⊂ E et dim F = dim E, alors
+    F = E).
+
+
+REMARQUES
+---------
+
+Pas au programme :
+- Espaces vectoriels de suites (le fait que R^N, l'ensemble des suites à coefficients réels, est un
+  espace vectoriel, n'est pas à savoir).
