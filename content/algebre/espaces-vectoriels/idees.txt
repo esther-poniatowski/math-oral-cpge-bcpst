@@ -1,0 +1,123 @@
+# Idées
+
+## Systèmes linéaires et sous-espaces de solutions
+
+- Représentation des systèmes linéaires en termes de sous-espaces
+   - Lien entre solutions et sous-espaces vectoriels associés.
+   - Interprétation géométrique des solutions : intersection d'hyperplans dans R^n.
+
+- Espace des solutions et rôle du noyau
+   - Démonstration que l'ensemble des solutions d'un système homogène est un sous-espace vectoriel.
+   - Construction d'une base pour cet espace (exhiber une famille génératrice, analyser la
+     liberté/liaison de cette famille).
+   - Expression des solutions comme somme d'un vecteur particulier et de l'espace des solutions du
+     système homogène.
+
+- Dimension et rang : caractérisation des solutions
+   - Calcul de la dimension de l'espace des solutions d'un système linéaire.
+   - Lien avec le rang de la matrice du système et le nombre de variables.
+   - Théorème du rang et du noyau.
+   - Interprétation via les espaces vectoriels des colonnes et des lignes d'une matrice.
+
+- Caractérisation des solutions
+   - Utilisation des propriétés de dimension pour caractériser les solutions
+   - Étude de cas où les systèmes ont une unique solution, une infinité de solutions ou aucune
+
+- Applications et exemples concrets
+   - Cas des systèmes avec solution unique, une infinité de solutions ou aucune.
+   - Interprétation en termes de dépendance linéaire et classification des systèmes
+     sous/sur-déterminés.
+   - Interprétation géométrique des résultats.
+
+---
+
+## Espaces vectoriels et géométrie (géométrie analytique et/ou symétries)
+
+- Sous-espaces vectoriels dans R^2 et R^3
+   - Équations cartésiennes et paramétriques des droites et plans.
+   - Construction de bases pour ces sous-espaces (exhiber une famille génératrice, analyser la
+     liberté/liaison de cette famille).
+   - Calcul de leur dimension.
+
+- Intersections et positions relatives
+   - Démonstration que l'intersection de sous-espaces est un sous-espace vectoriel
+   - Classification des positions relatives de droites et de plans dans R^3
+   - Interprétation géométrique des intersections
+
+- Coordonnées et bases dans la géométrie analytique
+   - Calcul des coordonnées de vecteurs dans des bases adaptées.
+   - Bases canoniques, changements de bases et matrices de passage.
+
+- Transformations géométriques linéaires et invariance
+   - Étude des symétries, rotations et projections comme transformations linéaires
+   - Détermination des sous-espaces invariants ("propres") par ces transformations.
+   - Interprétation géométrique des valeurs propres et vecteurs propres en termes d'axes invariants.
+
+- Caractérisation des sous-espaces invariants
+   - Utilisation des propriétés de dimension pour analyser les sous-espaces invariants
+   - Lien entre la dimension des sous-espaces invariants et la multiplicité des valeurs propres
+
+- Applications : symétries et géométrie analytique avancée
+   - Analyse des symétries d'objets dans R^3 à l'aide des espaces propres
+   - Étude des coniques et quadriques sous l'angle des espaces vectoriels
+
+---
+
+## Espaces vectoriels de matrices et applications en cryptographie
+
+- Structure vectorielle des espaces de matrices
+   - Définition des espaces de matrices M_{m,n}(R).
+   - Construction de bases canoniques pour ces sous-espaces (exhiber une famille génératrice,
+     analyser la liberté/liaison de cette famille).
+   - Calcul de leur dimension.
+
+- Sous-espaces vectoriels de matrices et décompositions
+   - Identification de sous-espaces vectoriels : matrices triangulaires, symétriques, nilpotentes.
+   - Décomposition en somme directe : matrices diagonales et nilpotentes.
+   - Construction de bases adaptées pour ces sous-espaces
+
+- Changements de bases et transformations linéaires
+   - Calcul des coordonnées de matrices dans une base donnée.
+   - Matrices de passage entre bases.
+   - Représentation matricielle des transformations linéaires.
+
+- Applications en cryptographie linéaire
+   - Principe du chiffrement affine et du Hill Cipher
+   - Étude de l'espace des messages et de l'espace des messages chiffrés
+   - Bases adaptées aux transformations linéaires cryptographiques
+
+- Analyse de sécurité des systèmes cryptographiques linéaires
+   - Utilisation des propriétés de dimension pour évaluer la sécurité du chiffrement
+   - Cryptanalyse exploitant la structure des espaces vectoriels de matrices
+   - Vulnérabilités des codes linéaires
+
+---
+
+## Complémentarité et sommes directes dans les espaces vectoriels
+
+- Somme de sous-espaces vectoriels
+   - Définition de la somme de sous-espaces et critère de somme directe.
+   - Lien entre indépendance des sous-espaces et indépendance des bases respectives.
+   - Calcul de la dimension d'une somme de sous-espaces et utilisation de la dimension pour
+     caractériser les sommes directes.
+
+- Interprétation géométrique des sommes directes
+   - Illustration sur R^n avec les sous-espaces de coordonnées fixes.
+   - Décomposition de R^3 en somme directe de plans et droites.
+
+- Sous-espaces supplémentaires et décompositions
+   - Définition et existence des sous-espaces supplémentaires.
+   - Construction de bases adaptées à une décomposition en somme directe.
+
+- Projections et décompositions
+   - Étude des projections associées à une décomposition en somme directe
+   - Décomposition de vecteurs sur une somme directe
+   - Matrices de projection
+
+- Applications linéaires et sommes directes
+   - Lien entre noyau, image et sommes directes.
+   - Factorisation d'applications linéaires par des sommes directes.
+
+- Espaces propres et diagonalisabilité
+   - Décomposition d'un espace vectoriel en somme directe de sous-espaces propres.
+   - Lien entre diagonalisabilité et existence d'une base formée de vecteurs propres.
