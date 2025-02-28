@@ -1,0 +1,120 @@
+% PROBLÈME : Espaces Vectoriels de Matrices
+% ==================================================================================================
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Problème : Espaces Vectoriels de Matrices}
+\author{Esther Poniatowski}
+\date{2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024-2025}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+Les matrices sont des objets fondamentaux en mathématiques et modélisation, avec des applications
+dans des problèmes variés (). Pour les manipuler efficacement, il est commun de travailler dans une
+base de l'ensemble des matrices. Selon la nature du problème étudié, certaines bases permettent une
+représentation plus adaptée que d'autres, facilitant certains calculs et interprétations.
+
+\bigskip
+\textbf{Objectifs}
+
+Étudier la structure de l'ensemble des matrices en tant qu'espace vectoriel, et explorer les
+différentes bases possibles des espaces de matrices.
+
+\bigskip
+\textbf{Structure vectorielle des espaces de matrices}
+
+\q Soit $m, n \in \mathbb{N}^*$, et $\mathcal{M}_{m,n}(\mathbb{R})$ l'ensemble des matrices à $m$ lignes et
+$n$ colonnes à coefficients réels. Montrer qu'il s'agit d'un espace vectoriel sur $\mathbb{R}$.
+% But : Établir la structure d'espace vectoriel de \M_{m,n}(R).
+% Méthode : Vérifier les propriétés d'un sous-espace vectoriel de R^{mxn}.
+
+\q En s'inspirant de la base canonique de $\mathbb{R}^n$, construire une base pour
+$\mathcal{M}_{m,n}(\mathbb{R})$.
+% But : Exhiber une base naturelle pour M_{m,n}(R).
+% Méthode : Définir les matrices élémentaires E_{ij}, prouver qu'elles forment une famille
+% génératrice et libre.
+
+\q Déterminer la dimension de $\mathcal{M}_{m,n}(\mathbb{R})$.
+% But : Calculer la dimension de M_{m,n}(R).
+% Méthode : Utiliser la base canonique pour conclure.
+
+\bigskip
+\textbf{Sous-espaces vectoriels de matrices}
+
+Soit $n \in \mathbb{N}^*$. On considère les ensembles suivants dans $\mathcal{M}_n(\mathbb{R})$ :
+\begin{itemize}
+    \item $D_n = {A \in \mathcal{M}_n(\mathbb{R}) \mid A_{ij} = 0 \text{ pour } i \neq j}$ (matrices
+    diagonales)
+    \item $L_n = \{A \in \mathcal{M}_n(\mathbb{R}) \mid A_{ij} = 0 \text{ pour } i < j\}$ (matrices
+    triangulaires inférieures)
+    \item $T_n = \{A \in \mathcal{M}_n(\mathbb{R}) \mid A_{ij} = 0 \text{ pour } i > j\}$ (matrices
+    triangulaires supérieures)
+    \item $UT_n = \{A \in T_n \mid A_{ii} = 0 \text{ pour tout } i\}$ (matrices triangulaires
+    supérieures strictes)
+    \item $S_n = \{A \in \mathcal{M}_n(\mathbb{R}) \mid A = A^T\}$ et dont les coefficients
+    vérifient $A_{ij} = A_{ji}$ (matrices symétriques)
+    \item $K_n = \{A \in \mathcal{M}_n(\mathbb{R}) \mid A^T = -A\}$ et dont les coefficients
+    vérifient $A_{ij} = -A_{ji}$ (matrices antisymétriques)
+\end{itemize}
+
+\q Justifier que $T_n$ et $S_n$ sont bien des sous-espaces vectoriels de $\mathcal{M}_n(\mathbb{R})$
+(sans exhiber de base).
+% But : Identifier des sous-espaces vectoriels importants de M_n(R).
+% Méthode : Pour chaque ensemble, vérifier qu'il contient la matrice nulle et qu'il est stable par
+% combinaison linéaire.
+
+\bigskip
+\textbf{Matrices symétriques et antisymétriques}
+
+Les matrices symétriques et antisymétriques apparaissent dans de nombreux problèmes en algèbre et en
+physique. En particulier, dans les systèmes dynamiques, les matrices antisymétriques sont associées
+aux rotations et aux lois de conservation de l'énergie.
+
+\q Déterminer une base de $S_n$ et une base de $K_n$ et les dimensions de ces sous-espaces.
+% Méthode : Construire des familles génératrices, prouver leur liberté, et utiliser la dimension
+% pour conclure.
+% - Pour S_n, considérer les matrices symétriques élémentaires.
+% - Pour K_n, considérer les matrices antisymétriques élémentaires.
+
+\q Soit $A \in \mathcal{M}_n(\mathbb{R})$. Montrer que $S(A) = \frac{1}{2}(A + A^T) \in S_n$ et
+$K(A) = \frac{1}{2}(A - A^T) \in K_n$.
+% But : Question intermédiaire pour obtenir une décomposition de toute matrice A dans les deux
+% sous-espaces considérés.
+
+\q En déduire une base de $\mathcal{M}_n(\mathbb{R})$ différente de la base canonique.
+% But : Construire une base alternative pour M_n(R).
+% Méthode :
+% - Former une base de M_n(R) en joignant les bases de S_n et K_n.
+% - Montrer que toute matrice A peut s'écrire A = S(A) + K(A) (famille génératrice).
+% - Conclure en utilisant la dimension de la famille obtenue pour montrer que c'est une base.
+
+\q Expliciter les coordonnées de tout élément $A \in \mathcal{M}_n(\mathbb{R})$ dans cette base.
+
+\bigskip
+\textbf{Matrices triangulaires}
+
+Les matrices triangulaires sont impliquées dans des décompositions matricielles telles que la
+factorisation LU, qui simplifie la résolution des systèmes linéaires et l'inversion de matrices.
+
+\q Déterminer $T_n \cap S_n$, $T_n \cap D_n$, $T_n \cap L_n$.
+
+\q Justifier que $UT_n$ est un sous-espace vectoriel de $T_n$.
+
+\q Montrer que pour toute matrice $A \in \mathcal{M}_n(\mathbb{R})$, il existe une matrice $T
+\in T_n$ et une matrice $L \in L_n$ telles que $A = T + L$.
+
+\q Soit $\mathcal{F}$ la famille obtenue en juxtaposant une base de $T_n$ et une base de $L_n$.
+Cette famille forme-t-elle une base de $\mathcal{M}_n(\mathbb{R})$ ?
+
+
+\end{document}
+% ==================================================================================================

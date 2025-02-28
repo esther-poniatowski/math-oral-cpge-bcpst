@@ -1,0 +1,195 @@
+% CORRECTION : Espaces vectoriels de matrices
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Domaine - Sujet}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+% ==================================================================================================
+\begin{document}
+
+\textbf{Structure vectorielle des espaces de matrices}
+
+\q Preuve que $\mathcal{M}_{m,n}(\mathbb{R})$ vérifie les propriétés d'un sous-espace vectoriel de
+$\mathbb{R}^{m \times n}$ :
+
+\begin{itemize}
+    \item Non-vide : La matrice nulle $0_{m,n}$ appartient à $\mathcal{M}_{m,n}(\mathbb{R})$.
+    \item Stabilité par combinaisons linéaires : Soient $A, B \in \mathcal{M}_{m,n}(\mathbb{R})$ et
+    $\lambda \in \mathbb{R}$. Alors $\lambda A + B$ est une matrice de même taille, donc appartient
+    à $\mathcal{M}_{m,n}(\mathbb{R})$.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Base canonique de $\mathcal{M}_{m,n}(\mathbb{R})$ :
+
+Soient les matrices élémentaires $E_{ij}$ définies par :
+\[ (E_{ij})_{kl} = \begin{cases} 1 & \text{si } (k,l) = (i,j) \\ 0 & \text{sinon} \end{cases} \]
+
+Ces matrices forment une famille libre et génératrice de $\mathcal{M}_{m,n}(\mathbb{R})$,
+constituant ainsi une base :
+\begin{itemize}
+    \item Famille génératrice : Toute matrice $A \in \mathcal{M}_{m,n}(\mathbb{R})$ peut s'écrire
+    comme une combinaison linéaire des $E_{ij}$ en prenant : $$A = \sum_{i=1}^m \sum_{j=1}^n A_{ij}
+    E_{ij}$$
+    \item Famille libre : Supposons qu'il existe $\lambda_{ij} \in \mathbb{R}$ tels que :
+    $$\sum_{i=1}^m \sum_{j=1}^n \lambda_{ij} E_{ij} = 0$$
+    Le coefficient en position $(k,l)$ de cette somme est $\lambda_{kl}$, donc $\lambda_{kl} = 0$
+    pour tout $(k,l)$ par unicité de l'écriture de la matrice nulle.
+\end{itemize}
+
+
+% --------------------------------------------------------------------------------------------------
+\q Dimension de $\mathcal{M}_{m,n}(\mathbb{R})$ :
+
+La base canonique contient $m \times n$ éléments, donc la dimension de
+$\mathcal{M}_{m,n}(\mathbb{R})$ est $m \times n$.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Sous-espaces vectoriels de matrices}
+
+\q Justification que $T_n$ est un sous-espace vectoriel de $\mathcal{M}_n(\mathbb{R})$ :
+\begin{itemize}
+    \item Non-vide : La matrice nulle $0_n$ est triangulaire supérieure car tous les coefficients
+    sont nuls pour $i > j$.
+    \item Stabilité par combinaisons linéaires : La somme de deux matrices triangulaires supérieures reste triangulaire supérieure,
+    et un multiple d'une telle matrice l'est aussi.
+\end{itemize}
+
+Justification que $S_n$ est un sous-espace vectoriel de $\mathcal{M}_n(\mathbb{R})$ :
+\begin{itemize}
+    \item Non vide : La matrice nulle $0_n$ est symétrique, car elle respecte la relation $0_n =
+    0_n^T$.
+    \item Stabilité par combinaisons linéaires : Soient $A, B \in S_n$ et $\lambda \in \mathbb{R}$.
+    Alors $(\lambda A + B)^T = \lambda A^T + B^T = \lambda A + B = \lambda A + B$.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Matrices symétriques et antisymétriques}
+
+\q Base de $S_n$ : Matrices symétriques élémentaires $S_{ij} = \frac{1}{2} (E_{ij} + E_{ji}) \quad 1
+\leq i \leq j \leq n$, telles que tous les coefficients sont nuls sauf ceux en position $(i,j)$ et
+$(j,i)$ (égaux à 1).
+\begin{itemize}
+    \item Famille génératrice : Toute matrice symétrique $A$ peut s'écrire comme une combinaison
+    linéaire des $S_{ij}$ en prenant : $$A = \sum_{i=1}^n \sum_{j=1}^n A_{ij} S_{ij}$$
+    \item Famille libre : Comme pour la base canonique.
+\end{itemize}
+
+Dimension de $S_n$ : $ \dim S_n = \frac{n(n+1)}{2}$, obtenue en comptant les couples $(i,j)$ tels que
+$1 \leq i \leq j \leq n$.
+
+\bigskip
+Base de $K_n$ : Matrices antisymétriques élémentaires : $K_{ij} = \frac{1}{2} (E_{ij} - E_{ji}) \quad 1
+\leq i < j \leq n$, telles que tous les coefficients sont nuls sauf ceux en position $(i,j)$ et $(j,i)$
+(égaux à 1).
+\begin{itemize}
+    \item Famille génératrice : Toute matrice antisymétrique $A$ peut s'écrire comme une combinaison
+    linéaire des $K_{ij}$ en prenant : $$A = \sum_{i=1}^{n-1} \sum_{j=i+1}^n A_{ij} K_{ij}$$
+    \item Famille libre : Comme pour la base canonique.
+\end{itemize}
+
+Dimension de $K_n$ : $ \dim K_n = \frac{n(n-1)}{2}$, obtenue en comptant les couples $(i,j)$ tels que
+$1 \leq i < j \leq n$.
+
+% --------------------------------------------------------------------------------------------------
+\q Appartenance aux matrices symétriques :
+
+$(S(A))^T = (\frac{1}{2} (A + A^T))^T = \frac{1}{2} (A^T + A) = S(A)$ donc $S(A) \in S_n$.
+
+Appartenance aux matrices antisymétriques :
+
+$ (K(A))^T = (\frac{1}{2} (A - A^T))^T = \frac{1}{2} (A^T - A) = -K(A)$ donc $K(A) \in K_n$.
+
+% --------------------------------------------------------------------------------------------------
+\q Nouvelle base de $\mathcal{M}_n(\mathbb{R})$ :
+
+Soit la famille obtenue en juxtaposant les bases de $S_n$ et $K_n$ :
+$$\mathcal{F} = \{S_{ij}, K_{ij} \mid 1 \leq i \leq j \leq n, 1 \leq i < j \leq n\}$$
+
+Cette famille est une base de $\mathcal{M}_n(\mathbb{R})$ :
+\begin{itemize}
+    \item Famille génératrice : Toute matrice $A \in \mathcal{M}_n(\mathbb{R})$ peut s'écrire comme une
+    combinaison linéaire d'un élément de $S_n$ et d'un élément de $K_n$ :
+    $$ S(A) + K(A) = \frac{1}{2} (A + A^T) + \frac{1}{2} (A - A^T) = A $$
+    \item Argument de dimensions : La famille $\mathcal{F}$ comprend $n^2$ éléments, qui est la
+    dimension de $\mathcal{M}_n(\mathbb{R})$.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Coordonnées dans la nouvelle base :
+
+Soit $A \in \mathcal{M}_n(\mathbb{R})$. Cette matrice se décompose dans la base $\mathcal{F}$ :
+
+$$ A = \sum_{i=1}^n \sum_{j=1}^n s_{ij} S_{ij} + \sum_{k=1}^{n-1} \sum_{l=k+1}^n k_{kl} K_{kl} $$
+
+D'une part :
+
+$$ S(A) = \sum_{i=1}^n \sum_{j=1}^n s_{ij} S_{ij} = \frac{1}{2} (A + A^T) $$
+
+La matrice élémentaire $S_{ij}$ génère le coefficient de $S(A)$ en position $(i,j)$, donc :
+$$s_{ij} = \frac{1}{2} (a_{ij} + a_{ji})$$
+
+D'autre part :
+
+$$ K(A) = \sum_{k=1}^{n-1} \sum_{l=k+1}^n k_{kl} K_{kl} = \frac{1}{2} (A - A^T) $$
+
+La matrice élémentaire $K_{kl}$ génère le coefficient de $K(A)$ en position $(k,l)$, donc :
+$$k_{kl} = \frac{1}{2} (a_{kl} - a_{kl})$$
+
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Matrices triangulaires}
+
+\q Intersections entre sous-espaces :
+
+\begin{itemize}
+    \item $T_n \cap S_n = D_n$ : Les matrices triangulaires supérieures symétriques sont diagonales.
+    \item $T_n \cap D_n = D_n$ : Les matrices triangulaires supérieures diagonales sont des matrices
+    diagonales.
+    \item $T_n \cap L_n = D_n$ : Les matrices triangulaires supérieures et inférieures imposent que
+    tous les coefficients non diagonaux soient nuls.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Justification que $UT_n$ est un sous-espace vectoriel de $T_n$ :
+\begin{itemize}
+    \item Non-vide : La matrice nulle $0_n$ est une matrice triangulaire supérieure stricte.
+    \item Stabilité par combinaisons linéaires : La somme de deux matrices triangulaires supérieures
+    strictes reste triangulaire supérieure stricte, et un multiple d'une telle matrice l'est aussi.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Décomposition d'une matrice en somme de matrices triangulaires :
+
+Toute matrice $A$ peut être décomposée :
+
+$$ A = L + U $$
+
+Avec $ L $ la matrice triangulaire inférieure obtenue en annulant les coefficients au-dessus de la
+diagonale, et $ U $ la matrice triangulaire supérieure stricte obtenue en annulant les coefficients
+sur la diagonale et en-dessous.
+
+% --------------------------------------------------------------------------------------------------
+\q Juxtapositions de bases :
+
+Soit $\mathcal{F}$ la famille obtenue en juxtaposant une base de $T_n$ et une base de $L_n$.
+
+Les dimensions de $T_n$ et de $L_n$ sont toutes deux de $n(n+1)/2$, donc la dimension de la famille
+$\mathcal{F}$ est $2 \times n(n+1)/2 = n(n+1)$.
+
+La dimension de $\mathcal{M}_n(\mathbb{R})$ étant $n^2$, la famille $\mathcal{F}$ n'est pas une base
+de $\mathcal{M}_n(\mathbb{R})$ car elle ne peut pas être libre.
+
+\end{document}
