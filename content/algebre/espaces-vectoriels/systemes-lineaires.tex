@@ -1,0 +1,249 @@
+% PROBLÈME : Systèmes d'Équations Linéaires et Espaces Vectoriels
+% ==================================================================================================
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Problème : Systèmes d'Équations Linéaires et Espaces Vectoriels}
+\author{Esther Poniatowski}
+\date{2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024-2025}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+La résolution des systèmes d'équations linéaires repose sur deux perspectives complémentaires :
+
+D'une part, l'approche \textit{algébrique} consiste à manipuler ces systèmes sous forme matricielle,
+afin d'utiliser des techniques issues de l'algèbre linéaire. La structure des solutions est alors
+décrite en termes de sous-espaces vectoriels et d'additivité des solutions.
+
+D'autre part, l'approche \textit{géométrique} offre une interprétation intuitive des équations
+linéaires : chaque équation définit un hyperplan dans un espace vectoriel de dimension finie, et
+l'ensemble des solutions du système correspond à l'intersection de ces hyperplans. Cette perspective
+permet de visualiser l'existence, l'unicité ou l'infinité des solutions en fonction de la position
+relative des hyperplans définis par les équations.
+
+\bigskip
+\textbf{Objectifs}
+
+Exploiter ces deux approches afin de caractériser l'ensemble des solutions d'un système linéaire et
+d'en comprendre la structure vectorielle.
+
+\bigskip
+\textbf{Représentation vectorielle des systèmes linéaires}
+
+Soit le système linéaire suivant à $n$ inconnues et $m$ équations :
+
+$$
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
+\end{cases}
+$$
+
+\q Justifier que ce système peut s'écrire sous la forme matricielle $AX = B$, où $A$ est une
+matrice, $X$ un vecteur colonne, et $B$ un vecteur colonne, dont les dimensions sont à préciser.
+% But : Introduire la représentation matricielle du système linéaire.
+% Démarche :Identifier les coefficients de la matrice A, les composantes du vecteur X (inconnues) et
+% du vecteur B (termes constants).
+
+\bigskip
+\textbf{Role du système homogène associé}
+
+\bigskip
+Soit le système \textit{homogène} associé : $AX = 0$.
+
+\q Montrer que l'ensemble $S_0$ des solutions de ce système homogène est un sous-espace vectoriel de
+$\mathbb{R}^n$.
+% But : Démontrer une propriété fondamentale des systèmes homogènes.
+% Démarche : Vérifier que S_0 est non vide (contient le vecteur nul) et est stable par combinaison
+% linéaire.
+
+\bigskip
+Soit $X_p$ une solution \textit{particulière} du système initial $AX = B$.
+
+\q Montrer que l'ensemble $S$ des solutions de $AX = B$ peut s'écrire sous la forme $S = X_p + S_0$.
+% But : Établir la structure de l'ensemble des solutions du système non homogène.
+% Démarche : Montrer que tout élément de S est de la forme X_p + v avec v dans S_0, et
+% réciproquement.
+
+\bigskip
+\textbf{Compatibilité du système}
+
+Un système linéaire est dit \textit{compatible} s'il admet au moins une solution.
+
+\q Montrer que le système $AX = B$ est compatible si et seulement si $B$ est une combinaison
+linéaire des colonnes de $A$.
+% But : Caractériser la compatibilité du système en termes de combinaisons linéaires.
+% Démarche : Montrer que si B est une combinaison linéaire des colonnes de A, alors il existe une
+% solution, et réciproquement.
+
+\q En déduire que le système homogène $AX = 0$ admet toujours une solution.
+% But : Caractériser la compatibilité du système homogène.
+% Démarche : Montrer que le vecteur nul est une solution du système homogène, donc il est toujours
+% compatible.
+
+\bigskip
+\textbf{Dimension de l'espace des solutions}
+
+Le but de cette partie est de démontrer la relation :
+$$ \dim S = n - \text{rang}(A) $$
+avec
+\begin{itemize}
+    \item $\dim S$ la dimension de l'espace des solutions,
+    \item $n$ le nombre d'inconnues $n$,
+    \item $\text{rang}(A) = \dim \text{Vect}(A)$ la dimension de l'espace vectoriel généré par les
+    colonnes de $A$ (noté $\text{Vect}(A)$ ici).
+\end{itemize}
+
+\q Justifier que la dimension de $S$ est égale à celle de $S_0$.
+% But : Comprendre la relation entre la dimension de S et celle de S_0.
+% Démarche : Utiliser la structure de S = X_p + S_0 pour montrer que dim S = dim S_0.
+
+\q Justifier qu'il est possible de construire une base de $\mathbb{R}^n$ à partir d'une base de
+$S_0$ :
+$$ \mathcal{B} = \{v_1, \ldots, v_k, w_1, \ldots, w_{l}\} $$
+Préciser les dimensions $k$ et $l$.
+% But : Établir une base de R^n à partir de S_0.
+% Démarche : Construire une base de S_0, puis compléter cette base pour former une base de R^n.
+
+\q Montrer que $\{Aw_1, \ldots, Aw_l\}$ forme une base de $\text{Vect}(A)$.
+% But : Caractériser une base de l'espace colonne de A pour identifier l avec le rang de A.
+% Démarche : Montrer que tout élément de Vect(A) est une combinaison linéaire des colonnes de A, et
+% réciproquement.
+
+\q En déduire la relation $\dim S = n - \text{rang}(A)$.
+
+\q Résumer les conditions nécessaires et suffisantes pour que le système $AX = B$ admette :
+\begin{itemize}
+    \item[(a)] Une unique solution (système compatible déterminé)
+    \item[(b)] Une infinité de solutions (système compatible indéterminé)
+    \item[(c)] Aucune solution (système incompatible)
+\end{itemize}
+% But : Caractériser complètement les différents cas de résolution du système.
+% Démarche : Étudier les cas S_0 = 0, dim S_0 > 0, et comparer rang(A) et n pour la compatibilité du
+% système.
+
+\bigskip
+\textbf{Application à un exemple concret}
+
+Soient les systèmes suivants :
+
+$$ (E_1) : \;
+\begin{cases}
+x + y + z = 3 \\
+2x - y + z = 2 \\
+2x - y - z = 0
+\end{cases}
+\quad
+(E_2) : \;
+\begin{cases}
+x + y + 2z = 2 \\
+2x - y + z = 1 \\
+x + 2y + 3z = 3
+\end{cases}
+\quad
+(E_3) : \;
+\begin{cases}
+x + y + z = 1 \\
+2x + 2y + 2z = 2 \\
+x + y + z = 3
+\end{cases}
+$$
+
+\q Sans résoudre les systèmes, déterminer la nature de l'ensemble des solutions.
+% But : Utiliser les critères théoriques pour caractériser les solutions sans résolution explicite.
+% Démarche : Calculer le rang de A en considérant les combinaisons linéaires potentielles entre les
+% colonnes, puis comparer le rang de A avec le nombre de variables et utiliser les conditions
+% établies précédemment.
+
+\q Proposer une écriture paramétrique pour la solution générale du système $(E_2)$.
+% But : Proposer une écriture paramétrique de la solution.
+% Démarche : Utiliser l'analogie avec les espaces vectoriels pour exprimer la solution générale
+% lorsqu'il existe une infinité de solutions.
+
+\bigskip
+\textbf{Interprétation géométrique des méthodes de résolution}
+
+Le \textit{pivot de Gauss} peut être interprété géométriquement comme une série de transformations
+des hyperplans représentés par les équations du système.
+
+Soit le système à deux équations et deux inconnues suivant :
+
+$$
+\begin{cases}
+2x + y = 3 \\
+x + y = 2
+\end{cases}
+$$
+
+\q Interprétation géométrique : Justifier que chaque équation du système définit une droite de
+$\mathbb{R}^2$. Proposer une interprétation géométrique à l'ensemble des solutions du système.
+% But : Établir le lien entre les équations linéaires et les hyperplans, et interpréter
+% géométriquement l'ensemble des solutions.
+% Démarche : Reconnaître que chaque équation est de la forme < a_i, x > = b_i où a_i est la i-ème
+% ligne de A, puis interpréter l'ensemble des solutions comme l'intersection de ces hyperplans.
+
+\q Représenter graphiquement les droites initiales. Montrer comment la soustraction de la deuxième
+équation à la première modifie l'orientation d'une des droites sans changer leur point
+d'intersection. Quelle propriété de l'espace vectoriel $\mathbb{R}^2$ est illustrée par cette
+opération ?
+% But : Comprendre l'interprétation géométrique du pivot de Gauss et son lien avec les propriétés
+% des espaces vectoriels.
+% Démarche : Représenter les droites, effectuer l'opération élémentaire, et montrer que le nouveau
+% système engendre le même sous-espace affine que le système initial.
+
+\end{document}
+% ==================================================================================================
+
+
+\bigskip
+Il existe d'autres méthodes de résolution qui ont une interprétation plus directement géométrique.
+
+La méthode de \textit{projection orthogonale} est à la base de nombreuses techniques d'optimisation,
+notamment dans le cas des systèmes \textit{surdéterminés}, pour trouver la solution qui minimise
+l'erreur.
+
+Soit le système $AX = B$ où $A$ est une matrice $m \times n$ avec $m > n$ (système surdéterminé).
+
+Soit $E$ le sous-espace vectoriel de $\mathbb{R}^m$ engendré par les colonnes de $A$. La méthode
+revient à chercher le point de $E$ le plus proche de $B$.
+
+Cette solution "optimale" est donnée par $X^* = (A^TA)^{-1}A^TB$ lorsque $A^TA$ est inversible.
+
+\q En déduire que la solution optimale $X^*$ vérifie l'équation $A^T(AX^* - B) = 0$. Interpréter
+géométriquement cette équation.
+% But : Établir les équations normales et leur interprétation géométrique.
+% Démarche : Utiliser la caractérisation de la projection orthogonale en termes d'orthogonalité du
+% vecteur résiduel avec E.
+
+\q Interpréter géométriquement cette solution comme la projection orthogonale de $B$ sur l'espace
+colonne de $A$.
+
+\bigskip
+La méthode de \textit{relaxation} est une méthode \textit{itérative} pour résoudre des systèmes linéaires :
+\begin{itemize}
+    \item Partir d'une approximation initiale $X^{(0)}$ de la solution.
+    \item Mettre à jour chaque composante $x_i$ en fonction des autres composantes et des équations
+    du système, jusqu'à convergence.
+\end{itemize}
+\[
+x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j \neq i} a_{ij} x_j^{(k)} \right)
+\]
+
+\q Soit $X^{(k)}$ une approximation de la solution à l'étape $k$. Montrer que l'équation $a_{ii}x_i
++ \sum_{j\neq i} a_{ij}x_j = b_i$ définit un hyperplan $H_i$ dans $\mathbb{R}^n$.
+
+\q Interpréter géométriquement le passage de $X^{(k)}$ à $X^{(k+1)}$ comme un déplacement dans
+l'espace des solutions, i.e. une projection sur les hyperplans définis par chaque équation.
+% But : Interpréter géométriquement la méthode de Jacobi.
+% Démarche : Montrer que chaque composante est mise à jour en projetant sur l'hyperplan correspondant.

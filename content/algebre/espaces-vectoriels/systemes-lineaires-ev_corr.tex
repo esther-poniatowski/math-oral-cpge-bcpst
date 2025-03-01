@@ -1,0 +1,354 @@
+% CORRECTION : Systèmes d'Équations Linéaires et Espaces Vectoriels
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Problème : Systèmes d'Équations Linéaires et Espaces Vectoriels}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+\begin{document}
+% ==================================================================================================
+\textbf{Représentation vectorielle des systèmes linéaires}
+
+\q Écriture du système linéaire sous forme matricielle :
+\[
+AX = B,
+\]
+avec :
+\[
+A =
+\begin{bmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix},
+\quad
+X = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix},
+\quad
+B = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{bmatrix}
+\]
+
+Dimensions :
+
+\begin{itemize}
+    \item \( A \) : matrice \( m \times n \)
+    \item \( X \) : vecteur colonne \( n \times 1 \)
+    \item \( B \) : vecteur colonne \( m \times 1 \)
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Rôle du système homogène associé}
+
+\q L'ensemble des solutions du système homogène $AX = 0$ est un sous-espace vectoriel de
+$\mathbb{R}^n$ :
+\begin{itemize}
+    \item Il contient le vecteur nul (trivialement, $X = 0$ est solution).
+    \item Il est stable par combinaison linéaire : si $X_1$ et $X_2$ sont solutions, alors pour tout
+    $\lambda, \mu \in \mathbb{R}$, $A(\lambda X_1 + \mu X_2) = \lambda AX_1 + \mu AX_2 = 0$.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q L'ensemble des solutions du système $AX = B$ est de la forme $S = X_p + S_0$ avec $X_p$ une
+solution particulière du système :
+
+\begin{itemize}
+    \item  Soit $H \in S_0$ une solution du système homogène. Alors $X_p + H$ est solution du
+    système : $$ A(X_p + H) = AX_p + AH = B + 0 = B $$
+    \item Réciproquement, soit $X$ une solution du système. Alors $X = X_p + (X - X_p)$ et $(X -
+    X_p)$ est solution du système homogène (donc appartient à $S_0$) : $$ A(X - X_p) = AX - AX_p = B
+    - B = 0 $$
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Compatibilité du système}
+
+\q Compatibilité du système :
+
+Sens direct : Supposons que le système \( AX = B \) soit compatible, c'est-à-dire qu'il existe un
+vecteur \( X \in \mathbb{R}^n \) tel que \( AX = B \).
+
+Par définition du produit matriciel, \( AX \) est une combinaison linéaire des colonnes de \( A \),
+chaque colonne de \( A \) étant pondérée par les coefficients de \( X \). Ainsi, \( B \) s'écrit :
+\[
+B = x_1 A_1 + x_2 A_2 + \dots + x_n A_n,
+\]
+où \( A_1, A_2, \dots, A_n \) sont les colonnes de \( A \) et \( x_1, x_2, \dots, x_n \) sont les
+composantes du vecteur \( X \). Cela prouve que \( B \) est une combinaison linéaire des colonnes de
+\( A \).
+
+Sens réciproque : Supposons que \( B \) soit une combinaison linéaire des colonnes de \( A \),
+c'est-à-dire qu'il existe des scalaires \( x_1, x_2, \dots, x_n \) tels que :
+\[
+B = x_1 A_1 + x_2 A_2 + \dots + x_n A_n
+\]
+Le vecteur \( X = (x_1, x_2, \dots, x_n)^T \) est une solution du système \( AX = B \), donc le
+système est compatible.
+
+Conclusion : Les deux implications étant démontrées, le système \( AX = B \) est compatible si et
+seulement si \( B \) est une combinaison linéaire des colonnes de \( A \).
+
+% --------------------------------------------------------------------------------------------------
+\q Existence d'une solution pour le système homogène :
+
+L'ensemble des solutions du système homogène \( AX = 0 \) est toujours non vide, car il contient au
+moins la solution triviale \( X = 0 \) :
+\[
+A \cdot 0 = 0
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Dimension de l'espace des solutions}
+
+Pour démontrer l'égalité des dimensions :
+$$\dim S = n - \text{rang}(A) \iff n = \dim S + \text{rang}(A)$$ une approche consiste à construire
+une base de $\mathbb{R}^n$ en juxtaposant deux bases dont les dimensions correspondent aux deux
+termes de la relations : une base de $S_0$ et d'une base d'antécédents de $B$ par $A$.
+
+% --------------------------------------------------------------------------------------------------
+\q Dimension de l'espace des solutions et dimension de l'espace des solutions du système homogène :
+
+Soit \( S \) l'ensemble des solutions du système \( AX = B \) et \( S_0 \) l'ensemble des solutions
+du système homogène \( AX = 0 \).
+
+Tout d'abord, $\dim S = \dim S_0 $ car $S$ est une translation de $S_0$.
+
+% --------------------------------------------------------------------------------------------------
+\q Construction d'une base de $\mathbb{R}^n$ :
+
+\begin{itemize}
+    \item Soit $\mathcal{V} = \{v_1, \ldots, v_k\}$ une base de $S_0$, comprenant $k = \dim(S_0)$
+    vecteurs.
+    \item Soit $\mathcal{W} = \{w_1, \ldots, w_l\}$ une famille obtenue en complétant la base
+    $\mathcal{V}$ pour former une base de $\mathbb{R}^n$, comprenant $l = n - k$ vecteurs.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Base de $\text{Vect}(A)$ avec $\{Aw_1, \ldots, Aw_l\}$ :
+
+\begin{itemize}
+    \item Famille génératrice : Soit $Y \in \text{Vect}(A)$. Alors $\exists X \in \mathbb{R}^n$ tel
+    que $AX = Y$. En effet, par définition de $\text{Vect}(A)$, $Y$ est une combinaison linéaire des
+    colonnes de $A$ :
+        $$Y = y_1 A_1 + y_2 A_2 + \cdots + y_n A_n$$ avec $A_i$ les colonnes de $A$ et $y_1, y_2,
+        \ldots, y_n$ des scalaires.
+
+        En définissant $X = [y_1, y_2, \ldots, y_n]^T$, par définition du produit matrice-vecteur :
+        $$AX = y_1 A_1 + y_2 A_2 + \cdots + y_n A_n = Y$$
+
+    Le vecteur $X$ se décompose dans la base initiale :
+    $$X = \sum_{i=1}^k \alpha_i v_i + \sum_{j=1}^l \beta_j w_j$$ Donc : $$Y = AX = A
+    \left(\sum_{i=1}^k \alpha_i v_i + \sum_{j=1}^l \beta_j w_j \right) = \sum_{i=1}^k \alpha_i Av_i
+    + \sum_{j=1}^l \beta_j Aw_j = \sum_{j=1}^l \beta_j Aw_j$$ car $Av_i = 0$ pour tout $i$.
+
+    \item Indépendance linéaire :
+
+    Supposons qu'il existe $\gamma_1, \ldots, \gamma_l$ tels qu'il existe une combinaison linéaire
+    nulle des vecteurs considérés. Alors :
+    $$ \sum_{j=1}^l \gamma_j Aw_j = 0 \implies A \left(\sum_{j=1}^l \gamma_j w_j \right) = 0
+    \implies \sum_{j=1}^l \gamma_j w_j \in S_0 $$
+
+    Or, puisque $\{v_1, \ldots, v_k, w_1, \ldots, w_l\}$ est une base de $\mathbb{R}^n$, les
+    vecteurs $w_j$ sont linéairement indépendants de $S_0$. Donc la seule possibilité est que
+    $\gamma_j = 0$ pour tout $j$.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Conclusion :
+
+La décomposition de $\mathbb{R}^n$ en deux bases $\mathcal{V}$ et $\mathcal{W}$ conduit à l'égalité
+des dimensions :
+$$ n = k + l $$ avec :
+\begin{itemize}
+    \item $k = \dim S_0$
+    \item $l = n - k$
+\end{itemize}
+
+Puisque $\{Aw_1, \ldots, Aw_l\}$ est une base de $\text{Vect}(A)$, alors $l = \dim(\text{Vect}(A)) =
+\text{rang}(A)$.
+
+Conclusion : $n = \dim S + \text{rang}(A)$, ce qui est équivalent à $\dim S = n - \text{rang}(A)$.
+
+% --------------------------------------------------------------------------------------------------
+\q Conditions d'existence et d'unicité des solutions :
+
+Le système $AX = B$ admet :
+\begin{itemize}
+    \item Une unique solution si l'espace des solution est réduit à un point, c'est-à-dire si $\dim
+    S = 0$ ($S_0 = \{0\}$), ce qui revient à $\text{rang}(A) = n$.
+    \item Une infinité de solutions si $\dim S > 0$, c'est-à-dire si $S_0 \neq \{0\}$, ce qui
+    revient à $\text{rang}(A) < n$.
+    \item Aucune solution si $B$ n'appartient pas à l'image de $A$, c'est-à-dire si $B \notin
+    \text{Vect}(A)$.
+\end{itemize}
+
+
+- Un système admet une unique solution si et seulement si \( \text{rang}(A)
+   = n \) (matrice des coefficients de taille \( m \times n \) de rang maximal) et \( \text{rang}(A)
+   = \text{rang}([A|B]) \) (matrice augmentée). - Un système admet une infinité de solutions si \(
+   \text{rang}(A) < n \) et \( \text{rang}(A) = \text{rang}([A|B]) \). - Un système n'admet aucune
+   solution si \( \text{rang}(A) < \text{rang}([A|B]) \).
+
+% ==================================================================================================
+\bigskip
+\textbf{Application à des exemples concrets}
+
+Pour déterminer la nature de l'ensemble des solutions des systèmes \((E_1)\), \((E_2)\) et \((E_3)\)
+sans les résoudre explicitement, il faut :
+\begin{itemize}
+    \item Déterminer la dimension de l'espace des solutions homogènes et calculant le rang de la
+    matrice des coefficients.
+    \item Vérifier si le système est bien compatible en examinant si le vecteur \( B \) est une
+    combinaison linéaire des colonnes de la matrice des coefficients.
+\end{itemize}
+
+Système \((E_1)\) :
+\[
+A =
+\begin{bmatrix}
+1 & 1 & 1 \\
+2 & -1 & 1 \\
+2 & -1 & -1
+\end{bmatrix}
+\quad
+B = \begin{bmatrix} 3 \\ 2 \\ 0 \end{bmatrix}
+\]
+
+Rang de \( A \) :  La matrice \( A \) est une matrice \( 3 \times 3 \) dont les colonnes sont
+indépendantes. En effet, supposons que la troisième colonne puisse s'écrire comme combinaison
+linéaire des deux premières : \( A_3 = \alpha A_1 + \beta A_2 \). Alors, les coefficients imposent
+les égalités :
+\[
+\begin{cases}
+1 = \alpha + \beta \\
+1 = 2\alpha - \beta \\
+-1 = 2\alpha - \beta
+\end{cases}
+\]
+Or les deux dernières lignes sont incompatibles.
+Donc \(\text{rang}(A) = 3\).
+
+Compatibilité : Le vecteur \( B \) est une combinaison linéaire des colonnes de \( A \)
+puisqu'il est égal à \( A_1 + A_2 + A_3 \).
+
+Conclusion : \( (E_1) \) est un système compatible déterminé.
+
+Système \((E_2)\) :
+\[
+A =
+\begin{bmatrix}
+1 & 1 & 2 \\
+2 & -1 & 1 \\
+1 & 2 & 3
+\end{bmatrix}
+\quad
+B = \begin{bmatrix} 2 \\ 1 \\ 3 \end{bmatrix}
+\]
+
+Rang de \( A \) : La troisième colonne est obtenue comme la somme des deux premières : \( A_3 = A_1
++ A_2 \). Cependant, les deux premières colonnes sont linéairement indépendantes, donc \(
+\text{rang}(A) = 2 \).
+
+Compatibilité : Le vecteur \( B \) est une combinaison linéaire des colonnes de \( A \) puisqu'il
+est égal à \( A_3 \).
+
+Conclusion : \( (E_2) \) est un système compatible indéterminé.
+
+Système \((E_3)\) :
+\[
+A =
+\begin{bmatrix}
+1 & 1 & 1 \\
+2 & 2 & 2 \\
+1 & 1 & 1
+\end{bmatrix}
+\quad
+B = \begin{bmatrix} 1 \\ 2 \\  3 \end{bmatrix}
+\]
+
+Rang de \( A \) : Les trois colonnes sont identiques, donc \(\text{rang}(A) = 1\).
+
+Compatibilité : Pour que $B$ soit une combinaison linéaire des colonnes de $A$, il faut que $B$ soit
+proportionnel à $(1,1,1)$, ce qui n'est pas le cas.
+
+Conclusion : \( (E_3) \) est un système incompatible (aucune solution).
+
+
+\q Solution paramétrique du système \((E_2)\) :
+
+Le système \((E_2)\) est compatible indéterminé avec \( \text{rang}(A) = 2 \), donc l'espace des
+solutions du système homogène associé a dimension \( n - \text{rang}(A) = 3 - 2 = 1 \). Il existe
+donc une solution particulière et une direction de solution homogène :
+\[
+S = \left\{ \begin{pmatrix} s_1 \\ s_2 \\ s_3 \end{pmatrix} + t \begin{pmatrix} v_1 \\ v_2 \\ v_3
+\end{pmatrix} \mid t \in \mathbb{R} \right\}
+\]
+Interprétation géométrique :
+\begin{itemize}
+    \item Le premier vecteur \( (s_1, s_2, s_3) \) est une solution particulière du système.
+    \item Le second vecteur \( (v_1, v_2, v_3) \) est un vecteur directeur de l'espace des solutions
+    homogènes \( AX = 0 \).
+    \item L'ensemble des solutions est une droite paramétrée par \( t \), qui représente l'unique
+    direction de liberté dans l'espace des solutions.
+\end{itemize}
+
+Choisissons \( z \) comme paramètre libre, notons-le \( t \), et réécrivons le système en fonction
+de \( z = t \). Le but est d'écrire les deux autres variables $x$ et $y$ en fonction de $t$.
+\[
+\begin{cases}
+x + y + 2t = 2 \quad \Rightarrow \quad x + y = 2 - 2t \\
+2x - y + t = 1 \quad \Rightarrow \quad 2x - y = 1 - t \\
+x + 2y + 3t = 3 \quad \Rightarrow \quad x + 2y = 3 - 3t
+\end{cases}
+\]
+
+Exprimons \( y \) à partir de la seconde équation :
+\[
+y = 2x - 1 + t
+\]
+Remplaçons dans la première équation pour exprimer \( x \) en fonction de \( t \) uniquement :
+\[
+x + (2x - 1 + t) = 2 - 2t \quad \Rightarrow \quad 3x = 3 - 3t \quad \Rightarrow \quad x = 1 - t
+\]
+En remplaçant $x$ dans l'équation pour $y$ :
+\[
+y = 2(1 - t) - 1 + t = 1 - 2t
+\]
+
+Solution générale sous forme paramétrique :
+\[
+\begin{cases}
+x = 1 - t \\
+y = 1 - 2t \\
+z = t
+\end{cases}
+\]
+
+Soit, sous forme vectorielle :
+\[
+\begin{bmatrix} x \\ y \\ z \end{bmatrix}
+=
+\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}
++ t
+\begin{bmatrix} -1 \\ -2 \\ 1 \end{bmatrix}, \quad t \in \mathbb{R}.
+\]
+
+% ==================================================================================================
+\bigskip
+\textbf{Interprétation géométrique des méthodes de résolution}
+
+\q La soustraction de la seconde équation à la première donne une équation triangulaire, sans modifier l'intersection des droites : la transformation
+correspond à une réduction de base dans $\mathbb{R}^2$.
+
+\end{document}
