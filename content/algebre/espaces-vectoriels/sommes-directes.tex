@@ -1,0 +1,146 @@
+% PROBLÈME : Complémentarité et Décompositions en Sommes Directes
+% ==================================================================================================
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Problème : Complémentarité et Décompositions en Sommes Directes}
+\author{Esther Poniatowski}
+\date{2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024-2025}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+Dans de nombreux domaines des mathématiques et de la physique, il est souvent utile de décomposer un
+espace complexe en parties plus simples et compréhensibles.
+
+
+\bigskip
+\textbf{Objectifs}
+
+Étudier le concept de somme directe de sous-espaces vectoriels et son implication en termes de
+bases et décompositions.
+
+\bigskip
+\textbf{Somme de sous-espaces vectoriels}
+
+Soient $E$ un espace vectoriel et $F, G$ deux sous-espaces vectoriels de $E$.
+
+La \textit{somme} de deux sous-espaces vectoriels est définie par :
+\[
+F + G = \{ u + v \mid u \in F, v \in G \}
+\]
+
+\q Montrer que $F+G$ est un sous-espace vectoriel de $E$.
+% But : Introduire la notion de somme de sous-espaces et montrer qu'elle forme encore un sous-espace
+% vectoriel.
+% Méthode : Vérifier la stabilité par addition et multiplication scalaire.
+
+\q Montrer que l'intersection de deux sous-espaces vectoriels est un sous-espace vectoriel, et
+donner une contrainte sur sa dimension.
+% But : Étudier les propriétés de l'intersection de sous-espaces en prévision de la formule de
+% Grassmann.
+
+\q Démontrer la formule de Grassmann :
+\[
+\dim (F+G) = \dim F + \dim G - \dim(F \cap G)
+\]
+% But : Établir une relation entre les dimensions des sous-espaces et leur intersection, utilisée
+% plus tard pour caractériser les sommes directes en termes de dimension.
+% Méthode : Utiliser la caractérisation d'une base de $F+G$ en termes des bases de $F$ et $G$.
+
+\textbf{Sommes directes}
+
+La somme \textit{directe} est une notion plus forte que la somme :
+
+\[
+F \oplus G = \{ u + v \mid u \in F, v \in G \} \text{ avec } F \cap G = \{0\}
+\]
+
+Deux sous-espaces sont dits \textit{supplémentaires} si leur somme est directe.
+
+\q Indiquer la dimension de $F \oplus G$ en fonction de celles de $F$ et $G$.
+
+\q Justifier qu'un sous-espace $F$ admet toujours un supplémentaire dans un espace de dimension finie.
+% But : Étudier l'existence d'un complémentaire à un sous-espace.
+% Méthode : Utiliser la dimension et la construction d'une base adaptée.
+
+\q Donner un exemple explicite de sommes directes dans $\mathbb{R}^n$, en considérant des
+sous-espaces formés par des vecteurs de la base canonique.
+% But : Illustrer la somme directe à l'aide d'exemples concrets.
+% Méthode : Trouver des sous-espaces dont l'intersection est réduite à 0.
+
+\bigskip
+\textbf{Bases et décompositions}
+
+\q Démontrer que $F$ et $G$ sont supplémentaires ssi chaque élément de $E$ s'écrit de manière unique
+comme la somme d'un élément de $F$ et d'un élément de $G$.
+% But : Introduire les critères d'unicité et de somme directe.
+% Méthode : Utiliser la définition d'unicité de la décomposition.
+
+\bigskip
+Puisque tout élément $x \in E$ possède une décomposition unique $x = u + v$ avec $u \in F$, $v \in
+G$, il est possible de définir des applications $p_F$ et $p_G$ qui associent à chaque $x$ ses
+composantes $u$ et $v$, appelées \textit{projections} sur $F$ et $G$.
+
+\q Exprimer $u$ et $v$ en fonction de $x$ en fonction des coordonnées dans la base canonique de $E$.
+% But : Introduire la notion de projection associée à une somme directe.
+% Méthode : Exprimer les coordonnées de u dans la base de F puis dans celle de E.
+
+\bigskip
+\textbf{Application : Sommes directes dans $\mathbb{R}^4$}
+
+Soit $E = \mathbb{R}^4$ muni de sa base canonique $(e_1, e_2, e_3, e_4)$.
+
+On considère les sous-espaces vectoriels $F$ et $G$ définis par:
+\[ F = \{ (x, y, z, t) \in \mathbb{R}^4 : x - y = 0, \; z - t = 0 \} \]
+\[ G = \{ (x, y, z, t) \in \mathbb{R}^4 : x - z = 0, \; y - t = 0 \} \]
+
+\q Vérifier que les dimensions de $F$ et $G$ sont compatibles avec une somme directe.
+
+\q Montrer que toutefois, $F$ et $G$ ne sont pas en somme directe.
+
+\q Proposer un sous-espace $G'$ supplémentaire de $F$.
+
+\q Déterminer les coordonnées de tout vecteur de \( \mathbb{R}^4 \) dans cette décomposition en
+somme directe.
+% But : Appliquer la notion de somme directe à un cas concret.
+% Méthode : Trouver une base explicite de F, vérifier que l'union avec une base de G est une base de
+% R^3, puis exprimer tout vecteur sous cette forme.
+
+\end{document}
+% ==================================================================================================
+
+\bigskip
+\textbf{Application : Décomposition de fonctions}
+
+Soit $C([1])$ l'espace vectoriel des fonctions continues sur l'intervalle $[0, 1]$, muni de la norme
+uniforme $\|f\|_{\infty} = \sup_{x \in[1]} |f(x)|$. On considère les sous-espaces suivants :
+
+\begin{itemize}
+    \item $F = \{f \in C([1]) : f(0) = f(1)\}$ (fonctions continues périodiques)
+    \item $G = \{g \in C([1]) : g(x) = ax + b, a,b \in \mathbb{R}\}$ (fonctions affines)
+\end{itemize}
+
+\q Montrer que $F$ et $G$ sont des sous-espaces vectoriels de $C([1])$.
+
+\q Déterminer $F \cap G$.
+
+\q Montrer que pour toute fonction $h \in C([1])$, il existe une unique décomposition $h = f + g$
+avec $f \in F$ et $g \in G$.
+
+\q Conclure que $C([1]) = F \oplus G$.
+
+% But : Appliquer les concepts de somme directe à un espace fonctionnel, plus abstrait que R^3.
+% Méthode :
+% a) Vérifier la stabilité par combinaison linéaire pour F et G.
+% b) Caractériser les fonctions appartenant à la fois à F et G.
+% c) Construire explicitement la décomposition et prouver son unicité.
+% d) Utiliser les résultats précédents pour conclure sur la somme directe.

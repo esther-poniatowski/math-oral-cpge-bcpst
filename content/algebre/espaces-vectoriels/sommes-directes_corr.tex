@@ -1,0 +1,337 @@
+% CORRECTION : Complémentarité et Décompositions en Sommes Directes
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Correction : Complémentarité et Décompositions en Sommes Directes}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Somme de sous-espaces vectoriels}
+
+\q $F+G$ est un sous-espace vectoriel de $E$.
+
+\begin{itemize}
+    \item $F+G$ est non vide : $0 = 0 + 0 \in F+G$ puisque $F$ et $G$ contiennent l'élément nul.
+    \item  $F+G$ est stable par addition : si $u_1 + v_1 \in F+G$ et $u_2 + v_2 \in F+G$, alors :
+   \[
+   (u_1 + v_1) + (u_2 + v_2) = (u_1 + u_2) + (v_1 + v_2) \in F+G
+   \]
+   car $F$ et $G$ sont des sous-espaces vectoriels.
+   \item $F+G$ est stable par multiplication scalaire : si $\lambda \in \mathbb{K}$ et $u + v \in
+   F+G$, alors :
+   \[
+   \lambda (u + v) = (\lambda u) + (\lambda v) \in F+G
+   \]
+   car $F$ et $G$ sont des sous-espaces vectoriels.
+\end{itemize}
+
+Donc, $F+G$ est bien un sous-espace vectoriel de $E$.
+
+% --------------------------------------------------------------------------------------------------
+\q Intersection de deux sous-espaces vectoriels :
+
+Soient $F$ et $G$ deux sous-espaces vectoriels d'un espace vectoriel $E$. Montrons que $F \cap
+G$ est un sous-espace vectoriel de $E$ en vérifiant les trois propriétés caractéristiques d'un
+sous-espace vectoriel :
+
+\begin{itemize}
+    \item $F \cap G$ est non-vide : $\vec{0} \in F$ et $\vec{0} \in G$ car $F$ et $G$
+    sont des sous-espaces vectoriels, donc $\vec{0} \in F \cap G$.
+    \item $F \cap G$ est stable par addition : si $\vec{x}, \vec{y} \in F \cap G$, alors $\vec{x} +
+    \vec{y} \in F \cap G$.
+    \item $F \cap G$ est stable par multiplication scalaire : si $\vec{x} \in F \cap G$ et $\lambda
+    \in \mathbb{K}$, alors $\lambda\vec{x} \in F \cap G$.
+\end{itemize}
+
+Conclusion : $F \cap G$ est bien un sous-espace vectoriel de $E$.
+
+Conséquence sur la dimension :
+\begin{itemize}
+    \item $F \cap G \subset F \implies \dim(F \cap G) \leq \dim(F)$
+    \item $F \cap G \subset G \implies \dim(F \cap G) \leq \dim(G)$
+\end{itemize}
+Donc $\dim(F \cap G) \leq \min(\dim(F), \dim(G))$.
+
+% --------------------------------------------------------------------------------------------------
+\q Formule de Grassmann :
+
+Soient $F$ et $G$ deux sous-espaces vectoriels de dimensions respectives $n$ et $m$. Leur
+intersection est un sous-espace vectoriel de dimension $k \leq \min(n, m)$.
+
+Soit une base de $F \cap G$ (i.e. qui engendre tous les vecteurs qui sont à la fois dans $F$ et dans
+$G$) :
+\[ \mathcal{B}_\cap = \{e_1, \ldots, e_k\} \]
+
+La base $\mathcal{B}_\cap$ peut être complétée en une base de $F$, en ajoutant $n-k$ vecteurs qui ne
+sont pas dans $F \cap G$ (et donc dans $G$) :
+\[ \mathcal{F} = \{f_1, \ldots, f_{n-k}\} \]
+\[ \mathcal{B}_F = \mathcal{B}_\cap \cup \mathcal{F} = \{e_1, \ldots, e_k, f_1, \ldots, f_{n-k}\} \]
+
+De même, la base $\mathcal{B}_\cap$ peut être complétée en une base de $G$, en ajoutant $m-k$
+vecteurs qui ne sont pas dans $F \cap G$ (et donc dans $F$) :
+\[ \mathcal{G} = \{g_1, \ldots, g_{m-k}\} \]
+\[ \mathcal{B}_G = \mathcal{B}_\cap \cup \mathcal{G} = \{e_1, \ldots, e_k, g_1, \ldots, g_{m-k}\} \]
+
+Désormais, la famille $\mathcal{B}_\cap \cup \mathcal{F} \cup \mathcal{G}$ forme une base de $F + G$ :
+\begin{itemize}
+    \item Famille génératrice : $\mathcal{B}_\cap \cup \mathcal{F} \cup \mathcal{G}$ engendre $F +
+    G$ car elle contient des bases de $F$ et de $G$.
+    \item Famille libre : $\mathcal{B}_\cap \cap \mathcal{F}$ est linéairement indépendante car
+    c'est une base de $F$, et $\mathcal{G}$ est linéairement indépendante car c'est une famille
+    extraite d'une base de $G$ qui ne contient pas les vecteurs de $\mathcal{B}_\cap$.s
+\end{itemize}
+
+Comptage des dimensions :
+\[ \dim(F + G) = |\mathcal{B}_\cap \cup \mathcal{F} \cup \mathcal{G}| = k + (n-k) + (m-k) = n + m - k \]
+\[ \dim(F) = |\mathcal{B}_F| = k + (n-k) = n \]
+\[ \dim(G) = |\mathcal{B}_G| = k + (m-k) = m \]
+\[ \dim(F \cap G) = |\mathcal{B}_\cap| = k \]
+
+En combinant ces équations:
+\[ \dim(F + G) = \dim(F) + \dim(G) - \dim(F \cap G) \]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Sommes directes}
+
+\q Dimension de $F \oplus G$ :
+
+Par définition de la somme directe, $F \cap G = \{0\}$, donc $\dim(F \cap G) = 0$. En appliquant la
+formule de Grassmann :
+\[\dim(F \oplus G) = \dim F + \dim G \]
+
+% --------------------------------------------------------------------------------------------------
+
+\q Existence d'un supplémentaire :
+
+Soit $n = \dim(E)$ et $p = \dim(F)$
+
+Comme $F$ est un sous-espace de $E$, alors $p \leq n$.
+
+Soit $(f_1, f_2, ..., f_p)$ une base de $F$.
+
+D'après le théorème de la base incomplète, cette base peut être complétée pour former une base de
+$E$. Soit donc $(f_1, f_2, ..., f_p, e_{p+1}, ..., e_n)$ une base de $E$.
+
+En définissant $G = \text{Vect}(e_{p+1}, ..., e_n)$, alors $F$ et $G$ sont supplémentaires :
+\begin{itemize}
+    \item $F + G = E$ car tout vecteur de $E$ s'écrit comme combinaison linéaire des vecteurs de la
+   base $(f_1, f_2, ..., f_p, e_{p+1}, ..., e_n)$.
+    \item $F \cap G = \{0\}$ car si $v \in F \cap G$, alors $v$ s'écrit à la fois comme
+   combinaison linéaire des $f_i$ et des $e_j$, ce qui n'est possible que si $v = 0$ (unicité de la
+   décomposition dans une base).
+    \item $\dim(G) = n - p$, donc $\dim(F) + \dim(G) = p + (n-p) = n = \dim(E)$.
+\end{itemize}
+D'après les propriétés caractéristiques des sous-espaces supplémentaires, $F$ et $G$ sont
+bien supplémentaires.
+
+% --------------------------------------------------------------------------------------------------
+\q Exemple de somme directe dans $\mathbb{R}^n$ :
+
+Soit $F = \text{Vect}((1, 0, 0), (0, 1, 0))$ et $G = \text{Vect}((0, 0, 1)$. On a $F \cap G =
+\{0\}$, donc $\mathbb{R}^3 = F \oplus G$.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Bases et décompositions}
+
+\q Espaces supplémentaires et unicité de la décomposition :
+
+($\Rightarrow$) Supposons que $F \oplus G = E$. Alors tout $x \in E$ s'écrit $x = u + v$
+avec $u \in F$ et $v \in G$. Supposons que $x = u' + v'$ avec $u' \in F$ et $v' \in G$. Alors :
+\[u + v = u' + v' \Rightarrow (u - u') = (v' - v) \in F \cap G. \] Or, $F \cap G = \{0\}$, donc $u -
+u' = 0$ et $v - v' = 0$, d'où l'unicité.
+
+($\Leftarrow$) Réciproquement, si toute décomposition est unique, alors $F \cap G = \{0\}$, sinon,
+un élément non nul de $F \cap G$ engendrerait une contradiction.
+
+\q Projections sur $F$ et $G$ :
+
+Tout $x \in E$ peut s'écrire de manière unique comme $x = u + v$ avec $u \in F$ et $v \in G$.
+
+Expression de $u$ dans la base de $F$:
+\[u = \alpha_1 f_1 + \alpha_2 f_2 + \cdots + \alpha_p f_p\]
+
+Coodonnées de \(u\) dans la base canonique de \(E\):
+\[[u]_E = A[\alpha]\]
+avec \(A\) la matrice \(n \times p\) dont les colonnes sont les coordonnées des vecteurs \(f_1, \ldots, f_p\)
+dans la base canonique de \(E\), et \([\alpha] = (\alpha_1, \ldots, \alpha_p)^T\)
+
+Ainsi : \([x]_E = [u]_E + [v]_E = A[\alpha] + [v]_E\)
+
+Produit scalaire: Multiplions les deux côtés de l'équation par \(A^T\):
+\[A^T[x]_E = A^T A[\alpha] + A^T[v]_E\]
+
+Orthogonalité: Comme \(v \in G\) et \(G\) est le supplémentaire de \(F\), \(v\) est orthogonal à tous les
+vecteurs de \(F\). Donc \(A^T[v]_E = 0\).
+
+Résolution pour \([\alpha]\):
+\[A^T[x]_E = A^T A[\alpha]\]
+\[[\alpha] = (A^T A)^{-1}A^T[x]_E\]
+
+Expression finale de \([u]_E\): En substituant cette expression de \([\alpha]\) dans l'équation
+précédente :
+\[ [u]_E = A[\alpha] = A(A^T A)^{-1}A^T[x]_E \]
+
+Pour \([v]_E\), on peut simplement utiliser la relation \([v]_E = [x]_E - [u]_E\), ce qui donne:
+\[
+[v]_E = [x]_E - A(A^T A)^{-1}A^T[x]_E = (I - A(A^T A)^{-1}A^T)[x]_E
+\]
+
+Conclusion : Les projections sur \(F\) et \(G\) sont respectivement les applications linéaires \(p_F\) et
+\(p_G\) définies par les matrices \(A(A^T A)^{-1}A^T\) et \(I - A(A^T A)^{-1}A^T\).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Application : Sommes directes dans $\mathbb{R}^4$}
+
+\q Dimensions de \(F\) et \(G\):
+
+\[ F = \{ (x, y, z, t) \in \mathbb{R}^4 : x - y = 0, \; z - t = 0 \} \]
+\[ G = \{ (x, y, z, t) \in \mathbb{R}^4 : x - z = 0, \; y - t = 0 \} \]
+
+\( \dim(F) = 2 \) car $F$ est défini par deux équations indépendantes (deux équations imposent les relations entre $x$ et
+$y$ d'une part et $z$ et $t$ d'autre part).
+
+\( \dim(G) = 2 \) pour les mêmes raisons.
+
+% --------------------------------------------------------------------------------------------------
+\q Vérification que $F$ et $G$ ne sont pas en somme directe :
+
+L'intersection de \( F \) et \( G \) n'est pas réduite à \(\{0\}\) : le vecteur \( v = (1, 1, 1, 1)
+\) vérifie \( v \in F \cap G \) :\\
+\( v \in F \) car \( v = (1, 1, 0, 0) + (0, 0, 1, 1) \)\\
+\( v \in G \) car \( v = (1, 0, 1, 0) + (0, 1, 0, 1) \)
+
+Conclusion : \( F \) et \( G \) ne sont pas en somme directe.
+
+% --------------------------------------------------------------------------------------------------
+\q Modification de \( G \) pour obtenir un supplémentaire \( G' \) de \( F \)
+
+Un sous-espace \( G' \) est un supplémentaire de \( F \) dans \( \mathbb{R}^4 \) si et seulement si
+:
+\begin{itemize}
+    \item \( \mathbb{R}^4 = F \oplus G' \), c'est-à-dire que chaque vecteur de \( \mathbb{R}^4 \)
+    s'écrit de manière unique comme la somme d'un vecteur de \( F \) et d'un vecteur de \( G' \).
+    \item \( \dim G' = 4 - \dim F = 4 - 2 = 2 \).
+    \item \( F \cap G' = \{0\} \), c'est-à-dire que les seules solutions de \( v \in F \cap G' \)
+    sont \( v = 0 \).
+\end{itemize}
+
+La méthode consiste à compléter une base de \( F \) en une base de \( \mathbb{R}^4 \) et de former
+une base de \( G' \) à partir de ces vecteurs supplémentaires.
+
+Base de \( F \) :
+\[
+F = \text{Vect} \left( \begin{bmatrix} 1 \\ 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \\ 1 \end{bmatrix} \right)
+\]
+
+Base de \( \mathbb{R}^4 \) : On cherche deux vecteurs supplémentaires \( v_3 \) et \( v_4 \)
+linéairement indépendants de ceux de \( F \), c'est-à-dire qui ne peuvent pas être exprimés comme
+combinaison linéaire des deux vecteurs de \( F \). Par exemple :
+\[
+v_3 = \begin{bmatrix} 1 \\ -1 \\ 0 \\ 0 \end{bmatrix}, \quad v_4 = \begin{bmatrix} 0 \\ 0 \\ 1 \\ -1 \end{bmatrix}
+\]
+
+La famille \( \{ v_1, v_2, v_3, v_4 \} \) est bien libre et forme une base de \( \mathbb{R}^4 \).
+
+Définition de \( G' \) :
+\[
+G' = \text{Vect} \left( \begin{bmatrix} 1 \\ -1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \\ -1 \end{bmatrix} \right)
+\]
+
+Ce sous-espace \( G' \) est un supplémentaire de \( F \) car :
+\begin{itemize}
+    \item \( \dim G' = 2 \).
+    \item \( F \cap G' = \{0\} \) (on peut vérifier que les seuls coefficients permettant d'écrire
+    un vecteur de \( G' \) comme combinaison linéaire des vecteurs de \( F \) sont nuls).
+    \item La réunion des bases de \( F \) et \( G' \) forme une base de \( \mathbb{R}^4 \), assurant
+    que \( \mathbb{R}^4 = F \oplus G' \).
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Coordonnées dans la décomposition en somme directe :
+
+Soit un vecteur \( x \in \mathbb{R}^4 \). Il se décompose sous la forme :
+\[
+x = u + v
+\]
+avec \( u \in F \) et \( v \in G' \);
+
+Le vecteur \( u \in F \) s'écrit sous la forme :
+\[
+u = \lambda \begin{bmatrix} 1 \\ 1 \\ 0 \\ 0 \end{bmatrix} + \mu \begin{bmatrix} 0 \\ 0 \\ 1 \\ 1 \end{bmatrix}
+= \begin{bmatrix} \lambda \\ \lambda \\ \mu \\ \mu \end{bmatrix}
+\]
+
+Le vecteur \( v \in G' \) s'écrit sous la forme :
+\[
+v = \alpha \begin{bmatrix} 1 \\ -1 \\ 0 \\ 0 \end{bmatrix} + \beta \begin{bmatrix} 0 \\ 0 \\ 1 \\ -1 \end{bmatrix}
+= \begin{bmatrix} \alpha \\ -\alpha \\ \beta \\ -\beta \end{bmatrix}
+\]
+
+Les inconnues \( \lambda, \mu, \alpha, \beta \) telles que \( x = u + v \) conduisent au système :
+\[
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix}
+=
+\begin{bmatrix} \lambda \\ \lambda \\ \mu \\ \mu \end{bmatrix}
++
+\begin{bmatrix} \alpha \\ -\alpha \\ \beta \\ -\beta \end{bmatrix}
+\implies
+\begin{cases}
+x_1 = \lambda + \alpha \\
+x_2 = \lambda - \alpha \\
+x_3 = \mu + \beta \\
+x_4 = \mu - \beta
+\end{cases}
+\]
+
+En sommant les deux premières équations :
+\[
+x_1 + x_2 = \lambda + \alpha + \lambda - \alpha = 2\lambda
+\implies
+\lambda = \frac{x_1 + x_2}{2}
+\]
+
+En soustrayant la deuxième équation de la première :
+\[
+x_1 - x_2 = \lambda + \alpha - (\lambda - \alpha) = 2\alpha
+\implies
+\alpha = \frac{x_1 - x_2}{2}
+\]
+
+En procédant de la même manière sur les deux dernières équations :
+\[
+x_3 + x_4 = 2\mu \quad \Rightarrow \quad \mu = \frac{x_3 + x_4}{2}
+\]
+\[
+x_3 - x_4 = 2\beta \quad \Rightarrow \quad \beta = \frac{x_3 - x_4}{2}
+\]
+
+Conclusion :
+\[
+u = \frac{x_1 + x_2}{2} \begin{bmatrix} 1 \\ 1 \\ 0 \\ 0 \end{bmatrix} + \frac{x_3 + x_4}{2} \begin{bmatrix} 0 \\ 0 \\ 1 \\ 1 \end{bmatrix}
+\]
+\[
+v = \frac{x_1 - x_2}{2} \begin{bmatrix} 1 \\ -1 \\ 0 \\ 0 \end{bmatrix} + \frac{x_3 - x_4}{2} \begin{bmatrix} 0 \\ 0 \\ 1 \\ -1 \end{bmatrix}
+\]
+
+Les coordonnées de \( x \) dans la décomposition \( F \oplus G' \) sont :
+\[
+(\lambda, \mu, \alpha, \beta) = \left( \frac{x_1 + x_2}{2}, \frac{x_3 + x_4}{2}, \frac{x_1 - x_2}{2}, \frac{x_3 - x_4}{2} \right)
+\]
+
+
+\end{document}
+% ==================================================================================================
