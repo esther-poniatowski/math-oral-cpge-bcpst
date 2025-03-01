@@ -1,10 +1,7 @@
 #####################################################################
 # CONFIGURATION FILE FOR CHKTEX (LaTeX linting tool)
-# PERSONAL MODIFICATIONS:
-# In the section CmLine: Added the -n44 option to suppress warnings
-# from user-defined regexes.
-# All the other sections are unchanged from the default .chktexrc file.
 ######################################################################
+##  INITIAL TEMPLATE
 ##  Copyright (C) 1995-96 Jens T. Berger Thielemann
 ##  License: GNU General Public License
 ##  Contact the author at:
@@ -14,15 +11,30 @@
 ##      Norway
 ##      E-mail: <jensthi@ifi.uio.no>
 ##
-
-# GENERAL FORMAT
+## For more information visit https://www.nongnu.org/chktex/
+##
+#   ESSENTIAL MODIFICATIONS
+# - In the section CmdLine: Added the -n44 option to suppress warnings
+#   from user-defined regexes.
+# - In the section UserWarnRegex: Added a regular expression to catch
+#   the use of $$...$$ for display math (to be replaced by \[...\]).
+# - Reformulated the comments and explanations.
+#
+#
+# SILENCING WARNINGS INLINE
+# -------------------------
+# To suppress specific warnings on individual lines, use:
+# % chktex <warning-number> t
+#
+#
+# GENERAL SYNTAX
 # --------------
+#
+# KEYWORD = item
 #
 # KEYWORD { item item ...} [ item item ... ] /* Adds items */
 #
 # KEYWORD [ item item ...] { item item ... } /* Adds items */
-#
-# KEYWORD = item
 #
 # KEYWORD = { item item ... } /* Clears list before adding */
 #
@@ -32,21 +44,22 @@
 # Look at the examples of their use.
 #
 # Notes:
-# - Comments  begin  with  `#', and continues for the rest of the line.
+# - Comments begin with `#', and continue for the rest of the line.
 # - Blank lines plus leading and trailing spaces are ignored.
-# - { ... } syntax : Case-sensitive comparing
-# - [ ... ] syntax : Case-insensitive   comparing  of  the  keywords.
-# - Case-insensitive comparing of  the  keywords  is  only  supported
-#   on  a few of the keywords  (not meaningful in all contexts and slows
-#   ChkTeX down). Keywords supporting this are marked throughout the file.
-# - If a list-keyword is specified twice, both lists will be concatenated.
-# - If a item-keyword is specified twice, the previous value will be killed.
-# - Tokens  like "}" and "]"; they have to be preceded by a space.
-# - Items  are separated by spaces.  Newlines are considered as spaces, but
+# - Items are separated by spaces. Newlines are considered as spaces,
 #   but cannot be escaped.
 # - To put spaces into items, surroundthose items with quotes (`"').
-
-
+# - { ... } syntax : Case-sensitive comparing
+# - [ ... ] syntax : Case-insensitive comparing of the keywords.
+# - Case-insensitive comparing of the keywords is only supported on a
+#   of the keywords (not meaningful in all contexts and slows ChkTeX down)
+#   Keywords supporting this are marked throughout the file.
+# - If a list-keyword is specified twice, both lists will be concatenated.
+# - If a item-keyword is specified twice, the previous value will be killed.
+# - Tokens like "}" and "]" are context-sensitive and have to be preceded
+#   by a space (or newline).
+#
+#
 # ESCAPE SEQUENCES AVAILABLE
 # --------------------------
 #
@@ -73,8 +86,8 @@
 #   !NNN            DDD must be a octal number (000 - 377), all
 #                   three characters must be included. Unspecified
 #                   results if DDD > 377.
-
-
+#
+#
 # SUMMARY OF KEYWORDS
 # -------------------
 # Keywords marked with a * accept keywords accepting case-insensitive lists.
@@ -121,12 +134,12 @@
 #   VerbClear   - String that will be used to overwrite unwanted data.
 #   WipeArg     - Commands  (with  arguments) which should be ignored
 #                 in the checking.
-
+#
 
 #####################################################################
 # QuoteStyle
 #
-# Enter the type of quote-style to use.
+# Type of quote-style to use.
 #
 # Supported styles:
 #
@@ -140,11 +153,48 @@ QuoteStyle = Logical
 #####################################################################
 # TabSize
 #
-# Enter the interval to use between tabs.
-# Only regular intervals are supported.
+# Width of a tab. Used for formatting the error message.
+# Only regular intervals and positive integers are supported.
 #
 
 TabSize = 8
+
+#####################################################################
+# CmdSpaceStyle
+#
+# How to treat a command is followed by punction.  In all cases the
+# warnings are also governed by the main warning settings, namely
+# warnings 12 and 13 about interword and intersentence spacings.
+#
+# - If set to Ignore, then it will not print any warnings when
+#   pucntuation follows a command.
+# - If set to InterWord, then it will print warnings when interword
+#   spacing should (potentially) be used.
+# - If set to InterSentence, then it will print warnings when
+#   intersentence spacing should (potentially) be used.
+# - If set to Both, it will cause warnings to be printed in
+#   both cases.
+#
+# Examples:
+# Without a command,  the following will trigger warning 12:
+#
+#     `I've seen a UFOs, etc. in my life.'
+#
+# If set to InterWord, so will:
+#
+#     `I've seen a UFOs, \etc. in my life.'
+#
+# Without a command, the following will trigger warning 13
+#
+#     `I've seen an UFO! Right over there!'
+#
+# And if set to InterSentence, so will:
+#
+#     `I've seen an \UFO! Right over there!'
+#
+#
+
+CmdSpaceStyle = Ignore
 
 #####################################################################
 # CmdLine
@@ -158,15 +208,17 @@ TabSize = 8
 
 CmdLine
 {
- -v2 -n44
+ #-n44
 }
 
 #####################################################################
 # UserWarn
 #
-# Enter patterns that will be searched for through the text, no matter
-# whether   they   appear  as  normal  text,  commands, arguments...
-# Currently case-sensitive.  They are not found in comments.
+# Arbitrary strings to warn about.
+# Those patterns will be searched for through the text, no matter
+# whether they appear as normal text, commands, arguments, math mode, etc.
+# They are *not* found in comments.
+# Currently case-sensitive.
 #
 # Example: Define a special command to indicate some information which
 # is not available at the moment of writing (to be able to search for it).
@@ -178,55 +230,57 @@ CmdLine
 
 UserWarn
 {
-
     \unknown
-
     ChkTeX
 }
 [
-
-###
 # Case-insensitive patterns
-#
-# Warning: These patterns will _not_ match in verbatim environments.
-###
-
 ]
 
 #####################################################################
 # UserWarnRegex
 #
-# Reminder: Escape (with a !) the following characters:
+# More sophisticated version of UserWarn using regular expressions
+# (_not_ match in verbatim environments).
+#
+# Automatically disabled if ChkTeX was built without regular expression support.
+# Because ChkTeX  POSIX or PCRE flavors of regular expressions, some of the
+# following will not apply in all cases.
+# - PCRE (Perl-Compatible Regular Expressions), prefixed with PCRE:.
+# - POSIX regex flavors, prefixed with POSIX:.
+#
+# Escape (with a !) the following characters if they are preceeded by a space:
 #    "#!=
 #     spaces
 #     {}[]
-# if they are proceeded by a space.
 #
-# Since these are PCRE regular expressions, it is possible use (?i) to make
-# the expression case insensitive.
+# Custom warning messages:
+# Add an explanation in (?# ... ) to display about the problem to fix.
+# Example: (?#Explain! this! warning).
 #
-# For documentation on the regular expression syntax, see the man pages
-# (man pcresyntax) or http://perldoc.perl.org/perlre.html
+# Case insensitivity:
+# When using PCRE regular expressions, use (?i) to make the expression case insensitive.
 #
 # Note: Some the features of perl regular expression are not available, such
 # as running code (callouts), and replacing.
 #
-# An initial PCRE comment (?# ... ) can be used change what is
-# displayed, thereby reminding how to fix the problem.
+# For documentation on the regular expression syntax, see the man pages
+# (man pcresyntax) or http://perldoc.perl.org/perlre.html
 #
-###
+# Example: To catch the use of the word "intro" in the text and ask to spell it out:
+# PCRE:(?i)\bintro\b(?!#Spell! it! out.! This! comment! is! not! used.)
+# POSIX:([^[:alnum:]]|^)intro([^[:alnum:]]|$)
+
 UserWarnRegex
 {
 
-  (?!#Always! use! \nmid)\\not! *(\||\\mid)
+  # Math delimiters - Use \[...\] instead of $$...$$
+  (?!#Use! \(! \)...! instead! of! $...$)\$[^$\n]*\$
+  (?!#Use! \[...\]! instead! of! $$...$$)\$\$[^$\n]*\$\$
 
-  # capitalize section when saying Section 6.
+  # Capitalize sections
   (?!#-1:Capitalize! before! references)PCRE:\b(chapter|(sub)?section|theorem|lemma|proposition|corollary|appendix)~\\ref
   (?!#1:Capitalize! before! references)POSIX:([^[:alnum:]]|^)(chapter|(sub)?section|theorem|lemma|proposition|corollary|appendix)~\\ref
-
-  # spell it out.
-  # PCRE:(?i)\bintro\b(?!#Spell! it! out.! This! comment! is! not! used.)
-  # POSIX:([^[:alnum:]]|^)intro([^[:alnum:]]|$)
 
   # Pretty tables - See http://texdoc.net/texmf-dist/doc/latex/booktabs/booktabs.pdf
   (?!#-2:Use! \toprule,! midrule,! or! \bottomrule! from! booktabs)\\hline
@@ -261,12 +315,13 @@ TeXInputs
 #####################################################################
 # OutFormat
 #
+# Output formats which can be selected from the command-line.
 # Specify more output formats for use with the -v option,
-# it simply indexes  into this list.
+# which simply indexes into this list.
 
-# Reminder: Use ! instead of \.
+# Reminder: Use ! as escape character instead of \.
 #
-# For explanation of how % fields expand; look at ChkTeX.{dvi,ps,pdf}.
+# For explanation of how % fields expand: look at ChkTeX.{dvi,ps,pdf}.
 #
 # By default, the linter will select entry number _two_ in this list
 # (count is from 0), and -v without any parameter selects entry number _three_.
@@ -301,8 +356,8 @@ OutFormat
 #####################################################################
 # Silent
 #
-# These commands should  be ignored when detecting  whether a command
-# is ended by a space.
+# Commands which should not trigger a warning if terminated by a space.
+# This warning will not trigger in math mode.
 #
 # [] section : Specify regular expressions in case many custom macros
 #              can be safely terminated with a space.
@@ -375,8 +430,9 @@ Silent
 #####################################################################
 # HyphDash, NumDash, WordDash
 #
-# Specify the length of various dashes.
-
+# Specify the length of various dashes (i.e. number of dashes allowed
+# between two characters of a certain type).
+#
 # The linter sorts the dash according to the type of characters that
 # are on the left and right of it, and is only conclusive if they are
 # the same.
@@ -385,6 +441,8 @@ Silent
 #     HyphDash    Alphabetic (foo-bar)
 #     NumDash     Numeric (2--3)
 #     WordDash    Space (like this --- see?)
+#
+# Note: NumDash does _not_ apply in math mode.
 #
 # Specify how many dashes which are legal in each case.
 # It is possible to specify more than one legal dash-length.
@@ -432,17 +490,16 @@ WordDash
 
 DashExcpt
 {
-
 }
 
 #####################################################################
 # WipeArg
 #
-# Indicate commands whose argument is not LaTeX code,
-# and thus should be ignored.
+# Commands whose argument is not LaTeX code, and thus should be
+# ignored.
 #
 # After the command, it is possible to place arguments that should be
-# wiped  in the process. Use:
+# wiped s (separated from the command with a colon). Use:
 # - [] for optional arguments
 # - {} for required arguments
 # - *  if the command supports an alternative variant
@@ -451,9 +508,10 @@ DashExcpt
 #
 # Example: To wipe the \newcommand command, declare it as
 # \newcommand:*[][]{}
+# since it has a star variant, two optional arguments, and one required argument.
 #
-# These  commands may be "executed" before they are wiped, so it is
-# common to als list filehandling commands and similar here.
+# These  commands may be "executed" (evaluated) before they are wiped, so it is
+# common to also list filehandling commands and similar here.
 #
 
 WipeArg
@@ -461,6 +519,7 @@ WipeArg
     \label:{} \ref:{} \eqref:{} \vref:{} \pageref:{} \index:[]{}
     \cite:[][]{} \nocite:{}
     \input:{} \verbatiminput:[]{} \listinginput:[]{}{}
+    \graphicspath:{}
     \verbatimtabinput:[]{} \include:{} \includeonly:{}
     \bibitem:[]{}
     \cline:{} \cmidrule:[](){}
@@ -472,32 +531,52 @@ WipeArg
     \citet:*[][]{} \citep:*[][]{} \citealt:*{} \citealp:*[]{} \citeauthor:*{}
     \Citet:*[][]{} \Citep:*[][]{} \Citealt:*{} \Citealp:*[]{} \Citeauthor:{}
     \citetext:{} \citeyear:*{} \citeyearpar:{}
+    # biblatex - not including special commands
+    \autocite:*[][]{} \autocites:*[][]{} \Autocite:*[][]{} \Autocites:*[][]{}
+    \parencite:*[][]{} \parencites:*[][]{} \Parencite:*[][]{} \Parencites:*[][]{}
+    \footcite:*{} \footcites:*[][]{} \Footcite:*[][]{} \Footcites:*[][]{}
+    \textcite:*{} \textcites:*[][]{} \Textcite:*[][]{} \Textcites:*[][]{}
+    \citeauthor:*{} \citeauthors:*[][]{} \Citeauthor:*[][]{} \Citeauthors:*[][]{}
+    \citeyear:*{} \citeyears:*[][]{} \Citeyear:*[][]{} \Citeyears:*[][]{}
+    \citetitle:*{} \citetitles:*[][]{} \Citetitle:*[][]{} \Citetitles:*[][]{}
     # tipa which uses "
     \textipa:{}
+    # LuaTeX
+    \directlua:{} \luaescapestring:{}
 }
 
 #####################################################################
-# NumDashExcpt
+# MathEnvir
 #
-# These environments contain material which will be typeset as
-# mathematics by LaTeX. This turns on/off some warnings.
+# Environments which typeset their contents as mathematics.
+# This turns on/off some warnings.
 #
-# The linter will automagically append a * to each keyword.
-#
+# A `*' variant is automatically added for each keyword.
 
 MathEnvir
 {
     displaymath math eqnarray array equation
     align alignat gather flalign multline
+    dmath dgroup darray
+}
+
+#####################################################################
+## TextEnvir
+#
+# Environments which typeset their contents as text, for use inside
+# mathematics.  This turns on/off some warnings.
+#
+TextEnvir
+{
+    dsuspend
 }
 
 #####################################################################
 # MathCmd
 #
-# These commands contain material which will be typeset as mathematics
-# by LaTeX.  The commands are assumed to have one mandatory argument
-# which is in math mode.  This turns on/off some warnings.
-#
+# Commands whose argument will be typeset as mathematics.
+# The commands are assumed to have one mandatory argument which is in
+# math mode.  This turns on/off some warnings.
 
 MathCmd
 {
@@ -507,25 +586,23 @@ MathCmd
 #####################################################################
 # TextCmd
 #
-# These commands contain material which will _not_ be typeset as
-# mathematics by LaTeX even if it would otherwise be in mathmode.  The
-# commands are assumed to have one mandatory argument which is in text
-# mode.  This turns on/off some warnings.
-#
+# Commands whose argument will *not* be typeset as mathematics even if
+# it would otherwise be in math mode.
+# The commands are assumed to have one mandatory argument which is in
+# text mode.  This turns on/off some warnings.
 
 TextCmd
 {
-    \text \intertext \shortintertext \mbox
+    \text \intertext \shortintertext \mbox \condition
 }
 
 #####################################################################
 # VerbEnvir
 #
-# These  environments  contains  material  which  contents  should be
-# ignored.
+# Environments containing non-LaTeX content of some kind, and therefore
+# should not trigger any warnings.
 #
-# The linter will automagically append a * to each keyword.
-#
+# A `*' variant is automatically added for each keyword.
 
 VerbEnvir
 {
@@ -536,8 +613,10 @@ VerbEnvir
 #####################################################################
 # Abbrev
 #
-# ChkTeX  does  automagically  catch  most abbreviations.
-# The abbreviations listed here are those which are most likely to be
+# Abbreviations not automatically handled by ChkTeX.
+#
+# As ChkTeX does automagically catch most abbreviations, the
+# abbreviations listed here are those which are most likely to be
 # followed by a word with an upper-case letter (that is not the
 # beginning of a new sentence).
 #
@@ -600,8 +679,11 @@ Mr. Mrs. Miss. Ms. Dr. Prof. St.
 #####################################################################
 # IJAccent
 #
-# Commands which accent characters, meaning that \i or \j (\imath and
-# \jmath in mathmode) should be used instead of `i' and `j'
+# Commands which add accents above characters.  This means that `\i' or `\j'
+# (`\imath' and `\jmath' in mathmode) should be used instead of `i' and `j'.
+#
+# Other accent commands such as `\c', `\d', and `\b', put their accent under
+# the character, and thus should be used with normal `i's and `j's.
 #
 
 IJAccent
@@ -609,22 +691,13 @@ IJAccent
     \hat \check \breve \acute \grave \tilde \bar \vec \dot \ddot
 
     \' \` \^ \" \~ \= \. \u \v \H \t
-
-###
-#
-# The  remaining  accent commands (\c,\d,\b) put their accent _under_
-# the  character,  not above, and should thus be used with normal i's
-# and j's.
-#
-###
-
 }
 
+# ' #(to retrieve syntax highlighting in this file)
 #####################################################################
 # Italic
 #
-# Commands   which,  when  the  group  is  terminated,  needs  italic
-# correction.
+# Commands which need italic correction when the group is terminated.
 #
 
 Italic
@@ -648,11 +721,11 @@ NonItalic
 #####################################################################
 # ItalCmd
 #
-# Commands which  put their argument  into italic (and  thus possibly
+# Commands which  put their argument  into italic (and thus possibly
 # needs italic correction in the end).
 #
-# This is currently  empty, since \textit, \textsl and  \emph do that
-# automatically.
+# This is currently empty, since `\textit', `\textsl', and `\emph'
+# automatically add italic corecction.
 #
 
 ItalCmd
@@ -662,9 +735,8 @@ ItalCmd
 #####################################################################
 # PostLink
 #
-# These  commands listed here have in common that a pagebreak right
-# in front of them is undesirable, thus there should be no space in
-# front of them.
+# Commands in front of which a page break is highly undesirable.
+# Thus there should be no space in front of them.
 #
 
 PostLink
@@ -675,9 +747,9 @@ PostLink
 #####################################################################
 # NotPreSpaced
 #
-# These commands should not have a space in front of them for various
-# reasons. This behavior is similar to POSTLINK, but produces another
-# warning.
+# Commands that should not have a space in front of them for various
+# reasons. This behavior is similar to PostLink, but produces a
+# different warning.
 #
 
 NotPreSpaced
@@ -688,9 +760,11 @@ NotPreSpaced
 #####################################################################
 # Linker
 #
-# The  commands  listed  here should be prepended with a `~', as in
-# "look  in  table~\ref{foo}", to avoid the references being split
-# across lines.
+# Commands that should be prepended with a `~'.
+
+# Example:
+#     `look in table~\ref{foo}'
+# to avoid the references being split across lines.
 #
 
 Linker
@@ -701,8 +775,8 @@ Linker
 #####################################################################
 # CenterDots
 #
-# Commands/characters  which  should  have  \cdots  in  between, e.g.
-# $1+2+3+\cdots+n$.
+# Commands or characters which should have `\cdots' in between.
+# Example: $1+2+3+\cdots+n$.
 #
 
 CenterDots
@@ -713,10 +787,9 @@ CenterDots
 #####################################################################
 # LowDots
 #
-# Commands/characters  which  should  have  \ldots  in  between, e.g.
-# $1,2,3,\ldots,n$.
+# Commands or characters which should have `\ldots' in between.
+# Example: $1,2,3,\ldots,n$.
 #
-
 LowDots
 {
     . , ;
@@ -725,9 +798,12 @@ LowDots
 #####################################################################
 # MathRoman
 #
-# In maths mode, there are certain aliases for mathematical operators
-# like  sin, cos, etc.  Ignore the leading backslash in the commands,
-# and so forth.
+# Words that should appear in roman (upright) in math mode.
+
+# There are certain aliases for mathematical operators (like sin or cos)
+# that appear in roman rather than the usual italic (slanted) font.
+# These entries do not need a leading slash since the mistake is often
+# to *not* include the leading slash.
 #
 
 MathRoman
@@ -740,9 +816,9 @@ MathRoman
 #####################################################################
 # Primitives
 #
-# These  TeX commands  have become  unnecessary, as  there are  LaTeX
-# commands that  do the same.   Purists should thus avoid  these in
-# their code.
+# Commands that are used in TeX but have become unnecessary in
+# LaTeX, as there are LaTeX commands which do the same.  Purists
+# should thus avoid these in their code.
 #
 # (These are a spell-corrected version of those lacheck uses).
 #
@@ -754,8 +830,15 @@ Primitives
    \expandafter \font \hskip \vskip \openout
 }
 
+
 #####################################################################
 # NoCharNext
+#
+# Commands and a set of characters that should *not* follow them.
+#
+# Example: In math mode, `\left' should be followed by a delimiter
+# which is to change size. Therefore, it should not be followed by the
+# end of math mode `$' or a grouping character `{' or `}'.
 #
 # Format: \command:characters
 #
@@ -771,18 +854,22 @@ NoCharNext
 #####################################################################
 # VerbClear
 #
-# The linter is killing \verb@...@ commands and the arguments of the
-# commandslisted above in WipeArg by overwriting them with a string or
-# a single character.
+# Character to replace verbatim text with.
+#
+# The arguments of commands listed in WipeArg, as well as
+# `\verb+...+' commands, are replaced with an innocuous character
+# to prevent that data from inadvertantly producing a warning.
 #
 # This should not contain:
-# - An alphabetic character (in case the user writes  (\foo\verb@bar@),
+# - An alphabetic character (in case the user writes (\foo\verb+bar+),
 # - One of LaTeX's reserved characters (`#$%&~_^\{}'),
 # - A parenthesis character ('()[]{}').
 # - A punctuation character
 # - A spacing character
 # - An asterisk (unsuitable since some commands behave in differently
 #   if they are  appended with an asterisk).
+# All of these characters have warnings associated with them and thus
+# could cause spurious warnings to appear.
 # Advice: Use the pipe.
 #
 # Note; This  may  also  be  a  _string_, which will be
@@ -790,4 +877,3 @@ NoCharNext
 #
 
 VerbClear = "|"
-##########################################

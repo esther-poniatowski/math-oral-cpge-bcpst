@@ -104,6 +104,13 @@
 		},
 
 		// -----------------------------------------------------------------------------------------
+		// LaTeX Formatter Extension
+		"latex.formatter.columnLimit": 100, // line length
+		"latex.linter.enabled": true, // enable linter
+		//"latex.linter.config": "{%WORKSPACE_FOLDER}/.chktexrc", // configuration file
+		"latex.linter.config": "/Users/eresther/Documents/teaching/mathematics-h4/math-oral-cpge-bcpst/.chktexrc",
+
+		// -----------------------------------------------------------------------------------------
 		// LaTeX Workshop Extension
 
 		"latex-workshop.view.pdf.viewer": "tab", // preview PDF in tab
