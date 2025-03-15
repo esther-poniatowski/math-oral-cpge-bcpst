@@ -1,0 +1,108 @@
+PROGRAMME DE COLLES
+====================================================================================================
+Sujet : Révisions d'Analyse
+- Limite et comparaison locale
+- Continuité & Dérivabilité
+- Etudes de fonctions
+- Suites récurrentes
+====================================================================================================
+
+QUESTIONS DE COURS
+------------------
+
+- Énoncé : Théorème des valeurs intermédiaires + algorithme permettant de déterminer une valeur
+  approchée d'un antécédent par dichotomie, dans le cas d'une fonction f : [a, b] -> R telle que
+  f(a) <= f(b).
+- Démonstration : Si une fonction f est dérivable en a, définie au voisinage de a, et admet un
+  extremum local en a, alors f'(a)=0.
+- Énoncés :
+  - Propriétés d'une fonction continue sur un segment.
+  - Théorème de Rolle.
+  - Expliquer brièvement le lien entre ces deux théorèmes : connaître l'idée générale de la
+    démonstration du Théorème de Rolle.
+- Démonstration : Si une fonction est dérivable et de dérivée positive sur un intervalle, cette
+  fonction est croissante sur cet intervalle.
+
+
+COMPETENCES
+-----------
+
+Limites et comparaison locale
+
+- Déterminer un équivalent simple d'une expression :
+  - Somme ou différence de termes :
+    - L'équivalent ne passe pas à la somme ou différence.
+    - La somme est équivalente à son (ou ses) termes dominant(s) : celui qui grandit le plus vite,
+      ou à défaut qui tend vers 0 le moins vite.
+    - A montrer factorisant par ce terme dominant.
+  - Produit, quotient, puissance, racine (en tant que puissance 1/2) :
+    - L'équivalent passe au produit, quotient, puissance.
+    - Trouver un équivalent simple en trouvant un équivalent de chacun des facteurs du produit, ou
+      du numérateur et du dénominateur.
+  - Composition :
+    - L'équivalent ne passe pas en général à la composition, à part pour les fonctions puissances et
+      racines.
+    - Na pas appliquer exp ou In de part et d'autre d'un équivalent.
+    - Avant de composer par une fonction, repasser en mode "calcul de limites", et utiliser la
+      continuité/les limites de la fonction par laquelle on compose.
+- Effectuer un calcul de limite (différentes techniques possibles, voir fiche méthode).
+- Connaître la définition et les propriétés des "petits o" (négligeabilité).
+  - Traduire les croissances comparées se traduisent en termes de négligeabilité.
+  - Connaître les liens entre négligeabilité et équivalence.
+- Connaître les définitions "par epsilon" de la limite d'une fonction dans les différentes
+  situations.
+  - A mobiliser si besoin pour obtenir des inégalités "concrètes" utiles en prenant une valeur bien
+    choisie pour epsilon.
+- Traduire à l'aide de quantificateurs le fait qu'une propriété soit vraie "au voisinage" d'un
+  certain réel.
+- Déterminer une borne supérieure ou inférieure dans des cas simples.
+- Connaître le théorème de la limite monotone.
+- Montrer qu'une fonction f n'admet pas de limite en un réel a :
+  - Raisonner par l'absurde en utilisant le théorème de composition suite/fonction.
+  - Si l'on trouve deux suites u_n et v_n telles que :
+    - u_n et v_n tendent vers a,
+    - f(u_n) et f(v_n) ne tendent pas vers la même limite,
+    alors la fonction f n'admet pas de limite en a.
+  - Prouver que sinus n'admet pas de limite en l'infini :
+    - Considérer u_n = n 2 pi et v_n = pi/2 + n 2 pi.
+    - Ces deux suites tendent vers l'infini, mais sin(u_n) = 0 tend vers 0 tandis que sin(v_n) = 1
+    tend vers 1.
+    - Si sinus possédait une limite en l'infini, par composition de limites, cette limite devrait
+      donc être égale à la fois à 0 et 1 : absurde.
+
+
+Continuité, Dérivabilité
+
+- Étudier la régularité d'une fonction (cf. méthode page 8 d'Analyse V).
+- Déterminer si une fonction est ou non prolongeable par continuité en un point donné.
+- Si une fonction est dérivable en un point, déterminer une équation de la tangente à sa courbe en
+  ce point.
+- Mener l'étude d'une fonction (cf. Analyse I), en profitant des outils d'étude de limites
+  nouvellement introduits.
+- Utiliser le théorème des accroissements finis :
+  - Pour établir des inégalités
+  - Pour établir la convergence d'une suite définie par récurrence
+
+
+Suites réelles
+
+- Suites classiques
+- Suites arithmétiques (forme explicite, relation de récurrence, somme des termes, limite)
+- Suites géométriques (forme explicite, relation de récurrence, somme des termes, limite)
+- Suites arithmético-géométriques (méthode d'étude) : u_{n+1} = a u_{n} + b
+  - Chercher une valeur l telle que l = a l + b
+  - Poser v_{n} = u_{n} - l, de sorte que :
+    - u_{n+1} = a u_{n} + b
+    - l = a l + b
+    donc en soustrayant membre à membre : u_{n+1} - l = a (u_{n} - l), i.e. v_{n+1} = a v_{n}.
+  - En déduire le terme général de (v_{n}) puis de (u_{n}).
+- Suites définies par une relation de récurrence linéaire d'ordre 2 à coefficients constantes (forme
+  du terme général selon les racines du polynôme caractéristique)
+- Cas des suites définies par une relation de récurrence de la forme u_{n+1} = f(u_{n}) :
+  - Définition d'un intervalle stable par une fonction.
+  - Définition d'un point fixe d'une fonction.
+  - Méthodes d'études (cf. fiche méthode correspondante).
+
+
+REMARQUES
+---------
