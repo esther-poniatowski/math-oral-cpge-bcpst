@@ -1,0 +1,144 @@
+% CORRECTION : Approximation du Logarithme et Suites associées
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Correction - Approximation du Logarithme et Suites associées}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lyc\'ee Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Étude asymptotique de la fonction logarithme translatée}
+
+\q Démonstration de l'équivalent de \( \ln(1+x) \) en 0.
+
+Le développement limité de \( \ln(1+x) \) en 0 donne :
+\[
+\ln(1+x) = x - \frac{x^2}{2} + o(x^2)
+\]
+Ainsi, \( \ln(1+x) \sim x \) lorsque \( x \to 0 \).
+
+% ------
+
+\q Développement limité à l'ordre 2 de \( \ln(1+x) \) en 0.
+
+Le développement limité à l'ordre 2 est :
+\[
+\ln(1+x) = x - \frac{x^2}{2} + o(x^2)
+\]
+
+% ------
+
+\q Démonstration de \( \ln(1+x) \sim \ln x \) en \( +\infty \) :
+
+Par changement de variable \( x = e^y -1 \) :
+\[
+\ln(1+x) = \ln(e^y) = y = \ln x + o(1).
+\]
+Ainsi, \( \ln(1+x) \sim \ln x \) lorsque \( x \to +\infty \)
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Comparaison avec une approximation affine}
+
+\q Étude des variations de \( g(x) = \ln(1+x) - \frac{x}{2} \) :
+
+La dérivée de \( g \) est :
+\[
+ g'(x) = \frac{1}{1+x} - \frac{1}{2}
+\]
+Elle s'annule pour \( x = c \), où \( c \) est la solution unique de \( \ln(1+c) = \frac{c}{2} \).
+
+% ------
+
+\q Existence et unicité de \( c \) :
+
+La fonction \( g(x) \) est strictement croissante, \( g(0) < 0 \) et \( \lim_{x \to +\infty} g(x) =
++\infty \). Par le théorème des valeurs intermédiaires, il existe un unique \( c > 0 \) tel que \(
+g(c) = 0 \).
+
+% ------
+
+\q Encadrement de \( c \) :
+
+En évaluant \( g(x) \) pour quelques valeurs :
+\[ g(0.5) \approx -0.097, \quad g(1) \approx 0.193. \]
+
+Ainsi : \( 0.5 < c < 1 \).
+
+\bigskip
+\textbf{Méthode de Newton pour une résolution approchée}
+
+\q Formule de récurrence de Newton :
+
+La méthode de Newton appliquée à \( h(x) = \ln(1+x) - \frac{x}{2} \) donne :
+\[
+ u_{n+1} = u_n - \frac{h(u_n)}{h'(u_n)}
+\]
+
+% ------
+
+\q Explicitation de la suite :
+
+\[
+ u_{n+1} = u_n - \frac{\ln(1+u_n) - \frac{u_n}{2}}{\frac{1}{1+u_n} - \frac{1}{2}}
+\]
+
+% ------
+
+\q Simplification de l'expression :
+
+En réarrangeant :
+\[
+ u_{n+1} = u_n - \frac{(2\ln(1+u_n) - u_n)(1+u_n)}{2 - (1+u_n)}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Convergence de la méthode de Newton}
+
+\q Convergence de la suite \( (u_n) \).
+
+La fonction \( h(x) \) est strictement croissante et dérivable sur \( [0, +\infty[ \). La méthode de
+Newton converge donc vers \( c \) pour tout \( u_0 > 0 \).
+
+% ------
+
+\q Estimation du nombre d'itérations :
+
+La méthode de Newton a une convergence quadratique : l'erreur est de l'ordre de \( O((u_n - c)^2)
+\). On peut approximer le nombre d'itérations nécessaires par :
+\[
+ n \approx \log_2 \log_{10}(\frac{1}{10^{-3}}) = \log_2 3 \approx 1.6.
+\]
+Donc, en pratique, 2 à 3 itérations suffisent.
+
+\bigskip
+\textbf{Étude asymptotique locale de la suite}
+
+\q Monotonie et convergence :
+
+Si \( u_0 > c \), alors \( (u_n) \) est décroissante et minorée par \( c \), donc convergente vers
+\( c \).
+
+% ------
+
+\q Convergence quadratique :
+
+Un développement limité autour de \( c \) donne :
+\[
+ u_{n+1} - c \approx K (u_n - c)^2.
+\]
+Cela confirme la convergence quadratique.
+
+\end{document}
+% ==================================================================================================

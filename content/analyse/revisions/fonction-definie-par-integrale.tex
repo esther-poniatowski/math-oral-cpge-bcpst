@@ -1,0 +1,146 @@
+% PROBLÈME : Fonction définie par une intégrale et suites associées
+% ==================================================================================================
+%
+% But
+% ---
+% Réviser les notions de :
+% - limite
+% - continuité
+% - dérivabilité
+% - étude de fonction
+% - suites définies par récurrence
+% - point fixe
+% - stabilité,
+% - comportement asymptotique
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Analyse - Fonction définie par une intégrale}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+De nombreux problèmes font intervenir une fonction définie par une intégrale à paramètre. Par
+exemple, des fonctions de la forme \( \displaystyle F(x) = \int_0^x \frac{\varphi(t)}{t^\alpha} \,
+dt \) apparaissent dans l'étude de certaines équations différentielles.
+
+De telles fonctions peuvent présenter des difficultés au voisinage d'un point, généralement en 0 ou
+à l'infini, qui proviennent d'une singularité de l'intégrande. En effet, l'expression sous le signe
+intégral peut ne pas être définie en ce point, ou bien tendre vers l'infini de manière non
+contrôlée, ce qui oblige à une analyse fine de la continuité, la dérivabilité ou la limite de la
+fonction définie par l'intégrale.
+
+\bigskip
+\textbf{Objectifs}
+
+Étudier les propriétés analytiques d'une fonction définie par une intégrale : limites, continuité,
+dérivabilité, variations...
+
+Construire une suite récurrente définie à partir de cette fonction et en étudier son comportement
+asymptotique.
+
+\bigskip
+
+% --------------------------------------------------------------------------------------------------
+\textbf{Étude d'une fonction définie par une intégrale}
+
+Soit la fonction définie sur \( \mathbb{R}_+ \) par :
+\[
+f(x) =
+\begin{cases}
+\displaystyle \int_0^x \frac{1 - \cos(t)}{t} \, dt & \text{si } x > 0, \\
+0 & \text{si } x = 0
+\end{cases}
+\]
+
+\q Pour \( t \to 0 \), établir l'équivalent \( 1 - \cos(t) \sim \frac{t^2}{2} \). En déduire un
+équivalent de \( \frac{1 - \cos(t)}{t} \) lorsque \( t \to 0 \).
+% But : étudier la limite en 0 pour montrer la continuité, via équivalent de la fonction intégrée.
+% Méthode : équivalent, passage à la limite.
+
+\q En déduire que l'intégrale définissant \( f(x) \) admet une limite finie lorsque \( x \to 0^+ \),
+et que \( f \) est continue en \( 0 \).
+% But : existence de la limite de l'intégrale et valeur de f(0).
+% Méthode : théorème de convergence dominée ou intégrabilité de l'équivalent.
+
+\q Montrer que \( f \) est dérivable sur \( \mathbb{R}_+^* \) et que, pour tout \( x > 0 \),
+\[
+f'(x) = \frac{1 - \cos(x)}{x}.
+\]
+Étudier la limite de \( f'(x) \) lorsque \( x \to 0 \), et conclure sur la dérivabilité de \( f \)
+en \( 0 \).
+% But : déterminer une expression de la dérivée de f sur R+*, étudier la dérivabilité sur R+.
+% Méthode : théorème fondamental du calcul intégral, étude locale.
+
+\q Étudier le signe de \( f'(x) \) sur \( \mathbb{R}_+^* \), puis en déduire les variations de \( f
+\) sur \( \mathbb{R}_+ \).
+% But : étudier le signe de f', donc les variations de f.
+% Méthode : étude de fonction, variation de la fonction dérivée.
+
+\q Montrer que \( f(x) \) admet une limite finie lorsque \( x \to +\infty \), notée \( L
+\). Donner une majoration permettant de justifier cette convergence.
+% But : limite à l'infini.
+% Méthode : étude d'équivalent ou encadrement intégral.
+
+% --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+
+\textbf{Étude d'une suite récurrente associée}
+
+Soit la suite \( (u_n) \) définie par :
+\[
+\begin{cases}
+    u_0 \in [0, +\infty[ \\
+    \forall n \in \mathbb{N}, \quad u_{n+1} = f(u_n)
+\end{cases}
+\]
+
+\q Montrer que si \( u_0 \in [0, L] \), alors \( (u_n) \) reste dans \( [0, L] \) pour tout \( n \).
+% But : définir et justifier la suite, domaine de définition, intervalle stable.
+% Méthode : définition d'un intervalle stable.
+
+\q Montrer que \( f \) admet au moins un point fixe sur \( [0, L] \), c'est-à-dire un réel \( \ell
+\) tel que \( f(\ell) = \ell \).
+% But : existence des points fixes de la fonction f.
+% Méthode : théorème des valeurs intermédiaires.
+
+\q Admettre que \( f \) est continue et croissante sur \( \left[0, +\infty \right[ \). En déduire
+que si \( u_0 \in [0, L] \), alors \( (u_n) \) converge vers un point fixe \( \ell \) de \( f \).
+% But : convergence de la suite, lien avec point fixe.
+% Méthode : démonstration de convergence via théorème des suites récurrentes et étude de f.
+
+% --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+
+\textbf{Étude asymptotique et comportement local}
+
+\q Montrer que lorsque \( x \to 0 \) :
+\[
+f(x) \mathop{\sim}\limits_{ x \to 0 } \frac{x}{2}
+\]
+% But : équivalent de f(x) en 0 pour affiner l'étude de la suite.
+% Méthode : équivalent, développement limité.
+
+\q En déduire que si \( u_0 \) est suffisamment proche de 0, alors \( (u_n) \) converge vers 0.
+% But : convergence vers 0 selon u_0.
+% Méthode : comparaison, comportement asymptotique de la suite.
+
+\q Discuter de la convergence de \( (u_n) \) selon la valeur initiale \( u_0 \), en particulier
+lorsque \( u_0 \) est proche de \( L \).
+% But : lien entre point fixe et comportement asymptotique.
+% Méthode : réflexion finale.
+
+\end{document}
+% ==================================================================================================

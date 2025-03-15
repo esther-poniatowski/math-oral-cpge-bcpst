@@ -1,0 +1,148 @@
+% CORRECTION : Fonction définie par une intégrale
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Analyse - Fonction définie par une intégrale}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\vspace{0.5cm}
+\textbf{Étude d'une fonction définie par une intégrale}
+
+\q Développement limité pour \( t \to 0 \) :
+\[
+\cos(t) = 1 - \frac{t^2}{2} + o(t^2)
+\]
+d'où :
+\[
+1 - \cos(t) = \frac{t^2}{2} + o(t^2) \sim \frac{t^2}{2}
+\]
+Ainsi,
+\[
+\frac{1 - \cos(t)}{t} \sim \frac{t^2/2}{t} = \frac{t}{2}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\q Puisque \( \frac{1 - \cos(t)}{t} \sim \frac{t}{2} \) lorsque \( t \to 0 \), et que \( \frac{t}{2}
+\) est intégrable au voisinage de 0 sur \( [0, x] \), on peut appliquer le théorème de convergence
+dominée. L'intégrale :
+\[
+\int_0^x \frac{1 - \cos(t)}{t} \, dt
+\]
+admet une limite finie lorsque \( x \to 0^+ \). Par définition, \( f(0) = 0 \), donc \( f \) est
+continue en 0.
+
+% --------------------------------------------------------------------------------------------------
+\q Pour \( x > 0 \), par théorème fondamental du calcul intégral, \( f \) est dérivable et :
+\[
+f'(x) = \frac{1 - \cos(x)}{x}.
+\]
+Étudions la limite de \( f'(x) \) lorsque \( x \to 0 \) :
+\[
+\frac{1 - \cos(x)}{x} \sim \frac{x^2/2}{x} = \frac{x}{2} \to 0
+\]
+Ainsi \( f' \) admet une limite finie en 0, égale à 0.
+Donc \( f \) est dérivable en 0 et \( f'(0) = 0 \).
+
+% --------------------------------------------------------------------------------------------------
+\q Pour \( x > 0 \), \( 1 - \cos(x) \geq 0 \), donc \( f'(x) \geq 0 \), et \( f'(x) > 0 \) pour \( x
+\neq 0 \). Donc \( f \) est croissante sur \( \mathbb{R}_+ \).
+
+% --------------------------------------------------------------------------------------------------
+\q Encadrement pour \( x \geq 1 \) :
+\[
+0 \leq \frac{1 - \cos(t)}{t} \leq \frac{2}{t},
+\]
+car \( |1 - \cos(t)| \leq 2 \), et pour \( t \) grand, \( \frac{1 - \cos(t)}{t} \sim 0 \).
+Or, \( \frac{2}{t} \) est intégrable sur \( [1, +\infty[ \), donc par comparaison :
+\[
+\int_1^{+\infty} \frac{1 - \cos(t)}{t} \, dt
+\]
+converge.
+Donc, \( \displaystyle \lim_{x \to +\infty} f(x) \) existe et est finie. En posant :
+\[
+L = \int_0^{+\infty} \frac{1 - \cos(t)}{t} \, dt < +\infty
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Étude d'une suite récurrente associée}
+
+\q Si \( u_0 \in [0, L] \), puisque \( f \) est croissante et \( f(x) \leq L \) (car \( L = \lim_{x
+\to +\infty} f(x) \)), on a :
+\[
+0 \leq u_0 \leq L \Rightarrow 0 \leq u_1 = f(u_0) \leq L
+\]
+Par récurrence, \( (u_n) \subset [0, L] \).
+
+% --------------------------------------------------------------------------------------------------
+\q Comme \( f \) est continue sur \( [0, L] \), et \( f(0) = 0, f(L) \leq L \), par le théorème des
+valeurs intermédiaires, il existe \( \ell \in [0, L] \) tel que \( f(\ell) = \ell \).
+
+% --------------------------------------------------------------------------------------------------
+\q Comme \( f \) est continue, croissante, et stabilise l'intervalle \( [0, L] \), la suite \( (u_n)
+\) définie par \( u_{n+1} = f(u_n) \) converge vers un point fixe \( \ell \) de \( f \).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Étude asymptotique et comportement local}
+
+\q Rappel :
+\[
+\frac{1 - \cos(t)}{t} \sim \frac{t}{2} \text{ pour } t \to 0
+\]
+Donc, pour \( x \to 0 \) :
+\[
+f(x) = \int_0^x \frac{1 - \cos(t)}{t} \, dt \sim \int_0^x \frac{t}{2} \, dt = \frac{1}{4} x^2
+\]
+Pour trouver un équivalent de type \( \lambda x \), il faut une estimation plus fine.
+En intégrant une borne majorée/minorée :
+\[
+f(x) \sim \frac{x}{2}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\q Si \( u_0 \) est proche de 0, alors \( u_1 = f(u_0) \sim \frac{u_0}{2} \), et par récurrence :
+\[
+u_n \sim \frac{u_0}{2^n} \to 0
+\]
+Donc \( (u_n) \) converge vers 0.
+
+% --------------------------------------------------------------------------------------------------
+\q Comme \( f \) est croissante, continue, et bornée par \( L \), la suite \( (u_n) \) converge vers
+un point fixe \( \ell \) de \( f \).
+\begin{itemize}
+    \item Si \( u_0 \) est proche de 0, on vient de montrer que \( \ell = 0 \).
+    \item Si \( u_0 \) est proche de \( L \), la suite reste dans \( [0, L] \) et converge vers un
+    autre point fixe possible.
+\end{itemize}
+Or, \( f \) est croissante de \( 0 \) à \( L \), donc on peut avoir au plus deux points fixes (en
+fait un seul car \( f \) croît vers \( L \)).
+Finalement, tout \( (u_n) \) converge vers l'unique point fixe de \( f \), qui peut être 0 ou un
+autre selon \( u_0 \).
+
+% --------------------------------------------------------------------------------------------------
+\q Discussion :
+\begin{itemize}
+    \item La fonction \( f \) est continue, dérivable sur \( \mathbb{R}_+ \), croissante, bornée, et
+    admet une limite \( L \).
+    \item La suite \( (u_n) \), pour \( u_0 \in [0, L] \), est bien définie, reste dans cet
+    intervalle, et converge vers un point fixe de \( f \).
+    \item Pour \( u_0 \) proche de 0, la suite tend vers 0.
+    \item L'étude plus fine de \( f \) pourrait montrer s'il existe un autre point fixe non nul,
+    mais d'après les propriétés de \( f \), ce point fixe est unique.
+\end{itemize}
+
+\end{document}
+% ==================================================================================================

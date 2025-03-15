@@ -1,0 +1,137 @@
+% PROBLÈME : Approximation du Logarithme et Suites associées
+% ==================================================================================================
+%
+% Buts
+% ----
+% - Méthodes de résolution approchée d'équations
+% - Propriétés de convergence de suites récurrentes.
+% Réviser les notions de :
+% - équivalents
+% - développements limités
+% - dérivées
+% - théorèmes des accroissements finis
+% - suites réelles
+% - méthodes de Newton
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Analyse - Approximation du Logarithme et Suites associées}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+Pour développer des méthodes de calcul approchées des fonctions logarithmiques, il est nécessaire
+d'étudier finement leur comportement asymptotique et leurs approximations.
+
+\bigskip
+\textbf{Objectifs}
+
+Étudier des fonctions logarithmiques sous plusieurs aspects : équivalents, approximations,
+résolution approchée d'équations, suites récurrentes.
+
+% --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+\textbf{Étude asymptotique de la fonction logarithme translatée}
+
+Soit la fonction \( f : x \mapsto \ln(1+x) \).
+
+\q Montrer que lorsque \( x \to 0 \), on a \( \ln(1+x) \sim x \).
+% But : trouver un équivalent de ln(1+x) en 0.
+% Méthode : développement limité ou équivalent.
+
+\q Donner le développement limité à l'ordre 2 de \( \ln(1+x) \) au voisinage de 0.
+% But : trouver un développement limité d'ordre 2 pour affiner l'équivalent.
+% Méthode : développement limité en 0.
+
+\q Montrer que lorsque \( x \to +\infty \), on a \( \ln(1+x) \sim \ln x \).
+% But : équivalent en l'infini.
+% Méthode : changement de variable, comportement logarithme à l'infini.
+
+\vspace{0.5cm}
+
+\textbf{Comparaison avec une approximation affine}
+
+Soit la fonction \( g : x \mapsto \ln(1+x) - \frac{x}{2} \).
+
+\q Étudier les variations de \( g(x) = \ln(1+x) - \frac{x}{2} \) sur \( [0, +\infty[ \).
+% But : étude de signe, comportement de ln(1+x) par rapport à x/2.
+% Méthode : étude de fonction par la dérivée.
+
+\q Montrer qu'il existe un unique \( c > 0 \) tel que \( \ln(1+c) = \frac{c}{2} \).
+% But : existence et unicité d'un zéro de g, interprétation graphique.
+% Méthode : théorème des valeurs intermédiaires.
+
+\q Donner un encadrement de \( c \) entre deux réels faciles à calculer.
+% But : encadrement de c.
+% Méthode : étude de g en des points précis et signe.
+
+% --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+\textbf{Méthode de Newton pour une résolution approchée}
+
+Soit l'équation \( \ln(1+x) = \frac{x}{2} \).
+
+\q Donner la formule de récurrence générale pour la méthode de Newton permettant de résoudre cette
+équation.
+% But : poser et interpréter la méthode de Newton pour cette équation.
+% Méthode : dérivation, mise en forme de la méthode.
+
+\q En déduire la suite \( (u_n) \) définie par la méthode de Newton pour une valeur initiale \( u_0
+> 0 \), et donner son expression explicite :
+\[
+u_{n+1} = u_n - \frac{\ln(1+u_n) - \frac{u_n}{2}}{\frac{1}{1+u_n} - \frac{1}{2}}.
+\]
+% But : expliciter la suite pour notre fonction.
+% Méthode : calcul explicite du quotient différentiel.
+
+\q Simplifier cette expression pour obtenir une forme plus simple, en fonction de \( u_n \)
+uniquement.
+% But : simplification de la formule pour la rendre exploitable.
+% Méthode : calcul algébrique.
+
+% --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+\textbf{Convergence de la méthode de Newton}
+
+Admis : La fonction \( x \mapsto \ln(1+x) - \frac{x}{2} \) est strictement croissante sur \( [0,
++\infty[ \), et sa dérivée ne s'annule pas sur cet intervalle.
+
+\q Montrer que la suite \( (u_n) \), définie par la méthode de Newton, converge vers \( c \) pour
+tout \( u_0 > 0 \).
+% But : convergence de la suite vers c, point fixe.
+% Méthode : étude qualitative de la méthode de Newton et propriétés de la fonction.
+
+\q Expliquer pourquoi la méthode de Newton permet d'obtenir une approximation de \( c \) avec une
+précision rapide (quadratique), et estimer, à l'aide d'un raisonnement qualitatif, le nombre
+d'itérations nécessaires pour approcher \( c \) à \( 10^{-3} \) près.
+% But : vitesse de convergence, approximation du nombre de décimales.
+% Méthode : étude qualitative, majoration de l'erreur.
+
+% --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+\textbf{Étude asymptotique locale de la suite et lien avec l'équation}
+
+\q Montrer que si \( u_0 > c \), alors \( (u_n) \) est décroissante et minorée par \( c \), et
+converge vers \( c \).
+% But : montrer que la suite décroît vers c si u_0 > c.
+% Méthode : étude du comportement local, signe du résidu.
+
+\q Montrer que si \( u_n \) est proche de \( c \), alors \( u_{n+1} - c \sim K (u_n - c)^2 \) pour
+une constante \( K > 0 \), ce qui illustre la convergence quadratique de la méthode de Newton.
+% But : équivalent de l'erreur.
+% Méthode : développement limité et linéarisation locale.
+
+\end{document}
+% ==================================================================================================

@@ -1,0 +1,148 @@
+% CORRECTION : Modèles de Population par des Suites Récurrentes
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Correction -- Modèles de Population par des Suites Récurrentes}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction des sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\bigskip
+\textbf{Étude de la fonction logistique}
+
+\q Démonstration de la continuité et de l'image de \( f \).
+
+La fonction \( f(x) = r x (1 - x) \) est polynomiale en \( x \), donc continue sur \( \mathbb{R} \)
+a fortiori sur \( [0,1] \). Pour \( x \in [0,1] \), il s'agit de montrer que \( f(x) \in [0,1] \).
+En effet, \( x(1 - x) \in [0,1/4] \) et comme \( r \in (0,4) \), il s'ensuit que
+\[
+0 \leq f(x) \leq r \times \frac{1}{4} < 1
+\]
+d'où \( f([0,1]) \subset [0,1] \).
+
+% ------
+
+\q Calcul de la dérivée et étude des variations :
+
+La fonction \( f \) est dérivable sur \( \mathbb{R} \) et :
+\[
+f'(x) = r (1 - 2x)
+\]
+L'annulation de \( f'(x) \) donne \( x = \frac{1}{2} \). Pour \( x < \frac{1}{2} \), \( f'(x) > 0
+\), et pour \( x > \frac{1}{2} \), \( f'(x) < 0 \). Ainsi, \( f \) est croissante sur \( [0,1/2] \),
+décroissante sur \( [1/2, 1] \), et atteint un maximum en \( x = 1/2 \).
+
+\[
+f\left( \frac{1}{2} \right) = r \times \frac{1}{2} \times \frac{1}{2} = \frac{r}{4}
+\]
+
+% ------
+
+\q Détermination des points fixes :
+
+Recherche de \( x \) tel que \( f(x) = x \), soit :
+\[
+r x (1 - x) = x
+\]
+\[
+r x (1 - x) - x = 0
+\]
+\[
+x (r (1 - x) - 1) = 0
+\]
+\[
+x = 0 \quad \text{ou} \quad r (1 - x) = 1
+\]
+\[
+x = 0 \quad \text{ou} \quad x = 1 - \frac{1}{r}
+\]
+Ainsi, pour \( r > 1 \), il existe deux points fixes : \( 0 \) et \( 1 - \frac{1}{r} \). Pour \( r
+\leq 1 \), seul \( 0 \) appartient à \( [0,1] \).
+
+% ------
+
+\bigskip
+\textbf{Étude qualitative de la suite}
+
+\q Invariance de l'intervalle \( [0,1] \).
+
+Pour \( u_0 \in [0,1] \), \( u_1 = f(u_0) \in [0,1] \), car \( f([0,1]) \subset [0,1] \). Par
+récurrence, \( u_n \in [0,1] \) pour tout \( n \in \mathbb{N} \).
+
+% ------
+
+\q Limite de la suite : point fixe.
+
+Si \( (u_n) \) converge vers \( \ell \), alors par passage à la limite dans \( u_{n+1} = f(u_n) \),
+il vient \( \ell = f(\ell) \), donc \( \ell \) est un point fixe.
+
+% ------
+
+\q Stabilité locale des points fixes :
+
+Le critère est \( |f'(\ell)| < 1 \) pour la stabilité. Or :
+\[
+f'(x) = r (1 - 2x)
+\]
+\[
+f'(0) = r, \quad f'\left(1 - \frac{1}{r}\right) = r \left(1 - 2 + \frac{2}{r}\right) = r \left( -1 + \frac{2}{r} \right) = 2 - r
+\]
+Ainsi :
+\[
+|f'(0)| = |r| = r, \quad |f'(\ell)| = |2 - r| = 2 - r
+\]
+Le point fixe \( 0 \) est stable si \( r < 1 \), \( 1 - \frac{1}{r} \) est stable si \( 1 < r < 3
+\).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Étude asymptotique en fonction du paramètre}
+
+\textit{Cas \( r \in (0,1) \) : Extinction.}
+
+\q Pour \( r \in (0,1) \), \( 0 \) est unique point fixe dans \( [0,1] \), avec \( |f'(0)| = r < 1
+\), donc stable. Ainsi, pour tout \( u_0 \in (0,1) \), \( u_n \to 0 \).
+
+% ------
+
+\textit{Cas \( r \in (1,2) \) : Stabilisation.}
+
+\q Pour \( r \in (1,2) \), \( 0 \) est instable (car \( |f'(0)| = r > 1 \)) et \( \ell = 1 -
+\frac{1}{r} \) est stable car \( |2 - r| < 1 \). Ainsi, \( (u_n) \) converge vers \( \ell \), pour
+\( u_0 \in (0,1) \setminus \{0\} \).
+
+% ------
+
+\textit{Cas \( r \in (2,3) \) : Étude fine.}
+
+\q Le point fixe \( \ell = 1 - \frac{1}{r} \) existe toujours. De plus :
+\[
+|f'(\ell)| = |2 - r|
+\]
+Lorsque \( r \to 3^- \), \( |f'(\ell)| \to 1 \). La stabilité diminue, et pour \( r \) proche de 3,
+la convergence vers \( \ell \) devient lente.
+
+\q Conjecture : pour \( r \in (2,3) \), \( (u_n) \) converge vers \( \ell \), bien que la vitesse de
+convergence diminue à mesure que \( r \to 3^- \).
+
+% ------
+
+\textit{Cas \( r > 3 \) : Comportement chaotique.}
+
+\q Lorsque \( |f'(\ell)| > 1 \), le point fixe \( \ell \) devient instable, ce qui ouvre la
+possibilité de cycles de période 2, puis de comportements plus complexes (bifurcations, chaos). En
+effet, la suite peut osciller entre plusieurs valeurs ou devenir apériodique, ce qui correspond à
+des phénomènes de bifurcation ou de chaos déterministe.
+
+
+\end{document}
+% ==================================================================================================
