@@ -19,8 +19,7 @@
 
 \textbf{Somme de sous-espaces vectoriels}
 
-\q $F+G$ est un sous-espace vectoriel de $E$.
-
+\q $F+G$ est un sous-espace vectoriel de $E$:
 \begin{itemize}
     \item $F+G$ est non vide : $0 = 0 + 0 \in F+G$ puisque $F$ et $G$ contiennent l'élément nul.
     \item  $F+G$ est stable par addition : si $u_1 + v_1 \in F+G$ et $u_2 + v_2 \in F+G$, alors :
@@ -36,21 +35,19 @@
    car $F$ et $G$ sont des sous-espaces vectoriels.
 \end{itemize}
 
-Donc, $F+G$ est bien un sous-espace vectoriel de $E$.
 
 % --------------------------------------------------------------------------------------------------
 \q Intersection de deux sous-espaces vectoriels :
 
 Soient $F$ et $G$ deux sous-espaces vectoriels d'un espace vectoriel $E$. Montrons que $F \cap
-G$ est un sous-espace vectoriel de $E$ en vérifiant les trois propriétés caractéristiques d'un
-sous-espace vectoriel :
-
+G$ vérifie les trois propriétés caractéristiques pour un sous-espace vectoriel de $E$:
 \begin{itemize}
     \item $F \cap G$ est non-vide : $\vec{0} \in F$ et $\vec{0} \in G$ car $F$ et $G$
     sont des sous-espaces vectoriels, donc $\vec{0} \in F \cap G$.
-    \item $F \cap G$ est stable par addition : si $\vec{x}, \vec{y} \in F \cap G$, alors $\vec{x} +
-    \vec{y} \in F \cap G$.
-    \item $F \cap G$ est stable par multiplication scalaire : si $\vec{x} \in F \cap G$ et $\lambda
+    \item $F \cap G$ est stable par addition : Soient $\vec{x}, \vec{y} \in F \cap G$. D'une part,
+    $\vec{x} \in F$ et $\vec{y} \in F$, donc $\vec{x} + \vec{y} \in F$. De même, $\vec{x} \in G$ et
+    $\vec{y} \in G$, donc $\vec{x} + \vec{y} \in G$. Donc $\vec{x} + \vec{y} \in F \cap G$.
+    \item $F \cap G$ est stable par multiplication scalaire : Si $\vec{x} \in F \cap G$ et $\lambda
     \in \mathbb{K}$, alors $\lambda\vec{x} \in F \cap G$.
 \end{itemize}
 
@@ -83,13 +80,45 @@ vecteurs qui ne sont pas dans $F \cap G$ (et donc dans $F$) :
 \[ \mathcal{G} = \{g_1, \ldots, g_{m-k}\} \]
 \[ \mathcal{B}_G = \mathcal{B}_\cap \cup \mathcal{G} = \{e_1, \ldots, e_k, g_1, \ldots, g_{m-k}\} \]
 
-Désormais, la famille $\mathcal{B}_\cap \cup \mathcal{F} \cup \mathcal{G}$ forme une base de $F + G$ :
+Soit la famille $\mathcal{B}_\cap \cup \mathcal{F} \cup \mathcal{G}$. Montrons qu'elle forme une
+base de $F + G$:
 \begin{itemize}
     \item Famille génératrice : $\mathcal{B}_\cap \cup \mathcal{F} \cup \mathcal{G}$ engendre $F +
     G$ car elle contient des bases de $F$ et de $G$.
-    \item Famille libre : $\mathcal{B}_\cap \cap \mathcal{F}$ est linéairement indépendante car
-    c'est une base de $F$, et $\mathcal{G}$ est linéairement indépendante car c'est une famille
-    extraite d'une base de $G$ qui ne contient pas les vecteurs de $\mathcal{B}_\cap$.s
+    \item Famille libre : Soit une combinaison linéaire nulle des vecteurs de $\mathcal{B}_\cap \cup
+    \mathcal{F} \cup \mathcal{G}$ :
+    $$
+    \sum_{i=1}^{k} a_i e_i + \sum_{j=1}^{n-k} b_j f_j + \sum_{l=1}^{m-k} c_l g_l = 0
+    $$
+    Puisque $\mathcal{B}_F$ est une base de $F$, les vecteurs $e_i$ et $f_j$ sont linéairement
+    indépendants. De même, puisque $\mathcal{B}_G$ est une base de $G$, les vecteurs $e_i$ et $g_l$
+    sont linéairement indépendants.
+
+    \begin{itemize}
+        \item Projection sur $F$ :
+        $$
+        \sum_{i=1}^{k} a_i e_i + \sum_{j=1}^{n-k} b_j f_j = -\sum_{l=1}^{m-k} c_l g_l
+        $$
+        Puisque les $g_l$ ne sont pas dans $F$ (sauf pour leur composante dans $F \cap G$), les
+        coefficients $b_j$ doivent être nuls pour que l'égalité soit vraie, car les $f_j$ sont
+        linéairement indépendants des $e_i$.
+        \item Projection sur $G$ :
+        $$
+        \sum_{i=1}^{k} a_i e_i + \sum_{l=1}^{m-k} c_l g_l = -\sum_{j=1}^{n-k} b_j f_j
+        $$
+        Puisque tous les $f_j$ ne sont pas dans $G$ (sauf ceux qui sont dans $F \cap G$, déjà
+        comptés dans $e_i$), les coefficients $c_l$ doivent être nuls pour que l'égalité soit vraie,
+        car les $g_l$ sont linéairement indépendants des $e_i$.
+        \item Avec les coefficients $b_j$ et $c_l$ établis comme nuls, l'équation originale se
+        simplifie en :
+        $$
+        \sum_{i=1}^{k} a_i e_i = 0
+        $$
+        Puisque $\mathcal{B}_\cap$ est une base de $F \cap G$, les vecteurs $e_i$ sont linéairement
+        indépendants, ce qui implique que tous les coefficients $a_i$ sont également nuls.
+    \end{itemize}
+
+
 \end{itemize}
 
 Comptage des dimensions :
@@ -115,9 +144,7 @@ formule de Grassmann :
 
 \q Existence d'un supplémentaire :
 
-Soit $n = \dim(E)$ et $p = \dim(F)$
-
-Comme $F$ est un sous-espace de $E$, alors $p \leq n$.
+Soit $n = \dim(E)$ et $p = \dim(F)$, avec $p \leq n$ (car $F$ est un sous-espace de $E$).
 
 Soit $(f_1, f_2, ..., f_p)$ une base de $F$.
 
@@ -153,15 +180,51 @@ avec $u \in F$ et $v \in G$. Supposons que $x = u' + v'$ avec $u' \in F$ et $v' 
 \[u + v = u' + v' \Rightarrow (u - u') = (v' - v) \in F \cap G. \] Or, $F \cap G = \{0\}$, donc $u -
 u' = 0$ et $v - v' = 0$, d'où l'unicité.
 
-($\Leftarrow$) Réciproquement, si toute décomposition est unique, alors $F \cap G = \{0\}$, sinon,
-un élément non nul de $F \cap G$ engendrerait une contradiction.
+($\Leftarrow$) Réciproquement, supposons que toute décomposition est unique. Par l'absurde,
+supposons qu'il existe un élément non nul dans l'intersection: $w \in F \cap G$, $w \neq 0$. Une
+décomposition est obtenue en écrivant $w = w + 0$, avec $w \in F$ et $0 \in G$, et $w = 0 + w$, avec
+$0 \in F$ et $w \in G$. Ces deux décompositions sont distinctes, ce qui contredit l'hypothèse
+d'unicité. Donc $F \cap G = \{0\}$.
 
 \q Projections sur $F$ et $G$ :
 
 Tout $x \in E$ peut s'écrire de manière unique comme $x = u + v$ avec $u \in F$ et $v \in G$.
 
-Expression de $u$ dans la base de $F$:
-\[u = \alpha_1 f_1 + \alpha_2 f_2 + \cdots + \alpha_p f_p\]
+On cherche à exprimer $x$ dans la base des vecteurs de $F$ et de $G$:
+\[x = \alpha_1 f_1 + \alpha_2 f_2 + \cdots + \alpha_p f_p + \beta_1 g_1 + \beta_2 g_2 + \cdots +
+\beta_q g_q\]
+où les inconnues sont les scalaires $\alpha_i$ et $\beta_j$, à exprimer en fonction des coordonnées
+de $x$ dans la base canonique de $E$ et des coordonnées des vecteurs de $F$ et de $G$ dans la base
+canonique de $E$.
+
+D'une part, $x$ s'exprime dans la base de $E$:
+\[x = x_1 e_1 + x_2 e_2 + \cdots + x_n e_n\]
+
+D'autre part, chaque vecteur $f_i$ et chaque vecteur $g_j$ peut s'écrire comme combinaison linéaire
+des vecteurs de la base de $E$:
+\[f_i = \sum_{k=1}^n a_{ik} e_k \quad \text{et} \quad g_j = \sum_{k=1}^n b_{jk} e_k\]
+
+Ainsi, le vecteur $x$ se décompose dans la base de $E$ comme:
+\[x = \sum_{k=1}^n c_k e_k\]
+avec $c_k = \alpha_1 a_{1k} + \alpha_2 a_{2k} + \cdots + \beta_1 b_{1k} + \beta_2 b_{2k}$.
+
+Par unicité de la décomposition, on en déduit que les coordonnées de $x$ dans la base de $E$ sont
+les mêmes que celles obtenues en exprimant $x$ dans la base de $F$ et de $G$, ce qui impose:
+\[\begin{cases}
+x_1 = \alpha_1 a_{11} + \alpha_2 a_{21} + \cdots + \beta_1 b_{11} + \beta_2 b_{21} \\
+x_2 = \alpha_1 a_{12} + \alpha_2 a_{22} + \cdots + \beta_1 b_{12} + \beta_2 b_{22} \\
+\vdots \\
+x_n = \alpha_1 a_{1n} + \alpha_2 a_{2n} + \cdots + \beta_1 b_{1n} + \beta_2 b_{2n}
+\end{cases}\]
+
+Il s'agit d'un système linéaire de $n$ équations à $n$ inconnues, qui admet une unique solution si
+et seulement si le déterminant de la matrice des coefficients est non nul:
+\[\begin{vmatrix}
+a_{11} & a_{21} & \cdots & b_{11} & b_{21} \\
+a_{12} & a_{22} & \cdots & b_{12} & b_{22} \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+a_{1n} & a_{2n} & \cdots & b_{1n} & b_{2n}
+\end{vmatrix} \neq 0\]
 
 Coodonnées de \(u\) dans la base canonique de \(E\):
 \[[u]_E = A[\alpha]\]
