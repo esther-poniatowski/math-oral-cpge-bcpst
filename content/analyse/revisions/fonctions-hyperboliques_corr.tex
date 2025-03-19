@@ -1,0 +1,336 @@
+% PROBLÈME : Fonctions Hyperboliques
+% ==================================================================================================
+
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Analyse - Fonctions Hyperboliques}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% Colors
+\definecolor{Turquoise_perso}{RGB}{ 27, 196, 189 }
+\definecolor{Orange_perso}{RGB}{229, 96, 29}
+\definecolor{Blue_perso}{RGB}{29, 89, 229}
+\definecolor{Blue0_perso}{RGB}{3, 37, 76}
+\definecolor{Blue1_perso}{RGB}{17, 103, 177}
+\definecolor{Blue2_perso}{RGB}{24, 123, 205}
+\definecolor{Blue3_perso}{RGB}{42, 157, 244}
+\definecolor{Blue4_perso}{RGB}{208, 239, 255}
+
+
+% ==================================================================================================
+\begin{document}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Étude qualitative des fonctions hyperboliques}
+
+\q Représentations graphiques :
+
+\begin{figure}[htb]
+\resizebox{\textwidth}{!}{%
+
+\begin{tikzpicture}
+\begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis y line=center, axis x line=middle, gray]
+\addplot[smooth, Blue_perso, line width=1.5]
+{cosh(x)}; \draw(1.25,3.5) node[Blue_perso]{cosh(x)};
+\addplot[smooth, Orange_perso, line width=1.5]
+{1/2*exp(-x)}; \draw(1.3,0.6) node[Orange_perso]{$\frac{1}{2}$e$^{-x}$}; \addplot[smooth,
+Turquoise_perso, line width=1.5]{1/2*exp(x)}; \draw(-1.3,0.6)
+node[Turquoise_perso]{$\frac{1}{2}$e$^x$};
+\end{axis}
+\end{tikzpicture}
+\hskip 10pt
+
+\begin{tikzpicture}
+\begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis y line=center, axis x line=middle, gray]
+\addplot[smooth, Blue_perso, line width=1.5]
+{sinh(x)}; \draw(1.25,3.5) node[Blue_perso]{sinh(x)};
+\addplot[smooth, Orange_perso, line width=1.5]
+{-1/2*exp(-x)}; \draw(1.3,0.6) node[Orange_perso]{$-\frac{1}{2}$e$^{-x}$}; \addplot[smooth,
+Turquoise_perso, line width=1.5]{1/2*exp(x)}; \draw(-1.3,0.6)
+node[Turquoise_perso]{$\frac{1}{2}$e$^x$};
+\end{axis}
+\end{tikzpicture}
+\hskip 10pt
+
+\begin{tikzpicture}
+\begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis y line=center, axis x line=middle, gray]
+\addplot[smooth, Blue_perso, line width=1.5]
+{tanh(x)}; \draw(2,2) node[Blue_perso]{tanh(x)}; \addplot[smooth, Orange_perso, line width=1.5,
+dashed]{-1}; \addplot[smooth, Orange_perso, line width=1.5, dashed]{1};
+\end{axis}
+\end{tikzpicture}
+
+}%
+\end{figure}
+
+% -----
+
+\q Dérivées :
+
+Les trois fonctions sont dérivables sur $\mathbb{R}$ comme composées d'exponentielles, et pour
+$\tanh$ comme produit de fonctions dont le dénominateur ne s'annulle pas.\\
+\begin{itemize}
+    \item $\sinh'(x) = \frac{e^x + e^{-x}}{2}$ donc \fbox{$\sinh'(x) = \cosh(x)$}
+    \item $\cosh'(x) = \frac{e^x - e^{-x}}{2}$ donc \fbox{$\cosh'(x) = \sinh(x)$}
+    \item $\tanh'(x) = \frac{\sinh'(x)\cosh(x)- \sinh(x)\cosh'(x)}{\cosh^2(x)} = \frac{\cosh^2(x)-
+    \sinh^2(x)}{\cosh^2(x)}$ donc \fbox{$\tanh'(x) = 1 - \tanh^2(x)$}
+\end{itemize}
+
+\q Bijections :
+
+\emph{Méthode}
+\begin{itemize}
+ \item Existence d'un anticédent : garantie par le théorème des valeurs intermédiaires.
+ \item Unicité de l'antécédent : garantie par la monotonie.
+\end{itemize}
+
+\bigskip
+\fbox{$\sinh$ : bijection de $\mathbb{R}$ dans $\mathbb{R}$}
+\begin{itemize}
+ \item Existence : $\sinh$ est continue (car dérivable) sur $\mathbb{R}$, et $\begin{cases} \lim_{x
+ \to +\infty}\sinh(x) = +\infty\\
+   \lim_{x \to -\infty}\sinh(x) = -\infty\\
+  \end{cases}$, donc par le théorème des valeurs intérmédiaires, tout élément de $\mathbb{R}$ admet
+  au moins un antécédent.
+ \item Unicité : $\sinh'(x) = \cosh(x) > 0 , \; \forall x \in \mathbb{R}$, donc $\sinh$ est
+ strictement croissante, cet antcédent est unique.
+\end{itemize}
+
+\bigskip
+\fbox{$\cosh$ : bijection de $\mathbb{R}_+$ dans $[1, + \infty[$}
+\begin{itemize}
+ \item Existence : $\cosh$ est continue (car dérivable) sur $\mathbb{R}_+$, atteint son minimum en
+ $0$, et $ \begin{cases} \cosh(0) = 1\\
+\cosh(x) \xrightarrow[x \to +\infty]{} +\infty \end{cases}$ donc par le théorème des valeurs
+ intérmédiaires, tout élément de $[1, + \infty[$ admet au moins un antécédent.
+ \item Unicité : $\cosh'(x) = \sinh(x) > 0 \; \forall x \in \mathbb{R}_+^*$ et ne s'annulle que
+ ponctuellement en $0$, donc $\cosh$ est strictement croissante sur $\mathbb{R}_+^*$, donc cet
+ antécédent est unique.
+\end{itemize}
+
+\bigskip
+\fbox{$\tanh$ : bijection de $\mathbb{R}$ dans $]-1,1[$} (idem).
+
+% -----
+
+\q Identité :
+
+\begin{align*}
+\cosh^2(x) - \sinh^2(x) & = (\cosh(x) + \sinh(x))(\cosh(x) - \sinh(x)) & \text{(identité remarquable)}\\
+& = \frac{1}{2}(e^x + e^{-x} + e^x - e^{-x})\frac{1}{2}(e^x + e^{-x} - e^x + e^{-x})\\
+& = \frac{1}{2}2 e^x \frac{1}{2}2e^{-x} & \text{donc \fbox{$\cosh^2(x) - \sinh^2(x) = 1 \; \forall x \in \mathbb{R}$}}
+\end{align*}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Résultats généraux : Dérivées et Inverses}
+
+\q Equation caractéristique :
+
+Soit \( f : I \to J \) une fonction strictement monotone et dérivable sur un intervalle \( I \),
+admettant une fonction réciproque \( f^{-1} : J \to I \).
+
+Par définition d'une fonction réciproque, pour tout \( x \in J \),
+\[
+f(f^{-1}(x)) = x
+\]
+
+% -----
+
+\q Différentiation de l'identité \( f(f^{-1}(x)) = x \)
+
+Soit \( u \) la fonction définie par :
+\[
+u = f^{-1}(x)
+\]
+
+En appliquant la règle de dérivation en chaîne à \( f(u) = x \) :
+\[
+\frac{d}{dx} f(u) = \frac{d}{dx} x
+\]
+
+Or, par la dérivation en chaîne :
+\[
+f'(u) \cdot \frac{du}{dx} = 1
+\]
+
+Ce qui s'écrit, en remplaçant \( u \) par \( f^{-1}(x) \) :
+\[
+f'(f^{-1}(x)) \cdot (f^{-1})'(x) = 1
+\]
+
+% -----
+
+\q Conclusion :
+
+En supposant que \( f \) est une fonction bijective et dérivable sur un intervalle \( I \), et que
+sa dérivée est non nulle, la fonction réciproque \( f^{-1} \) est dérivable et vérifie :
+\[
+(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}
+\]
+
+Cette expression est valable pour tout \( x \) appartenant au domaine de \( f^{-1} \) sous la
+condition que \( f'(f^{-1}(x)) \neq 0 \).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Réciproques des fonctions hyperboliques}
+
+\q Dérivées des fonctions réciproques :
+
+\emph{Méthode}
+\begin{itemize}
+    \item Domaine de dérivabilité : $ x \in \mathcal{D}_{f^{-1}}, \; f'(x) \neq 0 $
+    \item $(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}$
+\end{itemize}
+
+\bigskip
+\fbox{$\sinh^{-1}$}
+
+$\sinh$ est bijective de $\mathbb{R}$ dans $\mathbb{R}$, dérivable sur $\mathbb{R}$ et sa dérivée ne
+s'y annule pas ($\sinh'(x) = \cosh(x) > 0 \; \forall x \in \mathbb{R}$), donc $\sinh^{-1}$ est
+dérivable sur $\mathbb{R}$.\\
+$$\forall y \in \mathbb{R}, \; (\sinh^{-1})'(y) = \frac{1}{\cosh(\sinh^{-1}(y))}$$
+Or $\cosh^2(\sinh^{-1}(y)) = 1 + \sinh^2(\sinh^{-1}(y)) = 1 + y^2 \iff \cosh(\sinh^{-1}(y)) = \pm
+\sqrt{1 + y^2}$,\\ et comme $\cosh(x) > 0 \; \forall x \in \mathbb{R}$, seule la solution positive
+subsiste : $\cosh(\sinh^{-1}(y)) = \sqrt{1 + y^2}$.\\
+Donc : $$\forall y \in \mathbb{R}, \; (\sinh^{-1})'(y) = \frac{1}{\sqrt{1 + y^2}}$$
+
+\bigskip
+\fbox{$\cosh^{-1}$}
+
+$\sinh$ est bijective de $\mathbb{R}_+$ dans $[1,+\infty[$, dérivable sur $\mathbb{R}_+$, mais sa
+dérivée s'annulle en 0 ($\cosh'(0) = \sinh(0) = 0$), et $0 = \cosh^{-1}(1)$, donc $\cosh^{-1}$ est
+dérivable sur $]1,+\infty[$.\\
+$$\forall y \in ]1,+\infty[, \; (\cosh^{-1})'(y) = \frac{1}{\sinh(\cosh^{-1}(y))}$$
+En appliquant l'identité comme précédemment : $\sinh(\cosh^{-1}(y)) = \pm \sqrt{y^2-1}$,\\ et comme
+$\cosh^{-1}(y) > 0 \; \forall y \in ]1, +\infty[$, alors $\sinh(\cosh^{-1}(y)) > 0$, donc seule la
+solution positive subsiste : $\sinh(\cosh^{-1}(y)) = \sqrt{y^2-1}$.\\
+$$\forall y \in ]1,+\infty[, \; (\cosh^{-1})'(y) = \frac{1}{\sqrt{y^2-1}}$$
+
+\bigskip
+\fbox{$\tanh^{-1}$}
+
+De même, $\tanh^{-1}$ est dérivable sur $]-1,1[$.\\
+$$\forall y \in ]-1,1[, \; (\tanh^{-1})'(y) = \frac{1}{1 - \tanh^2(\tanh^{-1}(y))}$$
+$$\forall y \in ]-1,1[, \; (\tanh^{-1})'(y) = \frac{1}{1 - y^2}$$
+
+\q \emph{Développement limité de $\sinh^{-1}$ à l'ordre $4$ en $0$}\\
+Cette fonction est impaire, donc son développement limité ne contient que des termes impairs :\\
+$\sinh^{-1}(h) =  (\sinh^{-1})'(0) h +\frac{(\sinh^{-1})^{(3)}(0)}{3 !}h^3 +  o(h^4), \; \forall h
+\in \mathbb{R}$. \\
+Dérivées successives : \\
+$\forall y \in \mathbb{R}, \; (\sinh^{-1})'(y) = \frac{1}{\sqrt{1 + y^2}} = (1 +
+y^2)^{-\frac{1}{2}}$\\
+$\forall y \in \mathbb{R}, \; (\sinh^{-1})''(y) = -\frac{1}{2}2y(1 + y^2)^{-\frac{3}{2}} = -y(1 +
+y^2)^{-\frac{3}{2}}$\\
+$\forall y \in \mathbb{R}, \; (\sinh^{-1})^{(3)}(y) = (-y)\left(-\frac{3}{2}2y(1 +
+y^2)^{-\frac{5}{2}}\right) + (-1)\left((1 + y^2)^{-\frac{3}{2}}\right) = 3y^2(1 +
+y^2)^{-\frac{5}{2}} - (1 + y^2)^{-\frac{3}{2}}$\\
+Termes impairs evalués en $0$ :\\
+$(\sinh^{-1})'(0) = \frac{1}{\sqrt{1 + 0}} = 1$.\\
+$(\sinh^{-1})^{(3)}(0) = 0 - (1 + 0)^{-\frac{3}{2}} = -1$\\
+Ainsi, au voisinage de $0$ :
+$$\sinh^{-1}(h) = h - \frac{1}{6}h^3 + o(h^4), \; \forall h \in
+\mathbb{R}$$
+
+\q Expression des réciproques :
+
+\bigskip
+\fbox{$\sinh^{-1}$}
+
+Pour $y \in \mathbb{R}$ fixé, on résout l'équation $\sinh(x) = y$ d'inconnue $x \in \mathbb{R}$. On
+se ramène à une écriture polynômiale :\\
+$\frac{e^x - e^{-x}}{2} = y \iff e^x - e^{-x} = 2y \iff e^{2x} - 1 = 2y e^x \iff e^{2x} - 2y e^x - 1
+ = 0 \iff X^2 - 2y X - 1 = 0$ en posant $X = e^x$.\\
+ $\Delta = 4 y^2 + 4 > 0$, donc les racines sont : $ \begin{cases} y + \sqrt{y^2 + 1} > 0 \; \forall
+ y \in \mathbb{R}\\
+ y - \sqrt{y^2 + 1} < 0 \; \forall y \in \mathbb{R} \end{cases}$.\\
+ Or $X = e^x > 0$, donc l'unique solution est : $e^x = y + \sqrt{y^2 + 1}$.\\
+ D'où :
+ $$\forall y \in \mathbb{R},\; \sinh^{-1}(y) = \ln(y + \sqrt{y^2+1})$$
+
+\bigskip
+\fbox{$\cosh^{-1}$}
+
+Pour $y \in [1,+\infty[$ fixé, on résout l'équation $\cosh(x) = y$ d'inconnue $x \in
+\mathbb{R}_+$.\\
+En procédant de même, on obtient pour racines :
+$ \begin{cases} y + \sqrt{y^2 - 1} \geq 1 \; \forall
+ y \geq 1 \\
+ y - \sqrt{y^2 - 1} \leq 1 \; \forall y \geq 1 \end{cases}$.\\
+ Or $X = e^x \geq 1$ (car $x \geq 0$), donc l'unique solution est : $e^x = y + \sqrt{y^2 - 1}$.\\
+ D'où :
+$$\forall y \in \mathbb{R},\; \cosh^{-1}(y) = \ln(y + \sqrt{y^2-1})$$
+
+\bigskip
+\fbox{$\tanh^{-1}$}
+
+Pour $y \in ]-1,1[$ fixé, on résout l'équation $\tanh(x) = y$ d'inconnue $x \in \mathbb{R}$.\\
+$\frac{e^x - e^{-x}}{e^x + e^{-x}} = y \iff e^x - e^{-x} = y(e^x + e^{-x}) \iff e^{2x} - 1 = y
+ (e^{2x} + 1) \iff e^{2x}(1 - y) = 1 + y \iff e^{2x} = \frac{1 + y}{1 - y} \iff x =
+ \frac{1}{2}\ln\left(\frac{1 + y}{1 - y}\right)$.\\
+ D'où :
+ $$\forall y \in ]-1,1[\; \tanh^{-1}(y) = \frac{1}{2}(\ln(1+y) - \ln(1-y)$$
+
+\q Représentations graphiques des réciproques :
+
+Construire les symétriques de $\sinh$, $\cosh$ et $\tanh$ par rapport à la droite d'équation $y =
+x$.
+
+\begin{figure}[h!]
+\resizebox{\textwidth}{!}{%
+
+\begin{tikzpicture}
+\begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis y line=center, axis x line=middle, gray]
+\addplot[smooth, gray, line width=1.5, dashed]{x}; \addplot[smooth, Blue_perso, line width=1.5,
+domain=0:4]{cosh(x)}; \draw(1.2,3.5) node[Blue_perso]{cosh(x)}; \addplot[smooth, Orange_perso, line
+width=1.5, domain=1:4]{ln(x+sqrt(x^2-1))}; \draw(2,0.6) node[Orange_perso]{cosh$^{-1}$(x)};
+\end{axis}
+\end{tikzpicture}
+\hskip 10pt
+
+\begin{tikzpicture}
+\begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis y line=center, axis x line=middle, gray]
+\addplot[smooth, gray, line width=1.5, dashed]
+{x};
+\addplot[smooth, Blue_perso, line width=1.5]
+{sinh(x)}; \draw(1.2,3.5) node[Blue_perso]{sinh(x)};
+\addplot[smooth, Orange_perso, line width=1.5]
+{ln(x+sqrt(x^2+1))}; \draw(2,0.6) node[Orange_perso]{sinh$^{-1}$(x)};
+\end{axis}
+\end{tikzpicture}
+\hskip 10pt
+
+\begin{tikzpicture}
+\begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis y line=center, axis x line=middle, gray]
+\addplot[smooth, gray, line width=1.5, dashed]
+{x};
+\addplot[smooth, Blue_perso, line width=1.5]
+{tanh(x)}; \draw(2.3,1.3) node[Blue_perso]{tanh(x)};
+\addplot[smooth, Orange_perso, line width=1.5, domain=-1:1, samples=100]
+{1/2*(ln(1+x)-ln(1-x))}; \draw[dashed, Orange_perso, line width=1.5](-1,-4) -- (-1,4); \draw[dashed,
+Orange_perso, line width=1.5](1,-4) -- (1,4); \draw(1,3.5) node[Orange_perso]{tanh$^{-1}$(x)};
+\end{axis}
+\end{tikzpicture}
+
+}%
+\end{figure}
+
+
+\end{document}
+% ==================================================================================================

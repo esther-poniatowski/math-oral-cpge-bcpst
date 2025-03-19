@@ -1,7 +1,10 @@
-% CORRECTION : Approximation du Logarithme et Suites associées
+% CORRECTION : Résolution Approchée d'Equations Logarithmiques
 % ==================================================================================================
 
 \documentclass[10pt,a4paper]{article}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
 
 % Set the root path
 \providecommand{\rootpath}{../../..}
@@ -17,24 +20,15 @@
 % ==================================================================================================
 \begin{document}
 
-\textbf{Étude asymptotique de la fonction logarithme translatée}
+\textbf{Étude asymptotique d'une fonction logarithmique}
 
-\q Démonstration de l'équivalent de \( \ln(1+x) \) en 0.
+\q Equivalent de \( \ln(1+x) \) en 0 :
 
 Le développement limité de \( \ln(1+x) \) en 0 donne :
 \[
 \ln(1+x) = x - \frac{x^2}{2} + o(x^2)
 \]
 Ainsi, \( \ln(1+x) \sim x \) lorsque \( x \to 0 \).
-
-% ------
-
-\q Développement limité à l'ordre 2 de \( \ln(1+x) \) en 0.
-
-Le développement limité à l'ordre 2 est :
-\[
-\ln(1+x) = x - \frac{x^2}{2} + o(x^2)
-\]
 
 % ------
 
@@ -46,99 +40,354 @@ Par changement de variable \( x = e^y -1 \) :
 \]
 Ainsi, \( \ln(1+x) \sim \ln x \) lorsque \( x \to +\infty \)
 
+% ------
+
+\q Représentations graphiques :
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \( x \),
+    ylabel = \( y \),
+    xmin = -1,
+    xmax = 5,
+    ymin = -2,
+    ymax = 2,
+    xtick = {0, 1, 2, 3, 4},
+    ytick = {-1, 0, 1},
+    legend pos = south east,
+]
+\addplot [domain=0:5, samples=100, color=blue,]{ln(x)};
+\addlegendentry{\( \ln(x) \)}
+\addplot [domain=-1:5, samples=100, color=red,]{ln(1+x)};
+\addlegendentry{\( \ln(1+x) \)}
+\addplot [domain=-1:5, samples=100, color=orange,]{x/2};
+\addlegendentry{\( \frac{x}{2} \)}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = \( x \),
+        ylabel = \( y \),
+        xmin = -1,
+        xmax = 5,
+        ymin = -2,
+        ymax = 2,
+        xtick = {0, 1, 2, 3, 4},
+        ytick = {-1, 0, 1},
+        legend pos = south east,
+    ]
+    \addplot [domain=-1:5, samples=100, color=black,]{ln(1+x)-x/2};
+    \addlegendentry{\( \ln(1+x) - \frac{x}{2} \)}
+    \end{axis}
+    \end{tikzpicture}
+    \end{center}
+
 % --------------------------------------------------------------------------------------------------
 \bigskip
-\textbf{Comparaison avec une approximation affine}
+\textbf{Existence des zéros de la fonction}
 
-\q Étude des variations de \( g(x) = \ln(1+x) - \frac{x}{2} \) :
+\q Étude des variations de \( g \) :
 
-La dérivée de \( g \) est :
+Dérivée de \( g \) sur \( ]-1, +\infty[ \) :
 \[
- g'(x) = \frac{1}{1+x} - \frac{1}{2}
+ g'(x) = \frac{1}{1+x} - \frac{1}{2} = \frac{2 - (1+x)}{2(1+x)} = \frac{1 - x}{2(1+x)}
 \]
-Elle s'annule pour \( x = c \), où \( c \) est la solution unique de \( \ln(1+c) = \frac{c}{2} \).
+
+Signe de la dérivée :
+
+Le dénominateur \( 2(1+x) \) est strictement positif sur \( ]-1, +\infty[ \).
+Le numérateur \( 1-x \) s'annule pour \( x = 1 \) et change de signe en ce point :
+\begin{itemize}
+    \item \( 1-x > 0 \) si \( x < 1 \) (positif)
+    \item \( 1-x = 0 \) si \( x = 1 \) (nul)
+    \item \( 1-x < 0 \) si \( x > 1 \) (négatif)
+\end{itemize}
+
+Valeurs particulières de la fonction \( g \) :
+\begin{itemize}
+    \item \( \lim\limits_{x \to -1^+} g(x) = \ln(0) - \frac{-1}{2} = -\infty \).
+    \item \( \lim\limits_{x \to +\infty} g(x) = \ln(1+\infty) - \frac{\infty}{2} = -\infty \).
+    \item \( g(1) = \ln(2) - \frac{1}{2} \)
+\end{itemize}
+
+\[
+\begin{array}{c|ccccc}
+x & -1 &  & 1 &  & +\infty \\
+\hline
+g'(x) &  & + & 0 & - &  \\
+\hline
+g(x) & -\infty & \nearrow & \ln(2) - \frac{1}{2} & \searrow & -\infty
+\end{array}
+\]
 
 % ------
 
-\q Existence et unicité de \( c \) :
+\q Maximum sur \( ]0, +\infty[ \) :
 
-La fonction \( g(x) \) est strictement croissante, \( g(0) < 0 \) et \( \lim_{x \to +\infty} g(x) =
-+\infty \). Par le théorème des valeurs intermédiaires, il existe un unique \( c > 0 \) tel que \(
-g(c) = 0 \).
+La fonction \( g \) admet un maximum en \( 1 \), qui vaut \( \ln(2) - \frac{1}{2} \).
+
+Or, \( g(0) = 0 \) et \( g \) est croissante sur \( ]-1, 1] \), donc \( g(1) > g(0) = 0 \).
 
 % ------
 
-\q Encadrement de \( c \) :
+\q Existence et unicité de \( c > 0 \) :
 
-En évaluant \( g(x) \) pour quelques valeurs :
-\[ g(0.5) \approx -0.097, \quad g(1) \approx 0.193. \]
+Sur  \( ]-1, 1[ \), la fonction \( g \) est strictement positive.
 
-Ainsi : \( 0.5 < c < 1 \).
+Sur  \( ]1, +\infty[ \), la fonction \( g \) est strictement décroissante, \( g(1) > 0 \) et \(
+\lim_{x \to +\infty} g(x) = -\infty \). Par le théorème des valeurs intermédiaires, il existe un
+unique \( c > 0 \) tel que \( g(c) = 0 \).
 
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Concavité de la fonction}
+
+\q Signe de la dérivée seconde \( g''(x) \) sur \( ]0, +\infty[ \):
+
+En dérivant à nouveau la dérivée :
+\[
+g''(x) = -\frac{1}{(1+x)^2}
+\]
+Le terme \( -\frac{1}{(1+x)^2} \) est strictement négatif sur \( ]0, +\infty[ \), ce qui prouve que
+\( g(x) \) est strictement concave sur cet intervalle.
+
+% ------
+\q Développement limité à l'odre 2 et théorème des accroissements finis :
+
+Application du théorème des accroissements finis à \( g \) sur \( [x_0, x] \) (avec \( x > x_0 \),
+le raisonnement est identique pour \( x < x_0 \)) :
+\[
+\exists \eta \in ]x_0, x[ \quad \text{tel que} \quad g(x) - g(x_0) = g'(\eta) (x - x_0)
+\]
+Cette relation exprime que la variation de \( g \) entre \( x_0 \) et \( x \) est donnée par la
+valeur de sa dérivée en un point intermédiaire \( \eta \).
+
+Application du théorème des accroissements finis à \( g'(x) \) sur \( [x_0, x] \) (où elle est
+dérivable) :
+\[
+\exists \xi \in ]x_0, x[ \quad \text{tel que} \quad g'(\eta) - g'(x_0) = g''(\xi) (x - x_0)
+\]
+Cette relation exprime que la variation de \( g' \) est contrôlée par sa dérivée seconde \( g'' \)
+évaluée en un point intermédiaire \( \xi \).
+
+Substitution dans la première équation :
+\[
+g(x) - g(x_0) = \big( g'(x_0) + g''(\xi)(\eta - x_0) \big) (x - x_0)
+\]
+Or, \( \eta \) étant un point intermédiaire entre \( x_0 \) et \( x \), il peut s'écrire sous la
+forme :
+\[
+\eta = x_0 + \theta (x - x_0) \quad \theta \in ]0,1[
+\]
+En substituant cette expression :
+\[
+g(x) - g(x_0) = g'(x_0)(x - x_0) + g''(\xi) \theta (x - x_0)^2
+\]
+
+\q Concavité :
+
+La tangente à \( g(x) \) en \( x_0 \) est donnée par :
+\[
+T_{x_0}(x) = g(x_0) + g'(x_0)(x - x_0)
+\]
+
+L'objectif est de montrer que :
+\[
+g(x) \leq T_{x_0}(x) \quad \text{pour tout } x > 0.
+\]
+
+D'après la question précédente, \( g''(x) \) est strictement négatif sur \( ]0, +\infty[ \), donc \(
+g''(\xi) < 0 \). De plus, le facteur \( \theta \) est compris entre 0 et 1. Par conséquent :
+\[
+\theta g''(\xi) (x - x_0)^2 \leq 0
+\]
+
+Il en résulte que :
+\[
+g(x) \leq g(x_0) + g'(x_0)(x - x_0) = T_{x_0}(x)
+\]
+Ainsi, la fonction \( g(x) \) est toujours située sous sa tangente en tout point \( x_0 \).
+
+% --------------------------------------------------------------------------------------------------
 \bigskip
 \textbf{Méthode de Newton pour une résolution approchée}
 
 \q Formule de récurrence de Newton :
 
-La méthode de Newton appliquée à \( h(x) = \ln(1+x) - \frac{x}{2} \) donne :
+La méthode de Newton consiste à approcher une solution d'une équation de la forme \( f(x) = 0 \) itérativement.
+
+Pour chaque pas d'itération, la nouvelle estimation $x_{n+1}$ est l'abscisse où la tangente au point
+actuel \( x_n \) coupe l'axe des abscisses.
+\begin{itemize}
+    \item Equation de la tangente : \( y = f'(x_n)(x - x_n) + f(x_n) \).
+    \item Intersection avec l'axe des abscisses : \( f'(x_n)(x_{n+1} - x_n) + f(x_n) = 0 \)
+\end{itemize}
+Ainsi:
 \[
- u_{n+1} = u_n - \frac{h(u_n)}{h'(u_n)}
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 \]
 
 % ------
 
-\q Explicitation de la suite :
-
+\q Application au problème étudié :
+\begin{itemize}
+    \item Fonction d'intérêt : \( g(x) = \ln(1+x) - \frac{x}{2} \).
+    \item Dérivée : \( g'(x) = \frac{1}{1+x} - \frac{1}{2} \).
+\end{itemize}
+Ainsi :
 \[
- u_{n+1} = u_n - \frac{\ln(1+u_n) - \frac{u_n}{2}}{\frac{1}{1+u_n} - \frac{1}{2}}
+ u_{n+1} = u_n - \frac{h(u_n)}{h'(u_n)} = u_n - \frac{\ln(1+u_n) - \frac{u_n}{2}}{\frac{1}{1+u_n} - \frac{1}{2}}
 \]
-
-% ------
-
-\q Simplification de l'expression :
-
-En réarrangeant :
+Simplification de l'expression :
 \[
  u_{n+1} = u_n - \frac{(2\ln(1+u_n) - u_n)(1+u_n)}{2 - (1+u_n)}
 \]
+
 
 % --------------------------------------------------------------------------------------------------
 \bigskip
 \textbf{Convergence de la méthode de Newton}
 
-\q Convergence de la suite \( (u_n) \).
+\q Décroissance de la suite :
 
-La fonction \( h(x) \) est strictement croissante et dérivable sur \( [0, +\infty[ \). La méthode de
-Newton converge donc vers \( c \) pour tout \( u_0 > 0 \).
+La suite est décroissante dès lors que \( g(u_n) \) et \( g'(u_n) \) ont le même signe.
+
+Signe de \( g(u_n) = \ln(1+u_n) - \frac{u_n}{2} \) (selon le tableau de variations établi
+précédemment) :
+\begin{itemize}
+    \item \( g(x) > 0 \) pour \( 0 < x < c \)
+    \item \( g(c) = 0 \)
+    \item \( g(x) < 0 \) pour \( x > c \)
+\end{itemize}
+
+Signe de \( g'(u_n) = \frac{1}{1+u_n} - \frac{1}{2} \) (selon l'étude de la dérivée de \( g \)
+établie précédemment) :
+\begin{itemize}
+    \item \( g'(x) > 0 \) pour \( 0 < x < 1 \)
+    \item \( g'(x) < 0 \) pour \( x > 1 \)
+\end{itemize}
+
+Tableau de signes pour le quotient :
+\[
+\begin{array}{c|ccccccc}
+x & 0 &  & 1 &  & c & & +\infty \\
+\hline
+g(x) & & + &  & + & 0 & - &  \\
+\hline
+g'(x) &  & + & 0 & - &  & - &  \\
+\hline
+\frac{g(x)}{g'(x)} & & + & N/A & - & 0 & + &  \\
+\end{array}
+\]
+
+Ainsi, un intervalle dans lequel la suite \( (u_n) \) est décroissante est \( [c , +\infty[ \).
+
+Dans ce cas :
+\[
+\frac{g(u_n)}{g'(u_n)} > 0
+\]
+\[
+u_{n+1} = u_n - \frac{g(u_n)}{g'(u_n)} < u_n
+\]
+ce qui prouve que \( (u_n) \) est bien décroissante.
+
+\q Stabilité de l'intervalle d'étude :
+
+L'objectif est de prouver que si \( u_n \geq c \), alors \( u_{n+1} \geq c \).
+
+Or, \( u_{n+1} \) est défini par le point d'intersection de la tangente en  \( u_n \) avec l'axe des
+abscisses. Puisque la fonction \( g \) est concave, elle est toujours située sous sa tangente :
+\[
+g(u_{n+1}) \leq 0
+\]
+Or, la fonction \( g \) s'annule en \( c \) et est strictement décroissante sur \( [1, +\infty[ \),
+ce qui implique :
+\[
+g(u_{n+1}) \leq 0 \implies u_{n+1} \geq c
+\]
+
+Conclusion : L'intervalle \( [c, +\infty[ \) est stable pour la méthode de Newton.
+
+% -----
+
+\q Convergence de la suite :
+
+D'une part, la suite \( (u_n) \) est minorée par \( c \) car l'intervalle d'étude est stable par la
+méthode de Newton.
+
+D'autre part, la suite est décroissante sur cet intervalle.
+
+Par le théorème des suites monotones, la suite \( (u_n) \) est convergente.
 
 % ------
 
-\q Estimation du nombre d'itérations :
+\q Limite de la suite :
 
-La méthode de Newton a une convergence quadratique : l'erreur est de l'ordre de \( O((u_n - c)^2)
-\). On peut approximer le nombre d'itérations nécessaires par :
+D'après la question précédente, la suite \( (u_n) \) converge vers une limite \( \ell \geq c \).
+
+En passant à la limite dans la relation de récurrence :
 \[
- n \approx \log_2 \log_{10}(\frac{1}{10^{-3}}) = \log_2 3 \approx 1.6.
+\lim_{n \to \infty} u_{n+1} = \lim_{n \to \infty} \left( u_n - \frac{g(u_n)}{g'(u_n)} \right)
 \]
-Donc, en pratique, 2 à 3 itérations suffisent.
 
-\bigskip
-\textbf{Étude asymptotique locale de la suite}
-
-\q Monotonie et convergence :
-
-Si \( u_0 > c \), alors \( (u_n) \) est décroissante et minorée par \( c \), donc convergente vers
-\( c \).
-
-% ------
-
-\q Convergence quadratique :
-
-Un développement limité autour de \( c \) donne :
+Soit \( \ell = \lim_{n \to \infty} u_n \). Comme \( g \) est continue, il est légitime de passer à
+la limite dans la relation de récurrence :
 \[
- u_{n+1} - c \approx K (u_n - c)^2.
+\ell = \ell - \frac{g(\ell)}{g'(\ell)}
 \]
-Cela confirme la convergence quadratique.
+D'où :
+\[
+\frac{g(\ell)}{g'(\ell)} = 0
+\]
+
+Or, \( g(x) = 0 \) uniquement pour \( x = c \), donc nécessairement \( \ell = c \), ce qui prouve
+que la suite \( (u_n) \) converge vers \( c \).
+
 
 \end{document}
 % ==================================================================================================
+
+% ------
+
+\q Vitesse de convergence et interprétation asymptotique
+
+Le but est de trouver une expression itérative de l'erreur \( e_n = u_n - c \) pour évaluer la
+vitesse de convergence de la méthode de Newton.
+
+Relation de récurrence pour l'erreur :
+\[
+e_{n+1} = u_{n+1} - c = u_n - c - \frac{g(u_n)}{g'(u_n)} = e_n - \frac{g(u_n)}{g'(u_n)}
+\]
+
+Le numérateur peut être estimé en fonction de l'erreur \( e_n \) par un développement limité de \(
+g(u_n) \) au voisinage de \( c \) :
+\[
+g(u_n) = g(c) + g'(c) (u_n - c) + \frac{1}{2} g''(\xi_n) (u_n - c)^2
+\]
+Comme \( g(c) = 0 \) :
+\[
+g(u_n) = g'(c) e_n + \frac{1}{2} g''(\xi_n) e_n^2
+\]
+
+En remplaçant \( g(u_n) \) par son développement :
+\[
+e_{n+1} = e_n - \frac{g'(c) e_n + \frac{1}{2} g''(\xi_n) e_n^2}{g'(u_n)}
+\]
+
+De même, le dénominateur peut être approximé par un développement limité de \( g'(u_n) \) au voisinage
+de \( c \) :
+\[
+g'(u_n) = g'(c) + g''(\xi_n) (u_n - c)
+\]
+En remplaçant le dénominateur :
+\[
+e_{n+1} = e_n - \frac{g'(c) e_n + \frac{1}{2} g''(\xi_n) e_n^2}{g'(c) + g''(\xi_n) e_n}
+\]
+
+TODO: Comment conclure ?

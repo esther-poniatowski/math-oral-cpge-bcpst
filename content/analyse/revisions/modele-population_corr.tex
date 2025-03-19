@@ -22,8 +22,28 @@
 \q Démonstration de la continuité et de l'image de \( f \).
 
 La fonction \( f(x) = r x (1 - x) \) est polynomiale en \( x \), donc continue sur \( \mathbb{R} \)
-a fortiori sur \( [0,1] \). Pour \( x \in [0,1] \), il s'agit de montrer que \( f(x) \in [0,1] \).
-En effet, \( x(1 - x) \in [0,1/4] \) et comme \( r \in (0,4) \), il s'ensuit que
+a fortiori sur \( [0,1] \).
+
+Pour \( x \in [0,1] \), il s'agit de montrer que \( f(x) \in [0,1] \). En effet, \( x(1 - x) \in
+[0,1/4] \) :
+
+Soit la fonction auxiliaire, définie sur \( \mathbb{R} \) :
+\[
+g(x) = x(1 - x) = -x^2 + x
+\]
+Elle s'annule aux points \( x = 0 \) et \( x = 1 \).
+
+Cette fonction quadratique concave (car le coefficient de \( x^2 \) est négatif) admet un maximum,
+qui est atteint au sommet de la parabole, dont l'abscisse est donnée par :
+\[
+x_s = -\frac{b}{2a} = -\frac{1}{2(-1)} = \frac{1}{2}
+\]
+La valeur de \( g(x) \) en \( x_s = \frac{1}{2} \) est :
+\[
+f\left(\frac{1}{2}\right) = \frac{1}{2} \left(1 - \frac{1}{2} \right) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}
+\]
+
+Comme \( r \in (0,4) \), il s'ensuit que :
 \[
 0 \leq f(x) \leq r \times \frac{1}{4} < 1
 \]
@@ -37,12 +57,29 @@ La fonction \( f \) est dérivable sur \( \mathbb{R} \) et :
 \[
 f'(x) = r (1 - 2x)
 \]
-L'annulation de \( f'(x) \) donne \( x = \frac{1}{2} \). Pour \( x < \frac{1}{2} \), \( f'(x) > 0
-\), et pour \( x > \frac{1}{2} \), \( f'(x) < 0 \). Ainsi, \( f \) est croissante sur \( [0,1/2] \),
+Signes de la dérivée :
+\begin{itemize}
+    \item \( f'(x) = 0 \) pour \( x = 1/2 \),
+    \item \( f'(x) > 0 \) pour \( x < 1/2 \),
+    \item \( f'(x) < 0 \) pour \( x > 1/2 \).
+\end{itemize}
+
+Ainsi, \( f \) est croissante sur \( [0,1/2] \),
 décroissante sur \( [1/2, 1] \), et atteint un maximum en \( x = 1/2 \).
 
 \[
 f\left( \frac{1}{2} \right) = r \times \frac{1}{2} \times \frac{1}{2} = \frac{r}{4}
+\]
+
+Tableau de signes et de variations :
+\[
+\begin{array}{c|ccccc}
+x & 0 &  & 1/2 &  & 1 \\
+\hline
+f'(x) &  & + & 0 & - &  \\
+\hline
+f(x) & & \nearrow & \frac{r}{4} & \searrow &
+\end{array}
 \]
 
 % ------
@@ -65,25 +102,190 @@ x = 0 \quad \text{ou} \quad r (1 - x) = 1
 \[
 x = 0 \quad \text{ou} \quad x = 1 - \frac{1}{r}
 \]
-Ainsi, pour \( r > 1 \), il existe deux points fixes : \( 0 \) et \( 1 - \frac{1}{r} \). Pour \( r
-\leq 1 \), seul \( 0 \) appartient à \( [0,1] \).
+Conclusion :
+\begin{itemize}
+    \item Pour \( r > 1 \), il existe deux points fixes : \( 0 \) et \( 1 - \frac{1}{r} \).
+    \item Pour \( r \leq 1 \), seul \( 0 \) appartient à \( [0,1] \).
+\end{itemize}
 
-% ------
-
+% --------------------------------------------------------------------------------------------------
 \bigskip
 \textbf{Étude qualitative de la suite}
 
-\q Invariance de l'intervalle \( [0,1] \).
+\q Invariance de l'intervalle \( [0,1] \) :
 
-Pour \( u_0 \in [0,1] \), \( u_1 = f(u_0) \in [0,1] \), car \( f([0,1]) \subset [0,1] \). Par
-récurrence, \( u_n \in [0,1] \) pour tout \( n \in \mathbb{N} \).
+Pour \( u_0 \in [0,1] \), \( u_1 = f(u_0) \in [0,1] \), car \( f([0,1]) \subset [0,1] \).
+
+Par récurrence immédiate, \( u_n \in [0,1] \) pour tout \( n \in \mathbb{N} \).
 
 % ------
 
-\q Limite de la suite : point fixe.
+\q Limite et point fixe :
 
 Si \( (u_n) \) converge vers \( \ell \), alors par passage à la limite dans \( u_{n+1} = f(u_n) \),
 il vient \( \ell = f(\ell) \), donc \( \ell \) est un point fixe.
+
+% ------
+
+\q Interprétation graphique :
+
+Le point fixe \( \ell \) est l'intersection de la courbe de \( f \) avec la droite d'équation \( y =
+x \). En effet, \( f(x) = x \) équivaut à \( r x (1 - x) = x \), soit \( r x (1 - x) - x = 0 \), ce
+qui correspond à l'équation de la courbe de \( f \).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Stabilité des points fixes}
+
+\q Contractivité et Stabilité :
+
+Par définition de la contractivité : $|u_{n+1} - c| = |g(u_n) - g(c)| < k|u_{n} - c|$, qui implique
+par récurrence :
+$$|u_{n+1} - c| < k^n |u_0 - c|$$
+
+Par comparaison avec une suite géométrique de raison $k < 1$, l'écart $|u_{n+1} - c| \to 0$ donc la
+suite converge vers le point fixe.
+
+% -----
+
+\q Illustration graphique :
+
+La contractivité de \( f \) est visualisée par le cône de sommet \( (c, c) \) et de base \( (u_0,
+f(u_0)) \), qui se rétrécit à chaque itération.
+
+% -----
+
+\q Contractivité et Stabilité locales :
+
+Puisque \( f \) est de classe \( \mathcal{C}^1 \), alors sa dérivée est continue.
+
+Si \( |f'(c)| < 1 \), alors il existe un intervalle autour de \( c \), par exemple \( [c - h, c +
+h] \), dans lequel la dérivée est bornée par une constante \( k < 1 \).
+
+Ainsi, la fonction \( f \) est contractante sur cet intervalle, et le point fixe \( c \) est stable.
+
+% -----
+
+\q Stabilité des points fixes selon la valeur du paramètre \( r \) :
+
+\begin{itemize}
+    \item Pour \( r \leq 1 \), seul \( 0 \) est stable.
+    \item Pour \( r \in (1,3) \), \( 0 \) est instable et \( 1 - \frac{1}{r} \) est stable.
+    \item Pour \( r \in (3,4) \), les deux points fixes sont instables.
+\end{itemize}
+
+\end{document}
+
+% ==================================================================================================
+
+VERSION ANTERIEURE
+\textbf{Stabilité des points fixes}
+
+\q Expression de l'écart par rapport au point fixe :
+
+En écrivant \( u_n = \ell + \epsilon_n \), où \( \epsilon_n \) est l'écart par rapport à \( \ell \)
+:
+\[
+u_{n+1} = f(u_n) = f(\ell + \epsilon_n) = f(\ell) + f'(\ell) \epsilon_n + o(\epsilon_n)
+\]
+Par définition du point fixe, \( f(\ell) = \ell \), donc :
+\[
+u_{n+1} = \ell + f'(\ell) \epsilon_n + o(\epsilon_n)
+\]
+\[
+u_{n+1} - \ell = f'(\ell) \epsilon_n + o(\epsilon_n)
+\]
+Conclusion :
+\[
+\epsilon_{n+1} = f'(\ell) \epsilon_n + o(\epsilon_n)
+\]
+
+% ------
+
+\q Condition de stabilité : L'objectif est de démontrer que si \( |f'(\ell)| < 1 \), alors \(
+\epsilon_n \to 0 \).
+
+Pour cela, montrons que cette suite est inférieure à une suite géométrique de raison \( 0 < q < 1
+\), i.e. :
+\[
+\forall n \in \mathbb{N},\ |\epsilon_n| \leq q^n |\epsilon_0|
+\]
+
+Choix de la raison : Puisque $|f'(\ell)| < 1$, il est possible de choisir un paramètre \( k \) tel
+que \( q = |f'(\ell)| + k < 1 \).
+
+Initialisation :
+
+Pour \( n = 0 \), \( |\epsilon_0| \leq q^0 |\epsilon_0| \) est vérifié.
+
+Hérédité :
+
+Supposons que \( |\epsilon_n| \leq q^n |\epsilon_0| \) pour un certain \( n \geq 0 \). Alors :
+\[
+|\epsilon_{n+1}| = |f'(\ell) \epsilon_n + o(\epsilon_n)| \leq |f'(\ell)| |\epsilon_n| + |o(\epsilon_n)| \leq |f'(\ell)| |\epsilon_n| + k |\epsilon_n| = (|f'(\ell)| + k) |\epsilon_n| = q |\epsilon_n|
+\]
+Contrôle des termes de négligeabilité : Par définition,
+\[
+\lim_{\epsilon_n \to 0} \frac{o(\epsilon_n)}{\epsilon_n} = 0
+\]
+
+Ainsi, pour tout seuil \( k \) arbitrairement petit, il existe \( \delta_n > 0 \) tel que :
+\[
+ |\epsilon_n| < \delta_n \implies |o(\epsilon_n)| < k |\epsilon_n|
+\]
+Et dans ce cas :
+\begin{align*}
+    |\epsilon_{n+1}| &= |f'(\ell) \epsilon_n + o(\epsilon_n)| \\
+    &\leq |f'(\ell)| |\epsilon_n| + |o(\epsilon_n)| \\
+    &< |f'(\ell)| |\epsilon_n| + k |\epsilon_n| \\
+    &= (|f'(\ell)| + k) |\epsilon_n| \\
+\end{align*}
+
+Puisque \( |f'(\ell)| < 1 \), il est possible de choisir \( k \) suffisamment petit pour que \(
+|f'(\ell)| + k < 1 \). Ainsi :
+\[
+|\epsilon_{n+1}| < (|f'(\ell)| + k) |\epsilon_n| < |\epsilon_n|
+\]
+
+Récurrence :
+
+Supposons que \( u_0 \) soit suffisamment proche de \( \ell \) pour que \( |\epsilon_0| < \delta
+\). Alors, par récurrence, on montre que \( |\epsilon_n| < |\epsilon_{n-1}| \) pour tout \( n \geq 1
+\), ce qui implique que \( \epsilon_n \) est une suite décroissante et bornée inférieurement par 0
+(ou par \( -\delta \) si on considère des valeurs négatives).
+
+Puisque \( \epsilon_n \) est décroissante et bornée, elle converge vers une limite \( L \). Nous
+devons montrer que \( L = 0 \).
+
+Supposons que \( L \neq 0 \). Alors, pour \( n \) suffisamment grand, \( |\epsilon_n| \) est proche
+de \( L \) et donc \( |\epsilon_n| > L/2 \) pour un certain \( L/2 > 0 \). Cependant, puisque \(
+|\epsilon_{n+1}| < (|f'(\ell)| + k) |\epsilon_n| \) et que \( |f'(\ell)| + k < 1 \), on a :
+\[
+|\epsilon_{n+1}| < |\epsilon_n|
+\]
+
+Cela implique que \( |\epsilon_n| \) diminue à chaque itération, ce qui contredit l'hypothèse que \(
+L \neq 0 \) si \( L > 0 \). Par conséquent, \( L = 0 \), ce qui signifie que \( \epsilon_n \to 0 \)
+lorsque \( n \to \infty \).
+
+
+% -----
+
+\q Condition d'instabilité : cas \( |f'(\ell)| > 1 \)
+
+Lorsque \( |f'(\ell)| > 1 \), l'itération de la relation :
+\[
+\epsilon_n = (f'(\ell))^n \epsilon_0 + \sum_{k=0}^{n-1} (f'(\ell))^{n-1-k} o(\epsilon_k)
+\]
+montre que le premier terme \( (f'(\ell))^n \epsilon_0 \) diverge exponentiellement, car \(
+|f'(\ell)|^n \to \infty \) si \( |f'(\ell)| > 1 \).
+
+Même en tenant compte du terme \( o(\epsilon_n) \), celui-ci reste négligeable par rapport à la
+croissance exponentielle de \( (f'(\ell))^n \), ce qui entraîne :
+\[
+\epsilon_n \to \infty.
+\]
+Ainsi, la suite \( (u_n) \) s'éloigne de \( \ell \), ce qui établit son instabilité.
 
 % ------
 
@@ -142,7 +344,3 @@ convergence diminue à mesure que \( r \to 3^- \).
 possibilité de cycles de période 2, puis de comportements plus complexes (bifurcations, chaos). En
 effet, la suite peut osciller entre plusieurs valeurs ou devenir apériodique, ce qui correspond à
 des phénomènes de bifurcation ou de chaos déterministe.
-
-
-\end{document}
-% ==================================================================================================

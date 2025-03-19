@@ -8,9 +8,8 @@
 % - points fixes
 % - stabilité
 % - convergence
-% - étude asymptotique
-% Ouvrir vers les comportements plus complexes : bifurcations, chaos.
-% ==================================================================================================
+% - étude asymptotique Ouvrir vers les comportements plus complexes : bifurcations, chaos.
+%   ==================================================================================================
 
 \documentclass[10pt,a4paper]{article}
 
@@ -30,7 +29,7 @@
 
 \textbf{Contexte}
 
-Les suites récurrentes sont adapté à  la modélisation de l'évolution d'une population, lorsque le
+Les suites récurrentes sont adaptées à  la modélisation de l'évolution démographique, lorsque le
 nombre d'individus à une génération dépend de la génération précédente. L'un des modèles classiques
 est la suite logistique, qui prend en compte une croissance proportionnelle à la population
 présente, ainsi qu'une limitation due aux ressources finies.
@@ -40,9 +39,10 @@ présente, ainsi qu'une limitation due aux ressources finies.
 
 Étudier le comportement de la suite logistique selon les valeurs d'un paramètre.
 
+\bigskip
 La suite logistique est définie par la relation :
 \[
-u_{n+1} = r u_n (1 - u_n), \quad u_0 \in (0,1), \quad r \in (0,4).
+u_{n+1} = r u_n (1 - u_n), \quad u_0 \in [0,1], \quad r \in [0,4].
 \]
 
 Le paramètre \( r \) est appelé \emph{taux de croissance} et détermine le comportement de la suite.
@@ -51,60 +51,130 @@ Le paramètre \( r \) est appelé \emph{taux de croissance} et détermine le com
 \vspace{0.5cm}
 \textbf{Étude de la fonction logistique}
 
-Soit la fonction \( f : [0,1] \to [0,1] \) définie par \( f(x) = r x (1 - x) \).
+Soit la fonction \( f \) définie sur \( [0,1] \) par \( f(x) = r x (1 - x) \).
 
-\q Pour cette fonction :
-\begin{itemize}
-    \item Montrer que pour \( r \in (0,4) \), \( f \) est une fonction continue de \( [0,1] \) dans
-    \( [0,1] \).
-    \item Étudier la dérivabilité et déterminer \( f'(x) \).
-    \item Étudier les variations de \( f \) sur \( [0,1] \).
-\end{itemize}
-% But : étude complète de la fonction associée pour préparer l'étude de la suite.
-% Méthode : calcul, variations)
+\q Justifier que pour \( r \in [0,4] \), \( f \) est une fonction continue de \( [0,1] \) dans \(
+[0,1] \).
+
+\q Étudier la dérivabilité et les variations de \( f \) sur \( [0,1] \).
+% But : étude complète de la fonction associée pour préparer l'étude de la suite. Méthode : calcul,
+% variations)
 
 \q Déterminer les points fixes de \( f \), c'est-à-dire les solutions de \( f(x) = x \), en fonction
 de \( r \).
-% But : identification des points fixes, étude de leur dépendance en r.
-% Méthode : résolution d'équation quadratique.
+% But : identification des points fixes, étude de leur dépendance en r. Méthode : résolution
+% d'équation quadratique.
 
 % --------------------------------------------------------------------------------------------------
 \vspace{0.5cm}
 \textbf{Étude qualitative de la suite}
 
-\q % (But : montrer que l'intervalle [0,1] est stable par f ; méthode : étude du signe et encadrement)
-Montrer que si \( u_0 \in [0,1] \), alors \( \forall n \in \mathbb{N},\ u_n \in [0,1] \).
+\q Montrer que si \( u_0 \in [0,1] \), alors \( \forall n \in \mathbb{N},\ u_n \in [0,1] \).
+% But : montrer que l'intervalle [0,1] est stable par f. Méthode : étude du signe et encadrement.
 
-\q % (But : utiliser le théorème de convergence des suites récurrentes ; méthode : continuité, étude des points fixes et comportement local)
-En supposant que \( (u_n) \) converge vers une limite \( \ell \), montrer que \( \ell \) est nécessairement un point fixe de \( f \).
+\q En supposant que \( (u_n) \) converge vers une limite \( \ell \), montrer que \( \ell \) est
+nécessairement un point fixe de \( f \).
+% But : utiliser le théorème de convergence des suites récurrentes. Méthode : continuité, étude des
+% points fixes et comportement local.
 
-\q % (But : étude de la stabilité des points fixes selon r ; méthode : dérivée, condition de stabilité)
-Montrer que la stabilité locale d'un point fixe \( \ell \) de \( f \) est liée à la valeur de \( |f'(\ell)| \). En déduire, selon les valeurs de \( r \), quels sont les points fixes stables.
+\q Interpréter ce résultat graphiquement en considérant l'intersection de la courbe de \( f \) avec
+la droite d'équation \( y = x \).
+% But : Introduire la définition de point fixe de manière élémentaire. Méthode : Résolution d'une
+% équation et interprétation graphique.
 
 % --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+\textbf{Stabilité des points fixes}
+
+Les points fixes d'une fonction sont caractérisés par leur \textit{stabilité} : un point fixe \( c \) est dit
+\textit{stable} (ou \textit{attractif}) si pour tout \( u_0 \) "proche" de \( c \), la suite \(
+(u_n) \) définie par \( u_{n+1} = f(u_n) \) converge vers \( c \).
+
+La stabilité peut être garantie par la propriété de \textit{contractivité} de la fonction :
+
+Une fonction \( g \) est dite \textit{contractante} sur un intervalle \( I \) s'il existe une
+constante \( k \in [0,1[ \) telle que :
+\[
+\forall x, y \in I, \quad |g(x) - g(y)| \leq k |x - y|
+\]
+
+\q Soit une fonction contractante \( g \) sur un intervalle \( I \), admettant un unique point fixe
+\( c \) sur cet intervalle. Soit \( \epsilon_n = u_n - c \), l'écart par rapport au point fixe.
+Étudier le comportement de cet écart, et en déduire la stabilité du point fixe \( c \).
+% But : démontrer la convergence d'une suite contractante.
+
+\q Illustrer graphiquement ce résultat.
+% But : visualiser la propriété de contractivité dans un cône et l'escalier de la convergence.
+
+\q Soit une fonction \( f \) de classe \( \mathcal{C}^1 \) sur un
+intervalle \( I \), admettant un unique point fixe \( c \). Justifier que si \( |f'(c)| < 1 \),
+alors il existe un intervalle sur lequel la fonction \( f \) est contractante. Conclure sur la
+stabilité de \( c \).
+
+\q En déduire, selon les valeurs de \( r \), quels sont les points fixes stables.
+
+
+% --------------------------------------------------------------------------------------------------
+
+\end{document}
+
+% ==================================================================================================
+
+
+VERSION ANTERIEURE
+
+\vspace{0.5cm}
+\textbf{Stabilité des points fixes}
+
+Les points fixes sont caractérisés par leur \textit{stabilité} : un point fixe \( \ell \) est dit
+\textit{stable} si pour tout \( u_0 \) "proche" de \( \ell \), la suite \( (u_n) \) converge vers \(
+\ell \).
+
+\q Soit une valeur initiale \( u_0 = \ell +  \epsilon_0  \) où \( \epsilon_0 \) représente l'écart
+par rapport à \( \ell \).
+Exprimer l'écart \( \epsilon_{n+1} = u_{n+1} - \ell \) en fonction de \( \epsilon_{n} \), en
+utilisant une approximation linéaire.
+% But : Traduire l'évolution des écarts par une relation de récurrence.
+% Méthode : Développement de f(u_n) et f(ell) autour de l.
+
+\q Condition de stabilité : En déduire que si \( |f'(\ell)| < 1 \), alors \( \epsilon_n
+\to 0 \) et la suite \( (u_n) \) converge vers \( \ell \).
+Interpréter ce résultat en expliquant pourquoi la suite reste proche de \( \ell \).
+% But : Établir un critère rigoureux de stabilité basé sur |f'(l)|.
+% Méthode : Étudier l'évolution de l'écart selon les valeurs de f'(l).
+
+\q Condition d'instabilité : Montrer que si \( |f'(\ell)| > 1 \), alors la suite \( (u_n) \)
+s'éloigne de \( \ell \).
+% But : Montrer que la dérivée supérieure à 1 implique l'instabilité du point fixe.
+% Méthode : Étudier le comportement de l'écart pour ∣f'(l)∣>1.
+
+\q En déduire, selon les valeurs de \( r \), quels sont les points fixes stables.
+% But : étude de la stabilité des points fixes selon r.
+% Méthode : dérivée, condition de stabilité.
+
+
 \vspace{0.5cm}
 \textbf{Étude asymptotique en fonction du paramètre}
 
 \textit{Cas \( r \in (0,1) \) : Extinction}
 \q Montrer que \( 0 \) est l'unique point fixe, stable, et que pour tout \( u_0 \in (0,1) \), \(
 (u_n) \) converge vers \( 0 \).
-% But : cas r < 1 : extinction de la population.
-% Méthode : étude des points fixes et de leur stabilité.
+% But : cas r < 1 : extinction de la population. Méthode : étude des points fixes et de leur
+% stabilité.
 
 \textit{Cas \( r \in (1,2) \) : Stabilisation}
 
 \q Montrer que \( 0 \) est instable, et que l'autre point fixe \( \ell = 1 - \frac{1}{r} \) est
 stable. En déduire que \( (u_n) \) converge vers \( \ell \) pour tout \( u_0 \in (0,1) \setminus
 \{0\} \).
-% But : cas 1 < r < 2 : convergence vers un point fixe positif.
-% Méthode : même approche.
+% But : cas 1 < r < 2 : convergence vers un point fixe positif. Méthode : même approche.
 
 \textit{Cas \( r \in (2,3) \) : Etude fine}
 
 \q Montrer que \( \ell = 1 - \frac{1}{r} \) reste un point fixe, mais que la valeur de \( |f'(\ell)|
 \) approche 1 lorsque \( r \to 3^- \).
-% But : étude de la stabilité locale du point fixe positif.
-% Méthode : calcul de la dérivée en l, critère de stabilité.
+% But : étude de la stabilité locale du point fixe positif. Méthode : calcul de la dérivée en l,
+% critère de stabilité.
 
 \ Proposer une conjecture sur la convergence de \( (u_n) \) pour ces valeurs de \( r \).
 
@@ -115,8 +185,5 @@ un comportement périodique ou chaotique.
 
 \q Expliquer pourquoi la perte de stabilité du point fixe \( \ell \) (lorsque \( |f'(\ell)| > 1 \))
 rend ce phénomène possible.
-% But : ouvrir vers la complexité pour r > 3.
-% Méthode : interprétation graphique, lien avec la stabilité.
-
-\end{document}
-% ==================================================================================================
+% But : ouvrir vers la complexité pour r > 3. Méthode : interprétation graphique, lien avec la
+% stabilité.

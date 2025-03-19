@@ -1,4 +1,4 @@
-% PROBLÈME : Approximation du Logarithme et Suites associées
+% PROBLÈME : Résolution Approchée d'Equations Logarithmiques
 % ==================================================================================================
 %
 % Buts
@@ -41,41 +41,58 @@ d'étudier finement leur comportement asymptotique et leurs approximations.
 Étudier des fonctions logarithmiques sous plusieurs aspects : équivalents, approximations,
 résolution approchée d'équations, suites récurrentes.
 
+Soit la fonction \( g : x \mapsto \ln(1+x) - \frac{x}{2} \).
+
 % --------------------------------------------------------------------------------------------------
 \vspace{0.5cm}
-\textbf{Étude asymptotique de la fonction logarithme translatée}
+\textbf{Étude asymptotique d'une fonction logarithmique}
 
-Soit la fonction \( f : x \mapsto \ln(1+x) \).
-
-\q Montrer que lorsque \( x \to 0 \), on a \( \ln(1+x) \sim x \).
+\q Donner un équivalent de  \( \ln(1+x) \) lorsque \( x \to 0 \).
 % But : trouver un équivalent de ln(1+x) en 0.
 % Méthode : développement limité ou équivalent.
 
-\q Donner le développement limité à l'ordre 2 de \( \ln(1+x) \) au voisinage de 0.
-% But : trouver un développement limité d'ordre 2 pour affiner l'équivalent.
-% Méthode : développement limité en 0.
-
-\q Montrer que lorsque \( x \to +\infty \), on a \( \ln(1+x) \sim \ln x \).
+\q Montrer l'équivalent suivant lorsque \( x \to +\infty \) : \( \ln(1+x) \sim \ln x \).
 % But : équivalent en l'infini.
 % Méthode : changement de variable, comportement logarithme à l'infini.
 
+\q Représenter graphiquement les fonctions \( x \mapsto \ln(x) \), \( x \mapsto \ln(1+x) \) et \( x
+\mapsto \frac{x}{2} \).
+
 \vspace{0.5cm}
 
-\textbf{Comparaison avec une approximation affine}
+\textbf{Existence des zéros de la fonction}
 
-Soit la fonction \( g : x \mapsto \ln(1+x) - \frac{x}{2} \).
-
-\q Étudier les variations de \( g(x) = \ln(1+x) - \frac{x}{2} \) sur \( [0, +\infty[ \).
+\q Étudier les variations de \( g \) sur \( ]-1, +\infty[ \).
 % But : étude de signe, comportement de ln(1+x) par rapport à x/2.
 % Méthode : étude de fonction par la dérivée.
 
-\q Montrer qu'il existe un unique \( c > 0 \) tel que \( \ln(1+c) = \frac{c}{2} \).
+\q Justifier que \( g \) admet un maximum sur \( ]0, +\infty[ \) et qu'il est positif.
+
+\q En déduire qu'il existe un unique \( c > 0 \) tel que \( \ln(1+c) = \frac{c}{2} \).
 % But : existence et unicité d'un zéro de g, interprétation graphique.
 % Méthode : théorème des valeurs intermédiaires.
 
-\q Donner un encadrement de \( c \) entre deux réels faciles à calculer.
-% But : encadrement de c.
-% Méthode : étude de g en des points précis et signe.
+% --------------------------------------------------------------------------------------------------
+\vspace{0.5cm}
+\textbf{Concavité de la fonction}
+
+\q Étudier le signe de la dérivée seconde \( g''(x) \) sur \( ]0, +\infty[ \).
+% But : Déterminer la convexité de g(x) afin d'analyser la forme locale de la fonction et son
+% impact sur la méthode de Newton.
+% Méthode : Calculer g''(x) explicitement et étudier son signe.
+
+\q Montrer que pour tout \( x \) et \( x_0 \), il existe un point \( \xi \) entre \( x_0 \) et \( x
+\) et une constante \( \theta \in [0,1] \) tels que :
+\[
+g(x) = g(x_0) + g'(x_0)(x - x_0) + \theta g''(\xi) (x - x_0)^2
+\]
+
+\q Vérifier que pour tout \( x > 0 \), la fonction \( g(x) \) est toujours inférieure ou égale à sa
+tangente en un point donné \( x_0 \).
+% But : Guider les élèves vers l'idée que g(x) est située sous sa tangente en tout point en
+% utilisant uniquement des outils élémentaires.
+% Méthode : Utiliser le développement de Taylor à l'ordre 2 autour de x_0 et le signe de g''(x) pour
+% comparer g(x) et son approximation affine.
 
 % --------------------------------------------------------------------------------------------------
 \vspace{0.5cm}
@@ -83,55 +100,74 @@ Soit la fonction \( g : x \mapsto \ln(1+x) - \frac{x}{2} \).
 
 Soit l'équation \( \ln(1+x) = \frac{x}{2} \).
 
-\q Donner la formule de récurrence générale pour la méthode de Newton permettant de résoudre cette
-équation.
+Soit \( (u_n) \) la suite des approximations de \( c \) obtenues par la méthode de Newton, pour une
+valeur initiale \( u_0 > 0 \).
+
+\q Rappeler la formule de récurrence générale pour la méthode de Newton.
 % But : poser et interpréter la méthode de Newton pour cette équation.
 % Méthode : dérivation, mise en forme de la méthode.
 
-\q En déduire la suite \( (u_n) \) définie par la méthode de Newton pour une valeur initiale \( u_0
-> 0 \), et donner son expression explicite :
-\[
-u_{n+1} = u_n - \frac{\ln(1+u_n) - \frac{u_n}{2}}{\frac{1}{1+u_n} - \frac{1}{2}}.
-\]
-% But : expliciter la suite pour notre fonction.
+\q Appliquer cette formule au problème étudié.
+% But : expliciter la suite pour la fonction étudiée.
 % Méthode : calcul explicite du quotient différentiel.
 
-\q Simplifier cette expression pour obtenir une forme plus simple, en fonction de \( u_n \)
-uniquement.
-% But : simplification de la formule pour la rendre exploitable.
-% Méthode : calcul algébrique.
+\q Proposer une intuition sur l'évolution de la suite en exploitant la concavité de la fonction \( g
+\).
+% But : Exploiter la concavité pour établir une intuition sur l'évolution de la suite (u_n).
+% Méthode : Utiliser le signe de g''(x) pour conclure et illustrer la situation par une
+% interprétation géométrique de la tangente dans la méthode de Newton.
 
-% --------------------------------------------------------------------------------------------------
-\vspace{0.5cm}
-\textbf{Convergence de la méthode de Newton}
+\q Identifier un intervalle sur lequel la suite \( (u_n) \) est décroissante.
+% But : Montrer que (u_n) est une suite décroissante, ce qui constitue une première étape vers
+% la démonstration de sa convergence.
+% Méthode : Comparer les signes de g(u_n) et g'(u_n) pour déterminer le signe du quotient dans la
+% méthode de Newton.
 
-Admis : La fonction \( x \mapsto \ln(1+x) - \frac{x}{2} \) est strictement croissante sur \( [0,
-+\infty[ \), et sa dérivée ne s'annule pas sur cet intervalle.
+\q Montrer que l'intervalle sur lequel la suite est décroissante est stable par la méthode de
+Newton, en exploitant la concavité de la fonction \( g \) montrée précédemment.
+% But : Montrer que l'intervalle sur lequel la suite est décroissante est stable pour préparer
+% l'argument de la minoration.
+% Méthode : Utiliser la concavité de g pour montrer que l'intervalle est stable, et la décroissance
+% de la fonction pour conclure.
 
-\q Montrer que la suite \( (u_n) \), définie par la méthode de Newton, converge vers \( c \) pour
-tout \( u_0 > 0 \).
-% But : convergence de la suite vers c, point fixe.
-% Méthode : étude qualitative de la méthode de Newton et propriétés de la fonction.
+\q En déduire que la suite est convergente.
+% But : Conclure rigoureusement à la convergence de la suite en exploitant sa décroissance et sa
+% minoration.
+% Méthode : Prouver que la suite est minorée, puis utiliser le théorème de la convergence des suites
+% monotones.
 
-\q Expliquer pourquoi la méthode de Newton permet d'obtenir une approximation de \( c \) avec une
-précision rapide (quadratique), et estimer, à l'aide d'un raisonnement qualitatif, le nombre
-d'itérations nécessaires pour approcher \( c \) à \( 10^{-3} \) près.
-% But : vitesse de convergence, approximation du nombre de décimales.
-% Méthode : étude qualitative, majoration de l'erreur.
-
-% --------------------------------------------------------------------------------------------------
-\vspace{0.5cm}
-\textbf{Étude asymptotique locale de la suite et lien avec l'équation}
-
-\q Montrer que si \( u_0 > c \), alors \( (u_n) \) est décroissante et minorée par \( c \), et
-converge vers \( c \).
-% But : montrer que la suite décroît vers c si u_0 > c.
-% Méthode : étude du comportement local, signe du résidu.
-
-\q Montrer que si \( u_n \) est proche de \( c \), alors \( u_{n+1} - c \sim K (u_n - c)^2 \) pour
-une constante \( K > 0 \), ce qui illustre la convergence quadratique de la méthode de Newton.
-% But : équivalent de l'erreur.
-% Méthode : développement limité et linéarisation locale.
+\q Démontrer que la suite \( (u_n) \) converge vers \( c \).
+% But : Montrer que la limite est bien le zéro de la fonction g
+% Méthode : Utiliser la convergence de la suite et le fait que g est continue pour conclure.
 
 \end{document}
 % ==================================================================================================
+
+
+Point Fixe de la Méthode de Newton
+
+\q Montrer que si un=cun=c, alors un+1=cun+1=c, où cc est le zéro de f(x)f(x).
+% But : identifier le point fixe.
+% Méthode : substitution dans la formule de récurrence.
+
+Si un=cun=c, alors f(c)=0f(c)=0, et donc :
+un+1=c-f(c)f'(c)=c-0f'(c)=c
+un+1=c-f'(c)f(c)=c-f'(c)0=c
+
+Analyse de la Convergence Locale
+
+\q Étudier la convergence locale de la méthode de Newton autour du point fixe cc.
+% But : analyser la stabilité locale.
+% Méthode : développement limité ou linéarisation.
+
+Pour étudier la convergence locale, on peut linéariser la formule de récurrence autour de cc en utilisant un développement limité ou en analysant la fonction g(u)=u−f(u)f′(u)g(u)=u−f′(u)f(u).
+
+Démonstration de la Convergence Quadratique
+
+\q Démontrer que la méthode de Newton converge quadratiquement vers cc si u0u0 est suffisamment proche de cc.
+% But : prouver la convergence quadratique.
+% Méthode : utilisation du théorème des accroissements finis et propriétés des dérivées.
+
+Pour démontrer la convergence quadratique, on peut utiliser le fait que la dérivée seconde de
+f(x)f(x) est continue autour de cc et que la méthode de Newton peut être exprimée sous forme de
+série de Taylor. Cela implique que l'erreur à chaque étape diminue quadratiquement.

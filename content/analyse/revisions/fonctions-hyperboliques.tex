@@ -1,0 +1,107 @@
+% PROBLÈME : Fonctions Hyperboliques
+% ==================================================================================================
+
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Analyse - Fonctions Hyperboliques}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+Trois fonctions hyperboliques sont définies par des combinaisons linéaires de fonctions
+exponentielles. Elles sont analogues aux fonctions trigonométriques circulaires, et interviennent
+dans des problèmes de physique, notamment en relativité.
+
+\bigskip
+\textbf{Objectifs}
+
+Mener une étude analytique des fonctions hyperboliques et de leurs réciproques.
+
+\bigskip
+\textbf{Définitions}
+
+Sinus hyperbolique :
+\[
+\sinh : x \in \mathbb{R} \mapsto \frac{e^x - e^{-x}}{2}
+\]
+Cosinus hyperbolique :
+\[
+\cosh : x \in \mathbb{R} \mapsto \frac{e^x + e^{-x}}{2}
+\]
+Tangente hyperbolique :
+\[
+\tanh : x \in \mathbb{R} \mapsto \frac{\sinh(x)}{\cosh(x)} = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Étude qualitative des fonctions hyperboliques}
+
+\q Représenter graphiquement l'allure des fonctions $\sinh$, $\cosh$ et $\tanh$, en se fondant sur
+les valeurs en certains points et les limites en $+\infty$ et $-\infty$.
+
+\q Calculer les dérivées des fonctions $\sinh$, $\cosh$ et $\tanh$.
+
+\q Déterminer des intervalles maximums sur lesquels les fonctions $\sinh$, $\cosh$ et $\tanh$
+établissent des bijections.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Résultats généraux : Dérivées et Inverses}
+
+L'objectif de cette partie est de d'exprimer la dérivée de la réciproque $(f^{-1})'$ en fonction de
+la dérivée $f'$ et de la réciproque $f^{-1}$ (en supposant que \( f \) est une fonction dérivable et
+bijective sur son domaine).
+
+\q Soit \( f : I \to J \) une fonction strictement monotone et dérivable sur un intervalle \( I \),
+admettant une fonction réciproque \( f^{-1} : J \to I \). Justifier que, pour tout \( x \in J \),
+\[
+f(f^{-1}(x)) = x
+\]
+% But : Amener les élèves à exprimer la propriété fondamentale des fonctions réciproques.
+% Méthode : Utilisation directe de la définition de la réciproque et application de \( f \) à \(
+% f^{-1}(x) \).
+
+\q En supposant que \( f^{-1} \) est dérivable, dériver l'égalité \( f(f^{-1}(x)) = x \) par rapport
+à \( x \).
+% But : Introduire implicitement la dérivée de la fonction réciproque.
+% Méthode : Utilisation de la dérivation en chaîne en posant \( u = f^{-1}(x) \).
+
+\q En déduire l'expression de \( (f^{-1})'(x) \) et préciser sur quel ensemble elle est valable.
+% But : Finaliser la démonstration en précisant les hypothèses nécessaires.
+% Méthode : Synthèse des conditions établies dans les questions précédentes.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Réciproques des fonctions hyperboliques}
+
+\q Représenter graphiquement les fonctions $\sinh^{-1}$, $\cosh^{-1}$ et $\tanh^{-1}$.
+
+\q Etablir l'identité $\cosh^2(z) - \sinh^2(z) = 1,\; \forall z \in \mathbb{R}$.
+
+\q Justifier que les fonctions $\sinh^{-1}$, $\cosh^{-1}$ et $\tanh^{-1}$ sont dérivables sur des
+intervalles à préciser, et calculer leurs dérivées (sans exprimer $\sinh^{-1}$, $\cosh^{-1}$ et
+$\tanh^{-1}$, et en utilisant l'identité précédente).
+
+\q Justifier que $\sinh^{-1}$ admet un développement limité à l'ordre $4$ en $0$, et le déterminer.
+
+\q Trouver une expression de $\sinh^{-1}$, $\cosh^{-1}$ et $\tanh^{-1}$ et retrouver leurs
+dérivées.\\
+\emph{\small Indication : Pour $\sinh^{-1}$ et $\cosh^{-1}$, résoudre un polynôme du second degré en
+posant $X = e^x$.}
+
+\end{document}
+% ==================================================================================================
