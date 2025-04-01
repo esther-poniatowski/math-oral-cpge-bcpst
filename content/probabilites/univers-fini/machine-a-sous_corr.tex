@@ -1,0 +1,183 @@
+% CORRECTION : Machine à sous
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Probabilités dans un univers fini - Machine à sous}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\q Détermination de \( \mathbb{P}(G_1) \)
+% ------
+Application de la formule des probabilités totales :
+
+\[
+\mathbb{P}(G_1) = \mathbb{P}(G_1 \mid A_1) \mathbb{P}(A_1) + \mathbb{P}(G_1 \mid B_1) \mathbb{P}(B_1)
+\]
+
+Comme \( \mathbb{P}(A_1) = \mathbb{P}(B_1) = \dfrac{1}{2} \), il vient :
+
+\[
+\boxed{\mathbb{P}(G_1) = \dfrac{1}{2}(p_A + p_B)}
+\quad \Rightarrow \quad \boxed{\mathbb{P}(G_1) = \dfrac{3}{20}}
+\]
+
+% ------
+
+\q Détermination de \( \mathbb{P}(G_2) \)
+% ------
+Étude par cas selon la machine choisie au premier coup et l'issue (gain ou perte) :
+
+\[
+\mathbb{P}(G_2) = \dfrac{1}{2} \left( p_A^2 + (1 - p_A)p_B \right) + \dfrac{1}{2} \left( p_B^2 + (1 - p_B)p_A \right)
+\]
+
+Application numérique :
+
+\[
+\boxed{\mathbb{P}(G_2) = \dfrac{31}{200}}
+\]
+
+% ------
+
+\q Détermination de \( \mathbb{P}(A_1 \mid G_2) \)
+% ------
+Par la formule de Bayes :
+
+\[
+\mathbb{P}(A_1 \mid G_2) = \dfrac{\mathbb{P}(G_2 \mid A_1) \mathbb{P}(A_1)}{\mathbb{P}(G_2)}
+\]
+
+Avec :
+
+\[
+\mathbb{P}(G_2 \mid A_1) = p_A^2 + (1 - p_A)p_B
+\quad ; \quad
+\mathbb{P}(A_1) = \dfrac{1}{2}
+\]
+
+Il vient :
+
+\[
+\boxed{\mathbb{P}(A_1 \mid G_2) = \dfrac{p_A^2 + (1 - p_A)p_B}{p_A^2 + (1 - p_A)p_B + p_B^2 + (1 - p_B)p_A}}
+\quad \Rightarrow \quad \boxed{\mathbb{P}(A_1 \mid G_2) = \dfrac{12}{31}}
+\]
+
+% ------
+
+\q Expression de \( \mathbb{P}(G_k) \) en fonction de \( \mathbb{P}(A_k) \)
+% ------
+Par la formule des probabilités totales conditionnelles :
+
+\[
+\mathbb{P}(G_k) = p_A \mathbb{P}(A_k) + p_B (1 - \mathbb{P}(A_k))
+= p_B + (p_A - p_B) \mathbb{P}(A_k)
+\]
+
+\[
+\boxed{\mathbb{P}(G_k) = p_B + (p_A - p_B) \mathbb{P}(A_k)}
+\quad \Rightarrow \quad
+\boxed{\mathbb{P}(G_k) = \dfrac{1}{10}(1 + \mathbb{P}(A_k))}
+\]
+
+% ------
+
+\q Établissement de la relation de récurrence sur \( \mathbb{P}(A_k) \)
+% ------
+Étude des transitions selon la stratégie :
+
+\[
+\mathbb{P}(A_{k+1}) = \mathbb{P}(G_k \mid A_k)\mathbb{P}(A_k) + \mathbb{P}(\overline{G_k} \mid B_k) \mathbb{P}(B_k)
+\]
+
+\[
+\mathbb{P}(A_{k+1}) = p_A \mathbb{P}(A_k) + (1 - p_B)(1 - \mathbb{P}(A_k))
+\]
+
+\[
+\boxed{\mathbb{P}(A_{k+1}) = (1 - p_B) + (p_A + p_B - 1) \mathbb{P}(A_k)}
+\quad \Rightarrow \quad
+\boxed{\mathbb{P}(A_{k+1}) = \dfrac{9}{10} - \dfrac{7}{10} \mathbb{P}(A_k)}
+\]
+
+% ------
+
+\q Résolution de la récurrence et expression explicite
+% ------
+La suite \( (A_k) \) est arithmético-géométrique. Elle admet un point fixe \( \ell \) tel que :
+
+\[
+\ell = \dfrac{9}{10} - \dfrac{7}{10} \ell \quad \Rightarrow \quad \boxed{\ell = \dfrac{9}{17}}
+\]
+
+La raison de la suite homogène est \( r = -\dfrac{7}{10} \), et \( A_1 = \dfrac{1}{2} \). D'où :
+
+\[
+\boxed{\mathbb{P}(A_k) = \dfrac{9}{17} - \dfrac{1}{34} \left( -\dfrac{7}{10} \right)^{k - 1}}
+\]
+
+Par substitution dans l'expression de \( \mathbb{P}(G_k) \) :
+
+\[
+\mathbb{P}(G_k) = \dfrac{1}{10} \left( 1 + \mathbb{P}(A_k) \right)
+= \dfrac{1}{10} \left( 1 + \dfrac{9}{17} - \dfrac{1}{34} \left( -\dfrac{7}{10} \right)^{k - 1} \right)
+\]
+
+\[
+\boxed{\mathbb{P}(G_k) = \dfrac{13}{85} - \dfrac{1}{340} \left( -\dfrac{7}{10} \right)^{k - 1}}
+\]
+
+% ------
+
+\q Étude de la proportion de parties gagnées
+% ------
+On considère :
+
+\[
+S_n = \sum_{k = 1}^{n} \mathbb{P}(G_k)
+= \sum_{k = 1}^{n} \left( \dfrac{13}{85} - \dfrac{1}{340} \left( -\dfrac{7}{10} \right)^{k - 1} \right)
+\]
+
+Le premier terme donne :
+
+\[
+\sum_{k = 1}^{n} \dfrac{13}{85} = \dfrac{13}{85} n
+\]
+
+La somme géométrique donne :
+
+\[
+\sum_{k = 1}^{n} \left( -\dfrac{7}{10} \right)^{k - 1}
+= \dfrac{1 - \left( -\dfrac{7}{10} \right)^n}{1 + \dfrac{7}{10}} = \dfrac{10}{17} \left( 1 - \left( -\dfrac{7}{10} \right)^n \right)
+\]
+
+D'où :
+
+\[
+\boxed{S_n = \dfrac{13}{85} n - \dfrac{1}{578} \left( 1 - \left( -\dfrac{7}{10} \right)^n \right)}
+\]
+
+\medskip
+
+En divisant par \( n \), on obtient :
+
+\[
+\boxed{\dfrac{S_n}{n} = \dfrac{13}{85} - \dfrac{1}{578 n} \left( 1 - \left( -\dfrac{7}{10} \right)^n \right) \longrightarrow \dfrac{13}{85}}
+\quad \text{lorsque } n \to +\infty
+\]
+
+Ce résultat représente la \emph{proportion asymptotique de parties gagnées}. Il correspond à la
+limite moyenne de gain du joueur à long terme.
+
+\end{document}
+% ==================================================================================================

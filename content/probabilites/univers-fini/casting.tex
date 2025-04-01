@@ -1,0 +1,102 @@
+% PROBLÈME : Problème du Casting
+% ==================================================================================================
+%
+% Buts
+% ----
+% - combinatoire des permutations
+% - probabilités conditionnelles
+% - encadrements d'intégrales
+% - passage à la limite
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Probabilités dans un univers fini - Problème du casting}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Objectifs}
+
+Modéliser une stratégie probabiliste optimale dans un processus de décision séquentiel. Illustrer
+une optimisation sous contrainte dans un cadre probabiliste discret.
+
+\bigskip
+\textbf{Contexte}
+
+Le \textit{problème d'arrêt optimal}  modélise une prise de décision en temps réel, dont le but est
+d'optimiser un choix parmi une séquence d'éléments révélés successivement et de manière
+irréversible. De telles modélisations apparaissent en économie, en théorie du choix, et en
+algorithmique décisionnelle.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+
+Ce sujet considère une version classique de ce problème. Dans un studio de cinéma, un casteur doit
+sélectionner rapidement le meilleur candidat parmi \( n \) postulants qui se présentent dans un
+ordre aléatoire.
+
+Afin d'éviter d'auditionner l'ensemble des postulants, le casteur adopte la stratégie suivante :
+\begin{itemize}
+ \item Il fixe un nombre de candidats à auditionner
+  sans sélection : \( m \in \{1, \dots, n-1\} \).
+ \item Parmi les candidats suivants, il sélectionne le premier qui est meilleur que tous les \( m \)
+ premiers auditionnés.
+\end{itemize}
+
+\bigskip
+Notations :
+\begin{itemize}
+ \item \( C_k \) : Événement "le meilleur candidat se présente à la position \( k \)" ;
+ \item \( S_k \) : Événement "le meilleur candidat est sélectionné" ;
+ \item \( p_n(m) \) : Probabilité que le meilleur candidat soit sélectionné lorsque le nombre de
+  auditionnés est \( m \) et que le nombre total de candidats est \( n \).
+\end{itemize}
+
+\q Préciser la probabilité que le meilleur candidat se présente à la \( k^\text{ème} \) position,
+pour tout \( k \in \{1, \dots, n\} \).\\ Faire le lien avec le nombre de permutations des candidats,
+et le nombre de permutations où le meilleur candidat est en position \( k \).
+% But : Identifier une loi uniforme sur les positions. Méthode : Considérer que toutes les
+% permutations sont équiprobables.
+
+\q Montrer que, pour tout \( k \in \{m+1, \dots, n\} \), la probabilité que le meilleur candidat se
+présente à la position \( k \) et soit sélectionné vaut :
+\[
+\mathbb{P}(C_k \cap S_k) = \frac{m}{n(k-1)}
+\]
+% But : Évaluer une probabilité conditionnelle dans une stratégie sélective. Méthode : Étudier le
+% cas favorable : le meilleur est en \( k \), et aucun meilleur que les m premiers ne survient
+% entre m+1 et k-1.
+
+\q Exprimer la probabilité \( p_n(m) \) sous la forme d'une somme.
+% But : Exprimer la probabilité totale de réussite de la stratégie. Méthode : Somme des probabilités
+% conditionnelles pour \( k = m+1 \) à \( n \).
+
+\q Montrer que \( p_n(m) \) satisfait les encadrements :
+\[
+\dfrac{m}{n} \ln\left( \dfrac{n+1}{m+1} \right) \leq p_n(m) \leq \dfrac{m}{n} \ln\left( \dfrac{n}{m} \right)
+\]
+% But : Encadrer la somme obtenue précédemment. Méthode : Utiliser une inégalité classique
+% d'encadrement d'une somme par une intégrale ou des différences de logarithmes.
+
+\q Montrer que la probabilité \( p_n(m) \) admet une limite lorsque \( n \to +\infty \) avec un
+rapport \( \dfrac{m}{n} \) fixé.
+% But : Étudier une asymptotique continue de la stratégie. Méthode : Appliquer le passage à la
+% limite sur l'encadrement logarithmique.
+
+\q Représenter graphiquement la limite obtenue en fonction de \( \dfrac{m}{n} \). Proposer une
+valeur optimale de ce rapport pour maximiser la probabilité de sélection du meilleur candidat.
+% But : Interpréter graphiquement et optimiser le rendement de la stratégie. Méthode : Tracer la
+% fonction limite, repérer le maximum et le rapport optimal correspondant.
+
+\end{document}
+% ==================================================================================================

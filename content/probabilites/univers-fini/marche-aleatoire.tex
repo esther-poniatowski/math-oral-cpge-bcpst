@@ -1,0 +1,127 @@
+% PROBLÈME : Marche aléatoire unidimensionnelle
+% ==================================================================================================
+%
+% Buts
+% ----
+% - formule des probabilités totales
+% - probabilités conditionnelles
+% - raisonnements combinatoires
+% - suites définies par récurrence
+% - étude de chaînes de Markov finies et infinies
+%   ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Probabilités dans un univers infini - Marche aléatoire unidimensionnelle}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Objectifs}
+
+Modéliser et analyser des marches aléatoires sur des graphes linéaires, avec ou sans états
+absorbants.
+
+\bigskip
+\textbf{Contexte}
+
+La marche aléatoire unidimensionnelle est un modèle probabiliste discret introduit pour décrire le
+mouvement d'une particule dans l'espace. Ce modèle trouve des applications en physique statistique
+(diffusion), en algorithmique (random walk), ou encore en théorie des files d'attente.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Marche aléatoire sans état absorbant}
+
+Ce problème considère les déplacements aléatoires d'une particule sur l'axe des entiers relatifs. La
+particule se trouve initialement à la position d'abscisse nulle.
+
+À chaque instant, la particule effectue un saut dans une direction aléatoire : elle se déplace soit
+d'une unité vers la droite (+1) avec une probabilité \( p \in [0, 1] \), doit d'une unité vers la
+gauche (-1).
+
+\q Calculer, pour tout entier \( k \geq 0 \), la probabilité \( p_k \) que la particule se trouve à
+nouveau à l'origine après \( k \) déplacements.
+% But : Étudier le retour à l'origine pour une marche aléatoire simple symétrique. Méthode :
+% Décompte combinatoire des chemins de longueur \( k \) ramenant à 0, en utilisant le binôme.
+
+\q Déterminer, pour tout entier \( y \in \mathbb{Z} \), la probabilité \( p_k(y) \) que la particule
+se trouve à une distance \( y \) de l'origine après \( k \) déplacements.
+% But : Généraliser l'étude à une position fixée à l'instant \( k \). Méthode : Comptage des chemins
+% menant à \( y \), avec conditions de parité.
+
+\bigskip
+
+Désormais, la particule adopte une dynamique qui l'autorise à rester sur place. A chaque instant, la
+particule peut avec équiprobabilité :
+\begin{itemize}
+ \item se déplacer d'une unité vers la gauche,
+ \item se déplacer d'une unité vers la droite,
+ \item rester immobile.
+\end{itemize}
+
+\q Reprendre la question précédente relative à la probabilité de retour à l'origine.
+% But : Adapter la méthode précédente à une marche avec trois options équiprobables. Méthode :
+% Introduction d'un coefficient trinomial ou raisonnement itératif.
+
+\q Reprendre la question précédente relative à la probabilité d'être à une distance \( y \) de
+l'origine.
+% But : Étendre le raisonnement combinatoire à une marche avec immobilité possible. Méthode : Étude
+% des configurations permettant d'atteindre une position donnée.
+
+\bigskip
+
+\textbf{Marche aléatoire avec états absorbants}
+
+\medskip
+
+Désormais, la particule se déplace dans un segment borné de \( 0 \) à \( N \), avec \( N \in
+\mathbb{N}^* \).
+
+La position initiale peut être n'importe quel entier \( i \) tel que \( 0 \leq i \leq N \).
+
+Le processus s'arrête lorsque la particule atteint l'un des bords \( 0 \) ou \( N \), qui sont
+qualifiés d'\emph{états absorbants}.
+
+\medskip
+
+Notations :
+\begin{itemize}
+ \item \( p \in  ]0, \frac{1}{2}[ \) : Probabilité (asymétrique) de déplacement vers la droite.
+ \item \( u_i \) : Probabilité que le processus s'arrête en \( 0 \) lorsque la particule débute à l'abscisse \( i \).
+ \item \( v_i \) : Probabilité que le processus s'arrête en \( N \) lorsque la particule débute à l'abscisse \( i \).
+\end{itemize}
+
+\q Déterminer les valeurs de \( u_0 \) et \( u_N \).
+% But : Identifier les probabilités aux bords absorbants. Méthode : Exploiter les définitions mêmes
+% de ces états.
+
+\q Établir la relation \( u_i = p u_{i+1} + q u_{i-1} \) pour tout \( i \in \{1, \dots, N-1\} \),
+% But : Mettre en place l'équation de récurrence satisfaite par \( u_i \). Méthode : Définir les
+% événements et utiliser la formule des probabilités totales conditionnelles.
+
+\q En déduire l'expression explicite de \( u_i \) en fonction de \( i \), \( p \), \( q \) et \( N
+\).
+% But : Résoudre l'équation de récurrence précédente. Méthode : Utiliser les techniques classiques
+% (homogène + conditions aux bords).
+
+\q Reprendre les questions précédentes pour déterminer les probabilités \( v_i \).
+% But : Étendre l'étude aux probabilités d'absorption en \( N \). Méthode : Utiliser la
+% complémentarité des événements ou refaire la résolution.
+
+\q Déterminer la valeur de \( u_i + v_i \). En déduire une propriété sur la somme des deux
+probabilités.
+% But : Vérifier la cohérence du modèle. Méthode : Utiliser l'exhaustivité des issues absorbantes.
+
+
+\end{document}
+% ==================================================================================================

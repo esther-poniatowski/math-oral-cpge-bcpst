@@ -1,0 +1,185 @@
+% CORRECTION : Problème du Casting
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{stmaryrd} % to use \llbracket and \rrbracket
+\usepackage{tikz} % to draw the graph of the last question
+\usepackage{pgfplots} % to enable axis coordinate system
+\pgfplotsset{compat=1.18} % set compatibility mode for pgfplots
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Probabilités dans un univers fini - Problème du casting}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\q Détermination de la probabilité que le meilleur candidat se présente à la \( k^\text{ème} \)
+position
+% ------
+L'ensemble des ordres possibles de passage est modélisé par l'ensemble des permutations de \(
+\llbracket 1, n \rrbracket \), muni de la probabilité uniforme.
+
+Le nombre de permutations dans lesquelles le candidat classé premier (numéro \( 1 \)) apparaît en \(
+k^\text{ème} \) position est :
+\[
+(n-1)!
+\]
+
+car les \( n-1 \) autres candidats peuvent être placés librement sur les autres positions. D'où :
+
+\[
+\mathbb{P}(A_k) = \frac{(n-1)!}{n!} = \boxed{\dfrac{1}{n}}
+\]
+
+% ------
+
+\q Probabilité que le meilleur candidat se présente en \( k^\text{ème} \) position et soit
+sélectionné
+% ------
+Cet événement suppose :
+\begin{itemize}
+ \item que le candidat classé premier arrive en position \( k \) ;
+ \item que parmi les candidats en positions \( 1 \) à \( k-1 \), le meilleur d'entre eux figure dans
+ les \( m \) premiers.
+\end{itemize}
+
+Dénombrement :
+\begin{itemize}
+ \item Choix des \( k-1 \) candidats avant la position \( k \) : \( \binom{n-1}{k-1} \) ;
+ \item Choix de la position du meilleur d'entre eux dans les \( m \) premières : \( m \)
+ possibilités ;
+ \item Ordre des \( k-2 \) autres candidats sur les \( k-2 \) premières places restantes : \( (k-2)!
+ \) ;
+ \item Ordre des \( n - k \) candidats suivants : \( (n - k)! \).
+\end{itemize}
+
+Nombre total de permutations favorables :
+
+\[
+|B_k| = \binom{n-1}{k-1} \cdot m \cdot (k-2)! \cdot (n-k)! = \dfrac{(n-1)! \cdot m}{k - 1}
+\]
+
+D'où la probabilité cherchée :
+
+\[
+\mathbb{P}(B_k) = \dfrac{|B_k|}{n!} = \boxed{\dfrac{m}{n(k-1)}}, \quad \text{pour } k \in \llbracket m+1, n \rrbracket
+\]
+
+% ------
+
+\q Probabilité que le meilleur candidat soit sélectionné
+% ------
+Il s'agit de sommer les probabilités précédentes pour toutes les positions admissibles \( k \in
+\llbracket m+1, n \rrbracket \) :
+
+\[
+p_n(m) = \sum_{k = m+1}^{n} \dfrac{m}{n(k-1)} = \dfrac{m}{n} \sum_{k = m+1}^{n} \dfrac{1}{k - 1}
+\]
+
+\[
+\boxed{p_n(m) = \dfrac{m}{n} \sum_{j = m}^{n - 1} \dfrac{1}{j}}
+\]
+
+% ------
+
+\q Encadrement de la somme
+% ------
+On utilise les encadrements classiques de la fonction logarithme :
+
+\[
+\dfrac{1}{k+1} \leq \ln(k+1) - \ln(k) \leq \dfrac{1}{k}, \quad \forall k \in \mathbb{N}^*
+\]
+
+En sommant de \( k = m+1 \) à \( k = n \), on obtient :
+
+\[
+\ln(n+1) - \ln(m+1) \leq \sum_{k = m+1}^{n} \dfrac{1}{k} \leq \ln(n) - \ln(m)
+\]
+
+D'où :
+
+\[
+\boxed{
+\dfrac{m}{n} \ln\left( \dfrac{n+1}{m+1} \right) \leq p_n(m) \leq \dfrac{m}{n} \ln\left( \dfrac{n}{m} \right)
+}
+\]
+
+% ------
+
+\q Comportement asymptotique
+% ------
+Soit \( x = \dfrac{m}{n} \in (0, 1) \). L'encadrement devient :
+
+\[
+x \ln\left( \dfrac{1 + \frac{1}{n}}{x + \frac{1}{n}} \right) \leq p_n(m) \leq x \ln\left( \dfrac{1}{x} \right)
+\]
+
+Or :
+
+\[
+\lim_{n \to +\infty} x \ln\left( \dfrac{1 + \frac{1}{n}}{x + \frac{1}{n}} \right) = x \ln\left( \dfrac{1}{x} \right)
+\]
+
+Donc, par le théorème des gendarmes :
+
+\[
+\boxed{\lim_{n \to +\infty} p_n(m) = x \ln\left( \dfrac{1}{x} \right)}
+\]
+
+% ------
+
+\q Valeur optimale
+% ------
+On considère la fonction :
+
+\[
+f : x \mapsto x \ln\left( \dfrac{1}{x} \right) = -x \ln(x)
+\]
+
+Cette fonction admet un maximum en \( x = \dfrac{1}{e} \), car :
+
+\[
+f'(x) = -\ln(x) - 1 = 0 \iff x = \dfrac{1}{e}
+\]
+
+Et :
+
+\[
+f\left( \dfrac{1}{e} \right) = \dfrac{1}{e}
+\]
+
+Donc la valeur optimale du rapport \( \dfrac{m}{n} \) est :
+
+\[
+\boxed{\dfrac{m}{n} = \dfrac{1}{e}} \quad \text{et} \quad \boxed{\max p_n(m) \to \dfrac{1}{e}}
+\]
+
+% ------
+
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            domain=0.01:1, samples=300, ymax=0.5,
+            axis x line=middle, axis y line=middle,
+            xlabel={$x = \frac{m}{n}$}, ylabel={$x \ln\left( \frac{1}{x} \right)$},
+            width=10cm, height=6cm, grid=major
+            ]
+            \addplot[thick, blue] {x*ln(1/x)};
+            \addplot[only marks, mark=*, blue] coordinates {(1/e, 1/e)};
+            \draw[dashed] (axis cs:1/e,0) -- (axis cs:1/e,1/e);
+            \draw[dashed] (axis cs:0,1/e) -- (axis cs:1/e,1/e);
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+\end{document}
+% ==================================================================================================

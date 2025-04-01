@@ -1,0 +1,178 @@
+% CORRECTION : Titre
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Domaine - Sujet}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Sans état absorbant}
+
+\q Probabilité de retour à l'origine après \( k \) sauts
+% ------
+Démonstration de la nullité de la probabilité pour un nombre impair de sauts : si \( k = 2n + 1 \),
+la particule ne peut pas revenir à son point de départ.
+
+\[
+\boxed{p_{2n+1} = 0}
+\]
+
+Pour \( k = 2n \) pair, la particule effectue autant de sauts vers la gauche que vers la droite.
+
+\medskip
+
+\emph{Méthode 1 - Dénombrement} :
+
+L'univers est l'ensemble des mots de longueur \( k \) sur l'alphabet \( \{D, G\} \) :
+
+\[
+|\Omega_k| = 2^k
+\]
+
+L'ensemble favorable correspond aux mots avec exactement \( \dfrac{k}{2} \) lettres \( D \) et \(
+\dfrac{k}{2} \) lettres \( G \) :
+
+\[
+|E_k| = \binom{k}{k/2}
+\]
+
+La probabilité cherchée est donc :
+
+\[
+\boxed{p_k = \dfrac{\binom{k}{k/2}}{2^k} = \dfrac{k!}{2^k \left( \dfrac{k}{2}! \right)^2}}
+\]
+
+\medskip
+
+\emph{Méthode 2 - Loi binomiale} :
+
+La probabilité d'obtenir exactement \( \dfrac{k}{2} \) déplacements vers la droite (ou gauche) est :
+
+\[
+p_k = \binom{k}{k/2} \left( \dfrac{1}{2} \right)^k = \dfrac{k!}{2^k \left( \dfrac{k}{2}! \right)^2}
+\]
+
+\q Probabilité d'être à une distance \( y \) de l'origine après \( k \) sauts
+% ------
+Analyse des parités : si \( k \) et \( y \) sont de parité différente, la probabilité est nulle :
+
+\[
+\boxed{p_k(y) = 0 \quad \text{si } k \not\equiv y \mod 2}
+\]
+
+Si \( k \equiv y \mod 2 \), alors la particule a effectué :
+
+\[
+\begin{cases}
+d = \dfrac{k + y}{2} \\
+g = \dfrac{k - y}{2}
+\end{cases}
+\]
+
+D'où :
+
+\[
+\boxed{p_k(y) = \dfrac{\binom{k}{\frac{k - y}{2}}}{2^k}}
+\]
+
+\q Retour à l'origine avec immobilité autorisée
+% ------
+Contrairement au cas précédent, la particule peut revenir à l'origine en un nombre impair de sauts.
+Le retour à l'origine suppose qu'il y ait autant de sauts à gauche qu'à droite (soit \( m \) de
+chaque), le reste étant des pas immobiles.
+
+\[
+\boxed{p_k = \dfrac{\displaystyle \sum_{m=0}^{\lfloor k/2 \rfloor} \binom{k}{m} \binom{k - m}{m}}{3^k}}
+\]
+
+\q Passage à une position \( y \) avec immobilité autorisée
+% ------
+On considère \( i \in \{0, \dots, k\} \) sauts immobiles, le reste étant réparti entre droite et
+gauche. La position \( y \) est atteignable si \( k - i \) et \( y \) sont de même parité.
+
+\[
+\boxed{p_k(y) = \dfrac{\displaystyle \sum_{i = 0}^{k} \binom{k}{i} \binom{k - i}{\frac{k - i - y}{2}}}{3^k}}
+\]
+
+\bigskip
+
+\textbf{Avec états absorbants}
+
+\q Conditions aux bords
+% ------
+\[
+\boxed{u_0 = 1 \quad ; \quad u_N = 0}
+\]
+
+\q Relation de récurrence
+% ------
+Par la formule des probabilités totales conditionnelles :
+
+\[
+\boxed{u_i = p u_{i+1} + q u_{i-1} \quad \text{pour } i \in \{1, \dots, N-1\}}
+\]
+
+\q Résolution de l'équation
+% ------
+L'équation caractéristique associée est :
+
+\[
+X^2 - \dfrac{1}{p} X + \dfrac{q}{p} = 0
+\]
+
+Les racines sont \( r_1 = 1 \), \( r_2 = \dfrac{q}{p} \), donc la solution générale est :
+
+\[
+u_i = \lambda + \mu \left( \dfrac{q}{p} \right)^i
+\]
+
+Conditions initiales :
+
+\[
+\begin{cases}
+u_0 = 1 = \lambda + \mu \\
+u_N = 0 = \lambda + \mu \left( \dfrac{q}{p} \right)^N
+\end{cases}
+\]
+
+Résolution :
+
+\[
+\lambda = \dfrac{q^N}{q^N - p^N} \quad ; \quad \mu = \dfrac{p^N}{p^N - q^N}
+\]
+
+D'où :
+
+\[
+\boxed{u_i = \dfrac{1}{q^N - p^N} \left( q^N - p^N \left( \dfrac{q}{p} \right)^i \right)}
+\]
+
+\q Probabilité d'absorption en \( N \)
+% ------
+Par symétrie et complémentarité :
+
+\[
+\boxed{v_i = \dfrac{1}{p^N - q^N} \left( p^N - q^N \left( \dfrac{q}{p} \right)^i \right)}
+\]
+
+\q Somme des deux probabilités
+% ------
+\[
+\boxed{u_i + v_i = 1}
+\]
+
+Cela signifie que le processus s'arrête presque sûrement en \( 0 \) ou \( N \).
+
+\end{document}
+% ==================================================================================================

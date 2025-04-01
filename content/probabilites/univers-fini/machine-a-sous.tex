@@ -1,0 +1,112 @@
+% PROBLÈME : Machine à sous
+% ==================================================================================================
+%
+% Buts
+% ----
+% - formule des probabilités totales
+% - probabilités conditionnelles
+% - raisonnements par récurrence
+% - comportement asymptotique
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Domaine - Thème}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Objectifs}
+
+Modéliser un processus stochastique  dépendant d'une stratégie adaptative dans un univers
+fini.
+
+\bigskip
+\textbf{Contexte}
+
+Les stratégies de décision adaptatives ("à renforcement") consistent à modifier les choix futurs en
+fonction de l'expérience passée, afin d'optimiser les gains à long terme dans des contextes où
+l'information est partielle. Ce type de comportement s'apparente à des modèles élémentaires
+d'apprentissage en environnement incertain, rencontrés en algorithmique ou en théorie des jeux.
+
+\bigskip
+Ce problème considère un joueur explorant le fonctionnement de deux machines à sous.
+
+La probabilité de gagner sur chaque machine est inconnue du joueur :
+\begin{itemize}
+ \item Sur la machine \( A \) : \( p_A = \frac{1}{5} \) ;
+ \item Sur la machine \( B \) : \( p_B = \frac{1}{10} \).
+\end{itemize}
+
+Puisque le joueur ignore quelle machine est la plus favorable, il adopte une stratégie de décision
+adaptative, en jouant sur l'une ou l'autre machine à sous en fonction de ses gains et pertes
+successifs :
+\begin{itemize}
+ \item Il commence par choisir une machine au hasard.
+ \item Après chaque partie :
+   \begin{itemize}
+    \item en cas de perte, il change de machine ;
+    \item en cas de gain, il rejoue sur la même machine.
+   \end{itemize}
+\end{itemize}
+
+\bigskip
+Notations : pour tout \( k \geq 1 \),
+\begin{itemize}
+ \item \( G_k \) désigne l'événement "le joueur gagne la \( k^\text{ème} \) partie" ;
+ \item \( A_k \) désigne l'événement "le joueur joue la \( k^\text{ème} \) partie sur la machine \(
+ A \)" ;
+ \item \( B_k \) désigne l'événement "le joueur joue la \( k^\text{ème} \) partie sur la machine \(
+ B \)".
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+
+\q Déterminer la probabilité de gagner la première partie.
+% But : Calculer une probabilité totale sur un événement initial aléatoire. Méthode : Utiliser la
+% formule des probabilités totales en fonction de \( A_1 \) et \( B_1 \), avec choix initial
+% aléatoire.
+
+\q Déterminer la probabilité de gagner la deuxième partie.
+% But : Étudier la dépendance de la stratégie sur les gains ou pertes successifs. Méthode :
+% Considérer les cas issus du premier coup (gain ou perte sur chaque machine) et appliquer les lois
+% conditionnelles.
+
+\q Déterminer \( \mathbb{P}(A_1 \mid G_2) \).
+% But : Introduire une probabilité conditionnelle inverse. Méthode : Utiliser la formule de Bayes
+% sur les événements \( A_1 \) et \( G_2 \).
+
+\q Exprimer \( \mathbb{P}(G_k) \) en fonction de \( \mathbb{P}(A_k) \).
+% But : Réduire l'étude de la probabilité de gain à la connaissance de la machine utilisée. Méthode
+% : Appliquer la formule des probabilités totales conditionnelles selon les machines.
+
+\q Exprimer \( \mathbb{P}(A_{k+1}) \) en fonction de \( \mathbb{P}(A_k) \).
+% But : Mettre en place une récurrence sur l'évolution de la probabilité d'utilisation de la machine
+% \( A \). Méthode : Étudier les cas gain/perte conditionnés à l'utilisation de la machine \( A \)
+% ou \( B \) à l'instant \( k \).
+
+\q Déterminer \( \mathbb{P}(A_k) \), puis \( \mathbb{P}(G_k) \), en fonction de \( k \).
+% But : Résoudre la récurrence obtenue à la question précédente. Méthode : Identifier une suite
+% géométrique ou arithmético-géométrique ; utiliser les valeurs initiales.
+
+\q Déterminer, pour \( n \in \mathbb{N}^* \), la valeur de
+\[
+S_n = \sum_{k = 1}^{n} \mathbb{P}(G_k)
+\]
+puis déterminer la limite de \( \dfrac{S_n}{n} \) lorsque \( n \to +\infty \). Interpréter ce
+résultat.
+% But : Étudier le gain moyen à long terme. Méthode : Étudier la convergence de la moyenne des gains
+% en s'appuyant sur la limite de \( \mathbb{P}(G_k) \).
+
+\end{document}
+% ==================================================================================================

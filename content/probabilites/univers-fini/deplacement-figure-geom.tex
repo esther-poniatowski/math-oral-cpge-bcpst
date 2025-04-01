@@ -1,0 +1,109 @@
+% PROBLÈME : Déplacement sur une figure géométrique
+% ==================================================================================================
+%
+% Buts
+% ----
+% - formule des probabilités totales
+% - probabilités conditionnelles
+% - propriétés de symétrie
+% - raisonnements par récurrence
+%   ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Probabilités dans un univers fini - Déplacement sur une figure géométrique}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Objectifs}
+
+Étudier un processus aléatoire évolutif dans un univers fini, modélisé par une marche aléatoire.
+
+\bigskip
+\textbf{Contexte}
+
+Les marches aléatoires sur des graphes finis sont des modèles probabilistes qui étudient des
+processus stochastiques évoluant dans un univers discret et fini. Ces modèles trouvent des
+applications en physique (mouvement brownien simplifié), en informatique (algorithmes de navigation
+aléatoire), ou en théorie des graphes (diffusion sur réseaux).
+
+
+\bigskip
+
+Ce problème considère les déplacements aléatoires d'un mobile sur les sommets de figures
+géométriques régulières (spécifiées dans l'énoncé).
+
+
+Dans tout l'exercice, les notations suivantes sont utilisées :
+\begin{itemize}
+\item \( X_n \) désigne l'événement \textit{"le mobile se trouve au sommet \( X \) à l'instant \( n
+\)"} ;
+\item \( x_n \) désigne la probabilité associée à l'événement \( X_n \).
+\end{itemize}
+
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Déplacement dans un triangle}
+
+La figure géométrique considérée est un triangle \( ABC \). Initialement, le mobile se trouve au
+sommet \( A \).
+
+À chaque instant \( n \), le mobile est situé sur un sommet et peut se déplacer vers l'un des deux
+autres sommets avec une probabilité \( \dfrac{1}{6} \) pour chacun.
+
+\q Déterminer les expressions de \( a_{n+1} \), \( b_{n+1} \) et \( c_{n+1} \) en fonction de \( a_n
+\), \( b_n \) et \( c_n \), pour tout \( n \in \mathbb{N} \).
+% But : Construire le système de récurrence issu de la dynamique probabiliste. Méthode : Appliquer
+% la formule des probabilités totales à partir des lois de transition.
+
+\q Donner des expressions explicites de \( a_n \), \( b_n \) et \( c_n \) pour tout \( n \in
+\mathbb{N} \).
+% But : Résoudre le système de récurrence à l'aide de la symétrie du triangle. Méthode : Introduire
+% les différences \( a_n - b_n \) et \( a_n - c_n \), puis utiliser la condition de normalisation.
+
+% ---------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Déplacement dans un carré}
+
+La figure géométrique considérée est un carré \( ABCD \) de centre \( O \). Initialement, le mobile
+est situé au sommet \( A \).
+
+À chaque instant, le mobile se déplace vers un sommet voisin de sa position actuelle, choisi de
+manière équiprobable.
+
+\q Déterminer la probabilité que le mobile soit au sommet \( A \), \( B \), \( C \), \( D \) ou \( O
+\) après deux déplacements.
+% But : Étudier les premiers termes d'une chaîne de Markov sur un graphe géométrique. Méthode :
+% Appliquer deux fois la formule des probabilités totales et exploiter les symétries.
+
+\q Déterminer une relation de récurrence liant \( o_{n+1} \) à \( o_n \) pour tout \( n \in
+\mathbb{N} \). En déduire une expression explicite de \( o_n \).
+% But : Étudier la dynamique probabiliste du sommet central. Méthode : Utiliser la conservation de
+% la probabilité totale et reconnaître une suite arithmético-géométrique.
+
+\q Déterminer les probabilités conditionnelles suivantes :
+\begin{itemize}
+ \item \( \mathbb{P}(O_3 \mid B_2) \) ;
+ \item \( \mathbb{P}(O_3 \mid B_1) \).
+\end{itemize}
+% But : Introduire et manipuler des probabilités conditionnelles dans un processus markovien.
+% Méthode : Exploiter les invariances temporelles du processus.
+
+\q Déterminer la probabilité que le mobile soit passé par \( B \) sachant qu'il est en \( O \) après
+trois déplacements.
+% But : Calculer une probabilité conditionnelle inverse. Méthode : Utiliser la formule de Bayes avec
+% disjonction des événements \( B_1 \) et \( B_2 \).
+
+\end{document}
+% ==================================================================================================
