@@ -1,0 +1,11 @@
+Voici un sujet que j'avais rédigé pour une classe précédente.
+
+Formatte ce sujet selon mes nouvelles exigeances.
+
+Modifications supplémentaires pour l'adatpation:
+- Les commandes inconnues d'exercices et de partie doivent être replacées par mes conventions actuelles.
+- Pour les commandes mathématiques, \P -> \mathbb{P}, \f -> \frac, \df -> \frac (ou \dfrac si besoin), \pp{(}{...}{)} -> \left( ... \right)
+- La notation LaTeX $ les formules est à remplacer par l'autre convention utilisant \( et \[.
+- Pour la lisibilité, privilégier les formules qui s'insèrent avec \[ plutôt que les insertions inline (sauf quand cela ne serait pas naturel dans le contexte de la phrase).
+- Les sauts de ligne avec \\ sont à éviter, privilégier les sauts de lignes classiques dans le
+document.

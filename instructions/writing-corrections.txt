@@ -1,0 +1,73 @@
+# Cahier des charges formel pour la rédaction de corrigés aux problèmes de mathématiques en CPGE
+
+## 1. Objectif
+
+Rédiger un **corrigé détaillé** pour un problème mathématique fourni en pièce jointe, conforme à une
+**trame** et respectant strictement et intégralement les exigences spécifiées.
+
+
+## 2. Contenu mathématique attendu
+
+- Mobiliser **exlusivement** les outils et compétences au programme des classes préparatoires scientifiques BCPST.
+- Expliciter les calculs, démonstrations, raisonnements, interprétations.
+- Garantir une **complétude et rigueur totales** : détailler toutes les étapes importantes pas à pas, sans raccourcis ou argument implicite.
+
+
+## 3. Langage et Style
+
+- Employer une formulation exclusivement **formelle, académique et impersonnelle**.
+- **Interdiction absolue** d'utiliser les pronoms personnels : "on", "nous", "je", ainsi que les verbes à la première personne.
+  - Exemples interdits : "on cherche", "on a", "on obtient", "nous allons montrer", "cherchons", "calculons", "montrons"...
+  - Formulations correctes à employer : "Démonstration de...", "Calcul de...", "Vérification de...", "Détermination de...".
+
+
+## 4. Structure
+
+- Suivre la **même structuration** que le sujet, pour l'ordre des questions et les parties.
+- Séparer les parties par `\bigskip`.
+- Débuter **chaque réponse** par la commande `\q`.
+- Ne **pas recopier la question** dans la réponse, mais **expliciter l'objet de la réponse** (ex. : "Démonstration de... :", "Calcul de... :").
+- Séparer les réponses par un commentaire `% ------` pour la lisibilité.
+
+
+## 5. Format et Syntaxe
+
+- Rédiger en **LaTeX uniquement** : interdiction d'utiliser Markdown ou des balises type `#`.
+- Indiquer le titre de chaque partie par `\textbf{Titre de la partie}` (interdiction d'utiliser
+`\section` ou `\subsection`).
+- **Interdiction** d'utiliser le **gras** `\textbf{...}` (en dehors des titres de parties, comme indiqué ci-dessus).
+- **Interdiction** d'ajouter une **ponctuation finale** aux **formules mathématiques** (pas de point final aux équations, alignements ou formules isolées).
+  - Exemple interdit :
+    ```
+    \[
+    \ln(1+x) = x - \frac{x^2}{2} + o(x^2).
+    \]
+    ```
+  - Exemple correct :
+    ```
+    \[
+    \ln(1+x) = x - \frac{x^2}{2} + o(x^2)
+    \]
+    ```
+
+
+## 6. Points de contrôle systématiques (Check-list impérative et obligatoire)
+
+Tout document doit satisfaire **strictement et sans exception** les points suivants :
+
+| Point de contrôle | Respecté (O/N) |
+|---------------------|----------------|
+| Correction complète et rigoureuse, |  |
+| Progression fluide, logique, cohérente |  |
+| Aucune occurrence de "on", "nous", "cherchons", "calculons", "montrons", etc. |  |
+| Aucune phrase à la première personne (singulier ou pluriel) |  |
+| Formulation strictement académique et impersonnelle |  |
+| Questions numérotées avec `\q` |  |
+| Utilisation exclusive de `\textbf{}` pour les titres de parties |  |
+| Aucune ponctuation finale aux formules LaTeX |  |
+
+
+## 7. Modalités d'exécution
+
+- Répondre **uniquement dans le chat**, pas dans l'éditeur Canva.
+- Suivre **strictement la trame `corr.tex`**.

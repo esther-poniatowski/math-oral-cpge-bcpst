@@ -1,0 +1,93 @@
+# Cahier des charges formel pour la rédaction de problèmes mathématiques en CPGE
+
+## 1. Objectif
+
+Rédiger un **sujet complet de problème mathématique**, adapté à un thème et un programme de
+compétences, conforme à une **trame** et respectant strictement et intégralement les exigences
+formelles spécifiées.
+
+
+## 2. Généralités pour les problèmes
+
+- **Niveau** : Classes préparatoires scientifiques (MPSI, PCSI, MP, PSI, etc.).
+- **Durée cible** : Minimum **1 heure de travail soutenu** pour un élève de bon niveau.
+- **Nombre de questions** : Entre **8 et 12 questions**, structurées en **parties cohérentes et progressives**.
+
+
+## 2. Contenu mathématique attendu
+
+- Mobiliser **exhaustivement** les outils et compétences au programme.
+- **Varier les tâches** : calculs, démonstrations, raisonnements, interprétations.
+- Conduire à des **raisonnements approfondis**, **sans dépasser les attendus du programme**.
+- Tout résultat hors programme doit être introduit par des questions visant à le **redémontrer pas à pas** avant usage.
+- Organiser une **progression fluide, logique et guidée** entre les questions, permettant à l'élève d'avancer **de manière
+autonome**.
+- Ajouter des **exemples ou cas particuliers**, si nécessaire, pour guider l'élève **sans réduire la
+difficulté**.
+
+## 3. Langage et Style
+
+- Employer une formulation exclusivement **formelle, académique et impersonnelle**.
+- **Interdiction absolue** d'utiliser les pronoms personnels : "on", "nous", "je", ainsi que les verbes à la première personne.
+  - Exemples interdits : "on cherche", "on a", "on obtient", "nous allons montrer", "cherchons", "calculons", "montrons"...
+  - Formulations correctes à employer : "Montrer que...", "Déterminer...", "Vérifier que...",
+  "Démontrer que...", "Calculer...".
+
+
+## 4. Structure
+
+- Commencer par mentionner les objectifs pédagogiques et techniques en une ou deux phrases (exemple: "Etudier une
+marche aléatoire dans un univers fini.")
+- Inclure une **contextualisation** brève et rigoureuse, présentant le thème et les motivations (avec applications si pertinent).
+- Séparer les parties par `\bigskip`.
+- Débuter **chaque réponse** par la commande `\q`.
+- Ajouter **après chaque question**, un **commentaire** pour le professeur, invisible dans le PDF :
+  ```
+  \q ... consigne / question ...
+  % But : ... objectif pédagogique précis ...
+  % Méthode : ... démarche attendue et résultats visés ...
+  ```
+
+
+## 5. Format et Syntaxe
+
+- Rédiger en **LaTeX uniquement** : interdiction d'utiliser Markdown ou des balises type `#`.
+- Indiquer les objects par `\textbf{Objectifs}` et le contexte par `\textbf{Contexte}`.
+- Indiquer les parties par `\textbf{Titre de la partie}` (interdiction d'utiliser `\section` ou `\subsection`).
+- **Interdiction** d'utiliser le **gras** `\textbf{...}` (en dehors des titres de parties, comme indiqué ci-dessus).
+- **Interdiction** d'ajouter une **ponctuation finale** aux **formules mathématiques** (pas de point final aux équations, alignements ou formules isolées).
+  - Exemple interdit :
+    ```
+    \[
+    \ln(1+x) = x - \frac{x^2}{2} + o(x^2).
+    \]
+    ```
+  - Exemple correct :
+    ```
+    \[
+    \ln(1+x) = x - \frac{x^2}{2} + o(x^2)
+    \]
+    ```
+
+
+## 6. Points de contrôle systématiques (Check-list impérative et obligatoire)
+
+Tout document doit satisfaire **strictement et sans exception** les points suivants :
+
+| Point de contrôle | Respecté (O/N) |
+|---------------------|----------------|
+| Motivations présentes, concises, rigoureuses |  |
+| Progression pédagogique fluide, logique, cohérente |  |
+| Nombre de questions conforme (8 à 12) et durée suffisante (au moins 1h) |  |
+| Aucune occurrence de "on", "nous", "cherchons", "calculons", "montrons", etc. |  |
+| Aucune phrase à la première personne (singulier ou pluriel) |  |
+| Formulation strictement académique et impersonnelle |  |
+| Questions numérotées avec `\q` et commentaire systématique pour le professeur |  |
+| Utilisation exclusive de `\textbf{}` pour les titres de parties |  |
+| Aucune ponctuation finale aux formules LaTeX |  |
+
+
+## 7. Modalités d'exécution
+
+- Répondre **uniquement dans le chat**, pas dans l'éditeur Canva.
+- Suivre **strictement la trame `sujet.tex`**.

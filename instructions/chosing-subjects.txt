@@ -1,0 +1,14 @@
+# Cahier des charges formel pour le choix de problèmes mathématiques en CPGE
+
+## 1. Objectif
+
+Proposer des **thèmes** de problèmes mathématiques adaptés à un programme de compétences spécifié.
+
+**Domaine mathématique général** : Précisé au cas par cas (exemples : suites, polynômes, matrices, espaces vectoriels).
+
+**Programme de compétences** : Fourni en pièce jointe.
+
+**Critères à respecter pour les thèmes proposés** :
+- Être **motivant** et **original**, **exclure** les problèmes classiques ou purement techniques.
+- Permettre une **application élégante ou remarquable** des outils étudiés, si possible.
+- Rester **centré sur les compétences du programme** : Les outils externes sont tolérés uniquement s'ils sont **accessoires**, introduits de manière **guidée**, et totalement **expliqués** dans le problème.
