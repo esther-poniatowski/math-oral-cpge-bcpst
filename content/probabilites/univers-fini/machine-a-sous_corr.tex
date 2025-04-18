@@ -17,16 +17,14 @@
 % ==================================================================================================
 \begin{document}
 
-\q Détermination de \( \mathbb{P}(G_1) \)
-% ------
-Application de la formule des probabilités totales :
+\q Probabilité de gagner la première partie :
 
+Par la formule des probabilités totales :
 \[
 \mathbb{P}(G_1) = \mathbb{P}(G_1 \mid A_1) \mathbb{P}(A_1) + \mathbb{P}(G_1 \mid B_1) \mathbb{P}(B_1)
 \]
 
-Comme \( \mathbb{P}(A_1) = \mathbb{P}(B_1) = \dfrac{1}{2} \), il vient :
-
+Comme \( \mathbb{P}(A_1) = \mathbb{P}(B_1) = \dfrac{1}{2} \) :
 \[
 \boxed{\mathbb{P}(G_1) = \dfrac{1}{2}(p_A + p_B)}
 \quad \Rightarrow \quad \boxed{\mathbb{P}(G_1) = \dfrac{3}{20}}
@@ -34,40 +32,37 @@ Comme \( \mathbb{P}(A_1) = \mathbb{P}(B_1) = \dfrac{1}{2} \), il vient :
 
 % ------
 
-\q Détermination de \( \mathbb{P}(G_2) \)
-% ------
-Étude par cas selon la machine choisie au premier coup et l'issue (gain ou perte) :
+\q Probabilité de gagner la deuxième partie :
 
+Étude par cas selon la machine choisie au premier coup et l'issue (gain ou perte) :
 \[
 \mathbb{P}(G_2) = \dfrac{1}{2} \left( p_A^2 + (1 - p_A)p_B \right) + \dfrac{1}{2} \left( p_B^2 + (1 - p_B)p_A \right)
 \]
 
 Application numérique :
-
 \[
 \boxed{\mathbb{P}(G_2) = \dfrac{31}{200}}
 \]
 
 % ------
 
-\q Détermination de \( \mathbb{P}(A_1 \mid G_2) \)
-% ------
-Par la formule de Bayes :
+\q Probabilité conditionnelle de la machine sachant la victoire :
 
+Par la formule de Bayes :
 \[
-\mathbb{P}(A_1 \mid G_2) = \dfrac{\mathbb{P}(G_2 \mid A_1) \mathbb{P}(A_1)}{\mathbb{P}(G_2)}
+\mathbb{P}(A_1 \mid G_2) = \frac{\mathbb{P}(A_1\cap G_2)}{\mathbb{P}(G_2)} = \dfrac{\mathbb{P}(G_2 \mid A_1) \mathbb{P}(A_1)}{\mathbb{P}(G_2)}
 \]
 
 Avec :
-
 \[
 \mathbb{P}(G_2 \mid A_1) = p_A^2 + (1 - p_A)p_B
 \quad ; \quad
 \mathbb{P}(A_1) = \dfrac{1}{2}
 \]
+La probabilité que la deuxième partie soit gagnée sachant que la première partie se déroule sur la
+machine A se calcule de même avec l'arbre.
 
-Il vient :
-
+Ainsi :
 \[
 \boxed{\mathbb{P}(A_1 \mid G_2) = \dfrac{p_A^2 + (1 - p_A)p_B}{p_A^2 + (1 - p_A)p_B + p_B^2 + (1 - p_B)p_A}}
 \quad \Rightarrow \quad \boxed{\mathbb{P}(A_1 \mid G_2) = \dfrac{12}{31}}
@@ -75,8 +70,8 @@ Il vient :
 
 % ------
 
-\q Expression de \( \mathbb{P}(G_k) \) en fonction de \( \mathbb{P}(A_k) \)
-% ------
+\q Probabilité de gagner sachant la machine :
+
 Par la formule des probabilités totales conditionnelles :
 
 \[
@@ -92,10 +87,9 @@ Par la formule des probabilités totales conditionnelles :
 
 % ------
 
-\q Établissement de la relation de récurrence sur \( \mathbb{P}(A_k) \)
-% ------
-Étude des transitions selon la stratégie :
+\q Relation de récurrence :
 
+Étude des transitions selon la stratégie :
 \[
 \mathbb{P}(A_{k+1}) = \mathbb{P}(G_k \mid A_k)\mathbb{P}(A_k) + \mathbb{P}(\overline{G_k} \mid B_k) \mathbb{P}(B_k)
 \]
@@ -112,8 +106,8 @@ Par la formule des probabilités totales conditionnelles :
 
 % ------
 
-\q Résolution de la récurrence et expression explicite
-% ------
+\q Expression explicite :
+
 La suite \( (A_k) \) est arithmético-géométrique. Elle admet un point fixe \( \ell \) tel que :
 
 \[
@@ -139,14 +133,18 @@ Par substitution dans l'expression de \( \mathbb{P}(G_k) \) :
 
 % ------
 
-\q Étude de la proportion de parties gagnées
-% ------
-On considère :
+\q Proportion de parties gagnées :
+
+La proportion de parties gagnées après \( n \) parties est donnée par :
 
 \[
 S_n = \sum_{k = 1}^{n} \mathbb{P}(G_k)
 = \sum_{k = 1}^{n} \left( \dfrac{13}{85} - \dfrac{1}{340} \left( -\dfrac{7}{10} \right)^{k - 1} \right)
 \]
+
+Cette quantité représente la \fbox{proportion de parties gagnées au cours de $n$ tentatives},
+puisque $S_n$ est une somme des variables de Bernouilli (la $k$\up{ème} partie étant remportée avec
+probabilité $\mathbb{P}(G_k)$).
 
 Le premier terme donne :
 

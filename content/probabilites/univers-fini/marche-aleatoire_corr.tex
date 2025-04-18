@@ -20,15 +20,14 @@
 \textbf{Sans état absorbant}
 
 \q Probabilité de retour à l'origine après \( k \) sauts
-% ------
-Démonstration de la nullité de la probabilité pour un nombre impair de sauts : si \( k = 2n + 1 \),
-la particule ne peut pas revenir à son point de départ.
 
+Pour un nombre impair de sauts : si \( k = 2n + 1 \), la particule ne peut pas revenir à son point
+de départ, donc :
 \[
 \boxed{p_{2n+1} = 0}
 \]
 
-Pour \( k = 2n \) pair, la particule effectue autant de sauts vers la gauche que vers la droite.
+Pour un nombre pair de sauts : si \( k = 2n \), la particule effectue autant de sauts vers la gauche que vers la droite.
 
 \medskip
 
@@ -40,7 +39,7 @@ L'univers est l'ensemble des mots de longueur \( k \) sur l'alphabet \( \{D, G\}
 |\Omega_k| = 2^k
 \]
 
-L'ensemble favorable correspond aux mots avec exactement \( \dfrac{k}{2} \) lettres \( D \) et \(
+L'ensemble favorable correspond aux mots contenant exactement \( \dfrac{k}{2} \) lettres \( D \) et \(
 \dfrac{k}{2} \) lettres \( G \) :
 
 \[
@@ -63,68 +62,128 @@ La probabilité d'obtenir exactement \( \dfrac{k}{2} \) déplacements vers la dr
 p_k = \binom{k}{k/2} \left( \dfrac{1}{2} \right)^k = \dfrac{k!}{2^k \left( \dfrac{k}{2}! \right)^2}
 \]
 
-\q Probabilité d'être à une distance \( y \) de l'origine après \( k \) sauts
-% ------
-Analyse des parités : si \( k \) et \( y \) sont de parité différente, la probabilité est nulle :
+\q Probabilité que la particule se trouve à une distance \( y \) de l'origine après \( k \) sauts
+
+Si \( k \) et \( y \) sont de parité différente, la probabilité est nulle (car en un nombre pair
+(resp. impair) de sauts, particule atteint nécessairement une abscisse paire (resp. impaire)), donc
+:
 
 \[
 \boxed{p_k(y) = 0 \quad \text{si } k \not\equiv y \mod 2}
 \]
 
-Si \( k \equiv y \mod 2 \), alors la particule a effectué :
-
+Si \( k \equiv y \mod 2 \), alors la particule a effectué $d$ sauts vers la droite et $g$ sauts vers
+la gauche, tels que :
 \[
+\begin{cases}
+d + g = k\\
+d - g = y
+\end{cases} \implies
 \begin{cases}
 d = \dfrac{k + y}{2} \\
 g = \dfrac{k - y}{2}
 \end{cases}
 \]
 
-D'où :
+En dénombrant comme précédemment :
 
 \[
 \boxed{p_k(y) = \dfrac{\binom{k}{\frac{k - y}{2}}}{2^k}}
 \]
 
 \q Retour à l'origine avec immobilité autorisée
-% ------
+
 Contrairement au cas précédent, la particule peut revenir à l'origine en un nombre impair de sauts.
-Le retour à l'origine suppose qu'il y ait autant de sauts à gauche qu'à droite (soit \( m \) de
-chaque), le reste étant des pas immobiles.
+Le retour à l'origine suppose autant de sauts à gauche qu'à droite (soit \( m \in [[ 0,
+\frac{k'}{2} ]] \) de chaque), le reste étant des sauts sur place (\( k - m \) sauts), tels que :
+\[
+\begin{cases}
+k = 2n +1 \implies k' = 2n = k - 1\\
+k = 2n \implies k' = 2n = k
+\end{cases}
+\]
+
+La situation peut désormais être modélisée de la manière suivante :
+\begin{itemize}
+ \item L'univers est représenté par l'ensemble des mots de $k$ lettres comportant 'D', 'G' ou 'I' : $\Omega_k = \lbrace D, G, I \rbrace^k$.
+ \item Le cardinal de l'univers est : $|\Omega_k| = 3^k$.
+ \item Le cardinal de l'ensemble d'intérêt est obtenu comme le nombre de manières d'agencer $m$
+ lettres 'D' et $m$ lettres 'G' (les positions des $k - m$ lettres 'I' étant alors fixées) : $|E_k|
+ = \sum_{m=0}^{\frac{k'}{2}}\binom{k}{m}\binom{k-m}{m}$.
+\end{itemize}
 
 \[
-\boxed{p_k = \dfrac{\displaystyle \sum_{m=0}^{\lfloor k/2 \rfloor} \binom{k}{m} \binom{k - m}{m}}{3^k}}
+\boxed{p_k = \dfrac{ \sum_{m=0}^{\lfloor k/2 \rfloor} \binom{k}{m} \binom{k - m}{m}}{3^k}}
 \]
 
 \q Passage à une position \( y \) avec immobilité autorisée
-% ------
-On considère \( i \in \{0, \dots, k\} \) sauts immobiles, le reste étant réparti entre droite et
-gauche. La position \( y \) est atteignable si \( k - i \) et \( y \) sont de même parité.
 
+Pour dénombrer les événements d'intérêt, on considère \( i \in \{0, \dots, k\} \) sauts immobiles,
+le reste étant réparti entre droite et gauche. La position \( y \) est atteignable si \( k - i \) et
+\( y \) sont de même parité.
+
+Dans ce cas, la particule effectue :
+\begin{itemize}
+ \item $i \in [[ 0, k ]]$ sauts immobiles,
+ \item $d = \frac{k-i+y}{2}$ vers la droite,
+ \item $g = \frac{k-i-y}{2}$ vers la gauche.
+\end{itemize}
+
+Le cardinal des événements d'intérêt est donc, en choisissant d'abord les positions des lettres 'I'
+puis celles des 'G' :
 \[
 \boxed{p_k(y) = \dfrac{\displaystyle \sum_{i = 0}^{k} \binom{k}{i} \binom{k - i}{\frac{k - i - y}{2}}}{3^k}}
 \]
+
+
+
 
 \bigskip
 
 \textbf{Avec états absorbants}
 
-\q Conditions aux bords
-% ------
+\q Conditions aux bords :
+
+\begin{itemize}
+\item $u_0 = 1$ : lorsque le processus commence en 0, il s'arrête immédiatement en 0.
+\item $u_N = 0$ : lorsque le processus commence en N, il s'arrête immédiatement en N.
+\end{itemize}
+
+\q Relation de récurrence :
+
+Pour $i \notin [[ 0, N ]]$, la particule effectue au moins un déplacement. \\
+Lors de ce premier déplacement, la particule ne peut atteindre que deux abscisses :
+\begin{itemize}
+ \item $i+1$, avec probabilité $p$,
+ \item $i-1$, avec probabilité $q = 1-p$,
+\end{itemize}
+Notations des événements :
+\begin{itemize}
+ \item $Z_i$ : partant de $i$, le processus s'arrête en 0,
+ \item $A_i$ : partant de $i$, la particule se trouve à l'abscisse $i+1$ à l'instant 1 (i.e. avance),
+ \item $R_i$ : partant de $i$, la particule se trouve à l'abscisse $i-1$ à l'instant 1 (i.e. recule).
+\end{itemize}
+
+Les deux événements $(A_i, R_i)$ forment un système complet d'événements, donc par la formule des
+probabilités totales :
 \[
-\boxed{u_0 = 1 \quad ; \quad u_N = 0}
+\begin{aligned}
+   u_i = \mathbb{P}(Z_i) & = \mathbb{P}(A_i)\mathbb{P}(Z_i|A_i) + \mathbb{P}(R_i)\mathbb{P}(Z_i|R_i) \\
+  & = p.\mathbb{P}(Z_i|A_i) + q.\mathbb{P}(Z_i|R_i)
+\end{aligned}
 \]
-
-\q Relation de récurrence
-% ------
-Par la formule des probabilités totales conditionnelles :
-
+Or, par translation dans le temps, l'abscisse au temps 1 peut être considérée comme nouvelle origine
+du processus :
+\[
+\mathbb{P}(Z_i|A_i) = u_{i+1}, \quad \mathbb{P}(Z_i|R_i) = u_{i-1}
+\]
+Conclusion :
 \[
 \boxed{u_i = p u_{i+1} + q u_{i-1} \quad \text{pour } i \in \{1, \dots, N-1\}}
 \]
 
 \q Résolution de l'équation
-% ------
+
 L'équation caractéristique associée est :
 
 \[
@@ -159,7 +218,7 @@ D'où :
 \]
 
 \q Probabilité d'absorption en \( N \)
-% ------
+
 Par symétrie et complémentarité :
 
 \[
@@ -167,7 +226,7 @@ Par symétrie et complémentarité :
 \]
 
 \q Somme des deux probabilités
-% ------
+
 \[
 \boxed{u_i + v_i = 1}
 \]

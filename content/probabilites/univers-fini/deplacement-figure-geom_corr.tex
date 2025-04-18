@@ -27,83 +27,122 @@ des probabilités totales :
 On en déduit :
 \[
 \begin{cases}
-a_{n+1} = \dfrac{2}{3} a_n + \dfrac{1}{6} b_n + \dfrac{1}{6} c_n \\
-b_{n+1} = \dfrac{1}{6} a_n + \dfrac{2}{3} b_n + \dfrac{1}{6} c_n \\
-c_{n+1} = \dfrac{1}{6} a_n + \dfrac{1}{6} b_n + \dfrac{2}{3} c_n
+a_{n+1} = \frac{2}{3} a_n + \frac{1}{6} b_n + \frac{1}{6} c_n \\
+b_{n+1} = \frac{1}{6} a_n + \frac{2}{3} b_n + \frac{1}{6} c_n \\
+c_{n+1} = \frac{1}{6} a_n + \frac{1}{6} b_n + \frac{2}{3} c_n
 \end{cases}
 \]
-% But : Introduire un système probabiliste évolutif dans un cadre fini. Méthode : Appliquer la
-% formule des probabilités totales avec une matrice de transition implicite.
 
-\q Montrer que les suites \( (a_n - b_n)_{n \in \mathbb{N}} \) et \( (a_n - c_n)_{n \in \mathbb{N}}
-\) sont géométriques de raison \( \dfrac{1}{2} \)
-% But : Exploiter la symétrie des équations de récurrence. Méthode : Calculer les différences et
-% vérifier la forme géométrique.
+\q Relation sur la somme des probabilités :
 
-\q Déterminer des expressions explicites de \( a_n, b_n \) et \( c_n \)
-% But : Déduire les expressions générales en utilisant les suites géométriques précédentes et la
-% condition \( a_n + b_n + c_n = 1 \). Méthode : Résolution d’un système par substitution en
-% exploitant les résultats précédents.
+Pour tout \( \) :
+\[
+\forall  n \in \mathbb{N}, \quad  a_n + b_n + c_n = 1
+\]
+
+\q Expressions explicites :
+
+Les suites \( (a_n - b_n)_{n \in \mathbb{N}} \) et \( (a_n - c_n)_{n \in \mathbb{N}}
+\) sont géométriques de raison \( \frac{1}{2} \) :
+\[
+\begin{cases}
+  a_{n+1} - c_{n+1} = \frac{1}{2}(a_n - c_n)\\
+  a_{n+1} - b_{n+1} = \frac{1}{2}(a_n - b_n)\\
+\end{cases}
+\]
+Terme général :
+\[
+\begin{cases}
+  a_n - c_n = \frac{1}{2^n}(a_0 - c_0) = \frac{1}{2^n}\\
+  a_n - b_n = \frac{1}{2^n}(a_0 - b_0) = \frac{1}{2^n}\\
+ \end{cases}
+\]
+(car $a_0 = 1$ et $b_0 = c_0 = 0$), d'où $  b_n = c_n = \frac{1}{2^n} - a_n$\\
+
+Or, $a_n + b_n + c_n = 1 \implies 3 a_n - \frac{1}{2^{n-1}} = 1 \implies a_n = \frac{1}{3}(1 -
+\frac{1}{2^{n-1}})$, donc :
+\[
+\begin{cases}
+  a_n = \frac{1}{3}(1 - \frac{1}{2^{n-1}})\\
+  b_n = c_n = \frac{1}{3}(1 - \frac{1}{2^n})
+ \end{cases}
+ \]
 
 
 \bigskip
 \textbf{Déplacement dans un carré}
 
 \q \emph{Étude des premiers déplacements}
-% But : Comprendre les premières itérations du processus probabiliste. Méthode : Utiliser la formule
-% des probabilités totales et les symétries.
 
 Après un déplacement, le mobile ne peut rester en \( A \), ni atteindre \( C \). Il atteint alors \(
 B \), \( D \), ou \( O \) avec équiprobabilité :
 \[
 \begin{cases}
 a_1 = c_1 = 0 \\
-b_1 = d_1 = o_1 = \dfrac{1}{3}
+b_1 = d_1 = o_1 = \frac{1}{3}
 \end{cases}
 \]
 
-Après deux déplacements, en appliquant la formule des probabilités totales et en tenant compte des
-symétries :
+Après deux déplacements, par la formule des probabilités totales, pour tout sommet $X$ :\\
+$x_2 = \mathbb{P}(X_2|A_1)a_1 + \mathbb{P}(X_2|B_1)b_1 + \mathbb{P}(X_2|C_1)c_1 +
+\mathbb{P}(X|D_1)d_1 + \mathbb{P}(X_2|O_1)o_1$.
+
+De plus :
+\begin{itemize}
+ \item le mobile ne reste pas sur le même sommet : $\mathbb{P}(X_2|X_1) = 0$,
+ \item à partir des sommets A, B, C, et D, trois sommets peuvent être atteints avec probabilité $\frac{1}{3}$,
+ \item à partir du sommet O, quatre sommets peuvent être atteints avec probabilité $\frac{1}{4}$.
+ \end{itemize}
+ D'autre part, certains sommets jouent un rôle symétrique :
+ \begin{itemize}
+ \item B et D,
+ \item A et C, à partir du premier déplacement.
+\end{itemize}
+Ainsi :
 \[
 \begin{cases}
-a_2 = c_2 = \dfrac{11}{36} \\
-b_2 = d_2 = \dfrac{1}{12} \\
-o_2 = \dfrac{2}{9}
-\end{cases}
+  a_2 = \frac{1}{3}b_1 + 0.c_1 + \frac{1}{3}d_1 + \frac{1}{4}o_1 = \frac{1}{3}\frac{1}{3} + \frac{1}{3}\frac{1}{3} + \frac{1}{4}\frac{1}{3} = \frac{1}{3}\mathbb{P}(2 \times \frac{1}{3} + \frac{1}{4}) = \frac{11}{36}\\
+  b_2 = \frac{1}{3}a_1 + \frac{1}{3} c_1 + 0.d_1 + \frac{1}{4}o_1 = \frac{1}{3}.0 + \frac{1}{3}.0 + \frac{1}{4}\frac{1}{3} = \frac{1}{12}\\
+  o_2 = \frac{1}{3}a_1 + \frac{1}{3}b_1 + \frac{1}{3}c_1 + \frac{1}{3}d_1 = \frac{1}{3}.0 + \frac{1}{3}\frac{1}{3} + \frac{1}{3}.0 + \frac{1}{3}\frac{1}{3} = \frac{2}{9}
+ \end{cases}
 \]
 
-\q Déterminer une expression explicite de \( o_n \)
-% But : Étudier la suite associée à la probabilité d’être en \( O \). Méthode : Mise en place d’une
-% relation de récurrence et résolution d’une suite arithmético-géométrique.
+Conclusion :
+\[
+\begin{cases}
+  a_2 = c_2 = \frac{11}{36}\\
+  b_2 = d_2 = \frac{1}{12}\\
+  o_2 = \frac{2}{9}
+ \end{cases}
+\]
+
+\q Expression explicite de \( o_n \) :
 
 La relation de récurrence est donnée par :
 \[
-o_{n+1} = \dfrac{1}{3} (1 - o_n)
+o_{n+1} = \frac{1}{3}(a_n + b_n + c_n + d_n) = \frac{1}{3} (1 - o_n)
 \]
-Il s'agit d'une suite arithmético-géométrique. Son point fixe est \( \ell = \dfrac{1}{4} \) et sa
-raison est \( -\dfrac{1}{3} \). Comme \( o_1 = \dfrac{1}{3} \), on obtient :
+Il s'agit d'une suite arithmético-géométrique. Son point fixe est \( \ell = \frac{1}{4} \) et sa
+raison est \( -\frac{1}{3} \). Comme \( o_1 = \frac{1}{3} \) :
 \[
-o_n = \dfrac{1}{4} + \dfrac{1}{12} \left( -\dfrac{1}{3} \right)^{n-1}
+o_n = \frac{1}{4} + \frac{1}{12} \left( -\frac{1}{3} \right)^{n-1}
 \]
 
-\q Déterminer \( \mathbb{P}(O_3 \mid B_2) \) et \( \mathbb{P}(O_3 \mid B_1) \)
-% But : Introduire et exploiter l’invariance temporelle du processus. Méthode : Utiliser les
-% propriétés de stationnarité du processus markovien.
+\q Probabilités conditionnelles de présence en O :
 
 Par invariance temporelle :
 \[
-\mathbb{P}(O_3 \mid B_2) = \mathbb{P}(O_1 \mid B_0) = \dfrac{1}{3}
+\mathbb{P}(O_3 \mid B_2) = \mathbb{P}(O_1 \mid B_0) = \frac{1}{3}
 \]
 Par symétrie et invariance :
 \[
-\mathbb{P}(O_3 \mid B_1) = \mathbb{P}(O_3 \mid A_1) = \mathbb{P}(O_2 \mid A_0) = \dfrac{2}{9}
+\mathbb{P}(O_3 \mid B_1) = \mathbb{P}(O_3 \mid A_1) = \mathbb{P}(O_2 \mid A_0) = \frac{2}{9}
 \]
 
-\q Calculer \( \mathbb{P}_{O_3}(B_1 \cup B_2) \)
-% But : Étudier une probabilité conditionnelle inverse par la formule de Bayes. Méthode : Utiliser
-% la disjonction des événements et la formule de Bayes.
+\q Probabilités conditionnelles de passage en B :
 
-On a :
+Comme les événements $B_1$ et $B_2$ sont disjoints, la probabilité recherchée est :
+
 \[
 \mathbb{P}_{O_3}(B_1 \cup B_2) = \mathbb{P}(B_1 \mid O_3) + \mathbb{P}(B_2 \mid O_3)
 \]
@@ -111,14 +150,22 @@ On a :
 Par la formule de Bayes :
 \[
 \begin{cases}
-\mathbb{P}(B_2 \mid O_3) = \dfrac{\mathbb{P}(O_3 \mid B_2) \mathbb{P}(B_2)}{\mathbb{P}(O_3)} = \dfrac{\dfrac{1}{3} \times \dfrac{1}{12}}{\dfrac{7}{27}} = \dfrac{3}{28} \\
-\mathbb{P}(B_1 \mid O_3) = \dfrac{\mathbb{P}(O_3 \mid B_1) \mathbb{P}(B_1)}{\mathbb{P}(O_3)} = \dfrac{\dfrac{2}{9} \times \dfrac{1}{3}}{\dfrac{7}{27}} = \dfrac{2}{7}
+\mathbb{P}(B_2 \mid O_3) = \frac{\mathbb{P}(O_3 \mid B_2) \mathbb{P}(B_2)}{\mathbb{P}(O_3)} = \frac{\frac{1}{3} \times \frac{1}{12}}{\frac{7}{27}} = \frac{3}{28} \\
+\mathbb{P}(B_1 \mid O_3) = \frac{\mathbb{P}(O_3 \mid B_1) \mathbb{P}(B_1)}{\mathbb{P}(O_3)} = \frac{\frac{2}{9} \times \frac{1}{3}}{\frac{7}{27}} = \frac{2}{7}
 \end{cases}
 \]
 
-Il vient :
+Avec :
+\begin{itemize}
+    \item $\mathbb{P}(O_3) = o_3 = \frac{1}{4} + \frac{1}{12}(-\frac{1}{3})^{2} = \frac{7}{27}$ selon la question ?,
+    \item $\mathbb{P}(O_3|B_2) = \frac{1}{3}$ et $\mathbb{P}(O_3|B_1) = \frac{2}{9}$ selon la question ?,
+    \item $\mathbb{P}(B_1) = b_1 = \frac{1}{3}$ et $\mathbb{P}(B_2) = b_2 = \frac{1}{12}$ selon la
+    question ?. \\
+\end{itemize}
+
+Application numérique :
 \[
-\mathbb{P}_{O_3}(B_1 \cup B_2) = \dfrac{11}{28}
+\mathbb{P}_{O_3}(B_1 \cup B_2) = \frac{11}{28}
 \]
 
 \end{document}
