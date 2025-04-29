@@ -1,0 +1,251 @@
+% CORRECTION : Endomorphismes cycliques
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Applications linéaires -- Endomorphismes cycliques}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Exemples d'endomorphismes cycliques et non cycliques}
+
+Le but est de calculer le sous-espace engendré par les itérés d'un vecteur, et de vérifier s'il est
+égal à \(E\).
+
+\q Endomorphisme non cyclique en dimension 4 :
+
+En calculant le carré de la matrice : \(f^2 = -\mathrm{Id}\).
+
+Donc pour tout vecteur \(\mathbf{x} \in E,\; \begin{cases} f^2(\mathbf{x}) = -\mathbf{x}\\
+f^3(\mathbf{x}) = -f(\mathbf{x})\end{cases}\).
+
+La famille \((\mathbf{x}, f(\mathbf{x}),f^2(\mathbf{x}), f^3(\mathbf{x}))\) est liée, donc n'est pas
+une base de \(E\), et ceci vaut pour tout vecteur de \(E\).
+
+Conclusion : \fbox{\(f\) n'est pas cyclique.}
+
+% --------------------------------------------------------------------------------------------------
+\q Endomorphisme cyclique en dimension 3 :
+
+Par calcul : \(\begin{cases} f(e_1) = e_2\\
+f^2(e_1) = f(e_2) = e_3\end{cases}\).
+
+Donc \(\mathrm{Span}(e_1, f(e_1),f^2(e_1)) = \mathrm{Span}(e_1,e_2,e_3)=E\).
+
+Conclusion : \fbox{\(f\) est cyclique}.
+
+% --------------------------------------------------------------------------------------------------
+\q Endomorphisme cyclique en dimension \(n\) -- Inversibilité :
+
+D'après la forme de la matrice : \(\forall k \in \{ 1,\dots,n-1 \},\; f(e_k) = e_{k+1}\).
+
+Par récurrence immédiate : \(\forall k \in \{ 1,\dots,n-1 \},\; f^k(e_1) = e_{k+1}\).
+
+Ainsi : \((e_1, f(e_1), ..., f^{n-1}(e_1)) = (e_1, e_2, ..., e_n)\), qui est la base canonique de
+\(E\).
+
+Conclusion : \fbox{\(f\) est cyclique}.
+
+La matrice de \(f\) possède \(n-1\) premières colonnes formant une famille libre, et la dernière
+colonne identique à l'avant dernière.
+
+Donc \fbox{\(\mathrm{rank}(f) = n-1\), et \(f\) n'est pas inversible}.
+
+% ------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Base adaptée et matrice compagnon}
+
+\q Décomposition de $f^n(\mathbf{x_0})$ :
+
+Puisque la famille \((\mathbf{x_0}, f(\mathbf{x_0}), ..., f^{n-1}(\mathbf{x_0}))\) est une base de
+\(E\), il existe un unique n-uplet de coordonnées \((a_0, a_1, ..., a_{n-1}) \in \mathbb{R}^n\) tel
+que :
+\[
+f^n(\mathbf{x_0}) = a_{n-1}f^{n-1}(\mathbf{x_0}) + \cdots + a_1 f(\mathbf{x_0}) + a_0 \mathbf{x_0}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\q Représentation matricielle de \(f\) :
+
+Calculs des images des vecteurs de base \((\mathbf{x_0}, f(\mathbf{x_0}), ...,
+f^{n-1}(\mathbf{x_0}))\) par \(f\) :
+\[
+\begin{cases}
+\forall k \in \{ 1, \dots, n-2 \},\; f(f^k(\mathbf{x_0})) = f^{k+1}(\mathbf{x_0}) \\
+f(f^{n-1}(\mathbf{x_0})) = f^n(\mathbf{x_0}) = a_{n-1}f^{n-1}(\mathbf{x_0}) + \cdots + a_1 f(\mathbf{x_0}) + a_0 \mathbf{x_0}
+\end{cases}
+\]
+
+Donc la matrice de \(f\) s'écrit dans la base \(\mathcal{B} = (\mathbf{x_0}, f(\mathbf{x_0}), ...,
+f^{n-1}(\mathbf{x_0}))\) :
+\[
+\mathrm{Mat}_{\mathcal{B}}(f) = \begin{bmatrix}
+0 & 0 & \cdots & 0 & a_0 \\
+1 & 0 & \cdots & 0 & a_1 \\
+0 & 1 & \cdots & 0 & a_2 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \cdots & 1 & a_{n-1}
+\end{bmatrix}
+\]
+
+% ------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Commutant d'un endomorphisme cyclique}
+
+\q Sous-espace vectoriel :
+
+L'endomorphisme nul appartient à \(\mathcal{C}(f)\) car l'endomorphisme nul commute avec tout
+endomorphisme.
+
+Soient \((g, h) \in \mathcal{C}(f)\) :
+
+\((\lambda g + \mu h) \circ f = \lambda (g \circ f) + \mu (h\circ f) = \lambda (f \circ g) + \mu
+(f\circ h) = f \circ (\lambda g + \mu h)\), donc \((\lambda g + \mu h) \in \mathcal{C}(f)\).
+
+Conclusion : \fbox{\(\mathcal{C}(f)\) est un sous-espace vectoriel de \(\mathrm{End}(E)\)}.
+
+% ------------------------------------------------------------------------------------------------
+\q Egalité entre endomorphismes - Egalité vectorielle : Montrons que  \(\forall (u, v) \in \mathcal{C}(f)^2, \; u(\mathbf{x_0}) = v(\mathbf{x_0}) \iff u =
+v\).
+
+Sens \((\impliedby)\) : Si \(u = v\) pour tout vecteur, alors en particulier \(u(\mathbf{x_0}) =
+v(\mathbf{x_0})\).
+
+Sens \((\implies)\) : Puisqu'un endomorphisme est uniquement déterminé par les images des vecteurs
+d'une base, il suffit de vérifier que \(u\) et \(v\) coïncident pour tous les vecteurs de la base
+\(\mathcal{B} = (\mathbf{x_0}, f(\mathbf{x_0}), ..., f^{n-1}(\mathbf{x_0}))\).
+
+Egalité vectorielle : \(u(f(\mathbf{x_0})) = f(u(\mathbf{x_0})) = f(v(\mathbf{x_0})) =
+v(f(\mathbf{x_0}))\).
+
+Par itération : \(\forall k \in \{ 0, \dots, n-1 \}, \; u(f^k(\mathbf{x_0})) = v(f^k(\mathbf{x_0}))\).
+
+Cette égalité valant pour tous les vecteurs de base, elle vaut aussi pour tous les vecteurs de
+\(E\).
+
+Conclusion : \fbox{\(v(\mathbf{x_0}) = w(\mathbf{x_0}) \iff v = w\)}.
+
+% ------------------------------------------------------------------------------------------------
+\q Double inclusion :
+
+\fbox{\(\mathbb{R}_{n-1}[f] \subseteq \mathcal{C}(f)\)} -- Soit \(g \in \mathbb{R}_{n-1}[f]\),
+montrons que  $g$ appartient au commutant de $f$, i.e. que $g \circ f = f \circ
+g$.
+
+Par définition, \(g\) est un polynôme de degré au plus \(n-1\) en \(f\), donc il existe un unique
+n-uplet de réels \((a_0, a_1, ..., a_{n-1}) \in \mathbb{R}^n\) tel que :
+\[
+g = a_0 \mathrm{Id}_E + a_1 f + ... + a_{n-1} f^{n-1}
+\]
+
+En appliquant \(f\) à cette égalité:
+\[
+\begin{aligned}
+g \circ f & = (a_0 \mathrm{Id}_E + a_1 f + ... + a_{n-1} f^{n-1}) \circ f\\
+& = a_0 f + a_1 f^2 + ... + a_{n-1} f^n\\
+& = f \circ (a_0 \mathrm{Id}_E + a_1 f + ... + a_{n-1} f^{n-1})\\
+& = f \circ g
+\end{aligned}
+\]
+car deux polynômes d'un même endomorphisme commutent entre eux.
+
+\fbox{\(\mathcal{C}(f) \subseteq \mathbb{R}_{n-1}[f]\)} -- Soit \(g \in \mathcal{C}(f)\), montrons que \(g\) s'écrit sous la forme d'un polynôme de \(f\).
+
+Le \emph{vecteur} \(g(\mathbf{x_0})\) s'écrit sous la forme \(g(\mathbf{x_0}) = a_0 \mathbf{x_0} +
+a_1 f(\mathbf{x_0}) + ... + a_{n-1} f^{n-1}(\mathbf{x_0})\) avec un unique n-uplet \((a_0, ...,
+a_{n-1}) \in \mathbb{R}^n\), puisque \(\mathcal{B} = (\mathbf{x_0},f(\mathbf{x_0}),...,
+f^{n-1}(\mathbf{x_0}))\) est une base de \(E\).
+
+Cette égalité vectorielle implique l'égalité d'endomorphismes \(g = a_0 \mathrm{Id}_E + a_1 f +
+... + a_{n-2} f^{n-2} + a_{n-1} f^{n-1}\), par la question précédente.
+
+Ainsi, \(g\) s'écrit sous la forme d'un polynôme de \(f\), donc \(g \in \mathbb{R}_{n-1}[f]\).
+
+Conclusion : Par double inclusion, \fbox{\(\mathcal{C}(f) = \mathbb{R}_{n-1}[f]\)}.
+
+% ------------------------------------------------------------------------------------------------
+\q Base de \(\mathcal{C}(f)\) :
+
+Selon la question précédente, une famille génératrice de \(\mathcal{C}(f) = \mathbb{R}_{n-1}[f]\)
+est donnée par \((\mathrm{Id}_E, f, ..., f^{n-1})\).
+
+Montrons que cette famille d'endomorphismes est libre dans \(\mathrm{End}(E)\).
+
+Soient \((\lambda_0, ...\lambda_{n-1}) \in \mathbb{R}^n\) tel que \(\lambda_0\mathrm{Id}_E +
+\lambda_1 f + ... + \lambda_{n-1} f^{n-1} = 0_{\mathrm{End}(E)}\).
+
+Évaluons cette égalité en \(\mathbf{x_0}\) : \(\lambda_0\mathbf{x_0} + \lambda_1 f(\mathbf{x_0}) +
+... + \lambda_{n-2} f^{n-2}(\mathbf{x_0}) + \lambda_{n-1} f^{n-1}(\mathbf{x_0}) = \mathbf{0}\).
+
+Or, la famille \((\mathbf{x_0}, f(\mathbf{x_0}), ..., f^{n-1}(\mathbf{x_0}))\) est libre \emph{dans
+\(E\)}, ce qui implique \(\lambda_0 = \lambda_1 = ... =\lambda_{n-1} = 0\).
+
+Donc la famille \((\mathrm{Id}_E, f, ..., f^{n-1})\) est aussi libre \emph{dans
+\(\mathrm{End}(E)\)}.
+
+Conclusion : \fbox{Une base de \(\mathcal{C}(f)\) est \((\mathrm{Id}_E, f, ..., f^{n-1})\),
+\(\mathcal{C}(f)\) est donc de dimension \(n\)}.
+
+% ---------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Lien avec la nilpotence}
+
+\q Endomorphisme nilpotent maximal :
+
+Soit $f$ un endomorphisme nilpotent.
+
+\textit{Condition nécessaire} -- Montrons que si $f$ est cyclique, alors il est maximal.
+
+Puisque $f$ est cyclique, il existe un vecteur \(\mathbf{x_0} \neq \mathbf{0}\) telle que la famille
+\((\mathbf{x_0},f(\mathbf{x_0}), ..., f^{n-1}(\mathbf{x_0}))\) soit une base. Ceci implique que tous
+ses vecteurs sont non nuls.
+
+Or, par l'absurde, si \(f\) était nilpotent d'indice \(p < n\), alors pour tout vecteur
+\(\mathbf{x_0} \neq \mathbf{0}\), \(f^p(\mathbf{x_0}) = 0\).
+
+Ainsi, pour qu'il existe un vecteur tel que \(f^{n-1}(\mathbf{x_0}) \neq \mathbf{0}\), il faut que
+l'indice de nilpotence soit \(p = n\), donc que \(f\) soit maximal.
+
+\textit{Condition suffisante} -- Montrons que si \(f\) est maximal, alors il est cyclique.
+
+Soit un vecteur \(\mathbf{x_0} \in E\). Puisque $f$ est nilpotent maximal, alors la famille
+\((\mathbf{x_0},f(\mathbf{x_0}), ..., f^{n-1}(\mathbf{x_0}))\) contient \(n\) vecteurs et \(\dim(E)
+= n\), il suffit donc de montrer qu'elle est libre.
+
+Soient \((\lambda_0, ...\lambda_{n-1}) \in \mathbb{R}^n\) tel que \(\lambda_0\mathbf{x_0} +
+\lambda_1 f(\mathbf{x_0}) + ... + \lambda_{n-1} f^{n-1}(\mathbf{x_0}) = \mathbf{0}\).
+
+En appliquant successivement \(f\), \(f^2\), ..., \(f^{n-1}\) :
+
+\[
+\begin{aligned}
+\lambda_0\mathbf{x_0} & + \lambda_1 f(\mathbf{x_0}) & + ... & + \lambda_{n-2} f^{n-2} & + \lambda_{n-1} f^{n-1}(\mathbf{x_0}) & = \mathbf{0}\\
+\lambda_0f(\mathbf{x_0}) & + \lambda_1 f^2(\mathbf{x_0}) & + ... & + \lambda_{n-2} f^{n-1} & & = \mathbf{0}\\
+\vdots \\
+\lambda_0 f^{n-2}(\mathbf{x_0}) &+ \lambda_1 f^{n-1}(\mathbf{x_0}) & & & & = \mathbf{0}\\
+\lambda_0 f^{n-1}(\mathbf{x_0}) & & & & & = \mathbf{0}
+\end{aligned}
+\]
+
+Puisque \(f^{n-1}(\mathbf{x_0}) \neq \mathbf{0}\), la dernière équation implique \(\lambda_0 = 0\).
+
+En remontant ce système d'équations vectorielles triangulaire inférieur, on obtient successivement
+\(\lambda_0 = \lambda_1 = ... = \lambda_{n-1} = 0\), donc la famille est libre.
+
+Ainsi, il existe un vecteur \(\mathbf{x_0}\) tel que \((\mathbf{x_0},f(\mathbf{x_0}),...,
+f^{n-1}(\mathbf{x_0}))\) est une base de \(E\), et donc \(f\) est cyclique.
+
+Conclusion : \fbox{Un endomorphisme nilpotent est cyclique si et seulement si il est maximal.}
+
+\end{document}
+% ==================================================================================================

@@ -1,0 +1,56 @@
+Soit une application linéaire $$ f : E \to F $$ entre espaces vectoriels de dimensions finies.
+
+## Lien entre injectivité et noyau
+
+**Énoncé** : Une application linéaire $$ f $$ est injective si et seulement si son noyau est réduit
+au vecteur nul :
+$$ \operatorname{Ker}(f) = \{0_E\} $$
+
+**Démonstration** :
+- **Injectivité ⇒ Noyau trivial** : Si $$ f $$ est injective, alors $$ f(x) = 0_F $$ implique $$ x =
+0_E $$.
+- **Noyau trivial ⇒ Injectivité** : Supposons $$ f(x) = f(y) $$. Par linéarité, $$ f(x - y) = 0_F
+$$, donc $$ x - y \in \operatorname{Ker}(f) $$. Si $$ \operatorname{Ker}(f) = \{0_E\} $$, alors $$ x
+= y $$.
+
+---
+
+## Équivalence injectivité/surjectivité en dimension égale
+
+**Énoncé** : Si $$ \dim(E) = \dim(F) $$, alors $$ f $$ est injective si et seulement si elle est
+surjective.
+
+**Démonstration** :
+
+1. **Injectivité ⇒ Surjectivité** :
+   - Par le théorème du rang :
+     $$ \dim(E) = \dim(\operatorname{Im}(f)) + \dim(\operatorname{Ker}(f)) $$
+   - Si $$ f $$ est injective, $$ \dim(\operatorname{Ker}(f)) = 0 $$, donc $$
+   \dim(\operatorname{Im}(f)) = \dim(E) = \dim(F) $$. Ainsi, $$ \operatorname{Im}(f) = F $$.
+
+2. **Surjectivité ⇒ Injectivité** :
+   - Si $$ f $$ est surjective, $$ \dim(\operatorname{Im}(f)) = \dim(F) = \dim(E) $$.
+   - Le théorème du rang donne $$ \dim(\operatorname{Ker}(f)) = 0 $$, donc $$ f $$ est injective.
+
+---
+
+## Image d'une application linéaire associée à une matrice
+
+**Énoncé** : Soit $$ A \in \mathcal{M}_{p,n}(\mathbb{K}) $$ et $$ f : \mathbb{K}^n \to \mathbb{K}^p
+$$ définie par $$ f(X) = AX $$. Alors :
+$$ \operatorname{Im}(f) = \operatorname{Vect}(C_1, \dots, C_n) $$
+où $$ C_1, \dots, C_n $$ sont les colonnes de $$ A $$.
+
+**Démonstration** :
+
+1. **Inclusion directe** :
+   - Pour tout $$ X = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} $$,
+     $$ f(X) = A X = x_1 C_1 + \dots + x_n C_n \in \operatorname{Vect}(C_1, \dots, C_n) $$
+
+2. **Inclusion réciproque** :
+   - Tout vecteur $$ Y \in \operatorname{Vect}(C_1, \dots, C_n) $$ s'écrit $$ Y = \sum_{i=1}^n
+   \lambda_i C_i $$.
+   - En posant $$ X = \begin{pmatrix}\lambda_1 \\ \vdots \\ \lambda_n\end{pmatrix} $$, on a $$ Y = A
+   X $$, donc $$ Y \in \operatorname{Im}(f) $$.
+
+Ainsi, $$ \operatorname{rg}(f) = \operatorname{rg}(A) $$, égal au rang des colonnes de $$ A $$.

@@ -1,0 +1,238 @@
+% PROBLÈME : Décomposition d'un endomorphisme en une somme finie de projections
+% ==================================================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+\newcommand{\Mat}[2]{\mathrm{Mat}_{#1}(#2)}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Applications linéaires et Matrices - Décomposition d'un endomorphisme en une somme finie de projections}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+\textit{Définitions} -- Une \textbf{projection} $p$ d'un espace vectoriel $E$ est un endomorphisme
+tel que :
+\[
+p \circ p = p
+\]
+
+\bigskip
+
+Les projections sont des endomorphismes intéressants qui permettent de décomposer un espace
+vectoriel en somme directe de deux sous-espaces.
+
+Pour déterminer si un endomorphisme peut se décomposer en somme de projections, une condition
+nécessaire et suffisante est donnée par la trace de cet endomorphisme.
+
+\bigskip
+
+\textbf{Objectifs}
+
+Démontrer le théorème suivant :
+
+\textit{Théorème} -- Soit $u$ un endomorphisme non nul de $E$. Il se décompose comme une somme finie
+de projections si et seulement si sa trace est un entier naturel supérieur ou égal à son rang :
+\[
+u = p_1 + \dots + p_m \quad \iff \quad
+\begin{cases}
+\mathrm{Tr}(u) \in \mathbb{N}\\
+\mathrm{Tr}(u) \geq \mathrm{rg}(u)
+\end{cases}
+\]
+
+\bigskip
+\textbf{Généralités sur les projections}
+
+Soit un espace vectoriel $E$ de dimension $n \geq 2$, une projection $p$ de $E$.
+
+\q Montrer que l'endomorphisme \(
+p' = \mathrm{Id}_E - p
+\)
+associé à $p$ est également une projection, et qu'il vérifie :
+\[
+\mathrm{Im}(p) = \mathrm{Ker}(\mathrm{Id}_E - p) \quad \text{et} \quad \mathrm{Im}(\mathrm{Id}_E - p) = \mathrm{Ker}(p)
+\]
+% But : Comprendre la structure de l'image et du noyau associés à une projection et sa projection
+% complémentaire. Méthode : Utiliser la définition d'une projection pour relier image et noyau.
+
+\q Justifier que les matrices suivantes représentent des projections sur $\mathbb{R}^2$ ou
+$\mathbb{R}^3$ en base canonique. Identifier leurs images et projections associées, et proposer des
+interprétations géométriques :
+\[
+\begin{pmatrix}
+1 & 0\\
+1 & 0
+\end{pmatrix},æ
+\quad
+\frac{1}{2}
+\begin{pmatrix}
+1 & 1\\
+1 & 1
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+1 & 0 & 0\\
+* & 0 & 0\\
+* & 0 & 0
+\end{pmatrix}
+\]
+% But : Concrétiser la notion de projection à travers des exemples de matrices. Méthode : Vérifier
+% la propriété caractéristique des projections et déterminer les sous-espaces associés.
+
+\q Montrer que l'espace vectoriel $E$ se décompose en somme directe de deux sous-espaces :
+\[
+E = \mathrm{Im}(p) \oplus \mathrm{Ker}(p)
+\]
+c'est à dire que tout vecteur $\mathbf{x} \in E$ se décompose de manière unique en :
+\[
+\mathbf{x} = \mathbf{x}_i + \mathbf{x}_k \quad \text{avec} \quad \mathbf{x}_i \in \mathrm{Im}(p), \quad \mathbf{x}_k \in \mathrm{Ker}(p)
+\]
+% But : Mettre en évidence la décomposition canonique induite par une projection. Méthode : Utiliser
+% les propriétés fondamentales des sous-espaces associés.
+
+\q En déduire qu'il existe une base $\mathscr{C}$ dans laquelle la matrice de $p$ est
+\[
+\Mat{\mathscr{C}}{p} =
+\begin{pmatrix}
+\mathbf{Id}_r & 0\\
+0 & 0
+\end{pmatrix}
+\]
+où $r$ est le rang de $p$.
+% But : Déduire la forme matricielle simple d'une projection en base adaptée. Méthode : Utiliser la
+% décomposition en somme directe.
+
+\q En déduire que $\mathrm{rg}(p) = \mathrm{Tr}(p)$.
+% But : Relier trace et rang pour les projections. Méthode : Exploiter la forme diagonale de la
+% matrice associée.
+
+\bigskip
+\textbf{Démonstration du théorème -- Sens direct $(\implies)$}
+
+Soit un endomorphisme $u$ qui s'exprime comme une somme finie de projections :
+\[
+u = p_1 + \dots + p_m
+\]
+
+\q Démontrer que la trace est un opérateur linéaire. En déduire que $\mathrm{Tr}(u) \in \mathbb{N}$.
+% But : Déduire l'intégralité de la trace de $u$. Méthode : Utiliser le fait que la trace d'une
+% projection est entière.
+
+\q Démontrer que pour deux sous-espaces $F$ et $G$ de $E$ :
+\[
+\dim(F + G) \leq \dim(F) + \dim(G)
+\]
+En déduire que $\mathrm{Tr}(u) \geq \mathrm{rg}(u)$.
+% But : Relier la trace à un majorant du rang. Méthode : Utiliser les inégalités précédentes sur les
+% dimensions.
+
+\q Considérer l'application linéaire de $\mathbb{R}^2$ définie comme somme des deux projections
+suivantes :
+\begin{itemize}
+\item Projection sur $\mathrm{Vect}\left(\begin{pmatrix} 1\\0 \end{pmatrix}\right)$ parallèlement à
+$\mathrm{Vect}\left(\begin{pmatrix} 0\\1 \end{pmatrix}\right)$
+\item Projection sur $\mathrm{Vect}\left(\begin{pmatrix} 1\\1 \end{pmatrix}\right)$ parallèlement à
+$\mathrm{Vect}\left(\begin{pmatrix} 0\\1 \end{pmatrix}\right)$
+\end{itemize}
+Proposer une interprétation graphique, donner la représentation matricielle de cette application en
+base canonique, et vérifier l'inégalité entre sa trace et son rang.
+% But : Appliquer concrètement le théorème sur un exemple. Méthode : Calculs explicites et
+% interprétation géométrique.
+
+\bigskip
+\textbf{Démonstration du théorème -- Sens réciproque $(\impliedby)$}
+
+Soit un endomorphisme $u$ tel que $\mathrm{Tr}(u) \in \mathbb{N}$ et $\mathrm{Tr}(u) \geq
+\mathrm{rg}(u) = r$.
+
+\q Justifier que le choix d'entiers positifs $t_1, t_2$ tels que $t_1 + t_2 = \mathrm{Tr}(u)$ est
+possible.
+% But : Établir une décomposition de la trace. Méthode : Utiliser les propriétés des entiers
+% naturels.
+
+\q Justifier qu'il existe une base $\mathscr{B}$ dans laquelle
+\[
+\Mat{\mathscr{B}}{u} =
+\begin{pmatrix}
+M_1 & 0\\
+* & 0
+\end{pmatrix}
+\]
+avec $M_1$ une matrice $(2 \times 2)$.
+% But : Réduire l'étude à un sous-espace supplémentaire du noyau. Méthode : Théorème du rang et
+% existence de bases adaptées.
+
+\q Dans le sous-espace $E'$, démontrer qu'il existe une base $\mathscr{B}'$ dans laquelle la matrice
+représentative de $w = v - t_1 \mathrm{Id}_{E'}$ est
+\[
+\begin{pmatrix}
+0 & *\\
+1 & *
+\end{pmatrix}
+\]
+% But : Trouver une forme simplifiée pour l'endomorphisme $w$. Méthode : Utiliser des propriétés
+% élémentaires des endomorphismes.
+
+\q Justifier l'existence d'une base $\mathscr{B}''$ dans laquelle la matrice représentative de $v$
+est diagonale avec éléments $t_1$ et $t_2$.
+% But : Démontrer l'existence d'une base diagonalisante pour $v$. Méthode : Exploiter la structure
+% obtenue pour $w$.
+
+\q Conclure que $u$ est la somme d'un nombre fini de projections.
+% But : Décomposer $u$ en projections. Méthode : Construction explicite à partir des éléments
+% diagonaux.
+
+\q Étudier le cas où $M_1$ est une homothétie :
+\[
+M_1 = \lambda I_2
+\]
+Déterminer les valeurs possibles de $\lambda$.
+% But : Étudier les cas particuliers liés à la forme de $M_1$. Méthode : Exploiter les contraintes
+% sur trace et rang.
+
+\q Montrer que si $\lambda = 1$, $u$ est une projection.
+% But : Vérifier que l'hypothèse conduit directement à une projection. Méthode : Vérification
+% directe.
+
+\q Pour $\lambda > 1$, décomposer $u$ en utilisant
+\[
+P_0 =
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}
+\]
+et montrer que $u$ est somme de projections.
+% But : Réduction au cas précédent par décomposition. Méthode : Construction explicite et
+% justification.
+
+\end{document}
+
+\end{document}
+% ==================================================================================================

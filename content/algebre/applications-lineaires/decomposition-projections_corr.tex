@@ -1,0 +1,405 @@
+% CORRECTION : Titre
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,mathrsfs,stmaryrd,enumitem}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Applications linéaires -- Décomposition d'un endomorphisme en une somme finie de projections}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\bigskip
+\textbf{Généralités sur les projections}
+
+\q Projection associée :
+
+L'endomorphisme $p' = \mathrm{Id}_E - p$ est aussi une projection, car :
+\[
+p' \circ p' = (\mathrm{Id}_E - p) \circ (\mathrm{Id}_E - p) = \mathrm{Id}_E - 2p + p^2
+\]
+or $p^2 = p$ par définition de la projection, donc :
+\[
+p' \circ p' = \mathrm{Id}_E - 2p + p = \mathrm{Id}_E - p = p'
+\]
+
+Relations entre les deux projections (but, à montrer) :
+\[
+\mathrm{Im}(p) = \mathrm{Ker}(\mathrm{Id}_E - p) \quad \text{et} \quad \mathrm{Im}(\mathrm{Id}_E - p) = \mathrm{Ker}(p)
+\]
+
+\emph{Par double inclusion} :
+\begin{itemize}
+    \item Soit $\mathbf{x} \in \mathrm{Im}(\mathrm{Id}_E - p)$, alors $\exists \mathbf{y} \in E, \; \mathbf{y} - p(\mathbf{y}) = \mathbf{x}$. \\
+    En appliquant $p$ : $p(\mathbf{x}) = p(\mathbf{y} - p(\mathbf{y})) = p(\mathbf{y}) - p(p(\mathbf{y})) = p(\mathbf{y}) - p(\mathbf{y}) = \mathbf{0}$.\\
+    Donc $\mathbf{x} \in \ker(p)$.
+    \item Inversement, soit $\mathbf{x} \in \ker(p)$. On cherche un antécédent $\mathbf{y}$ tel que $\mathbf{y} - p(\mathbf{y}) = \mathbf{x}$.\\
+    En particulier : $p(\mathbf{x}) = 0$ donc $\mathbf{x} - p(\mathbf{x}) = \mathbf{x}$. Ainsi, un antécédent est $\mathbf{y} = \mathbf{x}$.\\
+    Donc $\mathbf{x} \in \mathrm{Im}(\mathrm{Id}_E - p)$.
+    \item Soit $\mathbf{x} \in \mathrm{Im}(p)$, alors $\exists \mathbf{y} \in E, \; p(\mathbf{y}) = \mathbf{x}$. \\
+    En appliquant $p'$ : $(\mathrm{Id}_E - p)(\mathbf{x}) = (\mathrm{Id}_E - p)(p(\mathbf{y})) = p(\mathbf{y}) - p(p(\mathbf{y})) =  \mathbf{0}$.\\
+    Donc $\mathbf{x} \in \ker(\mathrm{Id}_E - p)$.
+    \item Inversement, soit $\mathbf{x} \in \ker(\mathrm{Id}_E - p)$. On cherche un antécédent $\mathbf{y}$ tel que $p(\mathbf{y}) = \mathbf{x}$.\\
+    En particulier : $(\mathrm{Id}_E - p)(\mathbf{x}) = 0$ donc $\mathbf{x} - p(\mathbf{x}) = \mathbf{x}$. Ainsi, un antécédent est $\mathbf{y} = \mathbf{x}$.\\
+    Donc $\mathbf{x} \in \mathrm{Im}(p)$. \\
+\end{itemize}
+
+Conclusion : \fbox{$\begin{cases}\mathrm{Im}(\mathrm{Id}_E - p) = \ker(p)\\
+\mathrm{Im}(p) = \ker(\mathrm{Id}_E - p)
+\end{cases}$}
+
+% --------------------------------------------------------------------------------------------------
+\q Exemples de matrices :
+\[
+P =
+\begin{pmatrix}
+1 & 0\\
+1 & 0
+\end{pmatrix}
+\]
+
+Calcul de $P^2$ :
+\[
+P^2 =
+\begin{pmatrix}
+1 & 0\\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0\\
+1 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0\\
+1 & 0
+\end{pmatrix}
+= P
+\]
+
+La matrice $P$ est idempotente : il s'agit d'une projection.
+
+Image : engendrée par $\begin{pmatrix}1\\1\end{pmatrix}$.
+
+Noyau : constitué des vecteurs de la forme $\begin{pmatrix}0\\y\end{pmatrix}$.
+
+Interprétation géométrique : projection sur la droite $\operatorname{Vect}\left(\begin{pmatrix}1\\1\end{pmatrix}\right)$ parallèlement à l'axe des ordonnées.
+
+% ------
+
+\[
+P = \frac{1}{2}
+\begin{pmatrix}
+1 & 1\\
+1 & 1
+\end{pmatrix}
+\]
+
+Calcul de $P^2$ :
+\[
+P^2 = \frac{1}{4}
+\begin{pmatrix}
+1 & 1\\
+1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1\\
+1 & 1
+\end{pmatrix}
+= \frac{1}{4}
+\begin{pmatrix}
+2 & 2\\
+2 & 2
+\end{pmatrix}
+=
+\frac{1}{2}
+\begin{pmatrix}
+1 & 1\\
+1 & 1
+\end{pmatrix}
+= P
+\]
+
+La matrice $P$ est idempotente : il s'agit d'une projection.
+
+Image : $\operatorname{Vect}\left(\begin{pmatrix}1\\1\end{pmatrix}\right)$.
+
+Noyau : $\operatorname{Vect}\left(\begin{pmatrix}1\\-1\end{pmatrix}\right)$.
+
+Interprétation géométrique : projection orthogonale sur la droite d'équation $x = y$ dans $\mathbb{R}^2$.
+
+% ------
+\[
+P =
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}
+\]
+
+Vérification :
+\[
+P^2 =
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}
+= P
+\]
+
+Il s'agit d'une projection.
+
+Image : $\operatorname{Vect}(e_1)$.
+
+Noyau : sous-espace $\operatorname{Vect}(e_2, e_3)$.
+
+Interprétation géométrique : projection parallèle sur l'axe $x$, le long du plan $(yOz)$.
+
+% ------
+\[
+P =
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{pmatrix}
+\]
+
+Vérification :
+\[
+P^2 = P
+\]
+
+Image : plan $\operatorname{Vect}(e_1, e_2)$.
+
+Noyau : $\operatorname{Vect}(e_3)$.
+
+Interprétation géométrique : projection orthogonale sur le plan $(xOy)$ dans $\mathbb{R}^3$.
+
+% ------
+\[
+P =
+\begin{pmatrix}
+1 & 0 & 0\\
+a & 0 & 0\\
+b & 0 & 0
+\end{pmatrix}
+\]
+
+Calcul de $P^2$ :
+\[
+P^2 =
+\begin{pmatrix}
+1 & 0 & 0\\
+a & 0 & 0\\
+b & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+a & 0 & 0\\
+b & 0 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 & 0\\
+a & 0 & 0\\
+b & 0 & 0
+\end{pmatrix}
+= P
+\]
+
+La condition $P^2 = P$ est vérifiée pour tout $(a, b) \in \mathbb{R}^2$.
+
+Image : $\operatorname{Vect}\left(\begin{pmatrix}1\\a\\b\end{pmatrix}\right)$.
+
+Noyau : plan d'équation $x = 0$.
+
+Interprétation géométrique : projection sur la droite dirigée par $\begin{pmatrix}1\\a\\b\end{pmatrix}$ parallèlement au plan $x = 0$.
+
+% --------------------------------------------------------------------------------------------------
+\q Décomposition de $E$ en somme directe : $E = \mathrm{Im}(p) \oplus \ker(p)$
+
+\textit{Méthode 1 : Décomposition explicite}
+
+Existence :
+
+Soit un vecteur $\mathbf{x} \in E$. Il peut être décomposé ainsi : $\mathbf{x} = (\mathbf{x} - \mathbf{p(x)}) + \mathbf{p(x)}$.
+\begin{itemize}
+ \item $\mathbf{p(x)}$ est la projection sur l'image de $p$, donc $\mathbf{p(x)} \in \mathrm{Im}(p)$.
+ \item $\mathbf{x} - \mathbf{p(x)} \in \ker(p)$, puisque : $p(\mathbf{x} - \mathbf{p(x)}) =  \mathbf{p(x)} - \mathbf{p(p(x))} = \mathbf{p(x)} - \mathbf{p(x)} = \mathbf{0}$.
+\end{itemize}
+
+Unicité :
+
+Supposons qu'il existe deux décompositions telles que $\mathbf{x} = \mathbf{x}_1 + \mathbf{x}_2 =
+\mathbf{y}_1 + \mathbf{y}_2$, avec $\mathbf{x}_1, \mathbf{y}_1 \in \mathrm{Im}(p)$ et $\mathbf{x}_2,
+\mathbf{y}_2 \in \ker(p)$.
+
+Alors : $$\underbrace{\mathbf{x}_2 - \mathbf{y}_2}_{\in \ker(p)} = \underbrace{\mathbf{x}_1 -
+\mathbf{y}_1}_{\in \mathrm{Im}(p)}$$
+
+En appliquant $p$ :
+$$p(\mathbf{x}_2 - \mathbf{y}_2) = p(\mathbf{x}_1 - \mathbf{y}_1) \implies 0 = \mathbf{x}_1 -
+\mathbf{y}_1 \implies \mathbf{x}_1 = \mathbf{y}_1$$
+
+Et en réinjectant dans l'expression de $\mathbf{x}_2$ :
+$$\mathbf{x}_2 = \mathbf{x} - \mathbf{x}_1 = \mathbf{y} - \mathbf{y}_1 = \mathbf{y}_2$$
+
+Donc $\mathbf{x}_2 = \mathbf{y}_2$.
+
+\textit{Méthode 2 : Sous-espaces}
+
+Construisons une base de $E$ à partir de bases de $\mathrm{Im}(p)$ et $\ker(p)$.
+
+D'une part, les dimensions sont compatibles, car par le théorème du rang :
+$$\dim(\ker(p)) + \dim(\mathrm{Im}(p)) = \dim(E)$$
+
+Il reste à montrer que l'intersection de ces sous-espaces est réduite au vecteur nul : $\ker(p) \cap
+\mathrm{Im}(p) = \{\mathbf{0}\}$.
+
+Soit $\mathbf{x} \in \ker(p) \cap \mathrm{Im}(p)$, alors :
+$$
+\begin{cases}
+    p(\mathbf{x}) = \mathbf{0}\\
+    \exists \mathbf{y} \in E, \; p(\mathbf{y}) = \mathbf{x}
+\end{cases}
+$$
+Pour montrer qu'il s'agit du vecteur nul, il suffit d'appliquer $p$ à la seconde relation :
+$$p(p(\mathbf{y})) = p(\mathbf{x}) = \mathbf{0}$$
+
+Or $p(p(\mathbf{y})) = p(\mathbf{y}) = \mathbf{x}$, donc :
+$$\mathbf{x} = \mathbf{0}$$
+
+Conclusion : \fbox{$E = \mathrm{Im}(p) \oplus \ker(p)$}
+
+% --------------------------------------------------------------------------------------------------
+\q Représentation matricielle en base 'adaptée'
+
+Soit $r = \dim(\mathrm{Im}(p))$ le rang de $p$.
+
+Selon la question précédente, tout vecteur de $E$ se décompose de manière unique comme la somme d'un vecteur de l'image et d'un vecteur du noyau de $p$.
+Il est donc possible de construire une base de $E$ en joignant une base de $\mathrm{Im}(p)$ et une
+base de $\ker(p)$, formée de :
+
+\begin{itemize}
+ \item $r$ vecteurs $(\mathbf{x}_i^{(j)})_{1\leq j\leq r} \in \mathrm{Im}(p)$, qui vérifient $p(\mathbf{x}_i^{(j)}) = \mathbf{x}_i^{(j)}$ par définition de l'image.
+ \item $n-r$ vecteurs $(\mathbf{x}_k^{(\ell)})_{1\leq \ell \leq n-r} \in \ker(p)$, qui vérifient $p(\mathbf{x}_k^{(\ell)}) = \mathbf{0}$ par définition du noyau.
+\end{itemize}
+
+Ainsi, la représentation matricielle de $p$ dans la base $\mathcal{B} = (\mathbf{x}_i^{(1)}, ..., \mathbf{x}_i^{(r)}, \mathbf{x}_k^{(1)}, ..., \mathbf{x}_k^{(n-r)})$ est :\\
+\centerline{$\mathrm{Mat}_{\mathcal{B}}(p) = \bordermatrix{
+& \mathbf{x}_i^{(1)} & \mathbf{x}_i^{(2)} & \cdots & \mathbf{x}_i^{(r)} & \mathbf{x}_k^{(1)} & \cdots & \mathbf{x}_k^{(n-r)} \cr
+\mathbf{x}_i^{(1)} & 1 & 0 & \cdots & 0 & 0 & \cdots & 0 \cr
+\mathbf{x}_i^{(2)} & 0 & 1 &  & 0 & 0 &  & 0 \cr
+\vdots & \vdots &  & \ddots & \vdots & \vdots &  & \vdots \cr
+\mathbf{x}_i^{(r)} & 0 & 0 & \cdots & 1 & 0 & \cdots & 0 \cr
+\mathbf{x}_k^{(1)} & 0 & 0 & \cdots & 0 & 0 & \cdots & 0 \cr
+\vdots & \vdots &  &  & \vdots & \vdots &  & \vdots \cr
+\mathbf{x}_k^{(n-r)} & 0 & 0 & \cdots & 0 & 0 & \cdots & 0 \cr}$}\\
+
+Conclusion : \fbox{$\mathrm{Mat}_{\mathcal{B}}(p) =
+\begin{pmatrix}
+I_r & 0\\
+0 & 0
+\end{pmatrix}$}
+
+% --------------------------------------------------------------------------------------------------
+\q Trace d'une projection :
+
+Dans la base précédente, la représentation matricielle de $p$ a $r$ coefficients diagonaux à $1$ et les autres à $0$, donc :
+\[
+\mathrm{Tr}(p) = r = \mathrm{rg}(p)
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{Démonstration du théorème -- Sens direct}
+
+\q Linéarité de la trace :
+
+Soient $u$ et $v$ deux endomorphismes de $E$, et $\mathcal{B}$ une base de $E$.
+\begin{itemize}
+ \item La matrice représentative de l'endomorphisme $u + v$ dans $\mathcal{B}$ est : $\mathrm{Mat}_{\mathcal{B}}(u + v)
+= \mathrm{Mat}_{\mathcal{B}}(u)
++ \mathrm{Mat}_{\mathcal{B}}(v)$, les coefficients diagonaux s'obtiennent en sommant ceux des deux matrices.
+\item La matrice représentative de l'endomorphisme $\lambda u $ dans $\mathcal{B}$ est : $\mathrm{Mat}_{\mathcal{B}}(\lambda u)
+= \lambda\mathrm{Mat}_{\mathcal{B}}(u)$, la somme des coefficients diagonaux est multipliée par $\lambda$.
+\end{itemize}
+Conclusion : \fbox{La trace est un opérateur linéaire.}
+
+Trace entière pour l'endomorphisme $u$ :
+
+L'endomorphisme $u$ est une somme finie de projections, donc par linéarité de la trace, la trace de
+$u$ est la somme des traces des projections :
+\[
+\mathrm{Tr}(u) = \mathrm{Tr}(p_1) + \dots + \mathrm{Tr}(p_m)
+\]
+
+D'autre part, puisque la trace d'une projection est égale à son rang :
+$$\sum_{i=1}^{m}\mathrm{Tr}(p_i) = \sum_{i=1}^{m}\mathrm{rg}(p_i)$$
+
+Chaque $\mathrm{rg}(p_i)$ est un entier, donc \fbox{$\mathrm{Tr}(u) \in \mathbb{N}$}.
+
+% --------------------------------------------------------------------------------------------------
+\q Dimension d'une somme de deux sous-espaces :
+
+La dimension de $F + G$ est inférieure ou égale au nombre des vecteurs de n'importe quelle famille
+génératrice de $F + G$. Une telle famille peut être obtenue en concaténant une base de $F$ et une
+base de $G$, et est formée de $\dim(F) +\dim(G)$ vecteurs.
+
+Conclusion : \boxed{\dim(F + G) \leq \dim(F) + \dim(G)}.
+
+Majoration de la trace :
+
+Par récurrence sur le nombre de projections dans la somme :
+
+\textit{Initialisation} : $u = p_1$ est une projection donc $\mathrm{rg}(u) = \mathrm{Tr}(u)$ selon la propriété de la trace
+et du rang.
+
+\textit{Hérédité :} Supposons la propriété vraie au rang $m-1$ : $\mathrm{Tr}\left(\sum_{i=1}^{m-1}p_i\right) \leq
+\mathrm{rg}\left(\sum_{i=1}^{m-1}p_i\right)$.
+
+Par définition : $u = \sum_{i=1}^{m-1}p_i + p_m$. Chaque vecteur de l'image de $u$ s'obtient par la somme d'un vecteur de l'image de $\sum_{i=1}^{m-1}p_i$ et d'un vecteur de l'image de $p_m$, donc en termes de sous-espaces : $\mathrm{Im}(u) = \mathrm{Im}\left(\sum_{i=1}^{m-1}p_i\right) + \mathrm{Im}(p_m)$.\\
+En appliquant la propriété sur la dimension d'une somme de sous-espaces avec
+$\begin{cases}
+F = \mathrm{Im}\left(\sum_{i=1}^{m-1}p_i\right) \\
+G = \mathrm{Im}(p_m)\\
+F + G = \mathrm{Im}(u)
+\end{cases}$ :
+$$\dim(u) \leq \dim\left(\sum_{i=1}^{m-1}p_i\right) + \dim(\mathrm{Im}(p_m))$$
+
+Or :
+$$\begin{cases}
+\dim(u) = \mathrm{rg}(u)\\
+\dim\left(\sum_{i=1}^{m-1}p_i\right) =
+\mathrm{rg}\left(\sum_{i=1}^{m-1}p_i\right) \leq \mathrm{Tr}\left(\sum_{i=1}^{m-1}p_i\right) = \sum_{i=1}^{m-1}\mathrm{Tr}(p_i)\; \text{par hypothèse de récurrence et linéarité de la trace}\\
+\dim(\mathrm{Im}(p_m)) : \mathrm{rg}(p_m) = \mathrm{Tr}(p_m)\; \text{selon l'initialisation}
+\end{cases}$$
+
+Donc :
+$$\mathrm{rg}(u) \leq \sum_{i=1}^{m-1}\mathrm{Tr}(p_i) + \mathrm{Tr}(p_m) =
+\sum_{i=1}^{m}\mathrm{Tr}(p_i) = \mathrm{Tr}(u)$$
+
+Conclusion : \fbox{$\mathrm{Tr}(u) \geq \mathrm{rg}(u)$}.
+
+% --------------------------------------------------------------------------------------------------
+
+\bigskip
+\textbf{Démonstration du théorème -- Sens réciproque}
+
+TODO: Finaliser la correction.
+
+\end{document}
+% ==================================================================================================

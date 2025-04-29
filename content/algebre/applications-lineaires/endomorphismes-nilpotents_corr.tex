@@ -1,0 +1,479 @@
+% CORRECTION : Endomorphismes nilpotents
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Applications linéaires et Matrices - Endomorphismes nilpotents}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Représentation matricielle des endomorphismes nilpotents}
+
+% --------------------------------------------------------------------------------------------------
+\q Inclusions des noyaux :
+
+Endomorphisme nilpotent d'indice 2 :\fbox{\(\{0\} \subset \ker(f) \subset \ker(f^2) =
+\mathbb{R}^3\)}
+
+\emph{Inclusions ou Egalités}
+\begin{itemize}
+    \item \(\{0\} \subseteq \ker(f)\) : Par propriété d'une application linéaire.
+    \item \(\ker(f^2) = \mathbb{R}^3\) : Par définition d'un endomorphisme nilpotent d'indice 2, qui
+    impose \(f^2 = 0\).
+    \item \(\ker(f) \subseteq \ker(f^2)\) : Soit \(x \in \ker(f)\), alors \(f(x) = 0 \implies f^2(x)
+    = f(f(x)) = f(0) = 0\), donc \(x \in \ker(f^2)\).\\
+\end{itemize}
+
+\emph{Non égalités}
+\begin{itemize}
+    \item Par l'absurde, supposons \(\ker(f) = \{0\}\). Alors \(f\) est injective, donc \(f^2\)
+    aussi, donc a fortiori ce n'est pas l'application linéaire nulle. Ceci contredit la définition
+    d'un endomorphisme nilpotent d'indice 2, qui impose \(f^2 = 0\).
+    \item Par l'absurde, supposons \(\ker(f) = \ker(f^2) = \mathbb{R}^3\). Alors \(\forall x \in
+    \mathbb{R}^3, \; f(x) = 0\), donc \(f\) est l'application linéaire nulle. Ceci contredit la
+    définition d'un endomorphisme nilpotent d'indice 2, qui impose \(f \neq 0\).\\
+\end{itemize}
+
+Endomorphisme nilpotent d'indice 3 :\fbox{\(\{0\} \subset \ker(g) \subset \ker(g^2) \subset
+\ker(g^3) = \mathbb{R}^3\)}
+
+ \begin{itemize}
+    \item \(\{0\} \subset \ker(g) \subseteq \ker(g^2) \subset \ker(g^3) = \mathbb{R}^3\) : Comme
+    précédemment.
+    \item Par l'absurde, supposons que \(\ker(g) = \ker(g^2)\). Par définition d'un endomorphisme
+    nilpotent d'indice 3 : \(\forall x\in\mathbb{R}^3, \; g^3(x) = 0 = g^2(g(x))\), ce qui implique
+    \(g(x) \in \ker(g^2)\). \\
+    Or si \(\ker(g) = \ker(g^2)\), alors \(g(x) \in \ker(g)\) aussi, ce qui signifie que \(g(g(x)) =
+    0 = g^2(x)\), donc \(\ker(g^2) = \mathbb{R}^3\). Ceci contredit l'hypothèse d'un endomorphisme
+    nilpotent d'indice 3, qui impose \(g^2 \neq 0\).\\
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\q Inclusions images - noyaux :
+
+Endomorphisme nilpotent d'indice 2 :
+
+\fbox{\(\mathrm{Im}(f)\subseteq\ker(f)\)} : Soit \(x \in \mathrm{Im}(f)\), alors il existe \(y \in
+\mathbb{R}^3\) tel que \(f(y) = x\), donc \(f(x) = f(f(y)) = 0\) (car \(f^2 = 0\)).\\
+
+Endomorphisme nilpotent d'indice 3 :
+
+\fbox{\(\mathrm{Im}(g)\subseteq\ker(g^2)\)} : Soit \(x \in \mathrm{Im}(g)\), alors il existe \(y \in
+\mathbb{R}^3\) tel que \(g(y) = x\), donc \(g^2(x) = g^2(g(y)) = 0\) (car \(g^3 = 0\)).\\
+\fbox{\(\mathrm{Im}(g^2)\subseteq\ker(g)\)} : Soit \(x \in \mathrm{Im}(g^2)\), alors il existe \(y
+\in \mathbb{R}^3\) tel que \(g^2(y) = x\), donc \(g(x) = g(g^2(y)) = 0\) (car \(g^3 = 0\)).
+
+% --------------------------------------------------------------------------------------------------
+\q Dimensions de l'image et du noyau :
+
+Endomorphisme nilpotent d'indice 2 :
+\[
+\begin{cases}
+    0 < \dim(\mathrm{Im}(f)) \leq \dim(\ker(f)) < 3 \; \text{par inclusion} \\
+    3 = \dim(\mathrm{Im}(f)) + \dim(\ker(f)) \; \text{par le théorème du rang}
+\end{cases}
+\]
+
+La seule possibilité est :
+\[
+\begin{cases}
+    \dim(\ker(f)) = 2\\
+    \dim(\mathrm{Im}(f)) = 1
+\end{cases}
+\]
+
+Endomorphisme nilpotent d'indice 3 :
+\[
+\begin{cases} 0 < \dim(\ker(g)) < \dim(\ker(g^2)) < 3 \; \text{par inclusions}\\
+    \dim(\mathrm{Im}(g)) = 3 - \dim(\ker(g)) \; \text{par le théorème du rang}\\
+    \dim(\mathrm{Im}(g^2)) = 3- \dim(\ker(g^2)) \; \text{par le théorème du rang}
+\end{cases}
+\]
+
+La seule possibilité est :
+\[
+\begin{cases} \dim(\ker(g)) = 1\\
+\dim(\mathrm{Im}(g)) = 2\\
+\dim(\ker(g^2)) = 2\\
+\dim(\mathrm{Im}(g^2)) = 1 \end{cases}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\q Interprétations géométriques :
+
+Endomorphisme nilpotent d'indice 2 : Le noyau de \(f\) est un plan de \(\mathbb{R}^3\),
+l'image de \(f\) est une droite vectorielle incluse dans ce plan.
+
+Endomorphisme nilpotent d'indice 3 : L'image de \(g\) est un plan de \(\mathbb{R}^3\), le noyau de
+\(g\) est une droite vectorielle incluse dans ce plan. Le noyau de \(g^2\) est un plan de
+\(\mathbb{R}^3\) et l'image de \(g^2\) est une droite vectorielle incluse dans ce plan.
+
+L'image de \(g\) est un plan inclus dans le noyau de \(g^2\), donc ils sont égaux. L'image de
+\(g^2\) est une droite incluse dans le noyau de \(g\), donc ils sont égaux.
+
+% --------------------------------------------------------------------------------------------------
+\q Base adaptée pour un endomorphisme nilpotent d'indice 2 :
+
+\textit{Analyse} -- La base recherchée comporte :
+\begin{itemize}
+ \item deux vecteurs \(u\) et \(v\) tels que \( f(u) = f(v) = 0\),
+ \item un vecteur \(w \) tel que \(f(w) = u\).
+\end{itemize}
+Il suffit donc de choisir  :
+\begin{itemize}
+ \item \(w \notin \ker(f)\), ce qui est possible car \(\dim(\ker(f)) = 2 < 3\) selon les dimensions
+ des noyaux et images.
+ \item \(u = f(w)\), qui est non nul puisque \(w \notin \ker(f)\), et qui appartient
+ à \(\ker(f)\) car \(\mathrm{Im}(f) \subset \ker(f)\) selon les relations d'inclusions.
+ \item \(v \in \ker(f)\) tel que \((u,v)\) est une famille libre
+ (base), ce qui est possible car \(\dim(\ker(f)) = 2\) selon les dimensions.
+ \end{itemize}
+
+\medskip
+
+\textit{Synthèse} -- La famille \((u,v, w)\) est bien une base de \(\mathbb{R}^3\) :
+
+D'une part, elle comporte 3 vecteurs dans un espace de dimension 3.
+
+D'autre part, il s'agit d'une famille libre : Soient \((\lambda_1, \lambda_2, \lambda_3) \in \mathbb{R}^3\) tels que \(\lambda_1 u + \lambda_2 v
++ \lambda_3 w = 0\).
+
+En appliquant \(f\) :
+\[
+\begin{aligned}
+    \lambda_1 f(u) + \lambda_2 f(v) + \lambda_3 f(w) & = 0\\
+    0 + 0 + \lambda_3 f(w) & = 0 \implies \lambda_3 = 0 \; \text{car \(w \notin \ker(f)\)}
+\end{aligned}
+\]
+Alors \(\lambda_1 u + \lambda_2 v = 0\), or \((u,v)\) est
+une base de \(\ker(f)\), donc une famille libre, ce qui implique \(\lambda_1 = \lambda_2 = 0\).
+
+Conclusion : Dans \(\mathcal{B}' = (u,v, w)\) telle que
+\[
+\begin{cases}
+w \notin \ker(f)\\
+u = f(w)\\
+v \in \ker(f) \setminus \mathrm{Im}(f)
+\end{cases}
+\] alors la matrice de \(f\) est :
+\[
+\mathrm{Mat}_{\mathcal{B}'}(f) =
+\begin{pmatrix}
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\]
+
+% ------------------------------------------------------------------------------------------------
+\q Base adaptée pour un endomorphisme nilpotent d'indice 3 :
+
+\textit{Analyse} -- La base recherchée comporte :
+\begin{itemize}
+ \item un vecteur \(x\) tel que \(g(x) = 0\),
+ \item un vecteur \(y\) tel que \(g(y) = x\),
+ \item un vecteur \(z\) tel que \(g(z) = y\).
+\end{itemize}
+Il suffit donc de choisir  :
+\begin{itemize}
+ \item \(z \notin \ker(g^2)\), ce qui est possible car \(\dim(\ker(g^2)) = 2 < 3\) selon les dimensions
+ \item \(y = g(z)\), qui est non nul puisque \(z \notin \ker(g)\)
+ \item \(x = g(y)\), qui est non nul puisque \(y \notin \ker(g)\) (car \(z
+ \notin \ker(g^2)\)).
+\end{itemize}
+
+\medskip
+\textit{Synthèse} -- Comme précédemment, \((x,y, z)\) est bien une base de
+\(\mathbb{R}^3\).
+
+Conclusion : Dans \(\mathcal{B}'' = (x,y, z)\) telle que
+\[
+\begin{cases}
+z \notin \ker(g^2)\\
+y = g(z)\\
+x = g(y)
+\end{cases}
+\]
+alors la matrice de \(g\) est :
+\[
+\mathrm{Mat}_{\mathcal{B}''}(g) =
+\begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0
+\end{pmatrix}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\q Matrices des itérés
+
+Endomorphisme nilpotent d'indice 2 :
+\[
+A^2 =
+\begin{pmatrix}
+ 0 & 0 & 0\\
+ 0 & 0 & 0\\
+ 0 & 0 & 0
+\end{pmatrix}
+\]
+
+
+Endomorphisme nilpotent d'indice 3 :
+\[
+B^2 =
+\begin{pmatrix}
+ -3 & -3 & -9\\
+ -3 & -3 & -9\\
+ 2 & 2 & 6
+\end{pmatrix},
+B^3 =
+\begin{pmatrix}
+ 0 & 0 & 0\\
+ 0 & 0 & 0\\
+ 0 & 0 & 0
+\end{pmatrix}
+\]
+
+% --------------------------------------------------------------------------------------------------
+
+\q Noyaux et Images de \(f\)
+
+\textit{Noyau} -- En résolvant le système \(f(x) = 0\):
+\[
+\begin{pmatrix}x \\ y \\ z\end{pmatrix} \in \ker(f) \iff \begin{pmatrix}
+ 2 & -1 & 1\\
+ -2 & 1 & -1\\
+ -6 & 3 & -3
+\end{pmatrix}
+\begin{pmatrix}x \\ y \\ z\end{pmatrix} = \begin{pmatrix}0 \\ 0 \\ 0\end{pmatrix} \iff 2x - y + z = 0
+\]
+Le noyau est défini par une seule contrainte (plan vectoriel). Pour trouver deux vecteurs
+directeurs, il est possible de fixer un degré de liberté à la fois :
+\[
+\begin{cases}
+x = 0 \implies y = z \implies \begin{pmatrix}0 \\ 1 \\ 1\end{pmatrix} \in \ker(f)\\
+z = 0 \implies y = 2x \implies \begin{pmatrix}1 \\ 2 \\ 0\end{pmatrix} \in \ker(f)
+\end{cases}
+\]
+
+Alternativement, par opérations sur les colonnes :
+\[
+\begin{cases}
+C_1 = -2 C_2 \implies f(e_1) + 2 f(e_2) = 0 \implies e_1 + 2 e_2 \in \ker(f)\\
+C_3 = - C_2 \implies f(e_2) + f(e_3) = 0 \implies e_2 + e_3 \in \ker(f)
+\end{cases}
+\]
+
+Conclusion : \fbox{\(\ker(f)\) est un plan vectoriel dont une base est \((e_1 + 2e_2, e_2 + e_3) = \left(\begin{pmatrix}1 \\ 2 \\ 0\end{pmatrix}, \begin{pmatrix}0 \\ 1 \\ 1\end{pmatrix}\right)\).}\\
+
+\textit{Image} -- L'image de \(f\) est engendrée par les vecteurs :
+\[
+f(e_1) = \begin{pmatrix}2 \\ -2 \\ -6\end{pmatrix}, \quad
+f(e_2) = \begin{pmatrix}-1 \\ 1 \\ 3\end{pmatrix}, \quad
+f(e_3) = \begin{pmatrix}1 \\ -1 \\ 3\end{pmatrix}
+\]
+Ces trois vecteurs sont colinéaires, la matrice de \(f\) est de rang 1.\\
+
+Conclusion : \fbox{\(\text{Im}(f)\) est une droite vectorielle dont une base est \((f(e_2)) = (-e_1 + e_2 + 3 e_3) = \left(\begin{pmatrix}-1 \\ 1 \\ 3\end{pmatrix}\right)\).}\\
+
+\textit{Inclusion} -- Les coordonnées de \((-e_1 + e_2 + 3 e_3)\) vérifient l'équation \(2x - y + z = 0 \) de \(\ker(f)\), donc \fbox{\(\text{Im}(f) \subseteq \ker(f)\)}.
+
+\q Noyaux et images de \(g\) :
+
+\textit{Noyau} -- En résolvant le système \(g(x) = 0\):
+\[
+\begin{pmatrix}x \\ y \\ z\end{pmatrix} \in \ker(g) \iff
+\begin{cases}
+x - y = 0 \\
+2x + 3 z =0
+\end{cases} \iff \begin{cases}
+x = y \\
+z = - \frac{2}{3}x
+\end{cases}
+\]
+
+Alternativement, par opérations sur les colonnes :
+\[
+\begin{cases}
+    C_2 \leftarrow C_1 + 2 C_2\\
+    C_3 \leftarrow -3 C_3 + 4 C_2
+ \end{cases}
+\mathbf{B} \iff \mathbf{B'} =
+\begin{pmatrix}
+     -4 & 0 & 0 \\
+     -5 & -3 & -9 \\
+     3 & 1 & 3
+\end{pmatrix}
+\]
+
+Cette matrice \(\mathbf{B'}\) est de rang 2, car \(C_3' = 3 C_2'\).
+
+En revenant aux colonnes de \( \mathbf{B}\) par les opérations inverses :
+\[
+(-3 C_3 + 4 C_2) = 3(C_1 + 2 C_2) \implies 3 C_1 + 3 C_2 - 2 C_3 = 0
+\]
+Ainsi :
+\[
+3 g(e_1) + 3 g(e_2) - 2 g(e_3) = 0 \implies 3 e_1 + 3 e_2 - 2 e_3 \in \ker(g)
+\]
+La matrice \(\mathbf{B}\) est de rang au moins 2 (car les trois colonnes ne sont pas proportionnelles), le noyau est donc de dimension au
+ plus 1, donc ces deux vecteurs suffisent à former une base du noyau.
+
+Conclusion : \fbox{\(\ker(g)\) a pour base \((e_1 + e_2 - \frac{2}{3}e_3)\), ou encore \((3e_1 + 3e_2 - 2 e_3)\)}.
+
+\textit{Noyau du carré} -- Par la même approche : \(x + y + 3z = 0\).
+
+Conclusion : \fbox{\(\ker (g^2)\) est un plan vectoriel de base \((e_1 - e_2, 3 e_1 - e_3)\)}.
+
+\textit{Image} -- L'image est de dimension 2 (car le noyau est de dimension 1) et engendrée par
+ \(g(e_1) = -4 e_1 - 5 e_2  + 3 e_3\) et \(g(e_2) = 2 e_1 + e_2 - e_3\).
+
+Conclusion : \fbox{Une base de \(\text{Im}(g)\) est \((-4 e_1 - 5 e_2  + 3 e_3, 2 e_1 + e_2 -
+e_3)\)}.
+
+\textit{Image du carré} -- \(\text{Im}(g^2)\) est de dimension 1, a pour base \((g^2(e_1))\).
+
+Conclusion : \fbox{Une base de \(\text{Im}(g^2)\) est \((-3 e_1 - 3 e_2 + 2 e_3)\)}.
+
+\textit{Egalités} -- Les coordonnées des deux vecteurs de base de \(\text{Im}(g)\) vérifient l'équation de \(\ker(g^2)\) \(x + y + 3z = 0\), donc \fbox{\(\text{Im}(g) = \ker(g^2)\)}.\\
+Le vecteur de base de \(\text{Im}(g^2)\) est aussi celui de \(\ker(g)\), donc \fbox{\(\text{Im}(g^2) = \ker(g)\)}.
+
+% ------------------------------------------------------------------------------------------------
+\q Bases adaptées :
+
+Endomorphisme \(f\) -- Il suffit de choisir :
+\[
+\begin{cases}
+\mathbf{w} \notin \ker(f)\\
+\mathbf{u} = f(\mathbf{w})\\
+\mathbf{v} \in \ker(f) \setminus \mathrm{Im}(f)
+\end{cases}
+\]
+Endomorphisme \(g\) -- Il suffit de choisir :
+\[
+\begin{cases}
+\mathbf{z} \notin \ker(g^2)\\
+\mathbf{y} = g(\mathbf{z})\\
+\mathbf{x} = g(\mathbf{y})
+\end{cases}
+\]
+
+% ------------------------------------------------------------------------------------------------
+\q \emph{Illustrations}
+
+% --------------------------------------------------------------------------------------------------
+
+\bigskip
+\textbf{Exemples d'endomorphismes nilpotents dans un espace de polynômes : différence et dérivation}
+
+\q Degré de \(\Delta(P)\) :
+
+Si \( P = 0\), alors \(\Delta(P) = 0\) donc \fbox{\(\deg P = -\infty \implies \deg \Delta(P) = - \infty\)}.
+
+Si \( P\) est constant, alors \(\Delta(P) = 0\) donc  \fbox{\(\deg P = 0 \implies \deg \Delta(P) = - \infty\)}.
+
+Si \fbox{\(\deg P = m > 0\)}, il existe \((a_0, ..., a_m)\) avec \(a_m \neq 0\) tels que :
+\[
+\begin{aligned}
+ P(X) & = a_m X^m + a_{m-1} X^{m-1} + ... + a_1 X + a_0\\
+ P(X+1) & = a_m (X+1)^m + a_{m-1} (X+1)^{m-1} + ... + a_1 (X+1) + a_0\\
+ & = a_m X^m + (a_{m-1} + m a_m)X^{m-1} + ... + a_0
+\end{aligned}
+\]
+Alors \(\Delta(P) = m a_m X^{m-1} + ...\) donc \fbox{\(\deg \Delta(P) = m-1\)}.
+
+% ------------------------------------------------------------------------------------------------
+\q Base du noyau et base de l'image :
+
+Base de \(\ker(\Delta)\) -- Les seuls polynômes dont l'image par \(\Delta\) est le polynôme nul sont les polynômes de degré 1
+(et le polynôme nul), donc \(\ker(\Delta) = \mathrm{Span}(1)\).
+
+\fbox{Une base de \(\ker(\Delta)\) est \((1)\).}
+
+Base de \(\mathrm{Im}(\Delta)\) -- Tout polynôme de degré \(m \geq n\) a une image par \(\Delta\)
+de degré \(m-1\), donc l'image de \(\Delta\) est l'ensemble des polynômes de degré au plus \(n-1\).
+
+Formellement :
+\begin{itemize}
+\item \(\mathrm{Im}(\Delta)\) est un sous-espace vectoriel de \(\mathbb{R}_{n-1}[X]\) : \(\mathrm{Im}(\Delta) \subseteq \mathbb{R}_{n-1}[X]\).
+\item Or par le théorème du rang : \(\dim(\mathrm{Im}(\Delta)) = \dim(\mathbb{R}_n[X]) - \dim(\ker(\Delta)) = (n+1) - 1 = n = \dim(\mathbb{R}_{n-1}[X])\).
+\item Donc \(\mathrm{Im}(\Delta) = \mathbb{R}_{n-1}[X]\)
+\end{itemize}
+
+\fbox{Une base de \(\mathrm{Im}(\Delta)\) est \((1, X, ..., X^{n-1})\).}
+
+% ------------------------------------------------------------------------------------------------
+
+\q Indice de nilpotence de \(\Delta\) :
+
+Montrons que \(\Delta^{n+1} = 0_{\mathrm{Lin}(\mathbb{R}_n[X])}\).
+
+Soit \(P \in \mathbb{R}_n[X]\), le degré de \(P\) est donc au plus \(n\). Une utilisation répétée du
+résultat de la question montre que \(\deg \Delta^k(P) \leq n - k, \; \forall k \in \mathbb{N}\).
+
+En particulier, \(\deg \Delta^{n+1}(P) < 0\), donc  \(\Delta^{n+1}(P)\) est le polynôme nul. \\
+Donc \(\Delta^{n+1} = 0_{\mathrm{Lin}(\mathbb{R}_n[X])}\).\\
+Montrons que \(\Delta^n \neq 0_{\mathrm{Lin}(E)}\).\\
+Considérons le polynôme \(P = X^n\), de degré exactement égal à \(n\).\\
+En appliquant \(n\) fois le résultat de la question, on obtient que \(\deg\Delta^{n}(X^n) = 0\), donc  \(\Delta^{n}(X^n)\) n'est pas le polynôme nul.\\
+Donc \(\Delta^n \neq 0_{\mathrm{Lin}(E)}\).\\
+Conclusion : \fbox{\(\Delta\) est un endomorphisme nilpotent d'indice \(n+1\).}
+
+% ------------------------------------------------------------------------------------------------
+
+\q Nilpotence de \(D\) :
+
+Dériver \(n+1\) fois un polynôme de degré au plus \(n\), conduit au polynôme nul.
+
+\q Matrice dans la base canonique :
+
+\(\forall k \in \{ 1, ..., n \}, \; D(X^k) = k X^{k-1}\), donc :\\
+\[
+\mathrm{Mat}_{\mathcal{B}}(D) = \begin{pmatrix}
+0 & 1 & 0 & \cdots & 0 & 0 & 0 \\
+0 & 0 & 2 & \cdots & 0 & 0 & 0 \\
+0 & 0 & 0 & \ddots & \vdots & 0 & 0 \\
+\vdots & \vdots & \vdots &  & n-2 & \vdots & \vdots \\
+0 & 0 & 0 &  & 0 & n-1 & 0 \\
+0 & 0 & 0 &  & 0 & 0 & n \\
+0 & 0 & 0 &  & 0 & 0 & 0
+\end{pmatrix}
+\]
+
+% ------------------------------------------------------------------------------------------------
+\q Base adaptée :
+
+On cherche une base \(\mathcal{B}' = (P_0, P_1, ..., P_n)\) telle que :\\
+\[
+\begin{cases}
+    D(P_n) = P_{n-1}\\
+    D(P_{n-1}) = P_{n-2}\\
+    \vdots \\
+    D(P_1) = P_0\\
+    D(P_0) = 0
+ \end{cases}
+\]
+Or
+\[
+\begin{cases}
+    D(X^n) = n X^{n-1}\\
+    D(n X^{n-1}) = n(n-1)X^{n-2}\\
+    \vdots \\
+    D(n(n-1)...2 X) = n!\\
+    D(n!) = 0
+ \end{cases}
+\]
+\fbox{\(\mathcal{B}' = (n!, n(n-1)...2 X, ..., n(n-1)X^{n-2}, n X^{n-1}, X^n)\)}
+
+\end{document}
+% ==================================================================================================

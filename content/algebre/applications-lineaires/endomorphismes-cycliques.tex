@@ -1,0 +1,157 @@
+% PROBLÈME : Endomorphismes nilpotents
+% ==================================================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+\newcommand{\Mat}[2]{\mathrm{Mat}_{#1}(#2)}
+
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Applications linéaires et Matrices -- Endomorphismes cycliques}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+\textit{Définition} -- Soit $E$ un espace vectoriel de dimension $n \geq 2$. Un endomorphisme $f \in
+\mathrm{End}(E)$ est dit \textbf{cyclique} s'il existe un vecteur $\mathbf{x}_0 \in E$ tel que :
+\[
+E = \mathrm{Vect}(\mathbf{x}_0, f(\mathbf{x}_0), f^2(\mathbf{x}_0), \dots, f^{n-1}(\mathbf{x}_0))
+\]
+
+Les endomorphismes cycliques permettent une représentation matricielle simplifiée (matrice
+compagnon), facilitant le calcul des polynômes caractéristiques et minimaux. Ils interviennent dans
+la résolution de systèmes linéaires et l'étude des sous-espaces stables par un endomorphisme.
+
+\bigskip
+\textbf{Exemples d'endomorphismes cycliques et non cycliques}
+
+\q Soit $\dim(E) = 4$, $\mathscr{B} = (e_1, e_2, e_3, e_4)$, et un endomorphisme $f$ tel que :
+\[
+\Mat{\mathscr{B}}{f} =
+\begin{pmatrix}
+0 & -1 & 0 & 0\\
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & -1\\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+Montrer que l'endomorphisme $f$ n'est pas cyclique.
+% But : Étudier un exemple d'endomorphisme non cyclique à l'aide du critère de généricité. Méthode :
+% Calcul du sous-espace engendré par les itérés d'un vecteur.
+
+\q Soit $\dim(E) = 3$, $\mathscr{B} = (e_1, e_2, e_3)$, et un endomorphisme $f$ tel que :
+\[
+\Mat{\mathscr{B}}{f} =
+\begin{pmatrix}
+0 & 0 & \alpha\\
+1 & 0 & \beta\\
+0 & 1 & \gamma
+\end{pmatrix}
+\quad \text{où } (\alpha, \beta, \gamma) \in \mathbb{R}^3
+\]
+Montrer que l'endomorphisme $f$ est cyclique.
+% But : Vérifier l'existence d'un vecteur générateur cyclique. Méthode : Calcul des itérés
+% successifs et vérification de la généricité.
+
+\q Soit $\dim(E) = n \in \mathbb{N}^*$, $\mathscr{B} = (e_1, \dots, e_n)$, et un endomorphisme $f$
+tel que :
+\[
+\Mat{\mathscr{B}}{f} =
+\begin{pmatrix}
+0 & \cdots & & & 0\\
+1 & 0 & & & \vdots\\
+0 & 1 & \ddots & & \\
+\vdots & & \ddots & 0 & 0\\
+0 & \cdots & 0 & 1 & 1
+\end{pmatrix}
+\]
+Montrer que l'endomorphisme $f$ est cyclique. Déterminer son rang et indiquer s'il est inversible.
+% But : Analyser un cas générique construit de manière cyclique explicite. Méthode : Vérification de
+% la définition et analyse des propriétés matricielles.
+
+\bigskip
+\textbf{Base adaptée et matrice compagnon}
+
+Soit $f$ est un endomorphisme cyclique dans un espace $E$ de dimension $n \geq 2$. Il
+existe donc un vecteur $\mathbf{x}_0$ tel que :
+\[
+E = \mathrm{Vect}(\mathbf{x}_0, f(\mathbf{x}_0), \dots, f^{n-1}(\mathbf{x}_0))
+\]
+
+\q Justifier qu'il existe certains réels $a_0, \dots, a_{n-1}$ tels que :
+\[
+f^n(\mathbf{x}_0) = a_{n-1}f^{n-1}(\mathbf{x}_0) + \dots + a_1 f(\mathbf{x}_0) + a_0 \mathbf{x}_0
+\]
+% But : Utiliser la dimension finie de l'espace pour établir une relation de dépendance linéaire.
+% Méthode : Existence de polynôme annulateur minimal.
+
+\q En déduire la matrice de $f$ dans la base $(\mathbf{x}_0, f(\mathbf{x}_0), \dots,
+f^{n-1}(\mathbf{x}_0))$.
+% But : Mettre en évidence la matrice compagnon associée au polynôme minimal. Méthode : Appliquer
+% directement l'action de $f$ sur la base.
+
+\bigskip
+\textbf{Commutant d'un endomorphisme cyclique}
+
+\textit{Définition} -- Le \textbf{commutant} d'un endomorphisme $f \in \mathrm{End}(E)$ est
+l'ensemble des endomorphismes qui commutent avec $f$ :
+\[
+\mathscr{C}(f) = \{ g \in \mathrm{End}(E) \mid g \circ f = f \circ g \}
+\]
+
+Le but de cette partie est de prouver le théorème suivant :
+
+\textit{Théorème} -- Si $f$ est cyclique, alors le commutant de $f$ est l'espace vectoriel $\mathbb{R}_{n-1}[f]$ engendré
+par les puissances de $f$ jusqu'à l'ordre $n - 1$ :
+\[
+\mathscr{C}(f) = \mathbb{R}_{n-1}[f] := \left\{ a_0 \mathrm{Id}_E + a_1 f + \dots + a_{n-1} f^{n-1}, \; (a_0, \dots, a_{n-1}) \in \mathbb{R}^n \right\}
+\]
+
+\q Justifier que $\mathscr{C}(f)$ est un sous-espace vectoriel de \(\mathrm{End}(E)\) (espace
+vectoriel des endomorphismes de $E$).
+% But : Montrer que le commutant est stable par combinaison linéaire. Méthode : Utiliser la
+% linéarité et la stabilité par composition.
+
+\q Soit $\mathbf{x}_0 \in E$ un vecteur générateur cyclique de $f$.
+Montrer que, pour tous $(v, w) \in \mathscr{C}(f)^2$ :
+\[
+v(\mathbf{x}_0) = w(\mathbf{x}_0) \iff v = w
+\]
+% But : Identifier l'unicité d'un endomorphisme à partir de l'image d'un générateur cyclique.
+% Méthode : Exploiter la propriété de généricité de $\mathbf{x}_0$.
+
+\q Démontrer par double inclusion que $\mathscr{C}(f) = \mathbb{R}_{n-1}[f]$.
+% But : Établir l'égalité du commutant avec l'algèbre des polynômes de degré $\leq n-1$. Méthode :
+% Inclusion directe par calcul et réciproque via unicité de la représentation.
+
+\q Déterminer une base de $\mathscr{C}(f)$ et en déduire sa dimension.
+% But : Caractériser le commutant comme espace vectoriel. Méthode : Identifier les générateurs
+% naturels et compter les dimensions.
+
+\bigskip
+\textbf{Lien avec la nilpotence}
+
+\textit{Définition} -- Soit $E$ un espace vectoriel de dimension $n \in \mathbb{N}^*$. Un
+endomorphisme $f$ est dit \textbf{nilpotent d'indice $p \leq n$} si :
+\[
+f^{p-1} \neq 0 \quad \text{et} \quad f^p = 0
+\]
+Il est dit \textbf{nilpotent maximal} lorsque $p = n$.
+
+\q Montrer que, dans un espace vectoriel de dimension $n \geq 2$, un endomorphisme nilpotent est
+cyclique si et seulement s'il est nilpotent maximal.
+% But : Caractériser les nilpotents cycliques parmi tous les nilpotents. Méthode : Montrer
+% l'équivalence entre l'existence d'un vecteur générateur et la maximalité de l'indice.
+
+\end{document}
+% ==================================================================================================

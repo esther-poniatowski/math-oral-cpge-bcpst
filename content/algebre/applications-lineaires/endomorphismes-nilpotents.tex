@@ -1,0 +1,206 @@
+% PROBLÈME : Endomorphismes nilpotents
+% ==================================================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+\newcommand{\Mat}[2]{\mathrm{Mat}_{#1}(#2)}
+
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Applications linéaires et Matrices -- Endomorphismes nilpotents}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Sujets d'interrogation orale}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+\textbf{Contexte}
+
+\textit{Définition} -- Soit $E$ un espace vectoriel de dimension $n \geq 2$. Un endomorphisme $f \in
+\mathrm{End}(E)$ est dit \textbf{nilpotent} s'il existe un entier $p \in \mathbb{N}^*$ tel que
+\[
+f^p = 0
+\]
+Le plus petit entier $p$ vérifiant cette propriété est appelé \textbf{indice de nilpotence}. Il
+vérifie :
+\[
+f^{p-1} \neq 0 \quad \text{et} \quad f^p = 0
+\]
+
+Les endomorphismes nilpotents sont utiles en algèbre linéaire de simplifier de nombreux calculs, car leurs puissances s'annulent au
+bout d'un certain nombre d'itérations. De plus, ces endomorphismes interviennent dans la classification des matrices : tout endomorphisme
+est, en un certain sens, la somme d'une partie diagonalisable et d'une partie nilpotente.
+
+
+\bigskip
+\textbf{Objectifs}
+
+Étudier la structure des endomorphismes nilpotents dans le cas de $\mathbb{R}^3$ et dans des espaces
+de polynômes. Déterminer des formes matricielles canoniques et illustrer les inclusions entre noyaux
+et images.
+
+\bigskip
+\textbf{Représentation matricielle des endomorphismes nilpotents}
+
+Soit un espace vectoriel réel de dimension 3, muni d'une base $\mathscr{B} = (e_1, e_2,
+e_3)$.
+
+Soient deux endomorphismes nilpotents : $f$ d'indice de nilpotence $2$, $g$ d'indice de nilpotence
+$3$.
+
+\q Démontrer les inclusions suivantes :
+\[
+\{0\} \subset \mathrm{Ker}(f) \subset \mathrm{Ker}(f^2) = \mathbb{R}^3
+\quad \text{et} \quad
+\{0\} \subset \mathrm{Ker}(g) \subset \mathrm{Ker}(g^2) \subset \mathrm{Ker}(g^3) = \mathbb{R}^3
+\]
+% But : Identifier les inclusions naturelles entre les noyaux des puissances successives d'un
+% endomorphisme nilpotent. Méthode : Utiliser les définitions de nilpotence et l'accroissement du
+% noyau.
+
+\q Démontrer que :
+\[
+\mathrm{Im}(f) \subseteq \mathrm{Ker}(f)
+\quad \text{et} \quad
+\begin{cases}
+\mathrm{Im}(g) \subseteq \mathrm{Ker}(g^2)\\
+\mathrm{Im}(g^2) \subseteq \mathrm{Ker}(g)
+\end{cases}
+\]
+% But : Étudier les relations entre images et noyaux des puissances successives. Méthode : Analyser
+% les compositions successives et leur effet sur les vecteurs.
+
+\q Déterminer les dimensions des noyaux et images :
+\[
+\dim \mathrm{Ker}(f), \quad \dim \mathrm{Im}(f), \quad
+\dim \mathrm{Ker}(g), \quad \dim \mathrm{Ker}(g^2), \quad
+\dim \mathrm{Im}(g), \quad \dim \mathrm{Im}(g^2)
+\]
+% But : Connaître la croissance des noyaux et la décroissance des images. Méthode : Utiliser la
+% relation $\dim \mathrm{Ker}(f^k) + \dim \mathrm{Im}(f^k) = \dim E$.
+
+\q Proposer une interprétation géométrique de la structure de $f$ et $g$ à partir des résultats
+précédents.
+% But : Donner un sens géométrique aux inclusions et dimensions. Méthode : Représentation intuitive
+% par sous-espaces emboîtés dans $\mathbb{R}^3$.
+
+\q Montrer qu'il existe une base $\mathscr{B}' = (\mathbf{u}, \mathbf{v}, \mathbf{w})$ de
+$\mathbb{R}^3$ dans laquelle la matrice de $f$ est :
+\[
+\Mat{\mathscr{B}'}{f} =
+\begin{pmatrix}
+0 & 0 & 1\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}
+\]
+% But : Identifier une forme canonique de Jordan pour un nilpotent d'indice 2. Méthode : Construire
+% une chaîne de vecteurs emboîtés.
+
+\q Montrer qu'il existe une base $\mathscr{B}'' = (\mathbf{x}, \mathbf{y}, \mathbf{z})$ dans
+laquelle la matrice de $g$ est :
+\[
+\Mat{\mathscr{B}''}{g} =
+\begin{pmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0
+\end{pmatrix}
+\]
+% But : Identifier une forme canonique de Jordan pour un nilpotent d'indice 3. Méthode : Construire
+% une chaîne de vecteurs emboîtés de longueur 3.
+
+\bigskip
+\textbf{Exemples d'endomorphismes nilpotents sur $\mathbb{R}^3$}
+
+Soient les matrices des endomorphismes $f$ et $g$ dans la base canonique $\mathscr{B}$ :
+\[
+\Mat{\mathscr{B}}{f} =
+\begin{pmatrix}
+2 & -1 & 1\\
+-2 & 1 & -1\\
+-6 & 3 & -3
+\end{pmatrix}
+\qquad
+\Mat{\mathscr{B}}{g} =
+\begin{pmatrix}
+-4 & 2 & -3\\
+-5 & 1 & -6\\
+3 & -1 & 3
+\end{pmatrix}
+\]
+
+\q Calculer les matrices $f^2$, $f^3$, $g^2$, $g^3$.
+% But : Vérifier la nilpotence effective par calcul direct. Méthode : Calcul matriciel explicite.
+
+\q Déterminer $\mathrm{Ker}(f)$, $\mathrm{Im}(f)$, $\mathrm{Ker}(f^2)$, $\mathrm{Im}(f^2)$. Vérifier
+que $\mathrm{Im}(f) \subseteq \mathrm{Ker}(f)$.
+% But : Identifier les sous-espaces invariants associés à $f$. Méthode : Résolution de systèmes
+% linéaires associés.
+
+\q Déterminer $\mathrm{Ker}(g)$, $\mathrm{Im}(g)$, $\mathrm{Ker}(g^2)$, $\mathrm{Im}(g^2)$. Vérifier
+que $\mathrm{Im}(g) = \mathrm{Ker}(g^2)$ et $\mathrm{Im}(g^2) = \mathrm{Ker}(g)$.
+% But : Identifier les inclusions et égalités structurelles. Méthode : Calculs matriciels et
+% résolution de systèmes.
+
+\q Déterminer des bases $(\mathbf{u}, \mathbf{v}, \mathbf{w})$ et $(\mathbf{x}, \mathbf{y},
+\mathbf{z})$ dans lesquelles $f$ et $g$ ont pour matrices celles obtenues précédemment.
+% But : Retrouver les bases adaptées à la forme de Jordan. Méthode : Construction de chaînes de
+% Jordan.
+
+\q Représenter graphiquement ces transformations dans l'espace euclidien tridimensionnel.
+% But : Visualiser l'effet de la nilpotence dans $\mathbb{R}^3$. Méthode : Interprétation
+% géométrique à l'aide de plans et directions.
+
+\bigskip
+\textbf{Exemples d'endomorphismes nilpotents sur $\mathbb{R}_n[X]$}
+
+Soit l'espace vectoriel $\mathbb{R}_n[X]$ muni de la base canonique $\mathscr{B} = (1, X,
+X^2, \dots, X^n)$.
+
+Soient deux endomorphismes polynomiaux :
+\begin{itemize}
+\item Différence : $\Delta : P \mapsto \Delta(P)(X) = P(X+1) - P(X)$
+\item Dérivation : $D : P \mapsto D(P) = P'$
+\end{itemize}
+
+\q Déterminer le degré de $\Delta(P)$ en fonction du degré de $P$.
+% But : Analyser l'effet de $\Delta$ sur le degré. Méthode : Calcul direct sur un monôme.
+
+\q Déterminer une base de $\mathrm{Ker}(\Delta)$ et une base de $\mathrm{Im}(\Delta)$.
+% But : Identifier les sous-espaces stables. Méthode : Étudier l'effet de $\Delta$ sur les polynômes
+% constants et non constants.
+
+\q Montrer que $\Delta$ est nilpotent d'indice $n+1$.
+% But : Vérifier que toute suite $\Delta^k(P)$ s'annule pour $k > n$. Méthode : Utiliser la
+% réduction successive du degré.
+
+\q Justifier que $D$ est nilpotent.
+% But : Identifier la dérivation comme un endomorphisme nilpotent. Méthode : Connaissance du
+% comportement de la dérivée des polynômes.
+
+\q Écrire la matrice de $D$ dans la base canonique $\mathscr{B}$.
+% But : Mettre en évidence la matrice triangulaire associée à $D$. Méthode : Action de $D$ sur les
+% monômes.
+
+\q Déterminer une base $\mathscr{B}' = (P_0, P_1, \dots, P_n)$ dans laquelle $D$ a pour matrice :
+\[
+\begin{pmatrix}
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \ddots & \vdots\\
+0 & 0 & \cdots & 0 & 1\\
+0 & 0 & \cdots & 0 & 0
+\end{pmatrix}
+\]
+% But : Diagonaliser $D$ en forme de Jordan. Méthode : Construire une base de vecteurs emboîtés dans
+% le noyau de $D^k$.
+
+\end{document}
+% ==================================================================================================
