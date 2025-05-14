@@ -190,6 +190,7 @@ En substituant cette expression :
 g(x) - g(x_0) = g'(x_0)(x - x_0) + g''(\xi) \theta (x - x_0)^2
 \]
 
+% ------
 \q Concavité :
 
 La tangente à \( g(x) \) en \( x_0 \) est donnée par :
@@ -297,19 +298,26 @@ u_{n+1} = u_n - \frac{g(u_n)}{g'(u_n)} < u_n
 \]
 ce qui prouve que \( (u_n) \) est bien décroissante.
 
+% ------
+
 \q Stabilité de l'intervalle d'étude :
 
 L'objectif est de prouver que si \( u_n \geq c \), alors \( u_{n+1} \geq c \).
 
 Or, \( u_{n+1} \) est défini par le point d'intersection de la tangente en  \( u_n \) avec l'axe des
-abscisses. Puisque la fonction \( g \) est concave, elle est toujours située sous sa tangente :
+abscisses :
+
 \[
-g(u_{n+1}) \leq 0
+T_{u_n}(u_{n+1}) = 0
 \]
-Or, la fonction \( g \) s'annule en \( c \) et est strictement décroissante sur \( [1, +\infty[ \),
-ce qui implique :
+
+Puisque la fonction \( g \) est concave, elle est toujours située sous sa tangente :
 \[
-g(u_{n+1}) \leq 0 \implies u_{n+1} \geq c
+g(u_{n+1}) \leq T_{u_n}(u_{n+1}) \implies g(u_{n+1}) \leq 0
+\]
+Or, la fonction \( g \) s'annule en \( c \) et est strictement décroissante sur \( [1, +\infty[ \) :
+\[
+g(u_{n+1}) \leq 0 = g(c) \implies u_{n+1} \geq c
 \]
 
 Conclusion : L'intervalle \( [c, +\infty[ \) est stable pour la méthode de Newton.
@@ -331,17 +339,14 @@ Par le théorème des suites monotones, la suite \( (u_n) \) est convergente.
 
 D'après la question précédente, la suite \( (u_n) \) converge vers une limite \( \ell \geq c \).
 
-En passant à la limite dans la relation de récurrence :
+Comme \( g \) est continue, il est légitime de passer à la limite dans la relation de récurrence :
 \[
 \lim_{n \to \infty} u_{n+1} = \lim_{n \to \infty} \left( u_n - \frac{g(u_n)}{g'(u_n)} \right)
 \]
 
-Soit \( \ell = \lim_{n \to \infty} u_n \). Comme \( g \) est continue, il est légitime de passer à
-la limite dans la relation de récurrence :
 \[
 \ell = \ell - \frac{g(\ell)}{g'(\ell)}
 \]
-D'où :
 \[
 \frac{g(\ell)}{g'(\ell)} = 0
 \]

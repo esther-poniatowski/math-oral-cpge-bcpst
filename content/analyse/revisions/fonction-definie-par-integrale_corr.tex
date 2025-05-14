@@ -35,8 +35,8 @@ Ainsi,
 
 % --------------------------------------------------------------------------------------------------
 \q Puisque \( \frac{1 - \cos(t)}{t} \sim \frac{t}{2} \) lorsque \( t \to 0 \), et que \( \frac{t}{2}
-\) est intégrable au voisinage de 0 sur \( [0, x] \), on peut appliquer le théorème de convergence
-dominée. L'intégrale :
+\) est intégrable au voisinage de 0 sur \( [0, x] \), le théorème de convergence dominée s'applique.
+L'intégrale :
 \[
 \int_0^x \frac{1 - \cos(t)}{t} \, dt
 \]
@@ -48,24 +48,34 @@ continue en 0.
 \[
 f'(x) = \frac{1 - \cos(x)}{x}.
 \]
-Étudions la limite de \( f'(x) \) lorsque \( x \to 0 \) :
+Limite de \( f'(x) \) lorsque \( x \to 0 \) :
 \[
 \frac{1 - \cos(x)}{x} \sim \frac{x^2/2}{x} = \frac{x}{2} \to 0
 \]
-Ainsi \( f' \) admet une limite finie en 0, égale à 0.
-Donc \( f \) est dérivable en 0 et \( f'(0) = 0 \).
+Ainsi \( f' \) admet une limite finie en 0, donc \( f \) est dérivable en 0 et \( f'(0) = 0 \).
 
 % --------------------------------------------------------------------------------------------------
-\q Pour \( x > 0 \), \( 1 - \cos(x) \geq 0 \), donc \( f'(x) \geq 0 \), et \( f'(x) > 0 \) pour \( x
-\neq 0 \). Donc \( f \) est croissante sur \( \mathbb{R}_+ \).
+\q Signe de la dérivée :
+Si \( x > 0 \), alors \( 1 - \cos(x) \geq 0 \), donc \( f'(x) \geq 0 \).
+Si \( x \neq 0 \), alors \( f'(x) > 0 \).
+
+Conclusion : \( f \) est croissante sur \( \mathbb{R}_+ \).
 
 % --------------------------------------------------------------------------------------------------
-\q Encadrement pour \( x \geq 1 \) :
+\q Encadrement pour \( x \geq 1 \)
+
+Pour tout \( t \geq x = 1 \) :
 \[
 0 \leq \frac{1 - \cos(t)}{t} \leq \frac{2}{t},
 \]
-car \( |1 - \cos(t)| \leq 2 \), et pour \( t \) grand, \( \frac{1 - \cos(t)}{t} \sim 0 \).
-Or, \( \frac{2}{t} \) est intégrable sur \( [1, +\infty[ \), donc par comparaison :
+car \( |1 - \cos(t)| \leq 2 \), et  \( 1 - \cos(t) \geq 0 \).
+
+Or, \( \frac{2}{t} \) est intégrable sur \( [1, +\infty[ \) :
+\[
+\int_1^{+\infty} \frac{2}{t} \, dt = 2 \ln(t) \big|_1^{+\infty} = +\infty
+\]
+
+Donc par comparaison :
 \[
 \int_1^{+\infty} \frac{1 - \cos(t)}{t} \, dt
 \]
