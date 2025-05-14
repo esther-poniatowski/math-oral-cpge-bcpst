@@ -1,0 +1,320 @@
+% CORRECTION : Fonctions et Suites - DM 3 9 février
+% Exercice donné par Guillaume Roux
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Analyse - Fonctions and Suites}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction - DM3 9 février}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+Soit la fonction \( f_n \) définie pour tout \( x > 0 \) et \( n \geq 2 \) par :
+
+\[
+    f_n(x) = x^n - \ln(x) - n
+\]
+
+\textbf{1. Tableau de variations de \( f_n \)}
+
+Dérivée pour \( x > 0 \) :
+
+\[
+    f_n'(x) = n x^{n-1} - \frac{1}{x}
+\]
+
+Solutions de \( f_n'(x) = 0 \) :
+
+\[
+    n x^{n} = 1 \implies x = \left(\frac{1}{n}\right)^{\frac{1}{n}}
+\]
+
+Signes de la dérivée et variations de la fonction :
+
+\begin{itemize}
+    \item Pour \( x < \left(\frac{1}{n}\right)^{\frac{1}{n}} \), \( f_n'(x) < 0 \),
+          donc \( f_n \) décroît sur \( ]0, \left(\frac{1}{n}\right)^{\frac{1}{n}}[ \).
+    \item Pour \( x > \left(\frac{1}{n}\right)^{\frac{1}{n}} \), \( f_n'(x) > 0 \),
+          donc \( f_n \) croît sur \( ]\left(\frac{1}{n}\right)^{\frac{1}{n}}, +\infty[ \).
+\end{itemize}
+
+La fonction admet un minimum en \( \left(\frac{1}{n}\right)^{\frac{1}{n}} \), qui vaut :
+
+\[
+    f_n\left(\left(\frac{1}{n}\right)^{\frac{1}{n}}\right) = \left(\left(\frac{1}{n}\right)^{\frac{1}{n}}\right)^{n} - \ln\left(\left(\frac{1}{n}\right)^{\frac{1}{n}}\right) - n
+\]
+\[
+    = \frac{1}{n} - \frac{1}{n} \ln\left(\frac{1}{n}\right) - n
+\]
+\[
+    = \frac{1}{n} + \frac{1}{n} \ln(n) - n
+\]
+
+\[
+\begin{array}{c|ccccc}
+x & 0 &  & \left(\frac{1}{n}\right)^{\frac{1}{n}} &  & +\infty \\
+\hline
+f_n'(x) &  & - & 0 & + &  \\
+\hline
+f_n(x) & -\infty & \searrow & \frac{1}{n} + \frac{1}{n} \ln(n) - n & \nearrow & +\infty
+\end{array}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{2. Preuve de l'inégalité \( \ln(x) \leq x - 1 \) pour tout \( x > 0 \)}
+
+Soit la fonction \( g(x) = x - 1 - \ln(x) \). Sa dérivée pour \( x > 0 \) est :
+
+\[
+    g'(x) = 1 - \frac{1}{x}
+\]
+
+\begin{itemize}
+    \item Si \( x > 1 \), alors \( g'(x) > 0 \), dont \( g \) croît.
+    \item Si \( 0 < x < 1 \), alors \( g'(x) < 0 \), donc \( g \) décroît.
+\end{itemize}
+
+La fonction \( g \) admet un minimum en \( x = 1 \), où \( g(1) = 0 \), ainsi :
+
+\[
+    \ln(x) \leq x - 1, \quad \forall x > 0
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{3. Existence and Unicité de \( u_n \) et \( v_n \)}
+
+Soient les solutions de l'équation \( f_n(x) = 0 \), si elles existent. La fonction \( f_n \) étant
+strictement décroissante puis croissante, elle possède exactement deux racines si et seulement si
+son minimum est strictement négatif (théorème des valeurs intermédiaires).
+
+Le minimum est majoré par (en utilisant l'inégalité de la question 2) :
+\[
+    \frac{1+\ln(n)}{n} - n < \frac{1 + (n-1)}{n}  - n = 1 - n
+\]
+
+Cette différence est négative pour \( n > 1 \).
+
+Ainsi, pour \( n \geq 2 \), le minimum est négatif, donc \( f_n \) admet deux racines distinctes :
+\begin{itemize}
+    \item \( u_n \) dans \( ]0, \left(\frac{1}{n}\right)^{\frac{1}{n}}[ \)
+    \item \( v_n \) dans \( ]\left(\frac{1}{n}\right)^{\frac{1}{n}}, +\infty[ \) \\
+\end{itemize}
+
+L'unicité est assurée par la stricte monotonicité de \( f_n \) sur chaque intervalle.
+
+\bigskip
+\textbf{4. Étude de la suite \( v_n \)}
+
+\textbf{4.a. Borne de \( v_n \)}
+
+Montrons que \( f_n \left((2n)^{\frac{1}{n}}\right) > 0 \) pour tout \( n \geq 2 \).
+
+L'expression de la fonction en ce point s'écrit :
+
+\[
+    f_n \left((2n)^{\frac{1}{n}}\right) = \left((2n)^{\frac{1}{n}}\right)^n - \ln \left((2n)^{\frac{1}{n}}\right) - n
+\]
+\[
+    = 2n - \frac{\ln(2n)}{n} - n
+\]
+\[
+    = n - \frac{\ln(2n)}{n}
+\]
+\[
+    = \frac{n^2 - \ln(2n)}{n}
+\]
+
+Ce quotient est positif si et seulement si le numérateur est positif :
+\[
+    n^2 - \ln(2n) > 0
+\]
+Or, \( \ln(2n) < (2n - 1)\) pour \( n \geq 2 \) (inégalité de la question 2), donc :
+\[
+    n^2 - \ln(2n) > n^2 - (2n - 1) = n^2 - 2n + 1 = (n-1)^2 > 0
+\]
+
+Ainsi, pour tout \( n \geq 2 \) :
+\[
+\begin{cases}
+    f_n \left((2n)^{\frac{1}{n}}\right) > 0 \\
+    f_n(v_n) = 0
+\end{cases}
+\implies f_n(v_n) < f_n \left((2n)^{\frac{1}{n}}\right)
+\]
+
+Par stricte croissance de \( f_n \) sur \( ]\left(\frac{1}{n}\right)^{\frac{1}{n}}, +\infty[ \) :
+\[
+    v_n < (2n)^{\frac{1}{n}}
+\]
+
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{4.b. Convergence et limite de \( v_n \)}
+
+Montrons que la suite \( v_n \) converge vers une limite \( \ell \), et déterminons cette limite.
+
+La suite \( v_n \) est encadrée par :
+
+\[
+    \left(\frac{1}{n}\right)^{\frac{1}{n}} < v_n < (2n)^{\frac{1}{n}}
+\]
+
+Ces bornes convergent vers 1 lorsque \( n \) tend vers \( +\infty \) :
+
+\[
+\begin{cases}
+\left(\frac{1}{n}\right)^{\frac{1}{n}} = e^{-\frac{\ln(n)}{n}} \underset{n \to +\infty}{\longrightarrow} 1 \\
+(2n)^{\frac{1}{n}} = e^{\frac{\ln(2n)}{n}} \underset{n \to +\infty}{\longrightarrow} 1
+\end{cases}
+\]
+
+Par le théorème des gendarmes :
+
+\[
+    v_n \underset{n \to +\infty}{\longrightarrow} 1
+\]
+
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{4.c. Démonstration de l'équivalence logarithmique}
+
+Par définition, \( a_n \sim b_n \) signifie que :
+
+\[
+    a_n = b_n (1 + \varepsilon_n), \quad \varepsilon_n \underset{n \to +\infty}{\longrightarrow} 0
+\]
+
+et \( \ln(a_n) \sim \ln(b_n) \) signifie que :
+\[
+    \ln(a_n) = \ln(b_n) + \delta_n, \quad \delta_n \underset{n \to +\infty}{\longrightarrow} 0
+\]
+
+\medskip
+En replaçant l'expression de \( a_n \) dans le logarithme :
+
+\[
+    \ln(a_n) = \ln \left[b_n (1 + \varepsilon_n)\right]
+             = \ln(b_n) + \ln(1 + \varepsilon_n)
+\]
+
+Or, le développement asymptotique du logarithme pour \( \varepsilon_n \to 0 \) donne :
+
+\[
+    \ln(1 + \varepsilon_n) \sim \varepsilon_n
+\]
+
+Ainsi, le logarithme de \( a_n \) est équivalent à :
+
+\[
+    \ln(a_n) \sim \ln(b_n) + \varepsilon_n
+\]
+
+Or, par hypothèse :
+\[
+\begin{cases}
+    \varepsilon_n \underset{n \to +\infty}{\longrightarrow} 0 \\
+    \lim b_n = +\infty
+\end{cases}
+\]
+
+Donc le terme \( \varepsilon_n \) devient négligeable devant \( \ln(b_n) \). Ainsi :
+
+\[
+    \ln(a_n) \sim \ln(b_n)
+\]
+
+Conclusion :
+Si \( a_n \sim b_n \) et \( \lim b_n = +\infty \), alors \( \ln(a_n) \sim \ln(b_n) \).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{4.d. Equivalence asymptotique de \( v_n - \ell \)}
+
+% Méthode: Etudier quantitativement la différence entre une suite et sa limite.
+% 1. Utiliser la définition même de v_n comme racine de l'équation f_n(x) = 0, qui définit
+%    implicitement la valeur de v_n. C'est le point de départ naturel puisque c'est la seule
+%    relation dont on dispose. L'idée est d'exploiter cette équation pour exprimer le comportement
+%    de v_n​ autour de sa limite. Le choix de cette méthode repose sur le fait que l'équation est
+%    exacte, donc toute approximation en découlera de manière rigoureuse.
+% 2. Identifier le comportement dominant.
+% 3. Linéariser les termes pour faire apparaître la différence entre la suite et sa limite. Ici,
+%    cela revient à composer par le logarithme (pour linéariser le terme exponentiel) puis à
+%    utiliser un développement limité du logarithme. Ainsi, tous les termes en v_n​ sont linéarisés,
+%    ce qui fait apparaître la différence avec sa limite.
+
+Avec \( \ell = 1 \), le but est de déterminer un équivalent asymptotique de \( v_n - 1 \).
+
+Par l'équation \( f_n(v_n) = 0 \) :
+
+\[
+v_n^n - \ln(v_n) - n = 0 \quad \implies \quad v_n^n = n + \ln(v_n) \sim n
+\]
+
+Par l'équivalence logarithmique (question 3.c) avec \( a_n = v_n^n \sim b_n = n \) :
+
+\[
+\ln(v_n^n) \sim \ln(n)
+\]
+
+\[
+n \ln(v_n) \sim \ln(n)
+\]
+
+Comme \( \ln(v_n) \sim v_n - 1 \) (développement limité en \( v_n \to 1 \)), il vient :
+
+\[
+n (v_n - 1) \sim \ln(n) \quad \implies \quad v_n - 1 \sim \frac{\ln(n)}{n}
+\]
+
+Conclusion :
+
+\[
+\boxed{v_n - 1 \sim \frac{\ln(n)}{n}}
+\]
+
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{4. Étude de la suite \( u_n \)}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textit{a. Variations de \( u_n \)}
+
+Etudions le signe de \( f_n(u_{n+1}) \) :
+
+???
+
+On en déduit les variations de \( u_n \) :
+
+???
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textit{b. Limite de \( u_n^{n} \)}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textit{c. Équivalence asymptotique de \( u_n \)}
+
+Montrons que :
+
+\[
+    u_n \sim e^{-n}
+\]
+
+\end{document}
+% ==================================================================================================

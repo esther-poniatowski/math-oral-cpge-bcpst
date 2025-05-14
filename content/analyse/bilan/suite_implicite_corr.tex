@@ -1,0 +1,334 @@
+% CORRECTION : Sujet 4 AgroVeto 2018
+% Exercice donné par Guillaume Roux
+% ==================================================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Set the root path
+\providecommand{\rootpath}{../../..}
+\input{\rootpath/content/shared/preamble}
+\input{\rootpath/content/shared/macros}
+
+\title{Analyse - Fonctions and Suites}
+\author{Esther Poniatowski}
+\date{2024-2025}
+
+\customPageLayout{Correction - Sujet 4 AgroVeto 2018}{Lycée Henri IV}{2024}
+
+% ==================================================================================================
+\begin{document}
+
+Soit l'équation définie pour \( n \in \mathbb{N}^* \) et \( x \in \mathbb{R}^* \) par :
+\[
+   (E_n) : \frac{\ln(x)^2}{x} = \frac{1}{n}
+\]
+
+Soit \( f \) la fonction définie sur \( [1; +\infty[ \) par :
+\[
+   f(x) = \frac{\ln(x)^2}{x}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{1. (a) Tableau de variations de \( f \) sur son ensemble de définition}
+
+Dérivée pour \( x \in [1; +\infty[ \) :
+
+\[
+f'(x) = \frac{x \cdot \frac{d}{dx}(\ln(x)^2) - \ln(x)^2 \cdot \frac{d}{dx}(x)}{x^2}
+\]
+
+\[
+f'(x) = \frac{x \cdot 2\ln(x) \cdot \frac{1}{x} - \ln(x)^2 \cdot 1}{x^2}
+\]
+
+\[
+f'(x) = \frac{2\ln(x) - \ln(x)^2}{x^2}
+\]
+
+\[
+f'(x) = \frac{\ln(x)(2 - \ln(x))}{x^2}
+\]
+
+Pour \( x \geq 1 \), le facteur \( \ln(x) \geq 0 \), donc le signe dépend du facteur \( (2 - \ln(x))
+\) :
+\begin{itemize}
+\item Si \( \ln(x) < 2 \), alors \( 2 - \ln(x) > 0 \), donc \( f'(x) > 0 \)
+\item Si \( \ln(x) = 2 \), alors \( 2 - \ln(x) = 0 \), donc \( f'(x) = 0 \)
+\item Si \( \ln(x) > 2 \), alors \( 2 - \ln(x) < 0 \), donc \( f'(x) < 0 \) \\
+\end{itemize}
+
+La condition \( \ln(x) = 2 \) équivaut à \( x = e^2 \).
+
+Ainsi, \( f \) est croissante sur \( [1; e^2] \) et décroissante sur \( [e^2; +\infty[ \).
+
+Valeurs remarquables de \( f \) :
+
+\[
+f(1) = \frac{\ln(1)^2}{1} = \frac{0^2}{1} = 0
+\]
+
+\[
+f(e^2) = \frac{\ln(e^2)^2}{e^2} = \frac{2^2}{e^2} = \frac{4}{e^2}
+\]
+
+\[
+\lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} \frac{\ln(x)^2}{x} = 0
+\]
+
+Tableau de variations de \( f \) :
+
+\[
+\begin{array}{c|ccccc}
+x & 1 &  & e^2 &  & +\infty \\
+\hline
+f'(x) &  & + & 0 & - &  \\
+\hline
+f(x) & 0 & \nearrow & \frac{4}{e^2} & \searrow & 0
+\end{array}
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{1. (b) Absence de solution pour l'équation \( (E_1) \)}
+
+L'équation \( (E_1) \) s'écrit :
+\[
+\frac{\ln(x)^2}{x} = 1
+\]
+
+D'après le tableau de variations, \( f \) atteint son maximum en \( x = e^2 \) avec la valeur \( f(e^2) =
+\frac{4}{e^2} \).
+
+Cette valeur maximale est inférieure à 1. En effet:
+\[
+e > 2.7 > 2 \implies e^2 > 2^2 = 4 \implies \frac{4}{e^2} < 1
+\]
+
+
+Ainsi, pour tout \( x \in [1; +\infty[ \) :
+\[
+f(x) < 1
+\]
+
+Conclusion : L'équation \( (E_1) \) n'admet pas de solution.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{1. (c) Solutions de l'équation \( (E_n) \) pour \( n \geq 2 \)}
+
+L'équation \( (E_n) \) s'écrit :
+\[
+\frac{\ln(x)^2}{x} = \frac{1}{n}
+\]
+
+\medskip
+Dans l'intervalle \( [1; e^2] \):
+\begin{itemize}
+\item \( f(1) = 0 < \frac{1}{n} \) pour tout \( n \geq 1 \).
+\item \( f(e^2) = \frac{4}{e^2} \geq \frac{1}{n} \), car
+      \( \frac{1}{n} \geq \frac{1}{2} \; (\forall n \geq 2) \),
+      et \( e < 2.5 = \frac{5}{2} \implies e^2 < \frac{25}{4} \implies \frac{4}{e^2} > \frac{16}{25}
+      > \frac{16}{32} > \frac{1}{2} \).
+\item \( f \) est strictement croissante et continue.
+\end{itemize}
+
+Par le théorème des valeurs intermédiaires, il existe un unique \( \alpha_n \in ]1; e^2[ \) tel que \( f(\alpha_n) =
+\frac{1}{n} \).
+
+\medskip
+Dans l'intervalle \( [e^2; +\infty[ \):
+\begin{itemize}
+\item \( \lim_{x \to +\infty} f(x) = 0 < \frac{1}{n} \)
+\item \( \frac{1}{n} \leq \frac{1}{2} < f(e^2) \) (comme précédemment)
+\item \( f \) est strictement décroissante et continue.
+\end{itemize}
+
+Par le théorème des valeurs intermédiaires, il existe un unique \( \beta_n \in ]e^2; +\infty[ \) tel que \( f(\beta_n) =
+\frac{1}{n} \).
+
+\medskip
+Conclusion : Pour \( n \geq 2 \), l'équation \( (E_n) \) admet exactement deux solutions \( \alpha_n
+\) et \( \beta_n \) vérifiant :
+\[
+1 \leq \alpha_n \leq e^2 \leq \beta_n
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{2. Représentation graphique}
+
+La courbe de \( f \) présente les caractéristiques suivantes :
+\begin{itemize}
+\item Elle passe par l'origine \( (1, 0) \) car \( f(1) = 0 \)
+\item Elle atteint son maximum en \( x = e^2 \) avec la valeur \( f(e^2) = \frac{4}{e^2} \approx
+0.54 \)
+\item Elle est croissante sur \( [1; e^2] \) et décroissante sur \( [e^2; +\infty[ \)
+\item Elle tend vers \( 0 \) quand \( x \) tend vers \( +\infty \)
+\end{itemize}
+
+\medskip
+Les droites horizontales \( D_i : y = \frac{1}{i} \) coupent la courbe en deux points exactement
+lorsque \( i \geq 2 \), ces points d'intersection correspondant aux solutions \( \alpha_i \) et \(
+\beta_i \) de l'équation \( (E_i) \).
+
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm, height=8cm,
+    xlabel={$x$},
+    ylabel={$y$},
+    axis lines=middle,
+    xmin=0, xmax=25,
+    ymin=0, ymax=0.6,
+    xtick={1, 7.389, 10, 15, 20},
+    xticklabels={$1$, $e^2$, $10$, $15$, $20$},
+    ytick={0, 0.25, 0.3333, 0.5, 0.5413},
+    yticklabels={$0$, $\frac{1}{4}$, $\frac{1}{3}$, $\frac{1}{2}$, $\frac{4}{e^2}$},
+    domain=1:25,
+    samples=300,
+    legend pos=north east,
+    grid=both,
+]
+
+% Fonction f(x) = ln(x)²/x
+\addplot[blue, thick] {ln(x)^2/x};
+\addlegendentry{$f(x) = \frac{\ln(x)^2}{x}$}
+
+% Droites horizontales Di: y = 1/i
+\addplot[red, dashed] {0.5};
+\addlegendentry{$D_2: y = \frac{1}{2}$}
+
+\addplot[orange, dashed] {0.3333};
+\addlegendentry{$D_3: y = \frac{1}{3}$}
+
+\addplot[green, dashed] {0.25};
+\addlegendentry{$D_4: y = \frac{1}{4}$}
+
+\addplot[purple, dashed] {0.2};
+\addlegendentry{$D_5: y = \frac{1}{5}$}
+
+% Ligne verticale à x = e^2
+\draw[red, dotted] (7.389,0) -- (7.389,0.54);
+
+% Points spéciaux
+\node[circle, fill=blue, inner sep=1.5pt] at (1,0) {};
+\node[circle, fill=blue, inner sep=1.5pt] at (7.389,0.54) {};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Représentation de $f(x) = \frac{\ln(x)^2}{x}$ et des droites $D_i: y = \frac{1}{i}$ pour $2 \leq i \leq 6$}
+\end{figure}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{3. Conjectures sur les suites \( (\alpha_n) \) et \( (\beta_n) \) }
+
+\begin{itemize}
+\item La suite \( (\alpha_n) \) semble être décroissante et converger vers \( 1 \) quand \( n \)
+tend vers \( +\infty \).
+\item La suite \( (\beta_n) \) semble être croissante et tendre vers \( +\infty \) quand \( n \)
+tend vers \( +\infty \).
+\end{itemize}
+
+\medskip
+Justification graphique : Lorsque \( n \) augmente,
+\begin{itemize}
+\item Les droites \( D_n : y = \frac{1}{n} \) se rapprochent de l'axe des abscisses.
+\item Pour la suite \( (\alpha_n) \), les points d'intersection parcourent la branche de \( f \) du
+point maximum de \( (e^2, 4/e^2) \) vers le point \( (1, 0) \), car la fonction \( f \) croît sur \(
+[1; e^2] \). Les abscisses des points d'intersection se rapprochent de \( 1 \).
+\item Pour \( (\beta_n) \), les points d'intersection parcourent la branche de \( f \) du point
+maximum de \( (e^2, 4/e^2) \) vers le point "limite" \( (+\infty, 0) \), car la fonction \( f \)
+décroît sur \( [e^2; +\infty[ \). Les abscisses des points d'intersection s'éloignent de \( e^2 \)
+et tendent vers \( +\infty \).
+\end{itemize}
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+\textbf{4. Etude de la suite \( (\beta_n) \)}
+
+(a) \textbf{Monotonie de la suite \((\beta_n)\)}
+
+Montrons que la suite \((\beta_n)\) est strictement croissante, c'est-à-dire que pour tout \(n \geq
+2\), \(\beta_{n+1} > \beta_n\).
+
+Soit \(n \geq 2\). Comparons les équations \((E_n)\) et \((E_{n+1})\) :
+\begin{align}
+f(\beta_n) &= \frac{1}{n} \\
+f(\beta_{n+1}) & = \frac{1}{n+1}
+\end{align}
+
+Or, la fonction \( f \) est strictement décroissante sur \([e^2; +\infty[\), donc :
+
+\[
+\frac{1}{n+1} < \frac{1}{n} \implies f(\beta_{n+1}) > f(\beta_n)
+\]
+
+Conclusion : La suite \((\beta_n)\) est strictement croissante.
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+(b) \textbf{Limite de la suite \((\beta_n)\)}
+
+Montrons que \(\lim_{n \to +\infty} \beta_n = +\infty\).
+
+Supposons par l'absurde que \((\beta_n)\) admet une limite finie \(L \in \mathbb{R}, \).
+
+En passant à la limite quand \(n \to +\infty\) et par continuité de \(f\):
+\[
+\lim_{n \to +\infty} f(\beta_n) = f(L) = \frac{\ln(L)^2}{L} = \lim_{n \to +\infty} \frac{1}{n} = 0
+\]
+
+Ce qui impliquerait \(f(L) = \frac{\ln(L)^2}{L} = 0\). Or, pour tout \(x > 1\), \(\ln(x) > 0\), donc
+\(f(x) > 0\), ce qui aboutit à une contradiction.
+
+Par conséquent, \(\lim_{n \to +\infty} \beta_n = +\infty\).
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+(c) \textbf{Étude de la suite \((u_n)\) définie par \(u_n = \frac{\beta_n}{n}\)}
+
+Montrons que \(u_n \sim \ln^2(n)\) quand \(n \to +\infty\).
+
+Par définition de \(\beta_n\) :
+\[
+\frac{\ln(\beta_n)^2}{\beta_n} = \frac{1}{n} \implies
+u_n := \frac{\beta_n}{n} = \ln(\beta_n)^2
+\]
+
+Comme \(\beta_n = n u_n\) :
+\begin{align*}
+\ln(\beta_n) &= \ln(n u_n)\\
+&= \ln(n) + \ln(u_n) \\
+&= \ln(n) + o(\ln(n)) \quad \text{(car \(\ln(u_n) = o(\ln(n))\) par hypothèse de l'énoncé)}\\
+&\sim \ln(n)
+\end{align*}
+
+Or, \(u_n = \ln(\beta_n)^2\), donc quand \(n \to +\infty\) :
+\[
+u_n \sim \ln(n)^2
+\]
+
+% --------------------------------------------------------------------------------------------------
+\bigskip
+(d) \textbf{Équivalent de \(\beta_n\) quand \(n \to +\infty\)}
+
+Par la question précédente : \(u_n = \frac{\beta_n}{n} \sim \ln^2(n)\).
+
+Ce qui équivaut directement à :
+\[
+\beta_n \sim n \ln^2(n)
+\]
+
+Ce qui confirme la croissance rapide de \(\beta_n\) et justifie la conjecture formulée précédemment.
+
+
+\end{document}
+% ==================================================================================================
